@@ -175,12 +175,19 @@ body{
 .section-title em{color:var(--gold);font-weight:400}
 
 /* ============ CITY SECTION ============ */
-.city{margin:64px 0;scroll-margin-top:80px}
+.city{
+  margin:48px 0;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:24px;
+  overflow:hidden;
+  scroll-margin-top:80px;
+}
 .city-hero{
-  position:relative;height:320px;border-radius:18px 18px 0 0;overflow:hidden;
-  margin-bottom:0;display:flex;align-items:flex-end;
+  position:relative;height:320px;border-radius:0;overflow:hidden;
+  margin:0;display:flex;align-items:flex-end;
   background:linear-gradient(135deg,var(--cream-deep),var(--cream));
-  border:1px solid var(--line);border-bottom:none;
+  border:none;
 }
 .city-hero-img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
@@ -216,8 +223,8 @@ body{
 
 /* ============ HOTEL CARD ============ */
 .hotel{
-  background:var(--paper);border:1px solid var(--line);border-radius:18px;
-  overflow:hidden;margin-bottom:36px;
+  background:transparent;border:none;border-top:1px solid var(--line-soft);
+  border-radius:0;margin:24px 0 0;overflow:visible;
 }
 .hotel-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0}
 .hotel-img-wrap{
@@ -232,7 +239,7 @@ body{
   padding:6px 12px;border-radius:20px;
   backdrop-filter:blur(8px);text-transform:uppercase;
 }
-.hotel-info{padding:28px 32px}
+.hotel-info{padding:24px 28px}
 .hotel-eyebrow{
   font-size:10px;letter-spacing:.25em;text-transform:uppercase;
   color:var(--gold);font-weight:600;margin-bottom:6px;
@@ -258,7 +265,8 @@ body{
 /* ============ DAY CARD ============ */
 .days-header{
   display:flex;align-items:center;gap:10px;
-  margin:32px 4px 14px;padding:0;
+  margin:8px 28px 12px;padding:24px 0 0;
+  border-top:1px solid var(--line-soft);
 }
 .days-header-icon{
   width:auto;height:auto;border-radius:0;
@@ -267,18 +275,20 @@ body{
 .days-header-text{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.22em;text-transform:uppercase}
 
 .day{
-  background:var(--paper);border:1px solid var(--line);border-radius:14px;
-  margin-bottom:14px;overflow:hidden;
-  transition:border-color .2s;
+  background:var(--paper);border:1px solid var(--line-soft);border-radius:10px;
+  margin:0 28px 6px;overflow:hidden;
+  transition:border-color .2s,background .2s;
 }
-.day:hover{border-color:var(--ink-soft)}
-.day.expanded{border-color:var(--ink-soft)}
+.day:hover{border-color:var(--line)}
+.day.expanded{border-color:var(--line)}
+.day:last-child{margin-bottom:28px}
 .day-top{
-  padding:18px 24px;display:flex;align-items:center;gap:16px;
-  background:var(--cream-deep);border-bottom:1px solid var(--line);
+  padding:14px 18px;display:flex;align-items:center;gap:14px;
+  background:transparent;border-bottom:1px solid transparent;
   transition:background .2s;
 }
-.day.expanded .day-top{background:var(--paper)}
+.day:hover .day-top{background:var(--cream-deep)}
+.day.expanded .day-top{background:transparent;border-bottom-color:var(--line-soft)}
 .day-numeral{
   font-family:'IBM Plex Serif',Georgia,serif;
   font-size:36px;font-weight:500;line-height:1;color:var(--gold);
@@ -295,14 +305,14 @@ body{
 .day-tag.special{background:var(--accent);color:#fff;box-shadow:0 1px 0 var(--accent-deep) inset}
 
 .day-note{
-  font-size:13px;color:var(--ink-soft);padding:12px 24px;
-  background:var(--paper);border-bottom:1px solid var(--line);
+  font-size:12.5px;color:var(--ink-soft);padding:10px 18px;
+  background:transparent;border-bottom:1px solid var(--line-soft);
   display:flex;gap:8px;align-items:center;
 }
 .day-note::before{content:'ℹ';color:var(--gold);font-size:14px;flex-shrink:0}
 
 .options{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.opt{padding:22px 24px;border-inline-start:1px solid var(--line);position:relative}
+.opt{padding:18px;border-inline-start:1px solid var(--line);position:relative}
 .opt:first-child{border-inline-start:none}
 .opt-badge{
   display:inline-block;font-size:10px;font-weight:600;
@@ -352,20 +362,20 @@ body{
 .fact b{color:var(--ink);font-weight:600;font-style:normal;margin-inline-end:6px}
 
 .evening{
-  padding:14px 24px;background:var(--cream-deep);
-  border-top:1px solid var(--line);font-size:13px;color:var(--ink-soft);
+  padding:12px 18px;background:transparent;
+  border-top:1px solid var(--line-soft);font-size:12.5px;color:var(--ink-soft);
   display:flex;align-items:center;gap:10px;
 }
 .evening b{color:var(--ink);font-weight:600}
 
 .match-full{
-  margin:0;border-radius:0;border-top:1px solid var(--line);border-left:none;border-right:none;border-bottom:none;
-  padding:16px 24px;
+  margin:0;border-radius:0;border-top:1px solid var(--line-soft);border-left:none;border-right:none;border-bottom:none;
+  padding:14px 18px;
 }
 
 .transit{
-  padding:14px 24px;background:var(--cream-deep);border-top:1px solid var(--line);
-  font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:10px;
+  padding:12px 18px;background:transparent;border-top:1px solid var(--line-soft);
+  font-size:12.5px;color:var(--ink-soft);display:flex;align-items:center;gap:10px;
 }
 .transit b{color:var(--ink);font-weight:600}
 
@@ -417,35 +427,38 @@ body{
 /* ============ BOOKING TIMELINE ============ */
 .booking{
   background:var(--paper);border:1px solid var(--line);border-radius:18px;
-  padding:36px;margin:0 0 60px;
+  padding:28px 32px;margin:0 0 48px;
 }
-.booking-head{text-align:center;margin-bottom:28px}
-.booking-title{font-family:'IBM Plex Serif',Georgia,serif;font-size:32px;font-weight:500;margin-bottom:8px}
-.booking-sub{font-size:13px;color:var(--muted)}
+.booking-head{text-align:right;margin-bottom:22px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.booking-title{font-family:'IBM Plex Serif',Georgia,serif;font-size:22px;font-weight:500;margin-bottom:0}
+.booking-sub{font-size:12px;color:var(--muted);margin:0}
 
-.bk-section{margin-bottom:24px}
+.bk-section{margin-bottom:18px}
+.bk-section:last-child{margin-bottom:0}
 .bk-section-title{
-  display:flex;align-items:center;gap:10px;margin-bottom:12px;
-  font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:10px;margin-bottom:8px;
+  font-size:12px;font-weight:600;color:var(--ink-soft);
+  padding-bottom:8px;border-bottom:1px solid var(--line-soft);
 }
 .bk-section-title .pill{
-  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
-  padding:4px 12px;border-radius:20px;font-weight:700;
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  padding:3px 9px;border-radius:20px;font-weight:700;
 }
 .bk-pill-now{background:#FEE2E2;color:#991B1B}
 .bk-pill-month{background:#FEF3C7;color:#92400E}
 .bk-pill-week{background:#DBEAFE;color:#1E40AF}
 .bk-list{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2px 28px;
+  margin:0;padding:0;list-style:none;
 }
 .bk-item{
-  display:flex;align-items:center;gap:10px;
-  padding:12px 14px;background:var(--paper);border-radius:10px;
-  font-size:13px;color:var(--ink);
+  display:flex;align-items:flex-start;gap:10px;
+  padding:6px 0;background:transparent;border:none;border-radius:0;
+  font-size:13px;color:var(--ink);line-height:1.55;
 }
 .bk-item .check{
-  width:18px;height:18px;border:1.5px solid var(--line);border-radius:5px;
-  flex-shrink:0;background:#fff;
+  width:14px;height:14px;border:1.5px solid var(--line);border-radius:4px;
+  flex-shrink:0;background:var(--paper);margin-top:4px;
 }
 
 /* ============ FOOTER ============ */
@@ -537,11 +550,11 @@ body{
 
 /* CITY OVERVIEW CARD (injected via JS) */
 .city-card{
-  background:var(--paper);
-  border:1px solid var(--line);border-top:none;
-  border-radius:0 0 18px 18px;
-  padding:24px 28px;
-  margin:0 0 40px;
+  background:transparent;
+  border:none;
+  border-radius:0;
+  padding:24px 28px 0;
+  margin:0;
   box-shadow:none;
 }
 .cc-section{margin-bottom:18px}
@@ -606,8 +619,8 @@ body{
 
 /* DAY: TABS (A | B) */
 .day-tabs{
-  display:flex;gap:24px;padding:0 24px;
-  border-bottom:1px solid var(--line);
+  display:flex;gap:22px;padding:0 18px;
+  border-bottom:1px solid var(--line-soft);
   background:transparent;
 }
 .day-tab{
@@ -632,19 +645,18 @@ body{
 
 /* TRANSIT STRIP (between cities, lifted out of last day) */
 .transit-strip{
-  display:flex;align-items:center;justify-content:center;gap:14px;
-  margin:32px 0;padding:18px 22px;
-  background:transparent;border:none;
-  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
-  border-radius:0;
-  font-size:13.5px;color:var(--ink-soft);line-height:1.6;text-align:center;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  margin:0 auto;padding:10px 22px;
+  background:transparent;border:none;border-radius:0;
+  font-size:12.5px;color:var(--muted);line-height:1.6;text-align:center;
 }
 .transit-strip-icon{
-  font-size:18px;width:auto;height:auto;
+  font-size:16px;width:auto;height:auto;
   background:transparent;border-radius:0;flex-shrink:0;line-height:1;
+  opacity:.7;
 }
 .transit-strip-text{flex:0 1 auto}
-.transit-strip-text b{color:var(--ink);font-weight:600}
+.transit-strip-text b{color:var(--ink-soft);font-weight:600}
 
 /* ACTIVE NAV LINK */
 .nav-links a.active{background:var(--accent-soft);color:var(--accent-deep);font-weight:600}
@@ -735,7 +747,7 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
 }
 
 /* Hotel info — slight padding & rhythm tweak */
-.hotel-info{padding:28px 32px}
+.hotel-info{padding:24px 28px}
 .hotel-info .hotel-eyebrow{margin-bottom:8px}
 
 /* Booking: cleaner item background */
@@ -753,6 +765,45 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
   .day-tab{font-size:12.5px}
   .transit-strip{margin:24px 0;padding:14px 18px}
   .days-header{margin:24px 4px 12px}
+}
+
+
+/* ====== POST-AUDIT v3: city as unified container, booking as compact checklist ====== */
+
+/* Day chip in city-card — visual hierarchy refresh */
+.cc-day-chip{
+  background:var(--paper);
+  border:1px solid var(--line-soft);
+}
+.cc-day-chip:hover{
+  background:var(--cream-deep);
+  border-color:var(--accent);
+}
+
+/* "العشاء — في بيلاجيو" label icon spacing */
+.match-label{display:flex;align-items:center;gap:4px}
+
+/* Hide redundant day-chevron hover bg (it's inside .day-top now) */
+.day-chevron{background:transparent;border:1px solid var(--line-soft)}
+
+/* Refine touch hover override for new day */
+@media (hover: none){
+  .day:hover{border-color:var(--line-soft)}
+  .day:hover .day-top{background:transparent}
+}
+
+/* Mobile container padding */
+@media(max-width:760px){
+  .city{margin:32px 0;border-radius:18px}
+  .city .city-hero{height:240px}
+  .city .city-card{padding:18px 16px 0}
+  .city .hotel-info{padding:20px 16px}
+  .city .days-header{margin:6px 16px 10px;padding-top:18px}
+  .city .day{margin:0 16px 5px}
+  .city .day:last-child{margin-bottom:20px}
+  .booking{padding:22px 18px}
+  .booking-title{font-size:18px}
+  .booking-head{margin-bottom:18px}
 }
 
 </style>
