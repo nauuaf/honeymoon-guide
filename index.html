@@ -623,14 +623,9 @@ body{
   background:var(--paper);
 }
 .day-tab-star{font-size:11px;color:var(--accent)}
-.day .options{display:block !important;grid-template-columns:none !important}
-.day .opt[data-pane]{
-  display:none;
-  border-inline-start:none !important;
-  border-left:none !important;
-  border-top:none !important;
-}
-.day .opt[data-pane].active{display:block;animation:tabReveal .25s ease-out}
+.day.collapsible .options{display:block;grid-template-columns:none}
+.day.collapsible .opt[data-pane]{display:none;border-inline-start:none;border-left:none;border-top:none}
+.day.collapsible .opt[data-pane].active{display:block;animation:tabReveal .25s ease-out}
 @keyframes tabReveal{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
 /* TRANSIT STRIP (between cities, lifted out of last day) */
@@ -660,18 +655,13 @@ body{
 
 /* TODAY HIGHLIGHT (auto during trip dates) */
 .day.today{box-shadow:0 0 0 2px var(--accent),0 12px 36px -16px rgba(250,84,28,.3)}
-.day.today .day-top::before{
-  content:'الآن';position:absolute;top:-9px;inset-inline-start:24px;
-  background:var(--accent);color:#fff;
-  font-size:10px;font-weight:700;padding:3px 10px;
-  border-radius:10px;letter-spacing:.1em;z-index:1;
-}
+/* "الآن" badge is now an inline element inside .day-top (.day-now-badge) — pseudo-element was clipped by .day{overflow:hidden} */
 
 /* SCROLL REVEAL (subtle fade-up for cards/banners) */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){
-  .reveal,.scroll-down::after,.day .opt[data-pane].active,.day.expanded .day-body-wrap{
+  .reveal,.scroll-down::after,.day.collapsible .opt[data-pane].active,.day.expanded .day-body-wrap{
     animation:none !important;transition:none !important;opacity:1 !important;transform:none !important;
   }
 }
@@ -689,6 +679,45 @@ body{
   .day-tab{padding:11px 8px;font-size:12.5px}
   .day-chevron{width:24px;height:24px;font-size:11px}
 }
+
+/* ====== FIXES from UX review ====== */
+
+/* Hide stray border-bottom on collapsed day-top */
+.day.collapsible:not(.expanded) .day-top{border-bottom-color:transparent}
+
+/* Inline "الآن" pill (replaces clipped pseudo-element) */
+.day-now-badge{
+  display:inline-flex;align-items:center;
+  padding:4px 10px;background:var(--accent);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:.12em;
+  border-radius:8px;flex-shrink:0;line-height:1.2;
+}
+
+/* Subtle ring around today's day card (works inside overflow:hidden) */
+.day.today{border-color:var(--accent);box-shadow:0 8px 28px -16px rgba(250,84,28,.4)}
+
+/* Touch-device hover fix — only apply hover on real pointers */
+@media (hover: none){
+  .day.collapsible .day-top:hover{background:var(--cream-deep)}
+  .day-tab:hover{color:var(--muted);background:transparent}
+  .cc-day-chip:hover{background:var(--cream-deep);border-color:transparent;color:var(--ink);transform:none}
+  .cc-highlight:hover{background:var(--cream-deep);color:var(--ink)}
+  .nav-links a:hover{background:transparent;color:var(--ink-soft)}
+}
+
+/* Keyboard focus rings (only on keyboard, not mouse click) */
+.day-top:focus-visible{outline:2px solid var(--accent);outline-offset:-3px;border-radius:14px}
+.day-tab:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.cc-day-chip:focus-visible,.cc-highlight:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.scroll-down:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
+.nav-links a:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+
+/* Day-chip as a real button — match anchor styling */
+button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
+
+/* Countdown can wrap on narrow screens without breaking the pill */
+.countdown{max-width:100%;flex-wrap:wrap;justify-content:center}
+
 </style>
 </head>
 <body>
@@ -1723,18 +1752,17 @@ body{
       var num = numEl.textContent.trim();
       var special = !!$('.day-tag.special', day);
       var short = dayShort[parseInt(num,10)] || '';
-      var chip = document.createElement('a');
+      var chip = document.createElement('button');
+      chip.type = 'button';
       chip.className = 'cc-day-chip' + (special ? ' special' : '');
-      chip.href = '#';
+      chip.setAttribute('aria-label', 'اليوم ' + num + ' — ' + short);
       chip.innerHTML = '<span class="cc-day-chip-num">'+num+'</span> '+short;
-      chip.addEventListener('click', function(e){
-        e.preventDefault();
+      chip.addEventListener('click', function(){
         day.classList.add('expanded');
-        var top = $('.day-top', day);
-        if(top){
-          var y = top.getBoundingClientRect().top + window.scrollY - 72;
-          window.scrollTo({top:y, behavior:'smooth'});
-        }
+        var topEl = $('.day-top', day);
+        if(topEl) topEl.setAttribute('aria-expanded','true');
+        var y2 = day.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({top:y2, behavior:'smooth'});
       });
       daysEl.appendChild(chip);
     });
@@ -1793,8 +1821,18 @@ body{
     }
     day.appendChild(bw);
 
-    // Click on summary toggles
-    top.addEventListener('click', function(){ day.classList.toggle('expanded'); });
+    // A11y: make day-top behave like a button
+    top.setAttribute('role','button');
+    top.setAttribute('tabindex','0');
+    top.setAttribute('aria-expanded', day.classList.contains('expanded') ? 'true' : 'false');
+    function toggleDay(){
+      day.classList.toggle('expanded');
+      top.setAttribute('aria-expanded', day.classList.contains('expanded') ? 'true' : 'false');
+    }
+    top.addEventListener('click', toggleDay);
+    top.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggleDay(); }
+    });
 
     // Tabify A/B
     var optsGrid = $('.options', bw);
@@ -1809,6 +1847,8 @@ body{
 
         var tabs = document.createElement('div');
         tabs.className = 'day-tabs';
+        tabs.setAttribute('role','tablist');
+        tabs.setAttribute('aria-label','الخيارات لهذا اليوم');
 
         optEls.forEach(function(opt, idx){
           var badge = $('.opt-badge', opt);
@@ -1820,16 +1860,20 @@ body{
           btn.type = 'button';
           btn.className = 'day-tab' + (idx === recommendedIdx ? ' active' : '');
           btn.dataset.tab = idx;
+          btn.setAttribute('role','tab');
+          btn.setAttribute('aria-selected', idx === recommendedIdx ? 'true' : 'false');
           btn.innerHTML = label + (isStar ? ' <span class="day-tab-star">⭐</span>' : '');
           btn.addEventListener('click', function(e){
             e.stopPropagation();
-            $$('.day-tab', tabs).forEach(function(t){ t.classList.remove('active'); });
+            $$('.day-tab', tabs).forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
             btn.classList.add('active');
+            btn.setAttribute('aria-selected','true');
             optEls.forEach(function(o, j){ o.classList.toggle('active', j === idx); });
           });
           tabs.appendChild(btn);
 
           opt.dataset.pane = idx;
+          opt.setAttribute('role','tabpanel');
           opt.classList.toggle('active', idx === recommendedIdx);
         });
 
@@ -1837,11 +1881,16 @@ body{
       }
     }
 
-    // Mark "today" during trip
+    // Mark "today" during trip — inline badge (not clipped by overflow:hidden)
     var tripDay = new Date(TRIP_START);
     tripDay.setDate(tripDay.getDate() + globalIdx);
     if(today.getTime() === tripDay.getTime()){
       day.classList.add('today','expanded');
+      var nowBadge = document.createElement('span');
+      nowBadge.className = 'day-now-badge';
+      nowBadge.textContent = 'الآن';
+      var chevEl = $('.day-chevron', top);
+      if(chevEl) top.insertBefore(nowBadge, chevEl); else top.appendChild(nowBadge);
     }
   });
 
@@ -1892,6 +1941,17 @@ body{
   } else {
     // No IO support — reveal everything immediately
     $$('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // ===== HASH SCROLL FIX — re-scroll after JS rearranges layout =====
+  if(window.location.hash){
+    setTimeout(function(){
+      var el = document.querySelector(window.location.hash);
+      if(el){
+        var y = el.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({top:y, behavior:'instant' in window ? 'instant' : 'auto'});
+      }
+    }, 50);
   }
 })();
 </script>
