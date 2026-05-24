@@ -175,11 +175,12 @@ body{
 .section-title em{color:var(--gold);font-weight:400}
 
 /* ============ CITY SECTION ============ */
-.city{margin:80px 0;scroll-margin-top:90px}
+.city{margin:64px 0;scroll-margin-top:80px}
 .city-hero{
-  position:relative;height:380px;border-radius:24px;overflow:hidden;
+  position:relative;height:320px;border-radius:18px 18px 0 0;overflow:hidden;
   margin-bottom:0;display:flex;align-items:flex-end;
   background:linear-gradient(135deg,var(--cream-deep),var(--cream));
+  border:1px solid var(--line);border-bottom:none;
 }
 .city-hero-img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
@@ -211,13 +212,12 @@ body{
   backdrop-filter:blur(10px);
 }
 
-.city-body{padding:36px 0 0}
+.city-body{padding:0}
 
 /* ============ HOTEL CARD ============ */
 .hotel{
-  background:#fff;border:1px solid var(--line);border-radius:20px;
+  background:var(--paper);border:1px solid var(--line);border-radius:18px;
   overflow:hidden;margin-bottom:36px;
-  box-shadow:0 8px 30px -12px rgba(0,0,0,.08);
 }
 .hotel-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0}
 .hotel-img-wrap{
@@ -248,32 +248,37 @@ body{
 .hotel-price-detail{font-size:12px;color:var(--ink-soft)}
 .hotel-desc{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:14px}
 .hotel-highlight{
-  font-size:13px;background:var(--accent-soft);border-right:3px solid var(--accent);
-  color:var(--accent-deep);padding:12px 14px;border-radius:8px;line-height:1.7;
+  font-size:13.5px;background:transparent;border:none;
+  border-top:1px solid var(--line-soft);
+  color:var(--ink-soft);padding:14px 0 0;margin-top:14px;
+  line-height:1.75;font-style:italic;
 }
+.hotel-highlight::before{content:"— ";color:var(--accent);font-weight:600;font-style:normal}
 
 /* ============ DAY CARD ============ */
 .days-header{
-  display:flex;align-items:center;gap:14px;
-  margin:0 0 20px;padding:0 4px;
+  display:flex;align-items:center;gap:10px;
+  margin:32px 4px 14px;padding:0;
 }
 .days-header-icon{
-  width:36px;height:36px;border-radius:50%;
-  background:var(--cream-deep);display:flex;align-items:center;justify-content:center;
-  font-size:16px;
+  width:auto;height:auto;border-radius:0;
+  background:transparent;display:inline;font-size:13px;line-height:1;
 }
-.days-header-text{font-size:14px;font-weight:600;color:var(--ink);letter-spacing:.05em}
+.days-header-text{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.22em;text-transform:uppercase}
 
 .day{
-  background:#fff;border:1px solid var(--line);border-radius:18px;
-  margin-bottom:18px;overflow:hidden;
-  transition:box-shadow .25s;
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  margin-bottom:14px;overflow:hidden;
+  transition:border-color .2s;
 }
-.day:hover{box-shadow:0 12px 36px -16px rgba(0,0,0,.12)}
+.day:hover{border-color:var(--ink-soft)}
+.day.expanded{border-color:var(--ink-soft)}
 .day-top{
-  padding:18px 24px;display:flex;align-items:center;gap:18px;
+  padding:18px 24px;display:flex;align-items:center;gap:16px;
   background:var(--cream-deep);border-bottom:1px solid var(--line);
+  transition:background .2s;
 }
+.day.expanded .day-top{background:var(--paper)}
 .day-numeral{
   font-family:'IBM Plex Serif',Georgia,serif;
   font-size:36px;font-weight:500;line-height:1;color:var(--gold);
@@ -311,11 +316,12 @@ body{
 .opt-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.75;margin-bottom:12px}
 
 .schedule{
-  font-size:11.5px;color:var(--ink-soft);line-height:1.85;margin-bottom:12px;
-  direction:ltr;text-align:left;padding:10px 12px;background:var(--paper);border-radius:8px;
-  border-inline-start:2px solid var(--line);
+  font-size:12px;color:var(--ink-soft);line-height:1.95;margin-bottom:14px;
+  direction:ltr;text-align:left;background:transparent;border:none;
+  padding:6px 0 14px;border-bottom:1px solid var(--line-soft);
+  font-feature-settings:"tnum" 1;
 }
-.schedule b{color:var(--ink);font-weight:600}
+.schedule b{color:var(--ink);font-weight:600;margin-inline-end:4px}
 
 .tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
 .tag{
@@ -324,45 +330,44 @@ body{
 }
 .t-book{background:#FEE2E2;color:#991B1B}
 .t-free{background:#DCFCE7;color:#166534}
-.t-cost{background:#F3F4F6;color:#4B5563}
+.t-cost{background:var(--cream-deep);color:var(--ink-soft)}
 .t-tip{background:#EDE9FE;color:#5B21B6}
 
 .match{
-  background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;
-  padding:12px 14px;margin-top:12px;
+  background:transparent;border:none;border-top:1px solid var(--line-soft);
+  padding:16px 0 0;margin-top:16px;
 }
 .match-label{
-  font-size:10px;font-weight:600;letter-spacing:.12em;
-  color:#92400E;margin-bottom:6px;text-transform:uppercase;
+  font-size:10px;font-weight:600;letter-spacing:.18em;
+  color:var(--accent);margin-bottom:6px;text-transform:uppercase;
 }
-.match-name{font-size:14px;font-weight:600;color:#78350F;margin-bottom:3px}
-.match-reason{font-size:12px;color:#A16207;line-height:1.7}
+.match-name{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.match-reason{font-size:12.5px;color:var(--ink-soft);line-height:1.7;font-style:italic}
 
 .fact{
-  background:linear-gradient(135deg,#FEF3C7,#FDF6E0);
-  border-radius:10px;padding:12px 14px;margin-top:12px;
-  font-size:12px;color:#7C5E1A;line-height:1.75;
-  border-right:3px solid var(--gold);
+  background:transparent;border:none;border-top:1px solid var(--line-soft);
+  padding:14px 0 0;margin-top:16px;
+  font-size:13px;color:var(--ink-soft);line-height:1.8;font-style:italic;
 }
-.fact b{color:#5B4516;font-weight:700;font-size:14px;margin-left:4px}
+.fact b{color:var(--ink);font-weight:600;font-style:normal;margin-inline-end:6px}
 
 .evening{
-  padding:14px 24px;background:linear-gradient(135deg,#EEF2FF,#F5F3FF);
-  border-top:1px solid var(--line);font-size:13px;color:#3730A3;
-  display:flex;align-items:center;gap:8px;
+  padding:14px 24px;background:var(--cream-deep);
+  border-top:1px solid var(--line);font-size:13px;color:var(--ink-soft);
+  display:flex;align-items:center;gap:10px;
 }
-.evening b{color:#1E1B4B}
+.evening b{color:var(--ink);font-weight:600}
 
 .match-full{
-  margin:0;border-radius:0;border-top:1px solid #FDE68A;border-left:none;border-right:none;border-bottom:none;
-  padding:14px 24px;
+  margin:0;border-radius:0;border-top:1px solid var(--line);border-left:none;border-right:none;border-bottom:none;
+  padding:16px 24px;
 }
 
 .transit{
   padding:14px 24px;background:var(--cream-deep);border-top:1px solid var(--line);
-  font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:8px;
+  font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:10px;
 }
-.transit b{color:var(--ink)}
+.transit b{color:var(--ink);font-weight:600}
 
 /* ============ BUDGET ============ */
 .budget{
@@ -411,9 +416,8 @@ body{
 
 /* ============ BOOKING TIMELINE ============ */
 .booking{
-  background:#fff;border:1px solid var(--line);border-radius:20px;
-  padding:36px;margin:0 0 80px;
-  box-shadow:0 8px 30px -12px rgba(0,0,0,.08);
+  background:var(--paper);border:1px solid var(--line);border-radius:18px;
+  padding:36px;margin:0 0 60px;
 }
 .booking-head{text-align:center;margin-bottom:28px}
 .booking-title{font-family:'IBM Plex Serif',Georgia,serif;font-size:32px;font-weight:500;margin-bottom:8px}
@@ -534,11 +538,11 @@ body{
 /* CITY OVERVIEW CARD (injected via JS) */
 .city-card{
   background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:18px;
+  border:1px solid var(--line);border-top:none;
+  border-radius:0 0 18px 18px;
   padding:24px 28px;
-  margin:20px 0 32px;
-  box-shadow:0 6px 24px -18px rgba(23,22,20,.18);
+  margin:0 0 40px;
+  box-shadow:none;
 }
 .cc-section{margin-bottom:18px}
 .cc-section:last-child{margin-bottom:0}
@@ -602,25 +606,23 @@ body{
 
 /* DAY: TABS (A | B) */
 .day-tabs{
-  display:flex;gap:0;padding:0;
+  display:flex;gap:24px;padding:0 24px;
   border-bottom:1px solid var(--line);
-  background:var(--cream-deep);
+  background:transparent;
 }
 .day-tab{
-  flex:1;padding:14px 16px;background:transparent;
+  flex:0 0 auto;padding:14px 0;background:transparent;
   border:none;border-bottom:2px solid transparent;
-  font-family:inherit;font-size:13.5px;font-weight:600;
+  font-family:inherit;font-size:13px;font-weight:600;
   color:var(--muted);cursor:pointer;
-  transition:color .2s,background .2s,border-color .2s;
-  text-align:center;
-  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:color .2s,border-color .2s;
+  display:inline-flex;align-items:center;gap:6px;
   margin-bottom:-1px;
 }
 .day-tab:hover{color:var(--ink)}
 .day-tab.active{
   color:var(--accent-deep);
   border-bottom-color:var(--accent);
-  background:var(--paper);
 }
 .day-tab-star{font-size:11px;color:var(--accent)}
 .day.collapsible .options{display:block;grid-template-columns:none}
@@ -630,19 +632,18 @@ body{
 
 /* TRANSIT STRIP (between cities, lifted out of last day) */
 .transit-strip{
-  display:flex;align-items:center;gap:14px;
-  margin:48px 0;padding:16px 22px;
-  background:var(--paper);
-  border:1px dashed var(--line);
-  border-radius:14px;
-  font-size:13.5px;color:var(--ink-soft);line-height:1.6;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:32px 0;padding:18px 22px;
+  background:transparent;border:none;
+  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
+  border-radius:0;
+  font-size:13.5px;color:var(--ink-soft);line-height:1.6;text-align:center;
 }
 .transit-strip-icon{
-  font-size:22px;width:46px;height:46px;display:flex;
-  align-items:center;justify-content:center;
-  background:var(--cream-deep);border-radius:50%;flex-shrink:0;
+  font-size:18px;width:auto;height:auto;
+  background:transparent;border-radius:0;flex-shrink:0;line-height:1;
 }
-.transit-strip-text{flex:1}
+.transit-strip-text{flex:0 1 auto}
 .transit-strip-text b{color:var(--ink);font-weight:600}
 
 /* ACTIVE NAV LINK */
@@ -717,6 +718,42 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
 
 /* Countdown can wrap on narrow screens without breaking the pill */
 .countdown{max-width:100%;flex-wrap:wrap;justify-content:center}
+
+
+/* ====== POST-AUDIT v2: connect city-hero ↔ city-card, hide redundant meta, refine details ====== */
+
+/* Hero meta in image hidden — JS reads textContent then we render in city-card */
+.city-hero .city-meta{display:none}
+
+/* Strengthen the unified header silhouette */
+.city-hero,.city-card{border-color:var(--line)}
+
+/* City-card meta row — cleaner divider */
+.cc-meta{
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line-soft);
+}
+
+/* Hotel info — slight padding & rhythm tweak */
+.hotel-info{padding:28px 32px}
+.hotel-info .hotel-eyebrow{margin-bottom:8px}
+
+/* Booking: cleaner item background */
+.bk-item{background:transparent;border:1px solid var(--line-soft)}
+
+/* Quiet existing budget card style (now unused but harmless) */
+.budget{box-shadow:none;border-radius:18px;background:var(--paper)}
+
+/* Mobile alignment refinements */
+@media(max-width:760px){
+  .city-hero{height:260px}
+  .city-card{padding:18px 18px;margin-bottom:28px}
+  .hotel-info{padding:22px 20px}
+  .day-tabs{padding:0 18px;gap:18px}
+  .day-tab{font-size:12.5px}
+  .transit-strip{margin:24px 0;padding:14px 18px}
+  .days-header{margin:24px 4px 12px}
+}
 
 </style>
 </head>
