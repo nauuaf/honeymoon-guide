@@ -429,36 +429,73 @@ body{
   background:var(--paper);border:1px solid var(--line);border-radius:18px;
   padding:28px 32px;margin:0 0 48px;
 }
-.booking-head{text-align:right;margin-bottom:22px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.booking-title{font-family:'IBM Plex Serif',Georgia,serif;font-size:22px;font-weight:500;margin-bottom:0}
-.booking-sub{font-size:12px;color:var(--muted);margin:0}
-
-.bk-section{margin-bottom:18px}
-.bk-section:last-child{margin-bottom:0}
-.bk-section-title{
-  display:flex;align-items:center;gap:10px;margin-bottom:8px;
-  font-size:12px;font-weight:600;color:var(--ink-soft);
-  padding-bottom:8px;border-bottom:1px solid var(--line-soft);
+.booking-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:24px;margin-bottom:26px;flex-wrap:wrap;
 }
-.bk-section-title .pill{
-  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
-  padding:3px 9px;border-radius:20px;font-weight:700;
+.booking-head-text{flex:1;min-width:200px}
+.booking-title{
+  font-family:'IBM Plex Serif',Georgia,serif;
+  font-size:24px;font-weight:500;margin-bottom:4px;line-height:1.2;
+}
+.booking-sub{font-size:12.5px;color:var(--muted);margin:0;line-height:1.6}
+
+/* Tiny phase indicator at top-right */
+.booking-progress{
+  display:flex;align-items:center;gap:6px;flex-shrink:0;
+  padding-top:8px;
+}
+.bp-dot{width:10px;height:10px;border-radius:50%}
+.bp-line{width:24px;height:2px;background:var(--line)}
+.bp-dot-now{background:#EF4444}
+.bp-dot-month{background:#F59E0B}
+.bp-dot-week{background:#3B82F6}
+
+/* Three-column kanban */
+.bk-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:32px;
+}
+
+.bk-col{display:flex;flex-direction:column;min-width:0}
+.bk-col-head{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:14px;padding-bottom:10px;
+  border-bottom:1px solid var(--line-soft);
+}
+.bk-pill{
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  padding:4px 10px;border-radius:6px;font-weight:700;line-height:1;
 }
 .bk-pill-now{background:#FEE2E2;color:#991B1B}
 .bk-pill-month{background:#FEF3C7;color:#92400E}
 .bk-pill-week{background:#DBEAFE;color:#1E40AF}
-.bk-list{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2px 28px;
-  margin:0;padding:0;list-style:none;
+.bk-count{
+  font-size:11px;color:var(--muted);font-weight:500;
+  margin-inline-start:auto;
 }
-.bk-item{
+
+.bk-list{list-style:none;padding:0;margin:0}
+.bk-list li{
   display:flex;align-items:flex-start;gap:10px;
-  padding:6px 0;background:transparent;border:none;border-radius:0;
-  font-size:13px;color:var(--ink);line-height:1.55;
+  padding:7px 0;font-size:13px;color:var(--ink);
+  line-height:1.5;
+  border-bottom:1px solid var(--line-soft);
 }
-.bk-item .check{
-  width:14px;height:14px;border:1.5px solid var(--line);border-radius:4px;
-  flex-shrink:0;background:var(--paper);margin-top:4px;
+.bk-list li:last-child{border-bottom:none}
+.bk-list li::before{
+  content:'';width:14px;height:14px;
+  border:1.5px solid var(--line);border-radius:4px;
+  background:var(--paper);flex-shrink:0;margin-top:3px;
+  transition:background .15s, border-color .15s;
+}
+.bk-list li:hover::before{border-color:var(--ink-soft)}
+
+.bk-note{
+  font-size:11px;color:var(--muted);font-weight:500;
+  margin-inline-start:auto;flex-shrink:0;
+  padding:0 0 0 8px;direction:ltr;
 }
 
 /* ============ FOOTER ============ */
@@ -487,7 +524,7 @@ body{
   .route-strip{padding:20px 16px;margin:-40px 16px 60px}
   .route-arrow{display:none}
   .route-stop{min-width:45%;flex:0 0 45%}
-  .city-hero{height:280px;border-radius:16px}
+  .city-hero{height:280px}
   .city-hero-content{padding:24px 20px}
   .hotel-grid{grid-template-columns:1fr}
   .hotel-img-wrap{min-height:220px}
@@ -804,6 +841,20 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
   .booking{padding:22px 18px}
   .booking-title{font-size:18px}
   .booking-head{margin-bottom:18px}
+}
+
+
+/* ====== POST-AUDIT v4: booking redesign mobile + city-hero corner reset ====== */
+.city-hero{border-radius:0 !important}  /* defensive: hero is always flush inside container */
+
+@media(max-width:760px){
+  .bk-grid{grid-template-columns:1fr;gap:18px}
+  .bk-col-head{margin-bottom:8px;padding-bottom:8px}
+  .booking{padding:22px 18px}
+  .booking-head{margin-bottom:18px;gap:14px}
+  .booking-title{font-size:20px}
+  .booking-progress{padding-top:4px}
+  .bp-line{width:18px}
 }
 
 </style>
@@ -1692,52 +1743,62 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
 <!-- ==================== BOOKING ==================== -->
 <section id="booking" class="booking">
   <div class="booking-head">
-    <div class="section-eyebrow">— خريطة الطريق —</div>
-    <h2 class="booking-title">جدول <em>الحجوزات</em></h2>
-    <p class="booking-sub">وش تحجزون · ومتى</p>
-  </div>
-
-  <div class="bk-section">
-    <div class="bk-section-title">
-      <span class="pill bk-pill-now">الحين</span>
-      <span>عاجل — كل شي يخلص بسرعة بأغسطس</span>
+    <div class="booking-head-text">
+      <h2 class="booking-title">جدول الحجوزات</h2>
+      <p class="booking-sub">17 مهمة على 3 مراحل — رتّبوا حسب الأولوية</p>
     </div>
-    <div class="bk-list">
-      <div class="bk-item"><span class="check"></span>تذاكر طيران (الرياض ↔ إيطاليا)</div>
-      <div class="bk-item"><span class="check"></span>الفنادق لكل المحطات</div>
-      <div class="bk-item"><span class="check"></span>تأشيرة شنغن (تاخذ 15–45 يوم)</div>
-      <div class="bk-item"><span class="check"></span>تأمين سفر شنغن (≥ 30,000 يورو)</div>
-      <div class="bk-item"><span class="check"></span>تذاكر Uffizi Gallery</div>
+    <div class="booking-progress" aria-hidden="true">
+      <span class="bp-dot bp-dot-now"></span>
+      <span class="bp-line"></span>
+      <span class="bp-dot bp-dot-month"></span>
+      <span class="bp-line"></span>
+      <span class="bp-dot bp-dot-week"></span>
     </div>
   </div>
 
-  <div class="bk-section">
-    <div class="bk-section-title">
-      <span class="pill bk-pill-month">قبل شهرين</span>
-      <span>تجارب وأنشطة رئيسية</span>
+  <div class="bk-grid">
+    <div class="bk-col">
+      <div class="bk-col-head">
+        <span class="bk-pill bk-pill-now">الحين</span>
+        <span class="bk-count">5 مهام</span>
+      </div>
+      <ul class="bk-list" data-phase="الحين">
+        <li>تذاكر طيران (الرياض ↔ إيطاليا)</li>
+        <li>الفنادق لكل المحطات</li>
+        <li>تأشيرة شنغن <span class="bk-note">15–45 يوم</span></li>
+        <li>تأمين سفر شنغن <span class="bk-note">≥ €30,000</span></li>
+        <li>تذاكر Uffizi Gallery</li>
+      </ul>
     </div>
-    <div class="bk-list">
-      <div class="bk-item"><span class="check"></span>جولة Villa Balbianello البحرية</div>
-      <div class="bk-item"><span class="check"></span>قارب كابري الخاص</div>
-      <div class="bk-item"><span class="check"></span>درس الطبخ بفلورنسا</div>
-      <div class="bk-item"><span class="check"></span>تذاكر قبة الدومو</div>
-      <div class="bk-item"><span class="check"></span>مطعم Da Paolino بكابري</div>
-      <div class="bk-item"><span class="check"></span>مطعم La Leggenda dei Frati</div>
-    </div>
-  </div>
 
-  <div class="bk-section">
-    <div class="bk-section-title">
-      <span class="pill bk-pill-week">2–4 أسابيع</span>
-      <span>التفاصيل النهائية</span>
+    <div class="bk-col">
+      <div class="bk-col-head">
+        <span class="bk-pill bk-pill-month">قبل شهرين</span>
+        <span class="bk-count">6 مهام</span>
+      </div>
+      <ul class="bk-list" data-phase="قبل شهرين">
+        <li>جولة Villa Balbianello البحرية</li>
+        <li>قارب كابري الخاص</li>
+        <li>درس الطبخ بفلورنسا</li>
+        <li>تذاكر قبة الدومو</li>
+        <li>مطعم Da Paolino <span class="bk-note">كابري</span></li>
+        <li>مطعم La Leggenda dei Frati <span class="bk-note">فلورنسا</span></li>
+      </ul>
     </div>
-    <div class="bk-list">
-      <div class="bk-item"><span class="check"></span>جولة مزرعة الليمون</div>
-      <div class="bk-item"><span class="check"></span>ورشة السيراميك</div>
-      <div class="bk-item"><span class="check"></span>جولة الغروب البحرية</div>
-      <div class="bk-item"><span class="check"></span>تذاكر Ravello Festival</div>
-      <div class="bk-item"><span class="check"></span>مطعم Da Enzo al 29 بروما</div>
-      <div class="bk-item"><span class="check"></span>Terrazza del Confalone</div>
+
+    <div class="bk-col">
+      <div class="bk-col-head">
+        <span class="bk-pill bk-pill-week">2–4 أسابيع</span>
+        <span class="bk-count">6 مهام</span>
+      </div>
+      <ul class="bk-list" data-phase="قبل 2–4 أسابيع">
+        <li>جولة مزرعة الليمون</li>
+        <li>ورشة السيراميك</li>
+        <li>جولة الغروب البحرية</li>
+        <li>تذاكر Ravello Festival</li>
+        <li>مطعم Da Enzo al 29 <span class="bk-note">روما</span></li>
+        <li>Terrazza del Confalone <span class="bk-note">رافيلو</span></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1990,7 +2051,7 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
 
     var strip = document.createElement('div');
     strip.className = 'transit-strip reveal';
-    var icon = (t.textContent.match(/[🚂⛴✈🚗]/)||['→'])[0];
+    var icon = (t.textContent.match(/[🚂⛴✈🚗]/u)||['→'])[0];
     var inner = t.innerHTML.replace(/^\s*[🚂⛴✈🚗]\s*/u,'');
     strip.innerHTML = '<div class="transit-strip-icon">'+icon+'</div><div class="transit-strip-text">'+inner+'</div>';
     city.parentNode.insertBefore(strip, city.nextSibling);
