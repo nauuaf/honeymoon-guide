@@ -79,7 +79,7 @@ body{
 
 /* ============ HERO ============ */
 .hero{
-  position:relative;height:88vh;min-height:560px;max-height:780px;
+  position:relative;height:75vh;min-height:520px;max-height:720px;
   overflow:hidden;display:flex;align-items:flex-end;
   background:linear-gradient(135deg,#0F4C5C 0%,#5F0F40 50%,#9A031E 100%);
 }
@@ -494,9 +494,205 @@ body{
   .city,.budget,.booking{break-inside:avoid;page-break-inside:avoid}
   .day{break-inside:avoid;page-break-inside:avoid}
 }
+
+/* ============================================================
+   NEW: UX OVERHAUL — progress, countdown, city cards,
+   collapsible days, tabs, transit strips, scroll reveal
+   ============================================================ */
+
+/* PROGRESS BAR */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:200;background:transparent;pointer-events:none}
+.progress-bar{height:100%;width:0%;background:var(--accent);transition:width .1s linear}
+
+/* HERO: COUNTDOWN PILL + SCROLL DOWN */
+.countdown{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 18px;background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.22);border-radius:30px;
+  font-size:13px;font-weight:500;color:#fff;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  margin:0 0 22px;min-height:36px;
+}
+.countdown:empty{display:none}
+.countdown-num{
+  font-family:'IBM Plex Serif',Georgia,serif;font-style:italic;
+  font-size:20px;font-weight:600;color:var(--accent-soft);line-height:1;
+}
+.scroll-down{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+  z-index:3;color:#fff;font-size:10px;letter-spacing:.32em;
+  text-transform:uppercase;opacity:.7;text-align:center;
+  cursor:pointer;font-weight:600;text-decoration:none;
+}
+.scroll-down::after{
+  content:'';display:block;width:1px;height:22px;
+  background:#fff;margin:10px auto 0;
+  animation:scrollIndicator 2s ease-in-out infinite;
+}
+@keyframes scrollIndicator{0%,100%{opacity:0;transform:translateY(-12px)}50%{opacity:1;transform:translateY(0)}}
+
+/* CITY OVERVIEW CARD (injected via JS) */
+.city-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:24px 28px;
+  margin:20px 0 32px;
+  box-shadow:0 6px 24px -18px rgba(23,22,20,.18);
+}
+.cc-section{margin-bottom:18px}
+.cc-section:last-child{margin-bottom:0}
+.cc-meta{
+  display:flex;gap:18px;flex-wrap:wrap;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line-soft);
+  font-size:13px;color:var(--ink-soft);
+}
+.cc-meta-item{display:inline-flex;align-items:center;gap:6px;font-weight:500}
+.cc-label{
+  font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:10px;
+}
+.cc-highlights{display:flex;gap:8px;flex-wrap:wrap}
+.cc-highlight{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 13px;background:var(--cream-deep);
+  border-radius:24px;font-size:13px;font-weight:500;
+  color:var(--ink);transition:all .2s;
+}
+.cc-highlight:hover{background:var(--accent-soft);color:var(--accent-deep)}
+.cc-days{display:flex;gap:8px;flex-wrap:wrap}
+.cc-day-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px 8px 8px;background:var(--cream-deep);
+  border-radius:10px;font-size:13px;font-weight:500;
+  color:var(--ink);text-decoration:none;
+  border:1px solid transparent;transition:all .15s;cursor:pointer;
+}
+.cc-day-chip:hover{
+  background:var(--paper);border-color:var(--accent);
+  color:var(--accent-deep);transform:translateY(-1px);
+}
+.cc-day-chip-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:22px;height:22px;border-radius:50%;
+  background:var(--ink);color:#fff;
+  font-size:11px;font-weight:600;padding:0 6px;
+}
+.cc-day-chip.special .cc-day-chip-num{background:var(--accent)}
+
+/* DAY: COLLAPSIBLE */
+.day.collapsible .day-top{cursor:pointer;user-select:none;position:relative}
+.day.collapsible .day-top:hover{background:var(--paper)}
+.day-summary-extra{
+  display:none;font-size:13px;color:var(--ink-soft);
+  margin-top:4px;font-weight:400;line-height:1.55;
+}
+.day.collapsible:not(.expanded) .day-summary-extra{display:block}
+.day-chevron{
+  margin-inline-start:auto;font-size:12px;color:var(--muted);
+  transition:transform .25s;flex-shrink:0;line-height:1;
+  width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:50%;background:var(--cream-deep);
+}
+.day.expanded .day-chevron{transform:rotate(180deg)}
+.day-body-wrap{display:none}
+.day.expanded .day-body-wrap{display:block;animation:dayReveal .35s ease-out}
+@keyframes dayReveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* DAY: TABS (A | B) */
+.day-tabs{
+  display:flex;gap:0;padding:0;
+  border-bottom:1px solid var(--line);
+  background:var(--cream-deep);
+}
+.day-tab{
+  flex:1;padding:14px 16px;background:transparent;
+  border:none;border-bottom:2px solid transparent;
+  font-family:inherit;font-size:13.5px;font-weight:600;
+  color:var(--muted);cursor:pointer;
+  transition:color .2s,background .2s,border-color .2s;
+  text-align:center;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  margin-bottom:-1px;
+}
+.day-tab:hover{color:var(--ink)}
+.day-tab.active{
+  color:var(--accent-deep);
+  border-bottom-color:var(--accent);
+  background:var(--paper);
+}
+.day-tab-star{font-size:11px;color:var(--accent)}
+.day .options{display:block !important;grid-template-columns:none !important}
+.day .opt[data-pane]{
+  display:none;
+  border-inline-start:none !important;
+  border-left:none !important;
+  border-top:none !important;
+}
+.day .opt[data-pane].active{display:block;animation:tabReveal .25s ease-out}
+@keyframes tabReveal{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* TRANSIT STRIP (between cities, lifted out of last day) */
+.transit-strip{
+  display:flex;align-items:center;gap:14px;
+  margin:48px 0;padding:16px 22px;
+  background:var(--paper);
+  border:1px dashed var(--line);
+  border-radius:14px;
+  font-size:13.5px;color:var(--ink-soft);line-height:1.6;
+}
+.transit-strip-icon{
+  font-size:22px;width:46px;height:46px;display:flex;
+  align-items:center;justify-content:center;
+  background:var(--cream-deep);border-radius:50%;flex-shrink:0;
+}
+.transit-strip-text{flex:1}
+.transit-strip-text b{color:var(--ink);font-weight:600}
+
+/* ACTIVE NAV LINK */
+.nav-links a.active{background:var(--accent-soft);color:var(--accent-deep);font-weight:600}
+.nav-links a.como.active{background:var(--como-bg);color:var(--como)}
+.nav-links a.flor.active{background:var(--flor-bg);color:var(--flor)}
+.nav-links a.rav.active{background:var(--rav-bg);color:var(--rav)}
+.nav-links a.capri.active{background:var(--capri-bg);color:var(--capri)}
+.nav-links a.rome.active{background:var(--rome-bg);color:var(--rome)}
+
+/* TODAY HIGHLIGHT (auto during trip dates) */
+.day.today{box-shadow:0 0 0 2px var(--accent),0 12px 36px -16px rgba(250,84,28,.3)}
+.day.today .day-top::before{
+  content:'الآن';position:absolute;top:-9px;inset-inline-start:24px;
+  background:var(--accent);color:#fff;
+  font-size:10px;font-weight:700;padding:3px 10px;
+  border-radius:10px;letter-spacing:.1em;z-index:1;
+}
+
+/* SCROLL REVEAL (subtle fade-up for cards/banners) */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .reveal,.scroll-down::after,.day .opt[data-pane].active,.day.expanded .day-body-wrap{
+    animation:none !important;transition:none !important;opacity:1 !important;transform:none !important;
+  }
+}
+
+/* MOBILE TUNING for new components */
+@media(max-width:760px){
+  .countdown{font-size:12px;padding:7px 14px;margin-bottom:18px}
+  .countdown-num{font-size:16px}
+  .scroll-down{display:none}
+  .city-card{padding:18px 16px;margin:14px 0 22px}
+  .cc-meta{gap:12px;font-size:12px;padding-bottom:14px}
+  .cc-highlight,.cc-day-chip{font-size:12px;padding:6px 11px}
+  .transit-strip{padding:14px 16px;font-size:12.5px;margin:32px 0;gap:12px}
+  .transit-strip-icon{width:38px;height:38px;font-size:18px}
+  .day-tab{padding:11px 8px;font-size:12.5px}
+  .day-chevron{width:24px;height:24px;font-size:11px}
+}
 </style>
 </head>
 <body>
+<div class="progress" aria-hidden="true"><div class="progress-bar"></div></div>
 
 <!-- ==================== STICKY NAV ==================== -->
 <nav class="nav">
@@ -526,6 +722,7 @@ body{
     <p class="hero-sub">
       من بحيرات الألب الزرقاء، عبر تلال توسكانا، إلى صخور كابري والساحل الأمالفي — رحلة مصمّمة بعناية لكل لحظة.
     </p>
+    <div id="countdown" class="countdown" aria-live="polite"></div>
     <div class="hero-meta">
       <div class="hero-stat">
         <span class="hero-stat-label">التاريخ</span>
@@ -539,12 +736,9 @@ body{
         <span class="hero-stat-label">المسار</span>
         <span class="hero-stat-value"><span class="en">RUH → MXP · FCO → RUH</span></span>
       </div>
-      <div class="hero-stat">
-        <span class="hero-stat-label">الأسلوب</span>
-        <span class="hero-stat-value">إقامات فاخرة · إيقاع هادي</span>
-      </div>
     </div>
   </div>
+  <a href="#overview" class="scroll-down" aria-label="انزل للأسفل">ابدأ</a>
 </header>
 
 <!-- ==================== ROUTE STRIP ==================== -->
@@ -1440,5 +1634,266 @@ body{
   <p>دليل شهر العسل — إيطاليا أغسطس 2026</p>
 </footer>
 
+
+<script>
+(function(){
+  'use strict';
+
+  // ===== CONFIG =====
+  var TRIP_START = new Date('2026-08-11T00:00:00');
+  var TRIP_END   = new Date('2026-08-25T00:00:00');
+
+  var cityHighlights = {
+    como:     ['🛥 جولة قارب فاخرة','🏰 فيلا بالبيانيلو','🌅 غروب من Brunate','🍝 سمك البحيرة'],
+    florence: ['🎨 Uffizi Gallery','🏛 قبة الدومو','🍝 درس طبخ + Bistecca','📸 Piazzale Michelangelo'],
+    ravello:  ['🌊 شرفة اللانهاية','⛵ قارب الساحل','🍋 مزرعة ليمون','🎨 ورشة سيراميك'],
+    capri:    ['🔵 المغارة الزرقاء','⛵ قارب Faraglioni','🏔 قمة Monte Solaro','🍋 عشاء Da Paolino'],
+    rome:     ['💧 نافورة تريفي','🏛 البانثيون','🍝 عشاء Trastevere','✈ صباح المغادرة']
+  };
+
+  var dayShort = {
+    1:'وصول', 2:'البحيرة', 3:'هادي',
+    4:'وصول', 5:'ثقافة', 6:'وداع',
+    7:'وصول', 8:'الساحل', 9:'هادي', 10:'وداع',
+    11:'وصول', 12:'اليوم الكبير', 13:'يوم حر',
+    14:'الأخيرة'
+  };
+
+  var today = new Date(); today.setHours(0,0,0,0);
+  var msDay = 86400000;
+  var daysUntil = Math.round((TRIP_START - today)/msDay);
+
+  // ===== COUNTDOWN (generative — recalculates daily) =====
+  var cd = document.getElementById('countdown');
+  if(cd){
+    if(daysUntil > 1)       cd.innerHTML = '<span class="countdown-num">'+daysUntil+'</span> يوم حتى الرحلة';
+    else if(daysUntil === 1) cd.innerHTML = '<span class="countdown-num">غدًا</span> تبدأ الرحلة 🎉';
+    else if(daysUntil === 0) cd.innerHTML = '<span class="countdown-num">اليوم!</span> بدأت الرحلة 🎉';
+    else if(daysUntil >= -14){
+      var dayN = -daysUntil + 1;
+      cd.innerHTML = '<span class="countdown-num">اليوم '+dayN+'</span> من الرحلة';
+    } else {
+      cd.innerHTML = '<span class="countdown-num">✓</span> الحمد لله على السلامة';
+    }
+  }
+
+  // ===== PROGRESS BAR =====
+  var bar = document.querySelector('.progress-bar');
+  if(bar){
+    var ticking = false;
+    function update(){
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h>0 ? Math.min(100, (window.scrollY/h)*100) : 0) + '%';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ requestAnimationFrame(update); ticking=true; }
+    }, {passive:true});
+    update();
+  }
+
+  // ===== HELPERS =====
+  function $(sel, root){ return (root||document).querySelector(sel); }
+  function $$(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
+
+  // ===== CITY OVERVIEW CARDS =====
+  $$('.city').forEach(function(city){
+    var hl = cityHighlights[city.id];
+    var body = $('.city-body', city);
+    if(!hl || !body) return;
+
+    var metaItems = $$('.city-meta-item', city).map(function(el){ return el.textContent.trim(); });
+    var dayEls = $$('.day', city);
+
+    var card = document.createElement('aside');
+    card.className = 'city-card reveal';
+
+    var metaHTML = metaItems.map(function(m){ return '<span class="cc-meta-item">'+m+'</span>'; }).join('');
+    var hlHTML   = hl.map(function(h){ return '<span class="cc-highlight">'+h+'</span>'; }).join('');
+
+    card.innerHTML =
+      '<div class="cc-section cc-meta">'+metaHTML+'</div>'+
+      '<div class="cc-section"><div class="cc-label">أبرز ما لازم تجربون</div><div class="cc-highlights">'+hlHTML+'</div></div>'+
+      '<div class="cc-section"><div class="cc-label">أيام المحطة — اضغط للقفز</div><div class="cc-days"></div></div>';
+
+    var daysEl = $('.cc-days', card);
+    dayEls.forEach(function(day){
+      var numEl = $('.day-numeral', day);
+      if(!numEl) return;
+      var num = numEl.textContent.trim();
+      var special = !!$('.day-tag.special', day);
+      var short = dayShort[parseInt(num,10)] || '';
+      var chip = document.createElement('a');
+      chip.className = 'cc-day-chip' + (special ? ' special' : '');
+      chip.href = '#';
+      chip.innerHTML = '<span class="cc-day-chip-num">'+num+'</span> '+short;
+      chip.addEventListener('click', function(e){
+        e.preventDefault();
+        day.classList.add('expanded');
+        var top = $('.day-top', day);
+        if(top){
+          var y = top.getBoundingClientRect().top + window.scrollY - 72;
+          window.scrollTo({top:y, behavior:'smooth'});
+        }
+      });
+      daysEl.appendChild(chip);
+    });
+
+    body.insertBefore(card, body.firstChild);
+  });
+
+  // ===== DAY CARDS: COLLAPSIBLE + TABS + TODAY =====
+  var prevCity = null;
+  $$('.day').forEach(function(day, globalIdx){
+    var city = day.closest('.city');
+    var isFirstInCity = (city !== prevCity);
+    prevCity = city;
+
+    day.classList.add('collapsible');
+    if(isFirstInCity) day.classList.add('expanded');
+
+    var top = $('.day-top', day);
+    if(!top) return;
+
+    // Chevron
+    if(!$('.day-chevron', top)){
+      var chev = document.createElement('span');
+      chev.className = 'day-chevron';
+      chev.setAttribute('aria-hidden','true');
+      chev.textContent = '▾';
+      top.appendChild(chev);
+    }
+
+    // One-line summary derived from option titles
+    var opts = $$('.opt', day);
+    var headline = $('.day-headline', top);
+    if(opts.length && headline && !$('.day-summary-extra', headline)){
+      var titles = opts.map(function(o){
+        var t = $('.opt-title', o);
+        return t ? t.textContent.trim() : null;
+      }).filter(Boolean);
+      if(titles.length){
+        var sub = document.createElement('div');
+        sub.className = 'day-summary-extra';
+        sub.textContent = titles.join(' · ');
+        var date = $('.day-date', headline);
+        if(date) headline.insertBefore(sub, date);
+        else headline.appendChild(sub);
+      }
+    }
+
+    // Wrap everything after day-top in body-wrap
+    var bw = document.createElement('div');
+    bw.className = 'day-body-wrap';
+    var n = top.nextElementSibling;
+    while(n){
+      var nxt = n.nextElementSibling;
+      bw.appendChild(n);
+      n = nxt;
+    }
+    day.appendChild(bw);
+
+    // Click on summary toggles
+    top.addEventListener('click', function(){ day.classList.toggle('expanded'); });
+
+    // Tabify A/B
+    var optsGrid = $('.options', bw);
+    if(optsGrid){
+      var optEls = $$('.opt', optsGrid).filter(function(o){ return o.parentNode === optsGrid; });
+      if(optEls.length === 2){
+        var recommendedIdx = 0;
+        optEls.forEach(function(o,i){
+          var b = $('.opt-badge', o);
+          if(b && b.textContent.indexOf('⭐') !== -1) recommendedIdx = i;
+        });
+
+        var tabs = document.createElement('div');
+        tabs.className = 'day-tabs';
+
+        optEls.forEach(function(opt, idx){
+          var badge = $('.opt-badge', opt);
+          var bt = badge ? badge.textContent.trim() : '';
+          var isStar = bt.indexOf('⭐') !== -1;
+          var label = bt.split('·')[0].replace('⭐','').trim() || ('الخيار ' + (idx===0?'أ':'ب'));
+
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'day-tab' + (idx === recommendedIdx ? ' active' : '');
+          btn.dataset.tab = idx;
+          btn.innerHTML = label + (isStar ? ' <span class="day-tab-star">⭐</span>' : '');
+          btn.addEventListener('click', function(e){
+            e.stopPropagation();
+            $$('.day-tab', tabs).forEach(function(t){ t.classList.remove('active'); });
+            btn.classList.add('active');
+            optEls.forEach(function(o, j){ o.classList.toggle('active', j === idx); });
+          });
+          tabs.appendChild(btn);
+
+          opt.dataset.pane = idx;
+          opt.classList.toggle('active', idx === recommendedIdx);
+        });
+
+        optsGrid.parentNode.insertBefore(tabs, optsGrid);
+      }
+    }
+
+    // Mark "today" during trip
+    var tripDay = new Date(TRIP_START);
+    tripDay.setDate(tripDay.getDate() + globalIdx);
+    if(today.getTime() === tripDay.getTime()){
+      day.classList.add('today','expanded');
+    }
+  });
+
+  // ===== TRANSIT STRIPS — lift between-city transits out of last day =====
+  $$('.city').forEach(function(city){
+    if(city.id === 'rome') return; // last city: keep flight-home transit inline
+    var t = $('.transit', city);
+    if(!t) return;
+
+    var strip = document.createElement('div');
+    strip.className = 'transit-strip reveal';
+    var icon = (t.textContent.match(/[🚂⛴✈🚗]/)||['→'])[0];
+    var inner = t.innerHTML.replace(/^\s*[🚂⛴✈🚗]\s*/u,'');
+    strip.innerHTML = '<div class="transit-strip-icon">'+icon+'</div><div class="transit-strip-text">'+inner+'</div>';
+    city.parentNode.insertBefore(strip, city.nextSibling);
+    t.style.display = 'none';
+  });
+
+  // ===== ACTIVE NAV via IntersectionObserver =====
+  if('IntersectionObserver' in window){
+    var navLinks = {};
+    $$('.nav-links a[href^="#"]').forEach(function(a){
+      navLinks[a.getAttribute('href').slice(1)] = a;
+    });
+    var sections = $$('section[id]');
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          Object.keys(navLinks).forEach(function(k){ navLinks[k].classList.remove('active'); });
+          var a = navLinks[e.target.id];
+          if(a) a.classList.add('active');
+        }
+      });
+    }, {threshold:0, rootMargin:'-25% 0px -60% 0px'});
+    sections.forEach(function(s){ navObs.observe(s); });
+
+    // ===== SCROLL REVEAL =====
+    $$('.city-hero, .hotel, .booking').forEach(function(el){ el.classList.add('reveal'); });
+    var revealObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.1, rootMargin:'0px 0px -8% 0px'});
+    $$('.reveal').forEach(function(el){ revealObs.observe(el); });
+  } else {
+    // No IO support — reveal everything immediately
+    $$('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
 </body>
 </html>
