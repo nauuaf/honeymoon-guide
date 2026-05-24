@@ -79,7 +79,7 @@ body{
 
 /* ============ HERO ============ */
 .hero{
-  position:relative;height:75vh;min-height:520px;max-height:720px;
+  position:relative;height:68vh;min-height:480px;max-height:680px;
   overflow:hidden;display:flex;align-items:flex-end;
   background:linear-gradient(135deg,#0F4C5C 0%,#5F0F40 50%,#9A031E 100%);
 }
@@ -115,13 +115,7 @@ body{
   font-size:clamp(15px,1.6vw,18px);font-weight:300;
   max-width:620px;opacity:.92;margin-bottom:30px;
 }
-.hero-meta{
-  display:flex;gap:36px;flex-wrap:wrap;
-  padding-top:24px;border-top:1px solid rgba(255,255,255,.2);
-}
-.hero-stat{display:flex;flex-direction:column;gap:2px}
-.hero-stat-label{font-size:11px;opacity:.7;letter-spacing:.15em;text-transform:uppercase}
-.hero-stat-value{font-size:18px;font-weight:600}
+/* .hero-meta and .hero-stat removed — redundant with route strip below */
 
 /* ============ MAIN LAYOUT ============ */
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
@@ -129,7 +123,7 @@ body{
 /* ============ ROUTE STRIP ============ */
 .route-strip{
   background:#fff;border-radius:20px;
-  margin:-60px auto 80px;max-width:1100px;
+  margin:-50px auto 64px;max-width:1100px;
   padding:28px 32px;
   box-shadow:0 20px 60px -20px rgba(0,0,0,.25),0 4px 16px rgba(0,0,0,.04);
   position:relative;z-index:5;
@@ -379,51 +373,6 @@ body{
 }
 .transit b{color:var(--ink);font-weight:600}
 
-/* ============ BUDGET ============ */
-.budget{
-  background:#fff;border:1px solid var(--line);border-radius:20px;
-  padding:36px;margin:80px 0;
-  box-shadow:0 8px 30px -12px rgba(0,0,0,.08);
-}
-.budget-head{text-align:center;margin-bottom:28px}
-.budget-title{font-family:'IBM Plex Serif',Georgia,serif;font-size:32px;font-weight:500;margin-bottom:8px}
-.budget-sub{font-size:13px;color:var(--muted)}
-.budget-grid{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:28px;
-}
-.bg-item{
-  text-align:center;padding:20px 12px;
-  background:linear-gradient(180deg,#FAFAF7,#F3F0E9);
-  border-radius:14px;border:1px solid var(--line);
-}
-.bg-icon{font-size:22px;margin-bottom:8px;display:block}
-.bg-label{font-size:11px;color:var(--ink-soft);margin-bottom:6px;font-weight:500;letter-spacing:.02em}
-.bg-val{font-size:22px;font-weight:700;color:var(--ink);font-family:'IBM Plex Serif',Georgia,serif}
-.bg-pct{font-size:10px;color:var(--muted);margin-top:4px}
-.bg-bar-wrap{
-  background:var(--cream-deep);border-radius:12px;padding:18px 20px;margin-bottom:18px;
-}
-.bg-bar{
-  display:flex;height:12px;border-radius:6px;overflow:hidden;background:#fff;
-  border:1px solid var(--line);
-}
-.bg-bar > div{height:100%}
-.bg-bar-legend{
-  display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:14px;font-size:11px;color:var(--ink-soft);
-}
-.bg-bar-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:5px;vertical-align:middle}
-.bg-total{
-  text-align:center;padding-top:20px;border-top:2px solid var(--cream-deep);
-  display:flex;align-items:baseline;justify-content:center;gap:12px;flex-wrap:wrap;
-}
-.bg-total-label{font-size:14px;color:var(--ink-soft)}
-.bg-total-val{font-family:'IBM Plex Serif',Georgia,serif;font-size:36px;font-weight:600;color:var(--ink)}
-.bg-savings{
-  display:inline-block;background:#DCFCE7;color:#166534;
-  padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;
-  margin-top:8px;
-}
-
 /* ============ BOOKING TIMELINE ============ */
 .booking{
   background:var(--paper);border:1px solid var(--line);border-radius:18px;
@@ -561,29 +510,18 @@ body{
 /* HERO: COUNTDOWN PILL + SCROLL DOWN */
 .countdown{
   display:inline-flex;align-items:center;gap:10px;
-  padding:8px 18px;background:rgba(255,255,255,.13);
+  padding:9px 20px;background:rgba(255,255,255,.13);
   border:1px solid rgba(255,255,255,.22);border-radius:30px;
-  font-size:13px;font-weight:500;color:#fff;
+  font-size:13.5px;font-weight:500;color:#fff;
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  margin:0 0 22px;min-height:36px;
+  margin:0;min-height:38px;
 }
 .countdown:empty{display:none}
 .countdown-num{
   font-family:'IBM Plex Serif',Georgia,serif;font-style:italic;
   font-size:20px;font-weight:600;color:var(--accent-soft);line-height:1;
 }
-.scroll-down{
-  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
-  z-index:3;color:#fff;font-size:10px;letter-spacing:.32em;
-  text-transform:uppercase;opacity:.7;text-align:center;
-  cursor:pointer;font-weight:600;text-decoration:none;
-}
-.scroll-down::after{
-  content:'';display:block;width:1px;height:22px;
-  background:#fff;margin:10px auto 0;
-  animation:scrollIndicator 2s ease-in-out infinite;
-}
-@keyframes scrollIndicator{0%,100%{opacity:0;transform:translateY(-12px)}50%{opacity:1;transform:translateY(0)}}
+/* .scroll-down removed — route strip below is the visible scroll cue */
 
 /* CITY OVERVIEW CARD (injected via JS) */
 .city-card{
@@ -857,6 +795,97 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
   .bp-line{width:18px}
 }
 
+
+/* ====== BACK TO TOP ====== */
+.back-to-top{
+  position:fixed;bottom:24px;inset-inline-end:24px;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--paper);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:var(--ink-soft);cursor:pointer;
+  box-shadow:0 4px 14px -6px rgba(23,22,20,.18);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s,transform .3s,border-color .2s,color .2s;
+  z-index:90;transform:translateY(10px);
+  font-family:inherit;
+}
+.back-to-top.visible{opacity:1;pointer-events:auto;transform:none}
+.back-to-top:hover,.back-to-top:focus-visible{
+  border-color:var(--accent);color:var(--accent);outline:none;
+}
+@media(max-width:760px){
+  .back-to-top{bottom:16px;inset-inline-end:16px;width:40px;height:40px}
+}
+
+/* ====== BOOKING CHECKBOX PERSISTENCE ====== */
+.bk-list li{cursor:pointer;user-select:none;transition:color .15s}
+.bk-list li.checked{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line);text-decoration-thickness:1px}
+.bk-list li.checked::before{
+  background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6L5 8.5L9.5 4' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/10px no-repeat;
+  border-color:var(--accent);
+}
+.bk-list li.checked .bk-note{color:var(--line)}
+
+
+/* ====== ARABIC LETTER-SPACING FIX ======
+   CSS letter-spacing breaks the cursive connection between Arabic letters,
+   making words like "شهر" render as "ش هر" with visible gaps inside the word.
+   Reset letter-spacing on every class that contains Arabic text.
+   English-only content (wrapped in .en) keeps its tracking. */
+.hero-eyebrow,
+.section-eyebrow,
+.route-strip-title,
+.route-stop-name,
+.route-stop-meta,
+.city-num,
+.city-name-ar,
+.city-meta-item,
+.cc-label,
+.cc-highlight,
+.cc-day-chip,
+.cc-meta-item,
+.days-header-text,
+.day-title,
+.day-tag,
+.day-now-badge,
+.opt-title,
+.opt-badge,
+.opt-desc,
+.tag,
+.fact,
+.fact b,
+.match-label,
+.match-name,
+.match-reason,
+.hotel-name,
+.hotel-eyebrow,
+.hotel-highlight,
+.hotel-desc,
+.evening,
+.transit,
+.transit-strip,
+.day-note,
+.day-summary-extra,
+.bk-pill,
+.bk-count,
+.bk-note,
+.bk-list li,
+.booking-title,
+.booking-sub,
+.nav-brand,
+.nav-links a,
+.countdown,
+.day-tab{
+  letter-spacing:0;
+}
+
+/* Re-enable tracking ONLY on explicitly-English elements */
+.en,
+.hero-eyebrow .en,
+.city-num .en{
+  letter-spacing:.04em;
+}
+
 </style>
 </head>
 <body>
@@ -891,28 +920,13 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
       من بحيرات الألب الزرقاء، عبر تلال توسكانا، إلى صخور كابري والساحل الأمالفي — رحلة مصمّمة بعناية لكل لحظة.
     </p>
     <div id="countdown" class="countdown" aria-live="polite"></div>
-    <div class="hero-meta">
-      <div class="hero-stat">
-        <span class="hero-stat-label">التاريخ</span>
-        <span class="hero-stat-value">11 – 25 أغسطس</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-label">المدة</span>
-        <span class="hero-stat-value">14 ليلة · 5 محطات</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-label">المسار</span>
-        <span class="hero-stat-value"><span class="en">RUH → MXP · FCO → RUH</span></span>
-      </div>
-    </div>
   </div>
-  <a href="#overview" class="scroll-down" aria-label="انزل للأسفل">ابدأ</a>
 </header>
 
 <!-- ==================== ROUTE STRIP ==================== -->
 <section id="overview" class="wrap">
   <div class="route-strip">
-    <div class="route-strip-title">— مسار الرحلة —</div>
+    <div class="route-strip-title">مسار الرحلة</div>
     <div class="route-line">
       <div class="route-stop">
         <div class="route-stop-num">1</div>
@@ -978,7 +992,7 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
           <div class="hotel-badge">★ الترشيح الأول</div>
         </div>
         <div class="hotel-info">
-          <div class="hotel-eyebrow">— الإقامة —</div>
+          <div class="hotel-eyebrow">الإقامة</div>
           <h3 class="hotel-name">غراند أوتيل تريميزو</h3>
           <div class="hotel-name-en">Grand Hotel Tremezzo · 5★ · Tremezzo</div>
           <div class="hotel-price-row">
@@ -1145,7 +1159,7 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
           <div class="hotel-badge">★ الترشيح الأول</div>
         </div>
         <div class="hotel-info">
-          <div class="hotel-eyebrow">— الإقامة —</div>
+          <div class="hotel-eyebrow">الإقامة</div>
           <h3 class="hotel-name">هوتيل لونغارنو</h3>
           <div class="hotel-name-en">Hotel Lungarno · 4★ Superior · Oltrarno</div>
           <div class="hotel-price-row">
@@ -1315,7 +1329,7 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
           <div class="hotel-badge">★ الترشيح الأول</div>
         </div>
         <div class="hotel-info">
-          <div class="hotel-eyebrow">— الإقامة —</div>
+          <div class="hotel-eyebrow">الإقامة</div>
           <h3 class="hotel-name">بيلموند هوتيل كاروسو</h3>
           <div class="hotel-name-en">Caruso, A Belmond Hotel · 5★ · Ravello</div>
           <div class="hotel-price-row">
@@ -1520,7 +1534,7 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
           <div class="hotel-badge">★ الترشيح الأول</div>
         </div>
         <div class="hotel-info">
-          <div class="hotel-eyebrow">— الإقامة —</div>
+          <div class="hotel-eyebrow">الإقامة</div>
           <h3 class="hotel-name">كابري تيبيريو بالاس</h3>
           <div class="hotel-name-en">Capri Tiberio Palace · 5★ · Capri town</div>
           <div class="hotel-price-row">
@@ -1682,7 +1696,7 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
           <div class="hotel-badge">★ الترشيح</div>
         </div>
         <div class="hotel-info">
-          <div class="hotel-eyebrow">— الإقامة —</div>
+          <div class="hotel-eyebrow">الإقامة</div>
           <h3 class="hotel-name">هوتيل دي روسي</h3>
           <div class="hotel-name-en">Hotel de Russie (Rocco Forte) · 5★ · Piazza del Popolo</div>
           <div class="hotel-price-row">
@@ -1892,7 +1906,7 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
     card.innerHTML =
       '<div class="cc-section cc-meta">'+metaHTML+'</div>'+
       '<div class="cc-section"><div class="cc-label">أبرز ما لازم تجربون</div><div class="cc-highlights">'+hlHTML+'</div></div>'+
-      '<div class="cc-section"><div class="cc-label">أيام المحطة — اضغط للقفز</div><div class="cc-days"></div></div>';
+      '<div class="cc-section"><div class="cc-label">أيام المحطة</div><div class="cc-days"></div></div>';
 
     var daysEl = $('.cc-days', card);
     dayEls.forEach(function(day){
@@ -2102,6 +2116,51 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
       }
     }, 50);
   }
+
+  // ===== BOOKING PERSISTENCE (localStorage) =====
+  try {
+    var BK_KEY = 'honeymoon-bookings-v1';
+    var saved = JSON.parse(localStorage.getItem(BK_KEY) || '{}');
+    $$('.bk-list li').forEach(function(li, idx){
+      var id = 'bk-' + idx;
+      if(saved[id]) li.classList.add('checked');
+      li.setAttribute('role','checkbox');
+      li.setAttribute('aria-checked', li.classList.contains('checked') ? 'true' : 'false');
+      li.setAttribute('tabindex','0');
+      var toggle = function(){
+        var isChecked = li.classList.toggle('checked');
+        li.setAttribute('aria-checked', isChecked ? 'true' : 'false');
+        saved[id] = isChecked;
+        try { localStorage.setItem(BK_KEY, JSON.stringify(saved)); } catch(e){}
+      };
+      li.addEventListener('click', toggle);
+      li.addEventListener('keydown', function(e){
+        if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); toggle(); }
+      });
+    });
+  } catch(e){}
+
+  // ===== BACK TO TOP =====
+  var btt = document.createElement('button');
+  btt.type = 'button';
+  btt.className = 'back-to-top';
+  btt.setAttribute('aria-label','العودة للأعلى');
+  btt.innerHTML = '↑';
+  document.body.appendChild(btt);
+  btt.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+  var bttTicking = false;
+  window.addEventListener('scroll', function(){
+    if(!bttTicking){
+      requestAnimationFrame(function(){
+        btt.classList.toggle('visible', window.scrollY > 600);
+        bttTicking = false;
+      });
+      bttTicking = true;
+    }
+  }, {passive:true});
+
 })();
 </script>
 </body>
