@@ -908,6 +908,167 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
   letter-spacing:.04em;
 }
 
+
+/* ============================================================
+   UX REVAMP v2 — dark mode, quick-jump drawer, live booking
+   progress, interactive hotel picker, micro-interactions
+   ============================================================ */
+
+/* ---------- DARK MODE ---------- */
+html{transition:background .25s ease}
+html[data-theme="dark"]{
+  --cream:#161513;
+  --paper:#201F1C;
+  --cream-deep:#2A2825;
+  --ink:#F2EFE9;
+  --ink-soft:#C9C5BC;
+  --muted:#8B8780;
+  --line:#3A3833;
+  --line-soft:#262521;
+  --accent:#FF6B3D;
+  --accent-soft:rgba(255,107,61,.16);
+  --accent-deep:#FFA382;
+  --milan:#8FB0C2;      --milan-bg:rgba(143,176,194,.16);
+  --flor:#E39A7E;       --flor-bg:rgba(227,154,126,.14);
+  --positano:#E2916D;   --positano-bg:rgba(226,145,109,.14);
+  --capri:#5FC2BD;      --capri-bg:rgba(95,194,189,.14);
+  --rome:#D9B36B;       --rome-bg:rgba(217,179,107,.14);
+  color-scheme:dark;
+}
+html[data-theme="dark"] .hero-img{filter:brightness(.55) saturate(1.05)}
+html[data-theme="dark"] .city-hero-img{filter:brightness(.6) saturate(1.05)}
+html[data-theme="dark"] .route-strip,
+html[data-theme="dark"] .back-to-top,
+html[data-theme="dark"] .quick-jump-btn{box-shadow:0 20px 60px -20px rgba(0,0,0,.6),0 4px 16px rgba(0,0,0,.25)}
+
+.theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--cream-deep);border:1px solid var(--line);
+  color:var(--ink-soft);font-size:14px;cursor:pointer;
+  transition:background .2s,color .2s,transform .15s,border-color .2s;
+  font-family:inherit;flex-shrink:0;
+}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.theme-toggle:active{transform:scale(.9)}
+
+/* ---------- QUICK-JUMP DRAWER ---------- */
+.quick-jump-btn{
+  position:fixed;bottom:24px;inset-inline-start:24px;
+  width:48px;height:48px;border-radius:50%;
+  background:var(--accent);border:none;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;cursor:pointer;z-index:90;
+  box-shadow:0 8px 24px -8px rgba(250,84,28,.55);
+  transition:transform .2s,box-shadow .2s;
+  font-family:inherit;
+}
+.quick-jump-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(250,84,28,.65)}
+.quick-jump-btn:active{transform:scale(.92)}
+@media(max-width:760px){
+  .quick-jump-btn{bottom:16px;inset-inline-start:16px;width:44px;height:44px;font-size:17px}
+}
+
+.qj-overlay{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(10,9,8,.5);backdrop-filter:blur(3px);
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .25s ease;
+}
+.qj-overlay.open{opacity:1;pointer-events:auto}
+@media(min-width:761px){.qj-overlay{align-items:center}}
+
+.qj-panel{
+  background:var(--paper);border:1px solid var(--line);
+  width:100%;max-width:640px;max-height:82vh;
+  border-radius:20px 20px 0 0;overflow:hidden;
+  display:flex;flex-direction:column;
+  transform:translateY(24px);transition:transform .3s cubic-bezier(.22,1,.36,1);
+}
+.qj-overlay.open .qj-panel{transform:translateY(0)}
+@media(min-width:761px){.qj-panel{border-radius:20px;max-height:78vh}}
+
+.qj-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px;border-bottom:1px solid var(--line-soft);flex-shrink:0;
+}
+.qj-title{font-family:'IBM Plex Serif',Georgia,serif;font-size:19px;font-weight:500;color:var(--ink)}
+.qj-close{
+  width:30px;height:30px;border-radius:50%;border:1px solid var(--line);
+  background:var(--cream-deep);color:var(--ink-soft);font-size:14px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;font-family:inherit;
+}
+.qj-close:hover{background:var(--accent-soft);color:var(--accent-deep)}
+
+.qj-body{overflow-y:auto;padding:8px 14px 20px}
+.qj-city{margin-top:14px}
+.qj-city-label{
+  display:flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);padding:6px 8px;
+}
+.qj-city-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.qj-days{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;padding:0 8px}
+@media(max-width:480px){.qj-days{grid-template-columns:1fr}}
+.qj-day{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:10px;background:transparent;
+  border:1px solid transparent;cursor:pointer;text-align:start;
+  font-family:inherit;color:var(--ink);transition:background .15s,border-color .15s;
+}
+.qj-day:hover{background:var(--cream-deep);border-color:var(--line-soft)}
+.qj-day:active{transform:scale(.98)}
+.qj-day-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;
+  font-size:11px;font-weight:600;flex-shrink:0;
+}
+.qj-day.special .qj-day-num{background:var(--accent)}
+.qj-day.is-today{border-color:var(--accent);background:var(--accent-soft)}
+.qj-day-text{display:flex;flex-direction:column;gap:1px;min-width:0}
+.qj-day-title{font-size:13px;font-weight:600;line-height:1.3}
+.qj-day-date{font-size:10.5px;color:var(--muted);direction:ltr;text-align:right}
+
+/* ---------- LIVE BOOKING PROGRESS ---------- */
+.booking-fill-track{
+  height:6px;border-radius:6px;background:var(--cream-deep);
+  overflow:hidden;margin:14px 0 2px;
+}
+.booking-fill-bar{
+  height:100%;border-radius:6px;background:var(--accent);width:0%;
+  transition:width .4s cubic-bezier(.22,1,.36,1);
+}
+.booking-progress-text{font-size:11.5px;color:var(--muted);margin-top:6px;font-weight:500}
+.booking-progress-text b{color:var(--ink);font-weight:700}
+
+/* ---------- INTERACTIVE HOTEL PICKER ---------- */
+.hotel-badge,.hotel-alt-badge{cursor:pointer;user-select:none;transition:background .2s,color .2s,transform .15s}
+.hotel-badge:active,.hotel-alt-badge:active{transform:scale(.95)}
+.hotel-badge:focus-visible,.hotel-alt-badge:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hotel.chosen{box-shadow:inset 0 0 0 2px var(--accent)}
+.hotel.chosen .hotel-badge{background:var(--accent);color:#fff}
+.hotel-alt.chosen{border-color:var(--accent);background:var(--paper)}
+.hotel-alt.chosen .hotel-alt-badge{background:var(--accent);color:#fff;border-color:var(--accent)}
+.hotel:not(.chosen) .hotel-badge.unchosen{background:rgba(0,0,0,.35);opacity:.75}
+.hotel-alt:not(.chosen) .hotel-alt-badge.unchosen{opacity:.75}
+
+/* ---------- JUMP-TO-TODAY (clickable countdown) ---------- */
+.countdown.clickable{cursor:pointer;transition:background .2s,transform .15s,border-color .2s}
+.countdown.clickable:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.35)}
+.countdown.clickable:active{transform:scale(.97)}
+
+/* ---------- MICRO-INTERACTIONS ---------- */
+.opt-badge,.tag,.cc-highlight,.route-stop,.day-tab,.nav-links a,.bk-list li,.cc-day-chip{
+  transition:background .18s,color .18s,transform .12s,border-color .18s;
+}
+.day-top:active{transform:scale(.995)}
+.cc-day-chip:active,.cc-highlight:active{transform:scale(.95)}
+button{-webkit-tap-highlight-color:transparent}
+@media (prefers-reduced-motion: reduce){
+  .qj-overlay,.qj-panel,.theme-toggle,.quick-jump-btn,.booking-fill-bar,.countdown.clickable{transition:none !important}
+}
+
 </style>
 </head>
 <body>
@@ -926,8 +1087,21 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
       <a href="#rome" class="rome">روما</a>
       <a href="#booking">الحجوزات</a>
     </div>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الداكن" title="الوضع الداكن">🌙</button>
   </div>
 </nav>
+
+<!-- ==================== QUICK-JUMP DRAWER ==================== -->
+<button type="button" class="quick-jump-btn" id="quickJumpBtn" aria-label="قائمة كل الأيام" aria-haspopup="dialog" title="كل الأيام">🗓</button>
+<div class="qj-overlay" id="qjOverlay" role="dialog" aria-modal="true" aria-label="قائمة كل أيام الرحلة">
+  <div class="qj-panel">
+    <div class="qj-head">
+      <div class="qj-title">كل أيام الرحلة</div>
+      <button type="button" class="qj-close" id="qjClose" aria-label="إغلاق">✕</button>
+    </div>
+    <div class="qj-body" id="qjBody"></div>
+  </div>
+</div>
 
 <!-- ==================== HERO ==================== -->
 <header class="hero">
@@ -1861,6 +2035,9 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
     </div>
   </div>
 
+  <div class="booking-fill-track" aria-hidden="true"><div class="booking-fill-bar" id="bookingFillBar"></div></div>
+  <div class="booking-progress-text" id="bookingProgressText"></div>
+
   <div class="bk-grid">
     <div class="bk-col">
       <div class="bk-col-head">
@@ -1959,6 +2136,18 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
     } else {
       cd.innerHTML = '<span class="countdown-num">✓</span> الحمد لله على السلامة';
     }
+    if(daysUntil <= 0 && daysUntil >= -14){
+      cd.classList.add('clickable');
+      cd.setAttribute('role','button');
+      cd.setAttribute('tabindex','0');
+      cd.title = 'اذهبوا ليوم اليوم بالجدول';
+      var goToday = function(){
+        var t = document.querySelector('.day.today');
+        if(t) jumpToDay(t);
+      };
+      cd.addEventListener('click', goToday);
+      cd.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goToday(); } });
+    }
   }
 
   // ===== PROGRESS BAR =====
@@ -1979,6 +2168,14 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
   // ===== HELPERS =====
   function $(sel, root){ return (root||document).querySelector(sel); }
   function $$(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
+
+  function jumpToDay(day){
+    day.classList.add('expanded');
+    var topEl = $('.day-top', day);
+    if(topEl) topEl.setAttribute('aria-expanded','true');
+    var y = day.getBoundingClientRect().top + window.scrollY - 72;
+    window.scrollTo({top:y, behavior:'smooth'});
+  }
 
   // ===== CITY OVERVIEW CARDS =====
   $$('.city').forEach(function(city){
@@ -2012,13 +2209,7 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
       chip.className = 'cc-day-chip' + (special ? ' special' : '');
       chip.setAttribute('aria-label', 'اليوم ' + num + ' — ' + short);
       chip.innerHTML = '<span class="cc-day-chip-num">'+num+'</span> '+short;
-      chip.addEventListener('click', function(){
-        day.classList.add('expanded');
-        var topEl = $('.day-top', day);
-        if(topEl) topEl.setAttribute('aria-expanded','true');
-        var y2 = day.getBoundingClientRect().top + window.scrollY - 72;
-        window.scrollTo({top:y2, behavior:'smooth'});
-      });
+      chip.addEventListener('click', function(){ jumpToDay(day); });
       daysEl.appendChild(chip);
     });
 
@@ -2209,11 +2400,26 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
     }, 50);
   }
 
-  // ===== BOOKING PERSISTENCE (localStorage) =====
+  // ===== BOOKING PERSISTENCE (localStorage) + LIVE PROGRESS =====
   try {
     var BK_KEY = 'honeymoon-bookings-v1';
     var saved = JSON.parse(localStorage.getItem(BK_KEY) || '{}');
-    $$('.bk-list li').forEach(function(li, idx){
+    var allLis = $$('.bk-list li');
+    var fillBar = document.getElementById('bookingFillBar');
+    var progressText = document.getElementById('bookingProgressText');
+
+    function updateBookingProgress(){
+      var total = allLis.length;
+      var done = allLis.filter(function(li){ return li.classList.contains('checked'); }).length;
+      if(fillBar) fillBar.style.width = (total ? (done/total*100) : 0) + '%';
+      if(progressText){
+        progressText.innerHTML = done === total && total > 0
+          ? '🎉 <b>كل المهام (' + total + ') تمت!</b> جاهزين للرحلة'
+          : '<b>' + done + '</b> من ' + total + ' مهام تمت';
+      }
+    }
+
+    allLis.forEach(function(li, idx){
       var id = 'bk-' + idx;
       if(saved[id]) li.classList.add('checked');
       li.setAttribute('role','checkbox');
@@ -2224,12 +2430,156 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
         li.setAttribute('aria-checked', isChecked ? 'true' : 'false');
         saved[id] = isChecked;
         try { localStorage.setItem(BK_KEY, JSON.stringify(saved)); } catch(e){}
+        updateBookingProgress();
       };
       li.addEventListener('click', toggle);
       li.addEventListener('keydown', function(e){
         if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); toggle(); }
       });
     });
+
+    updateBookingProgress();
+  } catch(e){}
+
+  // ===== DARK MODE TOGGLE =====
+  try {
+    var THEME_KEY = 'honeymoon-theme-v1';
+    var themeBtn = document.getElementById('themeToggle');
+    var savedTheme = localStorage.getItem(THEME_KEY);
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+
+    function applyTheme(dark){
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      if(themeBtn){
+        themeBtn.textContent = dark ? '☀' : '🌙';
+        themeBtn.title = dark ? 'الوضع الفاتح' : 'الوضع الداكن';
+      }
+    }
+    applyTheme(isDark);
+
+    if(themeBtn){
+      themeBtn.addEventListener('click', function(){
+        isDark = !isDark;
+        applyTheme(isDark);
+        try { localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light'); } catch(e){}
+      });
+    }
+  } catch(e){}
+
+  // ===== INTERACTIVE HOTEL PICKER =====
+  try {
+    var HOTEL_KEY = 'honeymoon-hotel-choice-v1';
+    var hotelChoices = JSON.parse(localStorage.getItem(HOTEL_KEY) || '{}');
+
+    $$('.city').forEach(function(city){
+      var primary = $('.hotel', city);
+      var alt = $('.hotel-alt', city);
+      if(!primary || !alt) return;
+      var primaryBtn = $('.hotel-badge', primary);
+      var altBtn = $('.hotel-alt-badge', alt);
+      if(!primaryBtn || !altBtn) return;
+
+      var primaryBaseText = primaryBtn.textContent.trim().replace(/^★\s*/, '');
+      var altBaseText = altBtn.textContent.trim().replace(/^★\s*/, '');
+
+      [primaryBtn, altBtn].forEach(function(b){
+        b.setAttribute('role','button');
+        b.setAttribute('tabindex','0');
+      });
+
+      function render(choice){
+        var altChosen = choice === 'alt';
+        primary.classList.toggle('chosen', !altChosen);
+        alt.classList.toggle('chosen', altChosen);
+        primaryBtn.classList.toggle('unchosen', altChosen);
+        altBtn.classList.toggle('unchosen', !altChosen);
+        primaryBtn.textContent = (altChosen ? '★ ' : '✓ ') + primaryBaseText;
+        altBtn.textContent = (altChosen ? '✓ ' : '★ ') + altBaseText;
+        primaryBtn.setAttribute('aria-pressed', String(!altChosen));
+        altBtn.setAttribute('aria-pressed', String(altChosen));
+      }
+
+      var choice = hotelChoices[city.id] === 'alt' ? 'alt' : 'primary';
+      render(choice);
+
+      function pick(next){
+        choice = next;
+        hotelChoices[city.id] = choice;
+        try { localStorage.setItem(HOTEL_KEY, JSON.stringify(hotelChoices)); } catch(e){}
+        render(choice);
+      }
+      primaryBtn.addEventListener('click', function(){ pick('primary'); });
+      altBtn.addEventListener('click', function(){ pick('alt'); });
+      [primaryBtn, altBtn].forEach(function(b, i){
+        b.addEventListener('keydown', function(e){
+          if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pick(i===0?'primary':'alt'); }
+        });
+      });
+    });
+  } catch(e){}
+
+  // ===== QUICK-JUMP DRAWER =====
+  try {
+    var qjBtn = document.getElementById('quickJumpBtn');
+    var qjOverlay = document.getElementById('qjOverlay');
+    var qjBody = document.getElementById('qjBody');
+    var qjClose = document.getElementById('qjClose');
+
+    if(qjBtn && qjOverlay && qjBody){
+      var cityLabels = { milan:'ميلان', florence:'فلورنسا', positano:'بوزيتانو', capri:'كابري', rome:'روما' };
+      var cityDotVar = { milan:'--milan', florence:'--flor', positano:'--positano', capri:'--capri', rome:'--rome' };
+
+      $$('.city').forEach(function(city){
+        var dayEls = $$('.day', city);
+        if(!dayEls.length) return;
+        var block = document.createElement('div');
+        block.className = 'qj-city';
+        var dotColor = 'var(' + (cityDotVar[city.id] || '--accent') + ')';
+        block.innerHTML = '<div class="qj-city-label"><span class="qj-city-dot" style="background:'+dotColor+'"></span>' + (cityLabels[city.id] || city.id) + '</div>' +
+          '<div class="qj-days"></div>';
+        var daysWrap = $('.qj-days', block);
+
+        dayEls.forEach(function(day){
+          var numEl = $('.day-numeral', day);
+          var titleEl = $('.day-title', day);
+          var dateEl = $('.day-date', day);
+          if(!numEl) return;
+          var num = numEl.textContent.trim();
+          var special = !!$('.day-tag.special', day);
+          var isToday = day.classList.contains('today');
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'qj-day' + (special ? ' special' : '') + (isToday ? ' is-today' : '');
+          btn.innerHTML = '<span class="qj-day-num">'+num+'</span>' +
+            '<span class="qj-day-text"><span class="qj-day-title">'+(titleEl?titleEl.textContent.trim():'')+'</span>' +
+            '<span class="qj-day-date">'+(dateEl?dateEl.textContent.trim():'')+'</span></span>';
+          btn.addEventListener('click', function(){
+            closeDrawer();
+            setTimeout(function(){ jumpToDay(day); }, 200);
+          });
+          daysWrap.appendChild(btn);
+        });
+        qjBody.appendChild(block);
+      });
+
+      function openDrawer(){
+        qjOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        qjBtn.setAttribute('aria-expanded','true');
+      }
+      function closeDrawer(){
+        qjOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+        qjBtn.setAttribute('aria-expanded','false');
+      }
+      qjBtn.addEventListener('click', openDrawer);
+      qjClose.addEventListener('click', closeDrawer);
+      qjOverlay.addEventListener('click', function(e){ if(e.target === qjOverlay) closeDrawer(); });
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && qjOverlay.classList.contains('open')) closeDrawer();
+      });
+    }
   } catch(e){}
 
   // ===== BACK TO TOP =====
