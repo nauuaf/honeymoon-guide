@@ -256,6 +256,28 @@ body{
 }
 .hotel-highlight::before{content:"— ";color:var(--accent);font-weight:600;font-style:normal}
 
+/* ============ ALT HOTEL (second option) ============ */
+.hotel-alt{
+  margin:0 28px 8px;padding:16px 18px;
+  background:var(--cream-deep);border:1px solid var(--line-soft);
+  border-radius:12px;
+}
+.hotel-alt-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.hotel-alt-badge{
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;
+  padding:4px 10px;border-radius:20px;background:var(--paper);color:var(--muted);
+  border:1px solid var(--line);
+}
+.hotel-alt-name{font-size:15px;font-weight:600;color:var(--ink)}
+.hotel-alt-name-en{font-size:12px;color:var(--muted);direction:ltr;text-align:right;margin-bottom:8px}
+.hotel-alt-price{font-size:12.5px;color:var(--ink-soft);margin-bottom:8px;font-feature-settings:"tnum" 1}
+.hotel-alt-price b{color:var(--ink);font-weight:600}
+.hotel-alt-reason{font-size:13px;color:var(--ink-soft);line-height:1.7}
+.hotel-alt-reason::before{content:"↔ ";color:var(--muted);font-weight:600}
+@media(max-width:760px){
+  .hotel-alt{margin:0 16px 8px;padding:14px 16px}
+}
+
 /* ============ DAY CARD ============ */
 .days-header{
   display:flex;align-items:center;gap:10px;
@@ -999,10 +1021,20 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
             <span class="hotel-price">~4,900 ر/ليلة</span>
             <span class="hotel-price-detail">· المجموع ~19,600 ر (4 ليالي) · تقدير أغسطس 2026</span>
           </div>
-          <p class="hotel-desc">واحة هادية بحديقة خاصة 4,000م² وسط حي بريرا الفني. سبا فخم بمسبح مضيء بالذهب. على بعد دقائق مشي من الدومو وحي الموضة، لكنه مخبّأ عن الزحمة تماماً. خدمة استثنائية وخصوصية — الملاذ المثالي بعد يوم مزدحم بالمدينة.</p>
-          <div class="hotel-highlight">💡 الموقع سرّي وهادي رغم إنه بقلب ميلان — تطلعون من الحديقة تلقون أنفسكم عند لا سكالا والدومو خلال دقائق مشي.</div>
+          <p class="hotel-desc">واحة هادية بحديقة خاصة 4,000م² وسط حي بريرا الفني. سبا فخم بمسبح مضيء بالذهب. حوالي 8 دقايق مشي من حي الموضة، و~15 دقيقة من الدومو، لكنه مخبّأ عن الزحمة تماماً. خدمة استثنائية وخصوصية — الملاذ المثالي بعد يوم مزدحم بالمدينة.</p>
+          <div class="hotel-highlight">💡 الموقع سرّي وهادي رغم إنه بقلب ميلان — من الحديقة لا سكالا حوالي 10 دقايق مشي، والدومو ~15 دقيقة.</div>
         </div>
       </div>
+    </div>
+
+    <div class="hotel-alt">
+      <div class="hotel-alt-head">
+        <span class="hotel-alt-badge">★ الترشيح الثاني</span>
+        <span class="hotel-alt-name">أرماني هوتيل ميلانو</span>
+      </div>
+      <div class="hotel-alt-name-en">Armani Hotel Milano · 5★ · Via Manzoni</div>
+      <div class="hotel-alt-price">~5,200 <b>ر/ليلة</b> · المجموع ~20,800 ر (4 ليالي) · تقدير أغسطس 2026</div>
+      <div class="hotel-alt-reason">لو تفضّلون تكونوا وسط الحركة بدل الاختباء عنها: أرماني بشارع مانزوني، بقلب حي الموضة مباشرة وأقرب للدومو (~8 دقايق مشي). تصميم مينيمال أنيق بتوقيع Giorgio Armani نفسه، لكن بدون حديقة أو هدوء بولغري.</div>
     </div>
 
     <div class="days-header">
@@ -1221,6 +1253,16 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
       </div>
     </div>
 
+    <div class="hotel-alt">
+      <div class="hotel-alt-head">
+        <span class="hotel-alt-badge">★ الترشيح الثاني</span>
+        <span class="hotel-alt-name">هوتيل برونيليسكي</span>
+      </div>
+      <div class="hotel-alt-name-en">Hotel Brunelleschi · 5★ · near the Duomo</div>
+      <div class="hotel-alt-price">~2,900 <b>ر/ليلة</b> · المجموع ~8,700 ر (3 ليالي) · تقدير أغسطس 2026</div>
+      <div class="hotel-alt-reason">لو تبون تكونوا لصق الدومو بدل نهر Arno: برونيليسكي مبني جزئياً بداخل برج بيزنطي من القرن 6، ودقايق مشي من الدومو والأكاديميا. أهدأ سعر من لونغارنو، بس أبعد عن Oltrarno وأجواء النهر.</div>
+    </div>
+
     <div class="days-header">
       <div class="days-header-icon">📅</div>
       <div class="days-header-text">الجدول اليومي · 3 أيام</div>
@@ -1388,6 +1430,16 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
           <div class="hotel-highlight">💡 اطلبوا غرفة بتراس خاص يطل على قبة كنيسة Santa Maria — إطلالة بوزيتانو الأيقونية من سريركم، وأجمل غروب على الساحل.</div>
         </div>
       </div>
+    </div>
+
+    <div class="hotel-alt">
+      <div class="hotel-alt-head">
+        <span class="hotel-alt-badge">★ الترشيح الثاني</span>
+        <span class="hotel-alt-name">إيل سان بيترو دي بوزيتانو</span>
+      </div>
+      <div class="hotel-alt-name-en">Il San Pietro di Positano · 5★ · outside the village</div>
+      <div class="hotel-alt-price">~7,800 <b>ر/ليلة</b> · المجموع ~23,400 ر (3 ليالي) · تقدير أغسطس 2026</div>
+      <div class="hotel-alt-reason">لو تبون خصوصية تامة بدل حيوية القرية: إيل سان بيترو معلّق على الجرف خارج مركز بوزيتانو (~10 دقايق سيارة/تاكسي الفندق المجاني)، ومصعد خاص ينزلكم لبيتش كلوبه الخاص. أهدأ وأخصّ من لي سيرينوزي، بس بعيد عن درج القرية والمطاعم اللي تمشون لها مباشرة.</div>
     </div>
 
     <div class="days-header">
@@ -1559,10 +1611,20 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
             <span class="hotel-price">~4,500 ر/ليلة</span>
             <span class="hotel-price-detail">· المجموع ~13,500 ر (3 ليالي) · تقدير أغسطس 2026</span>
           </div>
-          <p class="hotel-desc">تصميم ريترو La Dolce Vita — بوب آرت وألوان جريئة. مسبح على السطح بإطلالة بحرية. دقيقتين من البياتزيتا. كل غرفة تصميمها مختلف.</p>
+          <p class="hotel-desc">تصميم ريترو La Dolce Vita — بوب آرت وألوان جريئة. مسبح على السطح بإطلالة بحرية. ~6 دقايق مشي من البياتزيتا. كل غرفة تصميمها مختلف.</p>
           <div class="hotel-highlight">💡 جناح Bellevue Suite فيه مسبح خاص بالسيراميك المايوليكا! ترقية ليلتين أو ثلاث (~6,600 ر إضافية) خيار حلو لو تبون سباحة بخصوصية تامة.</div>
         </div>
       </div>
+    </div>
+
+    <div class="hotel-alt">
+      <div class="hotel-alt-head">
+        <span class="hotel-alt-badge">★ الترشيح الثاني</span>
+        <span class="hotel-alt-name">كابري بالاس جميرا</span>
+      </div>
+      <div class="hotel-alt-name-en">Capri Palace Jumeirah · 5★ · Anacapri</div>
+      <div class="hotel-alt-price">~5,800 <b>ر/ليلة</b> · المجموع ~17,400 ر (3 ليالي) · تقدير أغسطس 2026</div>
+      <div class="hotel-alt-reason">تنبيه مهم: هذا الفندق بأناكابري، بلدة ثانية على الجزيرة — مو بكابري تاون. أبعد عن البياتزيتا وتحتاجون باص/تاكسي (~20 دقيقة) لكل نشاطات الجدول أدناه. بالمقابل أهدأ وأخصّ بكثير، ومسبح رائع وسبا عالمي — خيار حلو لو الهدوء أهم من قرب المشي.</div>
     </div>
 
     <div class="days-header">
@@ -1721,9 +1783,19 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
             <span class="hotel-price">~2,950 ر/ليلة</span>
             <span class="hotel-price-detail">· المجموع ~2,950 ر (1 ليلة) · تقدير أغسطس 2026</span>
           </div>
-          <p class="hotel-desc">فندق أنيق بحدائق مدرّجة هادية وسط روما. بين Piazza del Popolo و Spanish Steps. سبا ممتاز. مطعم Le Jardin في الحديقة. 10 دقايق مشي من Trevi و Pantheon. 40 دقيقة تاكسي للمطار.</p>
+          <p class="hotel-desc">فندق أنيق بحدائق مدرّجة هادية وسط روما. على Via del Babuino بين Piazza del Popolo و Spanish Steps (~7 دقايق مشي). سبا ممتاز. مطعم Le Jardin في الحديقة. ~18–20 دقيقة مشي من Trevi والبانثيون (أو تاكسي قصير ~8 دقايق). 40 دقيقة تاكسي للمطار.</p>
         </div>
       </div>
+    </div>
+
+    <div class="hotel-alt">
+      <div class="hotel-alt-head">
+        <span class="hotel-alt-badge">★ الترشيح الثاني</span>
+        <span class="hotel-alt-name">هوتيل إيدن</span>
+      </div>
+      <div class="hotel-alt-name-en">Hotel Eden (Dorchester Collection) · 5★ · near Spanish Steps</div>
+      <div class="hotel-alt-price">~2,700 <b>ر/ليلة</b> · المجموع ~2,700 ر (1 ليلة) · تقدير أغسطس 2026</div>
+      <div class="hotel-alt-reason">لو تبون تكونوا أقرب لتريفي والبانثيون بدل بيازا ديل بوبولو: إيدن قريب من Spanish Steps وVia Veneto، وأقرب فعلياً لجدول اليوم الأخير (~12 دقيقة مشي لتريفي بدل 18–20). مطعمه على السطح (La Terrazza) من أجمل إطلالات روما، ميشلان نجمة.</div>
     </div>
 
     <div class="days-header">
@@ -1740,6 +1812,7 @@ button.cc-day-chip{font-family:inherit;font-size:13px;cursor:pointer}
           <div class="day-date">Mon · 24 Aug</div>
         </div>
       </div>
+      <div class="day-note">🚕 تريفي والبانثيون أبعد شوي من الفندق (~18–20 دقيقة مشي) — خذوا تاكسي قصير (~8 دقايق) للرايح، وارجعوا مشي عبر الأزقة لو حبيتوا.</div>
       <div class="options">
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · أبرز المعالم</span>
