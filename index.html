@@ -319,6 +319,13 @@ body{
   white-space:nowrap;
 }
 .day-tag.special{background:var(--accent);color:#fff;box-shadow:0 1px 0 var(--accent-deep) inset}
+.day-book-flag{
+  font-size:9.5px;font-weight:700;letter-spacing:.05em;
+  padding:3px 9px;border-radius:20px;
+  background:#FEE2E2;color:#991B1B;
+  white-space:nowrap;flex-shrink:0;
+}
+html[data-theme="dark"] .day-book-flag{background:rgba(153,27,27,.35);color:#FCA5A5}
 
 .day-note{
   font-size:12.5px;color:var(--ink-soft);padding:10px 18px;
@@ -663,6 +670,28 @@ body{
 .nav-links a.capri.active{background:var(--capri-bg);color:var(--capri)}
 .nav-links a.rome.active{background:var(--rome-bg);color:var(--rome)}
 
+/* NAV STATUS STRIP — persistent "where are we now" bar */
+.nav-status{
+  max-width:1200px;margin:8px auto 0;padding-top:8px;
+  border-top:1px solid var(--line-soft);
+  font-size:12.5px;color:var(--ink-soft);
+  display:none;align-items:center;gap:8px;
+}
+.nav-status:empty{display:none}
+.nav-status.show{display:flex}
+.nav-status.clickable{cursor:pointer;transition:color .15s}
+.nav-status.clickable:hover{color:var(--accent-deep)}
+.nav-status-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:20px;height:20px;border-radius:50%;
+  background:var(--accent);color:#fff;font-size:10.5px;font-weight:700;
+  flex-shrink:0;
+}
+.nav-status-arrow{margin-inline-start:auto;color:var(--muted);font-size:13px;flex-shrink:0}
+@media(max-width:760px){
+  .nav-status{font-size:12px}
+}
+
 /* TODAY HIGHLIGHT (auto during trip dates) */
 .day.today{box-shadow:0 0 0 2px var(--accent),0 12px 36px -16px rgba(250,84,28,.3)}
 /* "الآن" badge is now an inline element inside .day-top (.day-now-badge) — pseudo-element was clipped by .day{overflow:hidden} */
@@ -1001,6 +1030,22 @@ html[data-theme="dark"] .quick-jump-btn{box-shadow:0 20px 60px -20px rgba(0,0,0,
 }
 .qj-close:hover{background:var(--accent-soft);color:var(--accent-deep)}
 
+.qj-search-wrap{padding:12px 22px 4px;flex-shrink:0}
+.qj-search{
+  width:100%;padding:10px 14px;border-radius:10px;
+  border:1px solid var(--line);background:var(--cream-deep);
+  color:var(--ink);font-family:inherit;font-size:13.5px;
+  outline:none;transition:border-color .2s,background .2s;
+}
+.qj-search::placeholder{color:var(--muted)}
+.qj-search:focus{border-color:var(--accent);background:var(--paper)}
+.qj-search::-webkit-search-cancel-button{cursor:pointer}
+
+.qj-empty{display:none;padding:28px 22px;text-align:center;color:var(--muted);font-size:13.5px}
+.qj-empty.show{display:block}
+
+.qj-city.qj-hidden,.qj-day.qj-hidden{display:none}
+
 .qj-body{overflow-y:auto;padding:8px 14px 20px}
 .qj-city{margin-top:14px}
 .qj-city-label{
@@ -1089,6 +1134,7 @@ button{-webkit-tap-highlight-color:transparent}
     </div>
     <button type="button" class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الداكن" title="الوضع الداكن">🌙</button>
   </div>
+  <div class="nav-status" id="navStatus"></div>
 </nav>
 
 <!-- ==================== QUICK-JUMP DRAWER ==================== -->
@@ -1099,7 +1145,11 @@ button{-webkit-tap-highlight-color:transparent}
       <div class="qj-title">كل أيام الرحلة</div>
       <button type="button" class="qj-close" id="qjClose" aria-label="إغلاق">✕</button>
     </div>
+    <div class="qj-search-wrap">
+      <input type="search" class="qj-search" id="qjSearch" placeholder="دوّروا على يوم، مطعم، أو نشاط…" aria-label="بحث في أيام الرحلة">
+    </div>
     <div class="qj-body" id="qjBody"></div>
+    <div class="qj-empty" id="qjEmpty">ما فيه نتائج مطابقة 🔍</div>
   </div>
 </div>
 
@@ -2238,7 +2288,7 @@ button{-webkit-tap-highlight-color:transparent}
       top.appendChild(chev);
     }
 
-    // One-line summary derived from option titles
+    // One-line summary derived from option titles + first restaurant mention
     var opts = $$('.opt', day);
     var headline = $('.day-headline', top);
     if(opts.length && headline && !$('.day-summary-extra', headline)){
@@ -2246,6 +2296,8 @@ button{-webkit-tap-highlight-color:transparent}
         var t = $('.opt-title', o);
         return t ? t.textContent.trim() : null;
       }).filter(Boolean);
+      var firstMatch = $('.match-name', day);
+      if(firstMatch) titles.push('🍽 ' + firstMatch.textContent.trim());
       if(titles.length){
         var sub = document.createElement('div');
         sub.className = 'day-summary-extra';
@@ -2254,6 +2306,15 @@ button{-webkit-tap-highlight-color:transparent}
         if(date) headline.insertBefore(sub, date);
         else headline.appendChild(sub);
       }
+    }
+
+    // Compact "needs booking" flag on the collapsed header
+    if($$('.tag.t-book', day).length){
+      var bookFlag = document.createElement('span');
+      bookFlag.className = 'day-book-flag';
+      bookFlag.textContent = '🔖 يحتاج حجز';
+      var chevEl0 = $('.day-chevron', top);
+      if(chevEl0) top.insertBefore(bookFlag, chevEl0); else top.appendChild(bookFlag);
     }
 
     // Wrap everything after day-top in body-wrap
@@ -2339,6 +2400,31 @@ button{-webkit-tap-highlight-color:transparent}
       if(chevEl) top.insertBefore(nowBadge, chevEl); else top.appendChild(nowBadge);
     }
   });
+
+  // ===== NAV STATUS STRIP (persistent "where are we now") =====
+  var navStatus = document.getElementById('navStatus');
+  if(navStatus){
+    var todayDay = document.querySelector('.day.today');
+    if(daysUntil > 0 && daysUntil <= 14){
+      navStatus.innerHTML = '⏳ <b>'+daysUntil+'</b> يوم حتى الرحلة';
+      navStatus.classList.add('show');
+    } else if(todayDay){
+      var numEl2 = $('.day-numeral', todayDay);
+      var titleEl2 = $('.day-title', todayDay);
+      var dayNum2 = numEl2 ? numEl2.textContent.trim() : '';
+      var dayTitle2 = titleEl2 ? titleEl2.textContent.trim() : '';
+      navStatus.innerHTML = '<span class="nav-status-num">'+dayNum2+'</span> اليوم: '+dayTitle2+' <span class="nav-status-arrow">‹ التفاصيل</span>';
+      navStatus.classList.add('show','clickable');
+      navStatus.setAttribute('role','button');
+      navStatus.setAttribute('tabindex','0');
+      var goToToday = function(){ jumpToDay(todayDay); };
+      navStatus.addEventListener('click', goToToday);
+      navStatus.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goToToday(); } });
+    } else if(daysUntil < -14){
+      navStatus.innerHTML = '✓ الحمد لله على السلامة — نرجو أن الرحلة كانت لا تُنسى';
+      navStatus.classList.add('show');
+    }
+  }
 
   // ===== TRANSIT STRIPS — lift between-city transits out of last day =====
   $$('.city').forEach(function(city){
@@ -2519,16 +2605,19 @@ button{-webkit-tap-highlight-color:transparent}
     });
   } catch(e){}
 
-  // ===== QUICK-JUMP DRAWER =====
+  // ===== QUICK-JUMP DRAWER (with live search) =====
   try {
     var qjBtn = document.getElementById('quickJumpBtn');
     var qjOverlay = document.getElementById('qjOverlay');
     var qjBody = document.getElementById('qjBody');
     var qjClose = document.getElementById('qjClose');
+    var qjSearch = document.getElementById('qjSearch');
+    var qjEmpty = document.getElementById('qjEmpty');
 
     if(qjBtn && qjOverlay && qjBody){
       var cityLabels = { milan:'ميلان', florence:'فلورنسا', positano:'بوزيتانو', capri:'كابري', rome:'روما' };
       var cityDotVar = { milan:'--milan', florence:'--flor', positano:'--positano', capri:'--capri', rome:'--rome' };
+      var cityBlocks = [];
 
       $$('.city').forEach(function(city){
         var dayEls = $$('.day', city);
@@ -2536,9 +2625,11 @@ button{-webkit-tap-highlight-color:transparent}
         var block = document.createElement('div');
         block.className = 'qj-city';
         var dotColor = 'var(' + (cityDotVar[city.id] || '--accent') + ')';
-        block.innerHTML = '<div class="qj-city-label"><span class="qj-city-dot" style="background:'+dotColor+'"></span>' + (cityLabels[city.id] || city.id) + '</div>' +
+        var cityLabel = cityLabels[city.id] || city.id;
+        block.innerHTML = '<div class="qj-city-label"><span class="qj-city-dot" style="background:'+dotColor+'"></span>' + cityLabel + '</div>' +
           '<div class="qj-days"></div>';
         var daysWrap = $('.qj-days', block);
+        var dayButtons = [];
 
         dayEls.forEach(function(day){
           var numEl = $('.day-numeral', day);
@@ -2548,25 +2639,55 @@ button{-webkit-tap-highlight-color:transparent}
           var num = numEl.textContent.trim();
           var special = !!$('.day-tag.special', day);
           var isToday = day.classList.contains('today');
+          var titleText = titleEl ? titleEl.textContent.trim() : '';
+          var dateText = dateEl ? dateEl.textContent.trim() : '';
+          var restaurantNames = $$('.match-name', day).map(function(m){ return m.textContent.trim(); });
+          var optionTitles = $$('.opt-title', day).map(function(t){ return t.textContent.trim(); });
+          var searchBlob = [cityLabel, titleText, dateText].concat(restaurantNames, optionTitles).join(' ').toLowerCase();
+
           var btn = document.createElement('button');
           btn.type = 'button';
           btn.className = 'qj-day' + (special ? ' special' : '') + (isToday ? ' is-today' : '');
+          btn.dataset.search = searchBlob;
           btn.innerHTML = '<span class="qj-day-num">'+num+'</span>' +
-            '<span class="qj-day-text"><span class="qj-day-title">'+(titleEl?titleEl.textContent.trim():'')+'</span>' +
-            '<span class="qj-day-date">'+(dateEl?dateEl.textContent.trim():'')+'</span></span>';
+            '<span class="qj-day-text"><span class="qj-day-title">'+titleText+'</span>' +
+            '<span class="qj-day-date">'+dateText+'</span></span>';
           btn.addEventListener('click', function(){
             closeDrawer();
             setTimeout(function(){ jumpToDay(day); }, 200);
           });
           daysWrap.appendChild(btn);
+          dayButtons.push(btn);
         });
         qjBody.appendChild(block);
+        cityBlocks.push({ el: block, dayButtons: dayButtons });
       });
+
+      function filterDrawer(query){
+        var q = query.trim().toLowerCase();
+        var anyVisible = false;
+        cityBlocks.forEach(function(cb){
+          var cityHasMatch = false;
+          cb.dayButtons.forEach(function(btn){
+            var match = !q || btn.dataset.search.indexOf(q) !== -1;
+            btn.classList.toggle('qj-hidden', !match);
+            if(match) cityHasMatch = true;
+          });
+          cb.el.classList.toggle('qj-hidden', !cityHasMatch);
+          if(cityHasMatch) anyVisible = true;
+        });
+        if(qjEmpty) qjEmpty.classList.toggle('show', !anyVisible);
+      }
 
       function openDrawer(){
         qjOverlay.classList.add('open');
         document.body.style.overflow = 'hidden';
         qjBtn.setAttribute('aria-expanded','true');
+        if(qjSearch){
+          qjSearch.value = '';
+          filterDrawer('');
+          setTimeout(function(){ qjSearch.focus(); }, 260);
+        }
       }
       function closeDrawer(){
         qjOverlay.classList.remove('open');
@@ -2579,6 +2700,9 @@ button{-webkit-tap-highlight-color:transparent}
       document.addEventListener('keydown', function(e){
         if(e.key === 'Escape' && qjOverlay.classList.contains('open')) closeDrawer();
       });
+      if(qjSearch){
+        qjSearch.addEventListener('input', function(){ filterDrawer(qjSearch.value); });
+      }
     }
   } catch(e){}
 
