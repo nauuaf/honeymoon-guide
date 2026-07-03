@@ -6,6 +6,7 @@
 <title>دليل شهر العسل — إيطاليا أغسطس 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://upload.wikimedia.org">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 /* ============ RESET & TOKENS ============ */
@@ -139,9 +140,11 @@ body{
 }
 .route-stop{
   flex:1;min-width:130px;text-align:center;padding:8px 6px;
-  border-radius:14px;transition:all .25s;cursor:default;
+  border-radius:14px;transition:all .25s;cursor:pointer;
+  display:block;text-decoration:none;color:inherit;
 }
-.route-stop:hover{background:var(--cream-deep)}
+.route-stop:hover{background:var(--cream-deep);transform:translateY(-2px)}
+.route-stop:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .route-stop-num{
   display:inline-block;width:28px;height:28px;line-height:28px;
   border-radius:50%;font-size:12px;font-weight:600;
@@ -1114,6 +1117,54 @@ button{-webkit-tap-highlight-color:transparent}
   .qj-overlay,.qj-panel,.theme-toggle,.quick-jump-btn,.booking-fill-bar,.countdown.clickable{transition:none !important}
 }
 
+
+/* ====== UX PORT v3: fallbacks, mobile nav, expand-all ====== */
+
+/* All anchored sections clear the sticky nav */
+section[id]{scroll-margin-top:80px}
+
+/* Hotel image fallback — no broken empty block with a floating badge */
+.hotel-img-wrap.img-missing{
+  display:flex;align-items:center;justify-content:center;
+  min-height:220px;
+  background:
+    radial-gradient(circle at 30% 30%,var(--accent-soft) 0%,transparent 55%),
+    linear-gradient(135deg,var(--cream-deep),var(--cream));
+}
+.hotel-img-wrap.img-missing::after{
+  content:'🏨';font-size:44px;opacity:.3;filter:grayscale(.3);
+}
+@media(max-width:760px){
+  .hotel-img-wrap.img-missing{min-height:140px}
+  .hotel-img-wrap.img-missing::after{font-size:32px}
+}
+
+/* Mobile nav — one scrollable row instead of cramped wrapping */
+@media(max-width:760px){
+  .nav-inner{gap:6px}
+  .nav-links{
+    flex:1 0 100%;flex-wrap:nowrap;overflow-x:auto;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+    padding-bottom:2px;
+  }
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{white-space:nowrap;flex:0 0 auto}
+}
+
+/* Expand / collapse all days in a city */
+.days-toggle-all{
+  margin-inline-start:auto;flex-shrink:0;
+  background:none;border:1px solid var(--line);border-radius:16px;
+  padding:4px 12px;font-family:inherit;font-size:11px;font-weight:600;
+  color:var(--ink-soft);cursor:pointer;letter-spacing:0;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.days-toggle-all:hover{border-color:var(--accent);color:var(--accent-deep);background:var(--accent-soft)}
+.days-toggle-all:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (hover:none){
+  .days-toggle-all:hover{border-color:var(--line);color:var(--ink-soft);background:none}
+}
+
 </style>
 </head>
 <body>
@@ -1174,35 +1225,35 @@ button{-webkit-tap-highlight-color:transparent}
   <div class="route-strip">
     <div class="route-strip-title">مسار الرحلة</div>
     <div class="route-line">
-      <div class="route-stop">
+      <a class="route-stop" href="#milan">
         <div class="route-stop-num">1</div>
         <div class="route-stop-name">ميلان</div>
         <div class="route-stop-meta">4 ليالي · 11–15 أغسطس</div>
-      </div>
+      </a>
       <div class="route-arrow">←</div>
-      <div class="route-stop">
+      <a class="route-stop" href="#florence">
         <div class="route-stop-num">2</div>
         <div class="route-stop-name">فلورنسا</div>
         <div class="route-stop-meta">3 ليالي · 15–18 أغسطس</div>
-      </div>
+      </a>
       <div class="route-arrow">←</div>
-      <div class="route-stop">
+      <a class="route-stop" href="#positano">
         <div class="route-stop-num">3</div>
         <div class="route-stop-name">بوزيتانو</div>
         <div class="route-stop-meta">3 ليالي · 18–21 أغسطس</div>
-      </div>
+      </a>
       <div class="route-arrow">←</div>
-      <div class="route-stop">
+      <a class="route-stop" href="#capri">
         <div class="route-stop-num">4</div>
         <div class="route-stop-name">كابري</div>
         <div class="route-stop-meta">3 ليالي · 21–24 أغسطس</div>
-      </div>
+      </a>
       <div class="route-arrow">←</div>
-      <div class="route-stop">
+      <a class="route-stop" href="#rome">
         <div class="route-stop-num">5</div>
         <div class="route-stop-name">روما</div>
         <div class="route-stop-meta">1 ليلة · 24–25 أغسطس</div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -1234,7 +1285,7 @@ button{-webkit-tap-highlight-color:transparent}
         <div class="hotel-img-wrap">
           <img class="hotel-img" loading="lazy"
             src="https://commons.wikimedia.org/wiki/Special:FilePath/Galleria%20Vittorio%20Emanuele%20II%20-%20Interno.jpg?width=1280"
-            alt="Bulgari Hotel Milano" onerror="this.style.display='none'">
+            alt="Bulgari Hotel Milano" onerror="this.parentElement.classList.add('img-missing');this.remove()">
           <div class="hotel-badge">★ الترشيح الأول</div>
         </div>
         <div class="hotel-info">
@@ -1460,7 +1511,7 @@ button{-webkit-tap-highlight-color:transparent}
         <div class="hotel-img-wrap">
           <img class="hotel-img" loading="lazy"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ponte_Vecchio_from_Ponte_alle_Grazie.jpg/1280px-Ponte_Vecchio_from_Ponte_alle_Grazie.jpg"
-            alt="Hotel Lungarno" onerror="this.style.display='none'">
+            alt="Hotel Lungarno" onerror="this.parentElement.classList.add('img-missing');this.remove()">
           <div class="hotel-badge">★ الترشيح الأول</div>
         </div>
         <div class="hotel-info">
@@ -1639,7 +1690,7 @@ button{-webkit-tap-highlight-color:transparent}
         <div class="hotel-img-wrap">
           <img class="hotel-img" loading="lazy"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Amalfi_Coast_%28Italy%2C_October_2020%29_-_75_%2850558355441%29.jpg/1280px-Amalfi_Coast_%28Italy%2C_October_2020%29_-_75_%2850558355441%29.jpg"
-            alt="Le Sirenuse Positano" onerror="this.style.display='none'">
+            alt="Le Sirenuse Positano" onerror="this.parentElement.classList.add('img-missing');this.remove()">
           <div class="hotel-badge">★ الترشيح الأول</div>
         </div>
         <div class="hotel-info">
@@ -1824,7 +1875,7 @@ button{-webkit-tap-highlight-color:transparent}
         <div class="hotel-img-wrap">
           <img class="hotel-img" loading="lazy"
             src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Capri-marina_piccola.jpg"
-            alt="Capri Tiberio Palace" onerror="this.style.display='none'">
+            alt="Capri Tiberio Palace" onerror="this.parentElement.classList.add('img-missing');this.remove()">
           <div class="hotel-badge">★ الترشيح الأول</div>
         </div>
         <div class="hotel-info">
@@ -1996,7 +2047,7 @@ button{-webkit-tap-highlight-color:transparent}
         <div class="hotel-img-wrap">
           <img class="hotel-img" loading="lazy"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Trevi_Fountain_-_Roma.jpg/1280px-Trevi_Fountain_-_Roma.jpg"
-            alt="Hotel de Russie" onerror="this.style.display='none'">
+            alt="Hotel de Russie" onerror="this.parentElement.classList.add('img-missing');this.remove()">
           <div class="hotel-badge">★ الترشيح</div>
         </div>
         <div class="hotel-info">
@@ -2426,6 +2477,42 @@ button{-webkit-tap-highlight-color:transparent}
     }
   }
 
+  // ===== EXPAND / COLLAPSE ALL (per city) =====
+  $$('.city').forEach(function(city){
+    var header = $('.days-header', city);
+    var days = $$('.day', city);
+    if(!header || days.length < 2) return;
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'days-toggle-all';
+    header.appendChild(btn);
+
+    function refreshLabel(){
+      var anyCollapsed = days.some(function(d){ return !d.classList.contains('expanded'); });
+      btn.textContent = anyCollapsed ? 'فتح كل الأيام' : 'إغلاق كل الأيام';
+      btn.setAttribute('aria-expanded', anyCollapsed ? 'false' : 'true');
+    }
+    btn.addEventListener('click', function(){
+      var anyCollapsed = days.some(function(d){ return !d.classList.contains('expanded'); });
+      days.forEach(function(d){
+        d.classList.toggle('expanded', anyCollapsed);
+        var t = $('.day-top', d);
+        if(t) t.setAttribute('aria-expanded', anyCollapsed ? 'true' : 'false');
+      });
+      refreshLabel();
+    });
+    refreshLabel();
+    city.__refreshToggleAll = refreshLabel;
+  });
+  // keep the toggle-all label in sync when individual days open/close
+  function syncToggleAll(e){
+    var city = e.target && e.target.closest ? e.target.closest('.city') : null;
+    if(city && city.__refreshToggleAll) setTimeout(city.__refreshToggleAll, 0);
+  }
+  document.addEventListener('click', syncToggleAll);
+  document.addEventListener('keyup', syncToggleAll);
+
   // ===== TRANSIT STRIPS — lift between-city transits out of last day =====
   $$('.city').forEach(function(city){
     if(city.id === 'rome') return; // last city: keep flight-home transit inline
@@ -2453,7 +2540,14 @@ button{-webkit-tap-highlight-color:transparent}
         if(e.isIntersecting){
           Object.keys(navLinks).forEach(function(k){ navLinks[k].classList.remove('active'); });
           var a = navLinks[e.target.id];
-          if(a) a.classList.add('active');
+          if(a){
+            a.classList.add('active');
+            // keep the active pill visible when the nav row scrolls (mobile)
+            var row = a.parentNode;
+            if(row && row.scrollWidth > row.clientWidth + 4){
+              try { a.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}); } catch(err){}
+            }
+          }
         }
       });
     }, {threshold:0, rootMargin:'-25% 0px -60% 0px'});
@@ -2481,7 +2575,7 @@ button{-webkit-tap-highlight-color:transparent}
       var el = document.querySelector(window.location.hash);
       if(el){
         var y = el.getBoundingClientRect().top + window.scrollY - 72;
-        window.scrollTo({top:y, behavior:'instant' in window ? 'instant' : 'auto'});
+        window.scrollTo({top:y, behavior:'auto'});
       }
     }, 50);
   }
