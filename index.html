@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>دليل شهر العسل — إيطاليا أغسطس 2026</title>
+<title>دليل شهر العسل: إيطاليا أغسطس 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://upload.wikimedia.org">
@@ -253,11 +253,10 @@ body{
 .hotel-desc{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:14px}
 .hotel-highlight{
   font-size:13.5px;background:transparent;border:none;
-  border-top:1px solid var(--line-soft);
-  color:var(--ink-soft);padding:14px 0 0;margin-top:14px;
-  line-height:1.75;font-style:italic;
+  border-inline-start:3px solid var(--accent);
+  color:var(--ink-soft);padding:2px 0;padding-inline-start:14px;
+  margin-top:16px;line-height:1.75;
 }
-.hotel-highlight::before{content:"— ";color:var(--accent);font-weight:600;font-style:normal}
 
 /* ============ ALT HOTEL (second option) ============ */
 .hotel-alt{
@@ -378,12 +377,12 @@ html[data-theme="dark"] .day-book-flag{background:rgba(153,27,27,.35);color:#FCA
   color:var(--accent);margin-bottom:6px;text-transform:uppercase;
 }
 .match-name{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.match-reason{font-size:12.5px;color:var(--ink-soft);line-height:1.7;font-style:italic}
+.match-reason{font-size:12.5px;color:var(--ink-soft);line-height:1.7}
 
 .fact{
   background:transparent;border:none;border-top:1px solid var(--line-soft);
   padding:14px 0 0;margin-top:16px;
-  font-size:13px;color:var(--ink-soft);line-height:1.8;font-style:italic;
+  font-size:13px;color:var(--ink-soft);line-height:1.8;
 }
 .fact b{color:var(--ink);font-weight:600;font-style:normal;margin-inline-end:6px}
 
@@ -604,6 +603,9 @@ html[data-theme="dark"] .day-book-flag{background:rgba(153,27,27,.35);color:#FCA
   font-size:11px;font-weight:600;padding:0 6px;
 }
 .cc-day-chip.special .cc-day-chip-num{background:var(--accent)}
+/* dark theme: --ink flips light, so hardcoded #fff numerals vanish */
+html[data-theme="dark"] .cc-day-chip-num{color:var(--cream)}
+html[data-theme="dark"] .cc-day-chip.special .cc-day-chip-num{color:#fff}
 
 /* DAY: COLLAPSIBLE */
 .day.collapsible .day-top{cursor:pointer;user-select:none;position:relative}
@@ -1073,6 +1075,8 @@ html[data-theme="dark"] .quick-jump-btn{box-shadow:0 20px 60px -20px rgba(0,0,0,
   font-size:11px;font-weight:600;flex-shrink:0;
 }
 .qj-day.special .qj-day-num{background:var(--accent)}
+html[data-theme="dark"] .qj-day-num{color:var(--cream)}
+html[data-theme="dark"] .qj-day.special .qj-day-num{color:#fff}
 .qj-day.is-today{border-color:var(--accent);background:var(--accent-soft)}
 .qj-day-text{display:flex;flex-direction:column;gap:1px;min-width:0}
 .qj-day-title{font-size:13px;font-weight:600;line-height:1.3}
@@ -1214,7 +1218,7 @@ section[id]{scroll-margin-top:80px}
     <div class="hero-eyebrow">دليل شهر العسل · A LOVE LETTER TO ITALY</div>
     <h1>إيطاليا تنتظركم<br><span class="serif">Fourteen nights of la dolce vita</span></h1>
     <p class="hero-sub">
-      من بحيرات الألب الزرقاء، عبر تلال توسكانا، إلى صخور كابري والساحل الأمالفي — رحلة مصمّمة بعناية لكل لحظة.
+      من بحيرات الألب الزرقاء، عبر تلال توسكانا، إلى صخور كابري والساحل الأمالفي، رحلة مصمّمة بعناية لكل لحظة.
     </p>
     <div id="countdown" class="countdown" aria-live="polite"></div>
   </div>
@@ -1228,31 +1232,31 @@ section[id]{scroll-margin-top:80px}
       <a class="route-stop" href="#milan">
         <div class="route-stop-num">1</div>
         <div class="route-stop-name">ميلان</div>
-        <div class="route-stop-meta">4 ليالي · 11–15 أغسطس</div>
+        <div class="route-stop-meta">4 ليالي · 11-15 أغسطس</div>
       </a>
       <div class="route-arrow">←</div>
       <a class="route-stop" href="#florence">
         <div class="route-stop-num">2</div>
         <div class="route-stop-name">فلورنسا</div>
-        <div class="route-stop-meta">3 ليالي · 15–18 أغسطس</div>
+        <div class="route-stop-meta">3 ليالي · 15-18 أغسطس</div>
       </a>
       <div class="route-arrow">←</div>
       <a class="route-stop" href="#positano">
         <div class="route-stop-num">3</div>
         <div class="route-stop-name">بوزيتانو</div>
-        <div class="route-stop-meta">3 ليالي · 18–21 أغسطس</div>
+        <div class="route-stop-meta">3 ليالي · 18-21 أغسطس</div>
       </a>
       <div class="route-arrow">←</div>
       <a class="route-stop" href="#capri">
         <div class="route-stop-num">4</div>
         <div class="route-stop-name">كابري</div>
-        <div class="route-stop-meta">3 ليالي · 21–24 أغسطس</div>
+        <div class="route-stop-meta">3 ليالي · 21-24 أغسطس</div>
       </a>
       <div class="route-arrow">←</div>
       <a class="route-stop" href="#rome">
         <div class="route-stop-num">5</div>
         <div class="route-stop-name">روما</div>
-        <div class="route-stop-meta">1 ليلة · 24–25 أغسطس</div>
+        <div class="route-stop-meta">1 ليلة · 24-25 أغسطس</div>
       </a>
     </div>
   </div>
@@ -1270,10 +1274,10 @@ section[id]{scroll-margin-top:80px}
     <div class="city-hero-content">
       <div class="city-num">المحطة الأولى · STOP I</div>
       <h2 class="city-name-ar">ميلان</h2>
-      <div class="city-name-en">Milano — style, art & the lake</div>
+      <div class="city-name-en">Milano: style, art & the lake</div>
       <div class="city-meta">
         <span class="city-meta-item">☀ 30°م</span>
-        <span class="city-meta-item">📅 11–15 أغسطس</span>
+        <span class="city-meta-item">📅 11-15 أغسطس</span>
         <span class="city-meta-item">🏨 4 ليالي</span>
       </div>
     </div>
@@ -1284,8 +1288,8 @@ section[id]{scroll-margin-top:80px}
       <div class="hotel-grid">
         <div class="hotel-img-wrap">
           <img class="hotel-img" loading="lazy"
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/Galleria%20Vittorio%20Emanuele%20II%20-%20Interno.jpg?width=1280"
-            alt="Bulgari Hotel Milano" onerror="this.parentElement.classList.add('img-missing');this.remove()">
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Brera%20Botanical%20Garden%20-%204.jpg?width=1280"
+            alt="حديقة بريرا النباتية الملاصقة لحديقة فندق بولغري" onerror="this.parentElement.classList.add('img-missing');this.remove()">
           <div class="hotel-badge">★ الترشيح الأول</div>
         </div>
         <div class="hotel-info">
@@ -1296,8 +1300,8 @@ section[id]{scroll-margin-top:80px}
             <span class="hotel-price">~4,900 ر/ليلة</span>
             <span class="hotel-price-detail">· المجموع ~19,600 ر (4 ليالي) · تقدير أغسطس 2026</span>
           </div>
-          <p class="hotel-desc">واحة هادية بحديقة خاصة 4,000م² وسط حي بريرا الفني. سبا فخم بمسبح مضيء بالذهب. حوالي 8 دقايق مشي من حي الموضة، و~15 دقيقة من الدومو، لكنه مخبّأ عن الزحمة تماماً. خدمة استثنائية وخصوصية — الملاذ المثالي بعد يوم مزدحم بالمدينة.</p>
-          <div class="hotel-highlight">💡 الموقع سرّي وهادي رغم إنه بقلب ميلان — من الحديقة لا سكالا حوالي 10 دقايق مشي، والدومو ~15 دقيقة.</div>
+          <p class="hotel-desc">واحة هادية بحديقة خاصة 4,000م² وسط حي بريرا الفني. سبا فخم بمسبح مضيء بالذهب. حوالي 8 دقايق مشي من حي الموضة، و~15 دقيقة من الدومو، لكنه مخبّأ عن الزحمة تماماً. خدمة استثنائية وخصوصية، الملاذ المثالي بعد يوم مزدحم بالمدينة.</p>
+          <div class="hotel-highlight">💡 الموقع سرّي وهادي رغم إنه بقلب ميلان، من الحديقة لا سكالا حوالي 10 دقايق مشي، والدومو ~15 دقيقة.</div>
         </div>
       </div>
     </div>
@@ -1326,18 +1330,18 @@ section[id]{scroll-margin-top:80px}
           <div class="day-date">Tue · 11 Aug</div>
         </div>
       </div>
-      <div class="day-note">توصلون ميلان الظهر (مالبينسا/ليناتي). تشيكون بالفندق 2–3م. عندكم نص يوم — خذوها ساهلة.</div>
+      <div class="day-note">توصلون ميلان الظهر (مالبينسا/ليناتي). تشيكون بالفندق 2-3م. عندكم نص يوم، خذوها ساهلة.</div>
       <div class="options">
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · القلب التاريخي</span>
           <p class="opt-title">سطح الدومو + الغاليريا</p>
           <p class="opt-title-en">Duomo rooftop + Galleria</p>
-          <p class="opt-desc">تصعدون سطح كاتدرائية الدومو — تمشون فعلياً بين الأبراج القوطية الرخامية! بعدها الغاليريا فيتوريو إيمانويلي، أقدم مركز تسوق مغطى بالعالم تحت قبة زجاجية. أبيريتيفو بالساحة.</p>
+          <p class="opt-desc">تصعدون سطح كاتدرائية الدومو، تمشون فعلياً بين الأبراج القوطية الرخامية! بعدها الغاليريا فيتوريو إيمانويلي، أقدم مركز تسوق مغطى بالعالم تحت قبة زجاجية. أبيريتيفو بالساحة.</p>
           <div class="schedule"><b>4pm:</b> Duomo rooftop · <b>5:30pm:</b> Galleria · <b>7pm:</b> aperitivo · <b>8:30pm:</b> dinner</div>
           <div class="tags"><span class="tag t-book">احجزوا تذكرة السطح</span><span class="tag t-cost">السطح ~90 ر</span></div>
-          <div class="fact"><b>🏛️ 600 سنة بناء</b> الدومو استغرق ~600 سنة حتى اكتمل! أكبر كنيسة قوطية بإيطاليا — 135 برجاً و3,400 تمثالاً. وأنتوا فوق تمشون بينها.</div>
+          <div class="fact"><b>🏛️ 600 سنة بناء</b> الدومو استغرق ~600 سنة حتى اكتمل! أكبر كنيسة قوطية بإيطاليا، 135 برجاً و3,400 تمثالاً. وأنتوا فوق تمشون بينها.</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء — أناقة كلاسيكية</div>
+            <div class="match-label">🍽 العشاء: أناقة كلاسيكية</div>
             <div class="match-name">Ristorante Da Giacomo · Milano</div>
             <div class="match-reason">أيقونة ميلانية أنيقة يحبها أهل المدينة. سمك وباستا ممتازة بأجواء راقية. بداية تليق بأول ليلة.</div>
           </div>
@@ -1346,14 +1350,14 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-b">الخيار ب · أجواء الحي</span>
           <p class="opt-title">حي بريرا + أبيريتيفو</p>
           <p class="opt-title-en">Brera district + aperitivo</p>
-          <p class="opt-desc">بريرا = حي الفنانين، أزقة حجرية وغاليريات ومحلات عتيقة، وكله يبعد دقائق عن الفندق. تمشون قبل الغروب، بعدها طقس الأبيريتيفو الميلاني الأصيل — مشروب مع مقبلات.</p>
+          <p class="opt-desc">بريرا = حي الفنانين، أزقة حجرية وغاليريات ومحلات عتيقة، وكله يبعد دقائق عن الفندق. تمشون قبل الغروب، بعدها طقس الأبيريتيفو الميلاني الأصيل، مشروب مع مقبلات.</p>
           <div class="schedule"><b>5pm:</b> Brera walk · <b>6:30pm:</b> Pinacoteca courtyard · <b>7pm:</b> aperitivo · <b>8:30pm:</b> dinner</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span><span class="tag t-cost">أبيريتيفو ~60 ر/ثنين</span></div>
           <div class="fact"><b>🍸 ميلان اخترعت الأبيريتيفو</b> تقليد المشروب-قبل-العشاء مع المقبلات المجانية بدأ هنا! في بعض أماكن نافيلي يعطونك بوفيه كامل مع مشروب واحد.</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء — في بريرا</div>
+            <div class="match-label">🍽 العشاء: في بريرا</div>
             <div class="match-name">Nabucco · Brera</div>
-            <div class="match-reason">مطعم رومانسي كلاسيكي بقلب بريرا. أجواء دافية ومطبخ إيطالي أنيق — مثالي لأول أمسية.</div>
+            <div class="match-reason">مطعم رومانسي كلاسيكي بقلب بريرا. أجواء دافية ومطبخ إيطالي أنيق، مثالي لأول أمسية.</div>
           </div>
         </div>
       </div>
@@ -1373,12 +1377,12 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-a">الخيار أ · دافنشي + نافيلي ⭐</span>
           <p class="opt-title">العشاء الأخير + قلعة سفورزا + نافيلي</p>
           <p class="opt-title-en">The Last Supper + Sforza + Navigli</p>
-          <p class="opt-desc">صبح مع جدارية "العشاء الأخير" لليوناردو دافنشي (احجزوا من شهور — التذاكر تنفد بسرعة!). بعدها قلعة سفورزا وحدائق سيمبيوني. المساء على قنوات نافيلي — عشاء على ضفة القناة وسط الأضواء.</p>
+          <p class="opt-desc">صبح مع جدارية "العشاء الأخير" لليوناردو دافنشي (احجزوا من شهور، التذاكر تنفد بسرعة!). بعدها قلعة سفورزا وحدائق سيمبيوني. المساء على قنوات نافيلي، عشاء على ضفة القناة وسط الأضواء.</p>
           <div class="schedule"><b>9:15am:</b> Last Supper · <b>10:30am:</b> Sforza Castle · <b>1pm:</b> lunch · <b>6pm:</b> Navigli</div>
           <div class="tags"><span class="tag t-book">احجزوا الحين!</span><span class="tag t-cost">تذاكر ~110 ر/شخص</span></div>
-          <div class="fact"><b>🎨 لوحة على وشك الاختفاء</b> "العشاء الأخير" رسمها دافنشي 1495–98 بتقنية تجريبية بدأت تتقشّر وهو حي! ونجت من قنبلة دمّرت الدير بالحرب. 15 دقيقة فقط مسموحة لكل مجموعة.</div>
+          <div class="fact"><b>🎨 لوحة على وشك الاختفاء</b> "العشاء الأخير" رسمها دافنشي 1495-98 بتقنية تجريبية بدأت تتقشّر وهو حي! ونجت من قنبلة دمّرت الدير بالحرب. 15 دقيقة فقط مسموحة لكل مجموعة.</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء — على قناة نافيلي</div>
+            <div class="match-label">🍽 العشاء: على قناة نافيلي</div>
             <div class="match-name">Al Pont de Ferr · Navigli</div>
             <div class="match-reason">على ضفة القناة مباشرة تحت الفوانيس. مطبخ ميلاني معاصر. أجمل مكان لعشاء المساء في نافيلي.</div>
           </div>
@@ -1387,20 +1391,20 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-b">الخيار ب · الموضة + المتحف</span>
           <p class="opt-title">الكوادريلاتيرو + متحف القرن العشرين</p>
           <p class="opt-title-en">Fashion quad + Museo del Novecento</p>
-          <p class="opt-desc">حي الموضة (Via Montenapoleone و Via della Spiga) — من أرقى شوارع التسوق بالعالم. بعدها Museo del Novecento للفن الإيطالي الحديث، وإطلالة على الدومو من نوافذه.</p>
+          <p class="opt-desc">حي الموضة (Via Montenapoleone و Via della Spiga)، من أرقى شوارع التسوق بالعالم. بعدها Museo del Novecento للفن الإيطالي الحديث، وإطلالة على الدومو من نوافذه.</p>
           <div class="schedule"><b>10am:</b> Montenapoleone · <b>1pm:</b> lunch · <b>3pm:</b> Museo del Novecento · <b>6pm:</b> Duomo view</div>
           <div class="tags"><span class="tag t-cost">المتحف ~40 ر</span><span class="tag t-tip">التسوق</span></div>
           <div class="fact"><b>👗 عاصمة الموضة</b> أسبوع ميلان للموضة من أهم 4 أسابيع بالعالم. الكوادريلاتيرو ديلا مودا = مربّع تتجمّع فيه كل دور الأزياء الكبرى بشوارع قليلة.</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء — فناء تاريخي</div>
+            <div class="match-label">🍽 العشاء: فناء تاريخي</div>
             <div class="match-name">Il Salumaio di Montenapoleone</div>
-            <div class="match-reason">مطعم بفناء داخلي ساحر وسط حي الموضة. أكل إيطالي راقٍ وأجواء أنيقة — يكمّل يوم التسوق.</div>
+            <div class="match-reason">مطعم بفناء داخلي ساحر وسط حي الموضة. أكل إيطالي راقٍ وأجواء أنيقة، يكمّل يوم التسوق.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Day 3 — Lake Como round trip -->
+    <!-- Day 3، Lake Como round trip -->
     <div class="day">
       <div class="day-top">
         <div class="day-numeral">3</div>
@@ -1419,9 +1423,9 @@ section[id]{scroll-margin-top:80px}
           <p class="opt-desc">قطار لكومو، بعده قارب خاص على البحيرة. تزورون فيلا بالبيانيلو (مكان زواج Anakin & Padmé في Star Wars + مكان تعالُج Bond في Casino Royale)، ثم بيلاجيو للغداء.</p>
           <div class="schedule"><b>8:30am:</b> train to Como · <b>10:30am:</b> Villa Balbianello · <b>1pm:</b> lunch in Bellagio · <b>5pm:</b> return train</div>
           <div class="tags"><span class="tag t-book">احجزوا الحين!</span><span class="tag t-cost">~600 ر/ثنين + قطار</span></div>
-          <div class="fact"><b>🎬 ستار وورز هنا!</b> فيلا بالبيانيلو = نفس المكان اللي صوّروا فيه زواج Anakin و Padmé. George Lucas ما غيّر شي بالكمبيوتر — المكان خيالي كذا!</div>
+          <div class="fact"><b>🎬 ستار وورز هنا!</b> فيلا بالبيانيلو = نفس المكان اللي صوّروا فيه زواج Anakin و Padmé. George Lucas ما غيّر شي بالكمبيوتر، المكان خيالي كذا!</div>
           <div class="match">
-            <div class="match-label">🍽 الغداء — في بيلاجيو</div>
+            <div class="match-label">🍽 الغداء: في بيلاجيو</div>
             <div class="match-name">Ristorante Bilacus · Bellagio</div>
             <div class="match-reason">سطح تحت عريشة عنب. سمك البحيرة الطازج. كل التقييمات تقول "رجعنا المرة الثانية".</div>
           </div>
@@ -1430,18 +1434,18 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-b">الخيار ب · استكشاف بالفيري</span>
           <p class="opt-title">فارينّا + بيلاجيو بالعبّارة</p>
           <p class="opt-title-en">Varenna + Bellagio ferry day</p>
-          <p class="opt-desc">قطار لفارينا مباشرة — ممشى العشاق المنحوت بالصخر + حدائق Villa Monastero. بعدها فيري لبيلاجيو للغداء والتسوق. أرخص وأكثر حرية.</p>
+          <p class="opt-desc">قطار لفارينا مباشرة، ممشى العشاق المنحوت بالصخر + حدائق Villa Monastero. بعدها فيري لبيلاجيو للغداء والتسوق. أرخص وأكثر حرية.</p>
           <div class="schedule"><b>8:20am:</b> train to Varenna · <b>10am:</b> Lovers' walk · <b>12:30pm:</b> ferry to Bellagio · <b>1pm:</b> lunch</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span><span class="tag t-cost">قطار + فيري ~120 ر</span></div>
-          <div class="fact"><b>💑 ممشى العشاق</b> (Passeggiata degli Innamorati) — ممر ضيق محفور بالصخر فوق الماء مباشرة. كثير ناس يتقدمون هناك!</div>
+          <div class="fact"><b>💑 ممشى العشاق</b> (Passeggiata degli Innamorati)، ممر ضيق محفور بالصخر فوق الماء مباشرة. كثير ناس يتقدمون هناك!</div>
           <div class="match">
-            <div class="match-label">🍽 الغداء — في بيلاجيو</div>
+            <div class="match-label">🍽 الغداء: في بيلاجيو</div>
             <div class="match-name">Ristorante Bilacus · Bellagio</div>
-            <div class="match-reason">نفس المطعم — تمرون فيه بعد ما توصلون من فارينا. على سطح مع إطلالة.</div>
+            <div class="match-reason">نفس المطعم، تمرون فيه بعد ما توصلون من فارينا. على سطح مع إطلالة.</div>
           </div>
         </div>
       </div>
-      <div class="evening">🌙 <b>عشاء الخيارين:</b> ارجعوا ميلان وتعشّوا قريب من الفندق في بريرا — ليلة هادية تختم يوم البحيرة.</div>
+      <div class="evening">🌙 <b>عشاء الخيارين:</b> ارجعوا ميلان وتعشّوا قريب من الفندق في بريرا، ليلة هادية تختم يوم البحيرة.</div>
     </div>
 
     <!-- Day 4 -->
@@ -1458,13 +1462,13 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-a">الخيار أ · فن معاصر</span>
           <p class="opt-title">فوندازيوني برادا + نافيلي</p>
           <p class="opt-title-en">Fondazione Prada + Navigli</p>
-          <p class="opt-desc">صبح هادي بالفندق والسبا. بعدها Fondazione Prada — متحف فن معاصر بتصميم مذهل وبرج مكسو بالذهب. تكملون لنافيلي لآخر مشي على القنوات.</p>
+          <p class="opt-desc">صبح هادي بالفندق والسبا. بعدها Fondazione Prada، متحف فن معاصر بتصميم مذهل وبرج مكسو بالذهب. تكملون لنافيلي لآخر مشي على القنوات.</p>
           <div class="schedule"><b>morning:</b> pool + spa · <b>12pm:</b> lunch · <b>2pm:</b> Fondazione Prada · <b>5pm:</b> last stroll</div>
           <div class="tags"><span class="tag t-cost">المتحف ~60 ر</span></div>
           <div class="match">
             <div class="match-label">🍽 عشاء الوداع من ميلان</div>
             <div class="match-name">Ratanà · Milano</div>
-            <div class="match-reason">أشهر ريزوتو ميلاني بالزعفران وأوسّوبوكو أصيل. مطبخ لومباردي حقيقي بأجواء دافية — وداع يليق بالمدينة.</div>
+            <div class="match-reason">أشهر ريزوتو ميلاني بالزعفران وأوسّوبوكو أصيل. مطبخ لومباردي حقيقي بأجواء دافية، وداع يليق بالمدينة.</div>
           </div>
         </div>
         <div class="opt">
@@ -1477,7 +1481,7 @@ section[id]{scroll-margin-top:80px}
           <div class="match">
             <div class="match-label">🍽 عشاء الوداع</div>
             <div class="match-name">Trattoria Milanese · centro</div>
-            <div class="match-reason">تراتوريا تاريخية من 1933. كوتوليتا ميلانيزي وريزوتو كلاسيكي — أصالة ميلانية بلا تكلّف.</div>
+            <div class="match-reason">تراتوريا تاريخية من 1933. كوتوليتا ميلانيزي وريزوتو كلاسيكي، أصالة ميلانية بلا تكلّف.</div>
           </div>
         </div>
       </div>
@@ -1496,10 +1500,10 @@ section[id]{scroll-margin-top:80px}
     <div class="city-hero-content">
       <div class="city-num">المحطة الثانية · STOP II</div>
       <h2 class="city-name-ar">فلورنسا</h2>
-      <div class="city-name-en">Firenze — the Renaissance city</div>
+      <div class="city-name-en">Firenze: the Renaissance city</div>
       <div class="city-meta">
         <span class="city-meta-item">☀ 35°م</span>
-        <span class="city-meta-item">📅 15–18 أغسطس</span>
+        <span class="city-meta-item">📅 15-18 أغسطس</span>
         <span class="city-meta-item">🏨 3 ليالي</span>
       </div>
     </div>
@@ -1522,7 +1526,7 @@ section[id]{scroll-margin-top:80px}
             <span class="hotel-price">~3,350 ر/ليلة</span>
             <span class="hotel-price-detail">· المجموع ~10,050 ر (3 ليالي) · Ferragosto/ذروة الموسم</span>
           </div>
-          <p class="hotel-desc">فندق بوتيك ملك عائلة Ferragamo. على نهر Arno بإطلالة مباشرة على Ponte Vecchio من غرفتكم. مجموعة لوحات أصلية. مطعم Borgo San Jacopo (ميشلان) بالفندق. بحي Oltrarno — أحلى حي للمشي والعشاء.</p>
+          <p class="hotel-desc">فندق بوتيك ملك عائلة Ferragamo. على نهر Arno بإطلالة مباشرة على Ponte Vecchio من غرفتكم. مجموعة لوحات أصلية. مطعم Borgo San Jacopo (ميشلان) بالفندق. بحي Oltrarno، أحلى حي للمشي والعشاء.</p>
           <div class="hotel-highlight">💡 الموقع في Oltrarno = 5 دقايق مشي من Ponte Vecchio، 10 دقايق من Uffizi، ومحاط بأحلى مطاعم فلورنسا المحلية.</div>
         </div>
       </div>
@@ -1552,17 +1556,17 @@ section[id]{scroll-margin-top:80px}
           <div class="day-date">Sat · 15 Aug · Ferragosto 🇮🇹</div>
         </div>
       </div>
-      <div class="day-note">🇮🇹 توصلون من ميلان الظهر. اليوم Ferragosto — أكبر عطلة صيفية: بعض المحلات مسكّرة بس المطاعم شغّالة والمدينة أهدأ. الجو حار 35°م — خلّوا المشي للمساء.</div>
+      <div class="day-note">🇮🇹 توصلون من ميلان الظهر. اليوم Ferragosto، أكبر عطلة صيفية: بعض المحلات مسكّرة بس المطاعم شغّالة والمدينة أهدأ. الجو حار 35°م، خلّوا المشي للمساء.</div>
       <div class="options">
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · مشي كلاسيكي</span>
           <p class="opt-title">Ponte Vecchio + حي Oltrarno</p>
-          <p class="opt-desc">تمشون على الجسر القديم (محلات ذهب ومجوهرات)، تعبرون لـOltrarno — ورش جلود يدوية ومطاعم أصلية. عشاء بالحي.</p>
+          <p class="opt-desc">تمشون على الجسر القديم (محلات ذهب ومجوهرات)، تعبرون لـOltrarno، ورش جلود يدوية ومطاعم أصلية. عشاء بالحي.</p>
           <div class="schedule"><b>4pm:</b> Ponte Vecchio · <b>5pm:</b> Oltrarno · <b>7pm:</b> aperitivo · <b>8:30pm:</b> dinner</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span></div>
           <div class="fact"><b>🌉 الجسر الناجي</b> Ponte Vecchio = الجسر الوحيد بفلورنسا اللي ما انهدم بالحرب العالمية الثانية. يقولون هتلر نفسه أمر بحمايته. عمره 650+ سنة!</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء — 5 دقايق من الفندق</div>
+            <div class="match-label">🍽 العشاء: 5 دقايق من الفندق</div>
             <div class="match-name">C-ucina · Oltrarno</div>
             <div class="match-reason">Farm-to-table بالحي. أكل بسيط بس الطعم مذهل. المطعم اللي يروحونه أهل الحي. جربوا الـ panna cotta.</div>
           </div>
@@ -1571,12 +1575,12 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-b">الخيار ب · جولة أكل</span>
           <p class="opt-title">جولة أكل الشوارع</p>
           <p class="opt-title-en">Florence street food walking tour</p>
-          <p class="opt-desc">جولة مع مرشد — lampredotto، فوكاتشا، كروستيني بالكمأة، وجيلاتو حرفي. 5–6 محطات بين الأزقة القديمة. الجولة = العشاء.</p>
-          <div class="schedule"><b>5pm:</b> meet at Mercato Centrale · <b>5–8pm:</b> food tour (6 stops)</div>
+          <p class="opt-desc">جولة مع مرشد، lampredotto، فوكاتشا، كروستيني بالكمأة، وجيلاتو حرفي. 5-6 محطات بين الأزقة القديمة. الجولة = العشاء.</p>
+          <div class="schedule"><b>5pm:</b> meet at Mercato Centrale · <b>5-8pm:</b> food tour (6 stops)</div>
           <div class="tags"><span class="tag t-book">احجزوا قبل أسبوعين</span><span class="tag t-cost">~250 ر/ثنين</span></div>
           <div class="match">
             <div class="match-label">🍽 الجولة نفسها = العشاء</div>
-            <div class="match-name">5–6 محطات أكل خلال الجولة</div>
+            <div class="match-name">5-6 محطات أكل خلال الجولة</div>
             <div class="match-reason">تتذوقون أكل فلورنسا الأصلي مع شرح عن كل طبق وتاريخه.</div>
           </div>
         </div>
@@ -1596,11 +1600,11 @@ section[id]{scroll-margin-top:80px}
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · فن + طبخ ⭐</span>
           <p class="opt-title">متحف Uffizi + درس طبخ</p>
-          <p class="opt-desc">صبح في Uffizi — Birth of Venus، دافنشي، كارافاجيو. مكيّف! بعد الظهر درس طبخ — تسوون باستا وتيراميسو وتاكلون اللي سويتوه.</p>
+          <p class="opt-desc">صبح في Uffizi، Birth of Venus، دافنشي، كارافاجيو. مكيّف! بعد الظهر درس طبخ، تسوون باستا وتيراميسو وتاكلون اللي سويتوه.</p>
           <div class="schedule"><b>8:30am:</b> Uffizi · <b>12pm:</b> light lunch · <b>3pm:</b> cooking class (3 hrs) · <b>7pm:</b> Piazzale Michelangelo</div>
           <div class="tags"><span class="tag t-book">احجزوا الحين!</span><span class="tag t-cost">~450 ر إجمالي</span></div>
           <div class="match">
-            <div class="match-label">🍽 العشاء — بعد الغروب</div>
+            <div class="match-label">🍽 العشاء: بعد الغروب</div>
             <div class="match-name">La Leggenda dei Frati · Villa Bardini</div>
             <div class="match-reason">أرومانسية مطعم بفلورنسا. زوج وزوجة يديرونه. تراس بإطلالة على المدينة وقت الغروب. احجزوا طاولة تراس!</div>
           </div>
@@ -1608,18 +1612,18 @@ section[id]{scroll-margin-top:80px}
         <div class="opt">
           <span class="opt-badge ob-b">الخيار ب · كاتدرائية + ورشة</span>
           <p class="opt-title">قبة الدومو + ورشة جلود</p>
-          <p class="opt-desc">صعود القبة (463 درجة — المنظر يستاهل!). بعد الظهر ورشة جلود — تسوون قطعة جلدية فلورنسية ذكرى.</p>
+          <p class="opt-desc">صعود القبة (463 درجة، المنظر يستاهل!). بعد الظهر ورشة جلود، تسوون قطعة جلدية فلورنسية ذكرى.</p>
           <div class="schedule"><b>8:30am:</b> Duomo dome · <b>11am:</b> Baptistery · <b>1pm:</b> lunch · <b>3pm:</b> leather workshop</div>
           <div class="tags"><span class="tag t-book">القبة قبل شهر</span><span class="tag t-cost">~400 ر</span></div>
-          <div class="fact"><b>🏛️ هندسة محيّرة</b> قبة الدومو = أكبر قبة طوب بالعالم! بناها Brunelleschi سنة 1436 بدون سقالات — لين الحين المهندسين ما يفهمون كيف!</div>
+          <div class="fact"><b>🏛️ هندسة محيّرة</b> قبة الدومو = أكبر قبة طوب بالعالم! بناها Brunelleschi سنة 1436 بدون سقالات، لين الحين المهندسين ما يفهمون كيف!</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء — قريب من الدومو</div>
+            <div class="match-label">🍽 العشاء: قريب من الدومو</div>
             <div class="match-name">Trattoria Za Za · بجانب Mercato Centrale</div>
-            <div class="match-reason">لازم تجربون Bistecca alla Fiorentina مرة وحدة — ستيك T-bone ضخم على الفحم. أكلة فلورنسا #1!</div>
+            <div class="match-reason">لازم تجربون Bistecca alla Fiorentina مرة وحدة، ستيك T-bone ضخم على الفحم. أكلة فلورنسا #1!</div>
           </div>
         </div>
       </div>
-      <div class="evening">🌅 <b>الخيارين يختمون بـ Piazzale Michelangelo</b> — أشهر إطلالة بفلورنسا. مجانية. اشتروا مشروبات من دكان قريب واستمتعوا بالغروب.</div>
+      <div class="evening">🌅 <b>الخيارين يختمون بـ Piazzale Michelangelo</b>، أشهر إطلالة بفلورنسا. مجانية. اشتروا مشروبات من دكان قريب واستمتعوا بالغروب.</div>
     </div>
 
     <!-- Day 7 -->
@@ -1636,7 +1640,7 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-a">الخيار أ · طلعة جبل</span>
           <p class="opt-title">قرية فيزولي + جولة جيلاتو</p>
           <p class="opt-title-en">Fiesole hilltop + gelato crawl</p>
-          <p class="opt-desc">باص 15 دقيقة لفيزولي — مدرج روماني، حدائق، إطلالة على فلورنسا. أبرد 5–8° من المدينة! بعدها جولة جيلاتو: Vivoli → La Sorbettiera → Gelateria dei Neri.</p>
+          <p class="opt-desc">باص 15 دقيقة لفيزولي، مدرج روماني، حدائق، إطلالة على فلورنسا. أبرد 5-8° من المدينة! بعدها جولة جيلاتو: Vivoli → La Sorbettiera → Gelateria dei Neri.</p>
           <div class="schedule"><b>9am:</b> bus to Fiesole · <b>10am:</b> amphitheater · <b>12:30pm:</b> lunch · <b>2:30pm:</b> return · <b>4pm:</b> gelato</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span><span class="tag t-tip">أبرد من المدينة</span></div>
           <div class="match">
@@ -1649,14 +1653,14 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-b">الخيار ب · تسوق</span>
           <p class="opt-title">سوق San Lorenzo + تمثال داوود</p>
           <p class="opt-title-en">San Lorenzo market + Accademia</p>
-          <p class="opt-desc">سوق الجلود — شنط، أحزمة، جاكيتات (فاصلوا!). غداء فوق في Mercato Centrale (سوق أكل فاخر). بعدها Accademia Gallery — تمثال داوود لمايكل أنجلو.</p>
+          <p class="opt-desc">سوق الجلود، شنط، أحزمة، جاكيتات (فاصلوا!). غداء فوق في Mercato Centrale (سوق أكل فاخر). بعدها Accademia Gallery، تمثال داوود لمايكل أنجلو.</p>
           <div class="schedule"><b>9am:</b> San Lorenzo · <b>11:30am:</b> Mercato Centrale · <b>2pm:</b> Accademia · <b>4pm:</b> rest</div>
           <div class="tags"><span class="tag t-book">Accademia: احجزوا</span><span class="tag t-cost">~70 ر/شخص</span></div>
           <div class="fact"><b>🗿 6 طن من الرخام</b> تمثال داوود طوله 5 أمتار ووزنه 6 طن! نحته مايكل أنجلو وعمره 26 من قطعة رخام رماها نحّاتين ثانيين!</div>
           <div class="match">
-            <div class="match-label">🍽 الغداء — بنفس المكان</div>
+            <div class="match-label">🍽 الغداء: بنفس المكان</div>
             <div class="match-name">Mercato Centrale · الدور الثاني</div>
-            <div class="match-reason">سوق أكل فاخر — باستا طازة، كمأة، بيتزا، جيلاتو. كل شي تحت سقف واحد. 5 دقايق مشي من San Lorenzo.</div>
+            <div class="match-reason">سوق أكل فاخر، باستا طازة، كمأة، بيتزا، جيلاتو. كل شي تحت سقف واحد. 5 دقايق مشي من San Lorenzo.</div>
           </div>
         </div>
       </div>
@@ -1675,10 +1679,10 @@ section[id]{scroll-margin-top:80px}
     <div class="city-hero-content">
       <div class="city-num">المحطة الثالثة · STOP III</div>
       <h2 class="city-name-ar">بوزيتانو</h2>
-      <div class="city-name-en">Positano — the vertical village of the Amalfi Coast</div>
+      <div class="city-name-en">Positano: the vertical village of the Amalfi Coast</div>
       <div class="city-meta">
         <span class="city-meta-item">☀ 29°م</span>
-        <span class="city-meta-item">📅 18–21 أغسطس</span>
+        <span class="city-meta-item">📅 18-21 أغسطس</span>
         <span class="city-meta-item">🏨 3 ليالي</span>
       </div>
     </div>
@@ -1701,8 +1705,8 @@ section[id]{scroll-margin-top:80px}
             <span class="hotel-price">~9,000 ر/ليلة</span>
             <span class="hotel-price-detail">· المجموع ~27,000 ر (3 ليالي) · تقدير ذروة أغسطس</span>
           </div>
-          <p class="hotel-desc">فندق أسطوري بواجهة حمراء توتية يطل على القرية والبحر. مطعم La Sponda الحائز نجمة ميشلان (مضاء بـ400 شمعة!)، بار Franco's الشهير، مسبح بإطلالة، وسبا. تديره عائلة Sersale منذ 1951 — دفء عائلي مع فخامة حقيقية.</p>
-          <div class="hotel-highlight">💡 اطلبوا غرفة بتراس خاص يطل على قبة كنيسة Santa Maria — إطلالة بوزيتانو الأيقونية من سريركم، وأجمل غروب على الساحل.</div>
+          <p class="hotel-desc">فندق أسطوري بواجهة حمراء توتية يطل على القرية والبحر. مطعم La Sponda الحائز نجمة ميشلان (مضاء بـ400 شمعة!)، بار Franco's الشهير، مسبح بإطلالة، وسبا. تديره عائلة Sersale منذ 1951، دفء عائلي مع فخامة حقيقية.</p>
+          <div class="hotel-highlight">💡 اطلبوا غرفة بتراس خاص يطل على قبة كنيسة Santa Maria، إطلالة بوزيتانو الأيقونية من سريركم، وأجمل غروب على الساحل.</div>
         </div>
       </div>
     </div>
@@ -1731,7 +1735,7 @@ section[id]{scroll-margin-top:80px}
           <div class="day-date">Tue · 18 Aug</div>
         </div>
       </div>
-      <div class="day-note">توصلون بعد الظهر من النقل الخاص. بوزيتانو عمودية — كلها درج! تشيكون واسترخوا. عندكم نص يوم.</div>
+      <div class="day-note">توصلون بعد الظهر من النقل الخاص. بوزيتانو عمودية، كلها درج! تشيكون واسترخوا. عندكم نص يوم.</div>
       <div class="options">
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · قلب القرية ⭐</span>
@@ -1740,11 +1744,11 @@ section[id]{scroll-margin-top:80px}
           <p class="opt-desc">تنزلون الدرج للشاطئ الكبير وكنيسة Santa Maria Assunta بقبتها المايوليكا. صنادل جلد يدوية وبوتيكات "موضة بوزيتانو". تختمون بغروب أبيريتيفو ببار Franco's الشهير.</p>
           <div class="schedule"><b>4:30pm:</b> village & church · <b>6pm:</b> sandals & boutiques · <b>7pm:</b> Franco's Bar · <b>8:30pm:</b> dinner</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span><span class="tag t-cost">أبيريتيفو ~90 ر</span></div>
-          <div class="fact"><b>🎨 قبة المايوليكا</b> قبة كنيسة Santa Maria مكسوّة بآلاف بلاطات المايوليكا الخضراء والصفراء. جواها أيقونة بيزنطية للعذراء — الأسطورة تقول إنها "طلبت" البقاء ببوزيتانو فسُمّيت القرية على اسمها.</div>
+          <div class="fact"><b>🎨 قبة المايوليكا</b> قبة كنيسة Santa Maria مكسوّة بآلاف بلاطات المايوليكا الخضراء والصفراء. جواها أيقونة بيزنطية للعذراء، الأسطورة تقول إنها "طلبت" البقاء ببوزيتانو فسُمّيت القرية على اسمها.</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء — أول ليلة</div>
+            <div class="match-label">🍽 العشاء: أول ليلة</div>
             <div class="match-name">La Sponda · Le Sirenuse</div>
-            <div class="match-reason">أرومانسية عشاء على الساحل — مضاء بـ400 شمعة، نجمة ميشلان، وإطلالة على القرية. احجزوا مبكراً، ويفضّلون لبس أنيق.</div>
+            <div class="match-reason">أرومانسية عشاء على الساحل، مضاء بـ400 شمعة، نجمة ميشلان، وإطلالة على القرية. احجزوا مبكراً، ويفضّلون لبس أنيق.</div>
           </div>
         </div>
         <div class="opt">
@@ -1755,9 +1759,9 @@ section[id]{scroll-margin-top:80px}
           <div class="schedule"><b>afternoon:</b> pool + rest · <b>6:30pm:</b> sunset from terrace · <b>8pm:</b> village dinner</div>
           <div class="tags"><span class="tag t-free">مجاني</span><span class="tag t-tip">يوم يهدّي</span></div>
           <div class="match">
-            <div class="match-label">🍽 العشاء — في القرية</div>
+            <div class="match-label">🍽 العشاء: في القرية</div>
             <div class="match-name">Next2 · Positano</div>
-            <div class="match-reason">مطعم أنيق على الواجهة البحرية بأكل متوسطي معاصر. أجواء دافئة — بداية هادية للساحل.</div>
+            <div class="match-reason">مطعم أنيق على الواجهة البحرية بأكل متوسطي معاصر. أجواء دافئة، بداية هادية للساحل.</div>
           </div>
         </div>
       </div>
@@ -1778,12 +1782,12 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-a">الخيار أ · قارب خاص ⭐</span>
           <p class="opt-title">قارب خاص: أمالفي + مغارة الزمرد</p>
           <p class="opt-title-en">Private boat: Amalfi + Emerald Grotto</p>
-          <p class="opt-desc">يوم على البحر بقارب خاص من بوزيتانو. تمرون على المدن المعلّقة ومغارة الزمرد (الجروتو الزمردي)، وتتوقفون بأمالفي للغداء. مناظر وتصوير — بدون محطات سباحة إجبارية.</p>
+          <p class="opt-desc">يوم على البحر بقارب خاص من بوزيتانو. تمرون على المدن المعلّقة ومغارة الزمرد (الجروتو الزمردي)، وتتوقفون بأمالفي للغداء. مناظر وتصوير، بدون محطات سباحة إجبارية.</p>
           <div class="schedule"><b>9:30am:</b> boat from Positano · <b>11am:</b> Emerald Grotto · <b>1pm:</b> lunch in Amalfi · <b>4:30pm:</b> return</div>
           <div class="tags"><span class="tag t-book">قبل أسبوعين</span><span class="tag t-cost">~900 ر/ثنين</span></div>
           <div class="fact"><b>💎 مغارة الزمرد</b> الجروتو الزمردي يتوهّج أخضراً لأن ضوء الشمس يدخلها من فتحة تحت الماء. وفي قاعها مشهد ميلاد غارق (بريسيبي) يزورونه الغطاسون!</div>
           <div class="match">
-            <div class="match-label">🍽 الغداء — في أمالفي</div>
+            <div class="match-label">🍽 الغداء: في أمالفي</div>
             <div class="match-name">Marina Grande · Amalfi</div>
             <div class="match-reason">مطعم على الميناء مباشرة. سمك ومأكولات بحرية طازة. جربوا الباستا بفواكه البحر.</div>
           </div>
@@ -1792,18 +1796,18 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-b">الخيار ب · درب الآلهة</span>
           <p class="opt-title">مشي درب الآلهة + نوتشيلي</p>
           <p class="opt-title-en">Path of the Gods + Nocelle</p>
-          <p class="opt-desc">أشهر ممشى جبلي بإيطاليا — يسير فوق الساحل بين السحاب والبحر. تبدون من Bomerano وتنزلون لنوتشيلي فوق بوزيتانو (~3 ساعات، سهل-متوسط). مناظر أسطورية.</p>
+          <p class="opt-desc">أشهر ممشى جبلي بإيطاليا، يسير فوق الساحل بين السحاب والبحر. تبدون من Bomerano وتنزلون لنوتشيلي فوق بوزيتانو (~3 ساعات، سهل-متوسط). مناظر أسطورية.</p>
           <div class="schedule"><b>8am:</b> bus to Bomerano · <b>9am:</b> trailhead · <b>12pm:</b> Nocelle · <b>1pm:</b> lunch · <b>2:30pm:</b> steps down</div>
           <div class="tags"><span class="tag t-tip">ابدوا بدري + حذاء مريح</span><span class="tag t-free">أجمل ممشى</span></div>
-          <div class="fact"><b>🥾 "درب الآلهة"</b> الأسطورة تقول الآلهة اليونانية مشت هنا لإنقاذ يوليسيس من إغراء السيرين — نفس السيرين اللي سُمّي عليها فندق Le Sirenuse!</div>
+          <div class="fact"><b>🥾 "درب الآلهة"</b> الأسطورة تقول الآلهة اليونانية مشت هنا لإنقاذ يوليسيس من إغراء السيرين، نفس السيرين اللي سُمّي عليها فندق Le Sirenuse!</div>
           <div class="match">
-            <div class="match-label">🍽 الغداء — في نوتشيلي</div>
+            <div class="match-label">🍽 الغداء: في نوتشيلي</div>
             <div class="match-name">Trattoria Santa Croce · Nocelle</div>
             <div class="match-reason">تراس بانورامي في نهاية الممشى. أكل جبلي بسيط بعد المشي، مع إطلالة تستاهل كل درجة.</div>
           </div>
         </div>
       </div>
-      <div class="evening">🌙 <b>عشاء الخيارين:</b> أبيريتيفو في Franco's Bar، ثم عشاء في La Tagliata — مطعم عائلي بالجبل بقائمة ثابتة وإطلالة، ويوصّلونكم بسيارتهم مجاناً.</div>
+      <div class="evening">🌙 <b>عشاء الخيارين:</b> أبيريتيفو في Franco's Bar، ثم عشاء في La Tagliata، مطعم عائلي بالجبل بقائمة ثابتة وإطلالة، ويوصّلونكم بسيارتهم مجاناً.</div>
     </div>
 
     <!-- Day 10 -->
@@ -1818,14 +1822,14 @@ section[id]{scroll-margin-top:80px}
       <div class="options">
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · رافيلو ⭐</span>
-          <p class="opt-title">فيلا تشيمبروني — شرفة اللانهاية</p>
-          <p class="opt-title-en">Ravello — Villa Cimbrone</p>
-          <p class="opt-desc">سيارة لرافيلو المعلّقة فوق الساحل (~40 دقيقة). حدائق Villa Cimbrone و"شرفة اللانهاية" — 180° على البحر المتوسط. بعدها Villa Rufolo بعمارتها العربية-القوطية. هدوء وأناقة بعيداً عن الزحمة.</p>
+          <p class="opt-title">فيلا تشيمبروني، شرفة اللانهاية</p>
+          <p class="opt-title-en">Ravello: Villa Cimbrone</p>
+          <p class="opt-desc">سيارة لرافيلو المعلّقة فوق الساحل (~40 دقيقة). حدائق Villa Cimbrone و"شرفة اللانهاية"، 180° على البحر المتوسط. بعدها Villa Rufolo بعمارتها العربية-القوطية. هدوء وأناقة بعيداً عن الزحمة.</p>
           <div class="schedule"><b>10am:</b> car to Ravello · <b>11am:</b> Villa Cimbrone · <b>1pm:</b> lunch · <b>3pm:</b> Villa Rufolo · <b>5pm:</b> return</div>
-          <div class="tags"><span class="tag t-cost">دخول ~30 ر/شخص</span><span class="tag t-tip">تجنبوا 11ص–3م</span></div>
+          <div class="tags"><span class="tag t-cost">دخول ~30 ر/شخص</span><span class="tag t-tip">تجنبوا 11ص-3م</span></div>
           <div class="fact"><b>🎭 ملاذ Greta Garbo</b> Greta Garbo اختبت بفيلا تشيمبروني من المصورين! وWagner ألّف هنا وقال "اكتشفت حديقة Klingsor" (من أوبرا Parsifal).</div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع — في رافيلو</div>
+            <div class="match-label">🍽 عشاء الوداع: في رافيلو</div>
             <div class="match-name">Terrazza del Confalone · Ravello</div>
             <div class="match-reason">تقييم 9.8! تراس بإطلالة ساحرة وأكل متوسطي راقٍ. وداع يليق بالساحل.</div>
           </div>
@@ -1839,9 +1843,9 @@ section[id]{scroll-margin-top:80px}
           <div class="tags"><span class="tag t-free">قارب Da Adolfo مجاني</span><span class="tag t-tip">بيتش كلوب</span></div>
           <div class="fact"><b>🍋 حكاية الليمون</b> ليمون ساحل أمالفي (سفوسّاتو) ضخم وحلو ومحمي جغرافياً. منه الليمونتشيلو والجرانيتا اللي تلاقونها بكل ركن.</div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع — على الشاطئ</div>
+            <div class="match-label">🍽 عشاء الوداع: على الشاطئ</div>
             <div class="match-name">Chez Black · Spiaggia Grande</div>
-            <div class="match-reason">أيقونة بوزيتانو على الشاطئ من 1949. بيتزا وباستا بحرية وأجواء حيّة — وداع مرح للساحل.</div>
+            <div class="match-reason">أيقونة بوزيتانو على الشاطئ من 1949. بيتزا وباستا بحرية وأجواء حيّة، وداع مرح للساحل.</div>
           </div>
         </div>
       </div>
@@ -1860,10 +1864,10 @@ section[id]{scroll-margin-top:80px}
     <div class="city-hero-content">
       <div class="city-num">المحطة الرابعة · STOP IV</div>
       <h2 class="city-name-ar">كابري</h2>
-      <div class="city-name-en">Capri — the jewel of the Bay of Naples</div>
+      <div class="city-name-en">Capri: the jewel of the Bay of Naples</div>
       <div class="city-meta">
         <span class="city-meta-item">☀ 28°م</span>
-        <span class="city-meta-item">📅 21–24 أغسطس</span>
+        <span class="city-meta-item">📅 21-24 أغسطس</span>
         <span class="city-meta-item">🏨 3 ليالي</span>
       </div>
     </div>
@@ -1886,7 +1890,7 @@ section[id]{scroll-margin-top:80px}
             <span class="hotel-price">~4,500 ر/ليلة</span>
             <span class="hotel-price-detail">· المجموع ~13,500 ر (3 ليالي) · تقدير أغسطس 2026</span>
           </div>
-          <p class="hotel-desc">تصميم ريترو La Dolce Vita — بوب آرت وألوان جريئة. مسبح على السطح بإطلالة بحرية. ~6 دقايق مشي من البياتزيتا. كل غرفة تصميمها مختلف.</p>
+          <p class="hotel-desc">تصميم ريترو La Dolce Vita، بوب آرت وألوان جريئة. مسبح على السطح بإطلالة بحرية. ~6 دقايق مشي من البياتزيتا. كل غرفة تصميمها مختلف.</p>
           <div class="hotel-highlight">💡 جناح Bellevue Suite فيه مسبح خاص بالسيراميك المايوليكا! ترقية ليلتين أو ثلاث (~6,600 ر إضافية) خيار حلو لو تبون سباحة بخصوصية تامة.</div>
         </div>
       </div>
@@ -1899,7 +1903,7 @@ section[id]{scroll-margin-top:80px}
       </div>
       <div class="hotel-alt-name-en">Capri Palace Jumeirah · 5★ · Anacapri</div>
       <div class="hotel-alt-price">~5,800 <b>ر/ليلة</b> · المجموع ~17,400 ر (3 ليالي) · تقدير أغسطس 2026</div>
-      <div class="hotel-alt-reason">تنبيه مهم: هذا الفندق بأناكابري، بلدة ثانية على الجزيرة — مو بكابري تاون. أبعد عن البياتزيتا وتحتاجون باص/تاكسي (~20 دقيقة) لكل نشاطات الجدول أدناه. بالمقابل أهدأ وأخصّ بكثير، ومسبح رائع وسبا عالمي — خيار حلو لو الهدوء أهم من قرب المشي.</div>
+      <div class="hotel-alt-reason">تنبيه مهم: هذا الفندق بأناكابري، بلدة ثانية على الجزيرة، مو بكابري تاون. أبعد عن البياتزيتا وتحتاجون باص/تاكسي (~20 دقيقة) لكل نشاطات الجدول أدناه. بالمقابل أهدأ وأخصّ بكثير، ومسبح رائع وسبا عالمي، خيار حلو لو الهدوء أهم من قرب المشي.</div>
     </div>
 
     <div class="days-header">
@@ -1921,11 +1925,11 @@ section[id]{scroll-margin-top:80px}
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · كابري الكلاسيكية</span>
           <p class="opt-title">حدائق Augustus + تسوق + بياتزيتا</p>
-          <p class="opt-desc">حدائق Augustus — إطلالة على Faraglioni وطريق Via Krupp المتعرج تحتكم. بعدها Via Camerelle للتسوق. المساء بعد 6 (السياح يطلعون) — بياتزيتا هادية وساحرة.</p>
+          <p class="opt-desc">حدائق Augustus، إطلالة على Faraglioni وطريق Via Krupp المتعرج تحتكم. بعدها Via Camerelle للتسوق. المساء بعد 6 (السياح يطلعون)، بياتزيتا هادية وساحرة.</p>
           <div class="schedule"><b>12pm:</b> hotel + lunch · <b>2pm:</b> Gardens of Augustus · <b>3:30pm:</b> shopping · <b>6pm:</b> Piazzetta</div>
           <div class="tags"><span class="tag t-cost">حدائق ~5 ر</span></div>
           <div class="match">
-            <div class="match-label">🍽 العشاء — 5 دقايق مشي</div>
+            <div class="match-label">🍽 العشاء: 5 دقايق مشي</div>
             <div class="match-name">Da Giorgio · Capri town</div>
             <div class="match-reason">طاولات بإطلالة على خليج نابولي. "لو عندي وقت لمطعم واحد بكابري، أختار Da Giorgio." جربوا Pennette Aumm Aumm.</div>
           </div>
@@ -1933,7 +1937,7 @@ section[id]{scroll-margin-top:80px}
         <div class="opt">
           <span class="opt-badge ob-b">الخيار ب · مشي على البحر</span>
           <p class="opt-title">Marina Piccola + Piazzetta</p>
-          <p class="opt-desc">روحوا Marina Piccola — أحلى شاطئ بكابري. ماء فيروزي وإطلالة على Faraglioni. غداء بمطعم على البحر. ما فيه سباحة — بس المنظر والأكل. المساء بياتزيتا.</p>
+          <p class="opt-desc">روحوا Marina Piccola، أحلى شاطئ بكابري. ماء فيروزي وإطلالة على Faraglioni. غداء بمطعم على البحر. ما فيه سباحة، بس المنظر والأكل. المساء بياتزيتا.</p>
           <div class="schedule"><b>1pm:</b> bus to Marina Piccola · <b>1:30pm:</b> seaside lunch · <b>3pm:</b> walk & photos · <b>5pm:</b> return</div>
           <div class="match">
             <div class="match-label">🍽 العشاء</div>
@@ -1959,8 +1963,8 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-a">الخيار أ · المغارة + قارب ⭐</span>
           <p class="opt-title">المغارة الزرقاء + جولة حول الجزيرة</p>
           <p class="opt-title-en">Blue Grotto + island circumnavigation</p>
-          <p class="opt-desc">8 الصبح المغارة الزرقاء — مغارة الماء فيها يتوهج أزرق كهربائي! تدخلون بقارب صغير مستلقين. بعدها قارب خاص حول الجزيرة: Faraglioni (تمرون تحت القوس)، المغارة البيضاء والخضراء. بدون سباحة — مناظر وتصوير.</p>
-          <div class="schedule"><b>8am:</b> Blue Grotto · <b>10am:</b> private boat (3–4 hrs) · <b>2pm:</b> lunch · <b>4pm:</b> rest</div>
+          <p class="opt-desc">8 الصبح المغارة الزرقاء، مغارة الماء فيها يتوهج أزرق كهربائي! تدخلون بقارب صغير مستلقين. بعدها قارب خاص حول الجزيرة: Faraglioni (تمرون تحت القوس)، المغارة البيضاء والخضراء. بدون سباحة، مناظر وتصوير.</p>
+          <div class="schedule"><b>8am:</b> Blue Grotto · <b>10am:</b> private boat (3-4 hrs) · <b>2pm:</b> lunch · <b>4pm:</b> rest</div>
           <div class="tags"><span class="tag t-book">احجزوا الحين</span><span class="tag t-cost">~970 ر إجمالي</span></div>
           <div class="fact"><b>🔵 مسبح الإمبراطور</b> المغارة الزرقاء كانت مسبح تيبيريوس الخاص قبل 2000 سنة! لقوا تماثيل نبتون بقاعها سنة 1964. اللون الأزرق = الماء يمتص الأشعة الحمراء ويخلي بس الزرقاء تمر من فتحة تحت الماء.</div>
           <div class="fact"><b>💋 أسطورة كابري</b> اللي يتباوسون تحت قوس Faraglione di Mezzo يظلون مع بعض للأبد!</div>
@@ -1968,13 +1972,13 @@ section[id]{scroll-margin-top:80px}
         <div class="opt">
           <span class="opt-badge ob-b">الخيار ب · جولة جماعية</span>
           <p class="opt-title">جولة بحرية جماعية صغيرة</p>
-          <p class="opt-desc">جولة مع 8–12 شخص حول الجزيرة — Faraglioni، مغارات. أرخص بكثير وممتعة. تقدرون تتخطون المغارة الزرقاء لو الطابور طويل.</p>
+          <p class="opt-desc">جولة مع 8-12 شخص حول الجزيرة، Faraglioni، مغارات. أرخص بكثير وممتعة. تقدرون تتخطون المغارة الزرقاء لو الطابور طويل.</p>
           <div class="schedule"><b>9am:</b> group tour (3 hrs) · <b>12pm:</b> lunch · <b>2pm:</b> walk Capri town</div>
           <div class="tags"><span class="tag t-book">قبل أسبوع</span><span class="tag t-cost">~250 ر/شخص</span></div>
         </div>
       </div>
       <div class="match match-full">
-        <div class="match-label">🍽 عشاء الخيارين — المطعم الأهم بكابري 🍋</div>
+        <div class="match-label">🍽 عشاء الخيارين: المطعم الأهم بكابري 🍋</div>
         <div class="match-name">Da Paolino · "مطعم شجر الليمون"</div>
         <div class="match-reason">عشاء تحت مئات أشجار الليمون الحقيقية المعلقة فوقكم! أرومانسية مطعم بكابري. جربوا جبنة الموزاريلا المشوية بورق الليمون. فيه غرفة حلويات! لازم تحجزون من بدري بأغسطس.</div>
       </div>
@@ -1994,7 +1998,7 @@ section[id]{scroll-margin-top:80px}
           <span class="opt-badge ob-a">الخيار أ · القمة</span>
           <p class="opt-title">تلفريك Monte Solaro + أناكابري</p>
           <p class="opt-title-en">Monte Solaro chairlift + Anacapri</p>
-          <p class="opt-desc">تلفريك مفتوح 12 دقيقة لأعلى نقطة بكابري (589م). فوق 360° — خليج نابولي، فيزوف، سورنتو. كافيه فوق. تنزلون وتستكشفون أناكابري — أهدأ من كابري تاون.</p>
+          <p class="opt-desc">تلفريك مفتوح 12 دقيقة لأعلى نقطة بكابري (589م). فوق 360°، خليج نابولي، فيزوف، سورنتو. كافيه فوق. تنزلون وتستكشفون أناكابري، أهدأ من كابري تاون.</p>
           <div class="schedule"><b>9am:</b> bus · <b>9:30am:</b> chairlift · <b>10:30am:</b> summit · <b>12pm:</b> Villa San Michele · <b>1:30pm:</b> lunch</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span><span class="tag t-cost">تلفريك ~50 ر</span></div>
           <div class="match">
@@ -2005,15 +2009,15 @@ section[id]{scroll-margin-top:80px}
         </div>
         <div class="opt">
           <span class="opt-badge ob-b">الخيار ب · يوم بدون خطة</span>
-          <p class="opt-title">بدون جدول — يوم حر</p>
-          <p class="opt-desc">ناموا، مسبح، قهوة. زوروا Carthusia (محل عطور كابري من 1380 — اكتشفوا العطر بالصدفة لما نسى راهب ورود بالماء!). آخر مشي بالبياتزيتا.</p>
+          <p class="opt-title">بدون جدول، يوم حر</p>
+          <p class="opt-desc">ناموا، مسبح، قهوة. زوروا Carthusia (محل عطور كابري من 1380، اكتشفوا العطر بالصدفة لما نسى راهب ورود بالماء!). آخر مشي بالبياتزيتا.</p>
           <div class="schedule"><b>morning:</b> free · <b>2pm:</b> Carthusia · <b>3pm:</b> last walk · <b>6pm:</b> last sunset</div>
           <div class="tags"><span class="tag t-free">ما يبيله شي</span><span class="tag t-tip">أحلى يوم = بدون خطة</span></div>
           <div class="fact"><b>🌺 عطور من 1380</b> عطور Carthusia من 1380! راهب نسى ماء حط فيها ورود فاكتشف إنها صارت عطر. الحين من أقدم دور العطور بالعالم!</div>
           <div class="match">
             <div class="match-label">🍽 عشاء الوداع</div>
             <div class="match-name">Da Paolino (لو ما رحتوا أمس) أو Villa Verde</div>
-            <div class="match-reason">لو رحتوا Da Paolino أمس، الليلة Villa Verde — بيتزا ممتازة بحديقة هادية.</div>
+            <div class="match-reason">لو رحتوا Da Paolino أمس، الليلة Villa Verde، بيتزا ممتازة بحديقة هادية.</div>
           </div>
         </div>
       </div>
@@ -2032,10 +2036,10 @@ section[id]{scroll-margin-top:80px}
     <div class="city-hero-content">
       <div class="city-num">المحطة الخامسة · STOP V</div>
       <h2 class="city-name-ar">روما</h2>
-      <div class="city-name-en">Roma — the eternal farewell</div>
+      <div class="city-name-en">Roma: the eternal farewell</div>
       <div class="city-meta">
         <span class="city-meta-item">☀ 32°م</span>
-        <span class="city-meta-item">📅 24–25 أغسطس</span>
+        <span class="city-meta-item">📅 24-25 أغسطس</span>
         <span class="city-meta-item">🏨 1 ليلة</span>
       </div>
     </div>
@@ -2058,7 +2062,7 @@ section[id]{scroll-margin-top:80px}
             <span class="hotel-price">~2,950 ر/ليلة</span>
             <span class="hotel-price-detail">· المجموع ~2,950 ر (1 ليلة) · تقدير أغسطس 2026</span>
           </div>
-          <p class="hotel-desc">فندق أنيق بحدائق مدرّجة هادية وسط روما. على Via del Babuino بين Piazza del Popolo و Spanish Steps (~7 دقايق مشي). سبا ممتاز. مطعم Le Jardin في الحديقة. ~18–20 دقيقة مشي من Trevi والبانثيون (أو تاكسي قصير ~8 دقايق). 40 دقيقة تاكسي للمطار.</p>
+          <p class="hotel-desc">فندق أنيق بحدائق مدرّجة هادية وسط روما. على Via del Babuino بين Piazza del Popolo و Spanish Steps (~7 دقايق مشي). سبا ممتاز. مطعم Le Jardin في الحديقة. ~18-20 دقيقة مشي من Trevi والبانثيون (أو تاكسي قصير ~8 دقايق). 40 دقيقة تاكسي للمطار.</p>
         </div>
       </div>
     </div>
@@ -2070,7 +2074,7 @@ section[id]{scroll-margin-top:80px}
       </div>
       <div class="hotel-alt-name-en">Hotel Eden (Dorchester Collection) · 5★ · near Spanish Steps</div>
       <div class="hotel-alt-price">~2,700 <b>ر/ليلة</b> · المجموع ~2,700 ر (1 ليلة) · تقدير أغسطس 2026</div>
-      <div class="hotel-alt-reason">لو تبون تكونوا أقرب لتريفي والبانثيون بدل بيازا ديل بوبولو: إيدن قريب من Spanish Steps وVia Veneto، وأقرب فعلياً لجدول اليوم الأخير (~12 دقيقة مشي لتريفي بدل 18–20). مطعمه على السطح (La Terrazza) من أجمل إطلالات روما، ميشلان نجمة.</div>
+      <div class="hotel-alt-reason">لو تبون تكونوا أقرب لتريفي والبانثيون بدل بيازا ديل بوبولو: إيدن قريب من Spanish Steps وVia Veneto، وأقرب فعلياً لجدول اليوم الأخير (~12 دقيقة مشي لتريفي بدل 18-20). مطعمه على السطح (La Terrazza) من أجمل إطلالات روما، ميشلان نجمة.</div>
     </div>
 
     <div class="days-header">
@@ -2087,17 +2091,17 @@ section[id]{scroll-margin-top:80px}
           <div class="day-date">Mon · 24 Aug</div>
         </div>
       </div>
-      <div class="day-note">🚕 تريفي والبانثيون أبعد شوي من الفندق (~18–20 دقيقة مشي) — خذوا تاكسي قصير (~8 دقايق) للرايح، وارجعوا مشي عبر الأزقة لو حبيتوا.</div>
+      <div class="day-note">🚕 تريفي والبانثيون أبعد شوي من الفندق (~18-20 دقيقة مشي)، خذوا تاكسي قصير (~8 دقايق) للرايح، وارجعوا مشي عبر الأزقة لو حبيتوا.</div>
       <div class="options">
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · أبرز المعالم</span>
           <p class="opt-title">Trevi + Pantheon + عشاء Trastevere</p>
-          <p class="opt-desc">نافورة تريفي (ارموا عملة = بترجعون روما). 5 دقايق للبانثيون (مجاني، قبة 1900 سنة!). اعبروا نهر التيبر لتراستيفيري — أزقة، فوانيس، عشاء وداعي.</p>
+          <p class="opt-desc">نافورة تريفي (ارموا عملة = بترجعون روما). 5 دقايق للبانثيون (مجاني، قبة 1900 سنة!). اعبروا نهر التيبر لتراستيفيري، أزقة، فوانيس، عشاء وداعي.</p>
           <div class="schedule"><b>3pm:</b> Trevi · <b>3:30pm:</b> Pantheon · <b>4:30pm:</b> Piazza Navona · <b>6pm:</b> Trastevere · <b>8pm:</b> dinner</div>
           <div class="tags"><span class="tag t-free">كل شي مجاني</span></div>
-          <div class="fact"><b>🏛️ 1900 سنة من العبقرية</b> البانثيون عمره 1900+ سنة وقبته لا زالت أكبر قبة خرسانية غير مسلّحة بالعالم! الفتحة فوق (oculus) مفتوحة — المطر يدخل فعلياً بس الأرضية مصممة بميول تصرف الماء.</div>
+          <div class="fact"><b>🏛️ 1900 سنة من العبقرية</b> البانثيون عمره 1900+ سنة وقبته لا زالت أكبر قبة خرسانية غير مسلّحة بالعالم! الفتحة فوق (oculus) مفتوحة، المطر يدخل فعلياً بس الأرضية مصممة بميول تصرف الماء.</div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع — الأخير بإيطاليا</div>
+            <div class="match-label">🍽 عشاء الوداع: الأخير بإيطاليا</div>
             <div class="match-name">Da Enzo al 29 · Trastevere</div>
             <div class="match-reason">يقولون أفضل Cacio e Pepe بروما كلها. تراتوريا رومانية أصلية. صغير وحميمي. الختام المثالي لشهر العسل. لازم تحجزون!</div>
           </div>
@@ -2105,13 +2109,13 @@ section[id]{scroll-margin-top:80px}
         <div class="opt">
           <span class="opt-badge ob-b">الخيار ب · نهاية هادية</span>
           <p class="opt-title">حدائق Borghese + عشاء سطح</p>
-          <p class="opt-desc">بعيد عن الزحمة. حدائق Villa Borghese — هادية وخضراء. تراس Pincio وقت الغروب — إطلالة على قبة سان بيتر. عشاء على سطح مطعم بإطلالة بانورامية.</p>
+          <p class="opt-desc">بعيد عن الزحمة. حدائق Villa Borghese، هادية وخضراء. تراس Pincio وقت الغروب، إطلالة على قبة سان بيتر. عشاء على سطح مطعم بإطلالة بانورامية.</p>
           <div class="schedule"><b>3pm:</b> Villa Borghese · <b>5pm:</b> Pincio sunset · <b>6pm:</b> Piazza del Popolo · <b>8pm:</b> rooftop dinner</div>
           <div class="tags"><span class="tag t-free">الحدائق مجانية</span><span class="tag t-book">احجزوا السطح</span></div>
           <div class="match">
             <div class="match-label">🍽 عشاء الوداع</div>
             <div class="match-name">Grazia & Graziella · Piazza Santa Maria, Trastevere</div>
-            <div class="match-reason">ساحة هادية، أشجار، فوانيس. باستا ممتازة. أجواء رومانية كلاسيكية — ختام سينمائي.</div>
+            <div class="match-reason">ساحة هادية، أشجار، فوانيس. باستا ممتازة. أجواء رومانية كلاسيكية، ختام سينمائي.</div>
           </div>
         </div>
       </div>
@@ -2125,7 +2129,7 @@ section[id]{scroll-margin-top:80px}
   <div class="booking-head">
     <div class="booking-head-text">
       <h2 class="booking-title">جدول الحجوزات</h2>
-      <p class="booking-sub">18 مهمة على 3 مراحل — رتّبوا حسب الأولوية</p>
+      <p class="booking-sub">18 مهمة على 3 مراحل، رتّبوا حسب الأولوية</p>
     </div>
     <div class="booking-progress" aria-hidden="true">
       <span class="bp-dot bp-dot-now"></span>
@@ -2148,7 +2152,7 @@ section[id]{scroll-margin-top:80px}
       <ul class="bk-list" data-phase="الحين">
         <li>تذاكر طيران (الرياض ↔ إيطاليا)</li>
         <li>الفنادق لكل المحطات</li>
-        <li>تأشيرة شنغن <span class="bk-note">15–45 يوم</span></li>
+        <li>تأشيرة شنغن <span class="bk-note">15-45 يوم</span></li>
         <li>تأمين سفر شنغن <span class="bk-note">≥ €30,000</span></li>
         <li>تذاكر "العشاء الأخير" (دافنشي) <span class="bk-note">ميلان</span></li>
         <li>تذاكر Uffizi Gallery <span class="bk-note">فلورنسا</span></li>
@@ -2172,10 +2176,10 @@ section[id]{scroll-margin-top:80px}
 
     <div class="bk-col">
       <div class="bk-col-head">
-        <span class="bk-pill bk-pill-week">2–4 أسابيع</span>
+        <span class="bk-pill bk-pill-week">2-4 أسابيع</span>
         <span class="bk-count">6 مهام</span>
       </div>
-      <ul class="bk-list" data-phase="قبل 2–4 أسابيع">
+      <ul class="bk-list" data-phase="قبل 2-4 أسابيع">
         <li>قارب مغارة الزمرد الخاص <span class="bk-note">بوزيتانو</span></li>
         <li>فيري بوزيتانو → كابري</li>
         <li>Terrazza del Confalone <span class="bk-note">رافيلو</span></li>
@@ -2193,7 +2197,7 @@ section[id]{scroll-margin-top:80px}
 <footer class="footer">
   <div class="footer-brand">Buon viaggio · رحلة سعيدة</div>
   <div class="footer-divider"></div>
-  <p>دليل شهر العسل — إيطاليا أغسطس 2026</p>
+  <p>دليل شهر العسل، إيطاليا أغسطس 2026</p>
 </footer>
 
 
