@@ -684,8 +684,61 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
 .qj-empty{padding:20px;text-align:center;color:var(--muted);font-size:13px}
 
 /* ============ REVEAL MOTION ============ */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+/* Reveal with per-item stagger (--rd set by JS) and a gentle spring */
+.reveal{
+  opacity:0;transform:translateY(24px);
+  transition:opacity .6s cubic-bezier(.22,.9,.3,1) var(--rd,0s),transform .6s cubic-bezier(.22,.9,.3,1.06) var(--rd,0s);
+}
 .reveal.in{opacity:1;transform:none}
+/* .day sets its own transitions too; merge so hover borders stay smooth */
+.day.reveal{transition:opacity .6s cubic-bezier(.22,.9,.3,1) var(--rd,0s),transform .6s cubic-bezier(.22,.9,.3,1.06) var(--rd,0s),border-color .2s,box-shadow .2s}
+
+/* ============ SCROLL-DRIVEN MOTION (progressive enhancement) ============ */
+@supports (animation-timeline: view()){
+  /* hero: photo drifts + zooms away, content sinks as you leave it */
+  .hero-img{
+    transform:scale(1.06);
+    animation:heroDrift linear both;
+    animation-timeline:scroll();
+    animation-range:0px 720px;
+  }
+  @keyframes heroDrift{
+    from{transform:scale(1.06) translateY(0)}
+    to{transform:scale(1.18) translateY(9%)}
+  }
+  .hero-content{
+    animation:heroSink linear both;
+    animation-timeline:scroll();
+    animation-range:0px 600px;
+  }
+  @keyframes heroSink{
+    to{opacity:.1;transform:translateY(64px)}
+  }
+  /* city banners: photo glides inside its frame while crossing the viewport */
+  .city-hero-img{
+    animation:cityGlide linear both;
+    animation-timeline:view();
+    animation-range:cover 0% cover 100%;
+  }
+  @keyframes cityGlide{
+    from{transform:scale(1.16) translateY(-5.5%)}
+    to{transform:scale(1.16) translateY(5.5%)}
+  }
+  /* the transit icon rides its dashed line as the strip passes through view */
+  .transit-strip-icon{
+    animation:ride cubic-bezier(.25,.8,.35,1) both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 45%;
+  }
+  @keyframes ride{
+    from{transform:translateX(120px);opacity:0}
+    35%{opacity:1}
+    to{transform:translateX(0)}
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-img,.hero-content,.city-hero-img,.transit-strip-icon{animation:none !important}
+}
 
 /* ============ A11Y ============ */
 .day-top:focus-visible{outline:2px solid var(--accent);outline-offset:-3px;border-radius:14px}
@@ -2121,7 +2174,17 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
     sections.forEach(function(s){ navObs.observe(s); });
 
     // ===== SCROLL REVEAL =====
-    $$('.city-hero, .hotel, .booking').forEach(function(el){ el.classList.add('reveal'); });
+    $$('.city-hero, .hotel, .hotel-alt, .booking, .footer').forEach(function(el){ el.classList.add('reveal'); });
+    // cascade groups: siblings reveal in sequence
+    function stagger(els, step){
+      els.forEach(function(el, i){
+        el.style.setProperty('--rd', (i*step)+'ms');
+        el.classList.add('reveal');
+      });
+    }
+    stagger($$('.route-stop'), 80);
+    $$('.city').forEach(function(city){ stagger($$('.day', city), 70); });
+    stagger($$('.bk-col'), 110);
     var revealObs = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(e.isIntersecting){
