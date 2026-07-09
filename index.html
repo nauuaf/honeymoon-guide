@@ -303,7 +303,7 @@ button{-webkit-tap-highlight-color:transparent}
 .cc-day-chip.special .cc-day-chip-num{background:var(--accent);color:#fff}
 
 /* ============ HOTEL ============ */
-.hotel{border-top:1px solid var(--line-soft);margin:26px 0 0;position:relative}
+.hotel{margin:26px 32px 0;border:1px solid var(--line-soft);border-radius:var(--r-md);overflow:hidden;position:relative;transition:border-color .2s}
 .hotel-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:0}
 .hotel-img-wrap{position:relative;min-height:300px;background:linear-gradient(140deg,var(--wash),var(--bg))}
 .hotel-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -316,10 +316,13 @@ button{-webkit-tap-highlight-color:transparent}
   font-size:11px;font-weight:700;padding:7px 14px;border-radius:999px;
   box-shadow:var(--shadow-soft);
 }
+.hotel-badge.booked{background:#1F8A4C;cursor:default}
+html[data-theme="dark"] .hotel-badge.booked{background:#2FA35F;color:#08130C}
+.hotel-badge.booked:active{transform:none}
 .hotel-badge,.hotel-alt-badge{cursor:pointer;user-select:none;transition:background .2s,color .2s,transform .15s,opacity .2s}
 .hotel-badge:active,.hotel-alt-badge:active{transform:scale(.95)}
 .hotel-badge:focus-visible,.hotel-alt-badge:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.hotel.chosen{box-shadow:inset 0 0 0 2px var(--accent)}
+.hotel.chosen{border-color:var(--accent)}
 .hotel.chosen .hotel-badge{background:var(--accent);color:#fff}
 .hotel:not(.chosen) .hotel-badge.unchosen{background:rgba(10,20,38,.5);opacity:.8}
 .hotel-info{padding:28px 32px}
@@ -330,7 +333,7 @@ button{-webkit-tap-highlight-color:transparent}
   display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;
   padding:11px 15px;background:var(--wash);border-radius:var(--r-md);margin-bottom:16px;
 }
-.hotel-price{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:var(--ink)}
+.hotel-price{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:var(--ink);direction:ltr;unicode-bidi:isolate}
 .hotel-price-detail{font-size:12px;color:var(--ink-soft);font-feature-settings:"tnum" 1}
 .hotel-desc{font-size:14px;color:var(--ink-soft);line-height:1.85;margin-bottom:14px}
 .hotel-highlight{
@@ -732,6 +735,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
   .cc-meta{gap:6px 14px;font-size:12px;padding-bottom:14px}
   .cc-highlight{font-size:12px;padding:7px 12px}
   .cc-day-chip{font-size:12px}
+  .hotel{margin:20px 16px 0}
   .hotel-grid{grid-template-columns:1fr}
   .hotel-img-wrap{min-height:210px}
   .hotel-img-wrap.img-missing{min-height:140px}
@@ -888,31 +892,21 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
         <div class="hotel-img-wrap">
           <img class="hotel-img" loading="lazy"
             src="https://commons.wikimedia.org/wiki/Special:FilePath/Brera%20Botanical%20Garden%20-%204.jpg?width=1280"
-            alt="حديقة بريرا النباتية الملاصقة لحديقة فندق بولغري" onerror="this.parentElement.classList.add('img-missing');this.remove()">
-          <div class="hotel-badge">★ الترشيح الأول</div>
+            alt="حي بريرا قرب فندق دوميا مانزوني 25" onerror="this.parentElement.classList.add('img-missing');this.remove()">
+          <div class="hotel-badge booked">✓ محجوز</div>
         </div>
         <div class="hotel-info">
           <div class="hotel-eyebrow">الإقامة</div>
-          <h3 class="hotel-name">بولغري هوتيل ميلانو</h3>
-          <div class="hotel-name-en">Bulgari Hotel Milano · 5★ · Brera</div>
+          <h3 class="hotel-name">دوميا، مانزوني 25</h3>
+          <div class="hotel-name-en">DOMYA - Manzoni 25 · Aparthotel · Via Manzoni</div>
           <div class="hotel-price-row">
-            <span class="hotel-price">~4,900 ر/ليلة</span>
-            <span class="hotel-price-detail">· المجموع ~19,600 ر (4 ليالي) · تقدير أغسطس 2026</span>
+            <span class="hotel-price">Aug 11 - 15</span>
+            <span class="hotel-price-detail">· 4 ليالي · Via Manzoni 25</span>
           </div>
-          <p class="hotel-desc">واحة هادية بحديقة خاصة 4,000م² وسط حي بريرا الفني. سبا فخم بمسبح مضيء بالذهب. حوالي 8 دقايق مشي من حي الموضة، و~15 دقيقة من الدومو، لكنه مخبّأ عن الزحمة تماماً. خدمة استثنائية وخصوصية، الملاذ المثالي بعد يوم مزدحم بالمدينة.</p>
-          <div class="hotel-highlight">💡 الموقع سرّي وهادي رغم إنه بقلب ميلان، من الحديقة لا سكالا حوالي 10 دقايق مشي، والدومو ~15 دقيقة.</div>
+          <p class="hotel-desc">أجنحة تصميمية بمبنى أنيق على شارع مانزوني، بقلب حي الموضة. 16 جناح بأثاث مختار بالتعاون مع المصمّمة روسانا أورلاندي، وكل جناح فيه مطبخ كامل وصالة. خطوات من مترو مونتينابوليوني، وقريب من لا سكالا وحي بريرا.</p>
+          <div class="hotel-highlight">💡 الموقع مثالي للمشي: الدومو والغاليريا ~10 دقايق، وبريرا أقرب. التشيك-إن خاص، فخبروهم بوقت وصولكم مسبقاً.</div>
         </div>
       </div>
-    </div>
-
-    <div class="hotel-alt">
-      <div class="hotel-alt-head">
-        <span class="hotel-alt-badge">★ الترشيح الثاني</span>
-        <span class="hotel-alt-name">أرماني هوتيل ميلانو</span>
-      </div>
-      <div class="hotel-alt-name-en">Armani Hotel Milano · 5★ · Via Manzoni</div>
-      <div class="hotel-alt-price">~5,200 <b>ر/ليلة</b> · المجموع ~20,800 ر (4 ليالي) · تقدير أغسطس 2026</div>
-      <div class="hotel-alt-reason">لو تفضّلون تكونوا وسط الحركة بدل الاختباء عنها: أرماني بشارع مانزوني، بقلب حي الموضة مباشرة وأقرب للدومو (~8 دقايق مشي). تصميم مينيمال أنيق بتوقيع Giorgio Armani نفسه، لكن بدون حديقة أو هدوء بولغري.</div>
     </div>
 
     <div class="days-header">
@@ -1114,31 +1108,21 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
         <div class="hotel-img-wrap">
           <img class="hotel-img" loading="lazy"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ponte_Vecchio_from_Ponte_alle_Grazie.jpg/1280px-Ponte_Vecchio_from_Ponte_alle_Grazie.jpg"
-            alt="Hotel Lungarno" onerror="this.parentElement.classList.add('img-missing');this.remove()">
-          <div class="hotel-badge">★ الترشيح الأول</div>
+            alt="جسر بونتي فيكيو قرب بورتا نيرا" onerror="this.parentElement.classList.add('img-missing');this.remove()">
+          <div class="hotel-badge booked">✓ محجوز</div>
         </div>
         <div class="hotel-info">
           <div class="hotel-eyebrow">الإقامة</div>
-          <h3 class="hotel-name">هوتيل لونغارنو</h3>
-          <div class="hotel-name-en">Hotel Lungarno · 4★ Superior · Oltrarno</div>
+          <h3 class="hotel-name">بورتا نيرا برايفت ليفينغ</h3>
+          <div class="hotel-name-en">Porta Nera Private Living · Adults Only · Historic Centre</div>
           <div class="hotel-price-row">
-            <span class="hotel-price">~3,350 ر/ليلة</span>
-            <span class="hotel-price-detail">· المجموع ~10,050 ر (3 ليالي) · Ferragosto/ذروة الموسم</span>
+            <span class="hotel-price">Aug 15 - 18</span>
+            <span class="hotel-price-detail">· 3 ليالي · قلب فلورنسا التاريخي</span>
           </div>
-          <p class="hotel-desc">فندق بوتيك ملك عائلة Ferragamo. على نهر Arno بإطلالة مباشرة على Ponte Vecchio من غرفتكم. مجموعة لوحات أصلية. مطعم Borgo San Jacopo (ميشلان) بالفندق. بحي Oltrarno، أحلى حي للمشي والعشاء.</p>
-          <div class="hotel-highlight">💡 الموقع في Oltrarno = 5 دقايق مشي من Ponte Vecchio، 10 دقايق من Uffizi، ومحاط بأحلى مطاعم فلورنسا المحلية.</div>
+          <p class="hotel-desc">بوتيك صغير للكبار فقط (6 غرف بس) بقلب فلورنسا التاريخي: دقيقتين مشي من قصر ستروتزي، وقريب من سانتا ماريا نوفيلا، و~10 دقايق مشي من محطة القطار الرئيسية. فيه تراس سطح مفتوح بجلسات مريحة وإطلالة على المدينة.</p>
+          <div class="hotel-highlight">💡 تراس السطح حلو لقهوة الصبح أو مشروب قبل العشاء. والوصول من محطة SMN مشي سهل حتى بالشنط.</div>
         </div>
       </div>
-    </div>
-
-    <div class="hotel-alt">
-      <div class="hotel-alt-head">
-        <span class="hotel-alt-badge">★ الترشيح الثاني</span>
-        <span class="hotel-alt-name">هوتيل برونيليسكي</span>
-      </div>
-      <div class="hotel-alt-name-en">Hotel Brunelleschi · 5★ · near the Duomo</div>
-      <div class="hotel-alt-price">~2,900 <b>ر/ليلة</b> · المجموع ~8,700 ر (3 ليالي) · تقدير أغسطس 2026</div>
-      <div class="hotel-alt-reason">لو تبون تكونوا لصق الدومو بدل نهر Arno: برونيليسكي مبني جزئياً بداخل برج بيزنطي من القرن 6، ودقايق مشي من الدومو والأكاديميا. أهدأ سعر من لونغارنو، بس أبعد عن Oltrarno وأجواء النهر.</div>
     </div>
 
     <div class="days-header">
@@ -1293,31 +1277,21 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
         <div class="hotel-img-wrap">
           <img class="hotel-img" loading="lazy"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Amalfi_Coast_%28Italy%2C_October_2020%29_-_75_%2850558355441%29.jpg/1280px-Amalfi_Coast_%28Italy%2C_October_2020%29_-_75_%2850558355441%29.jpg"
-            alt="Le Sirenuse Positano" onerror="this.parentElement.classList.add('img-missing');this.remove()">
-          <div class="hotel-badge">★ الترشيح الأول</div>
+            alt="إطلالة بوزيتانو من جهة مونتيبيرتوسو" onerror="this.parentElement.classList.add('img-missing');this.remove()">
+          <div class="hotel-badge booked">✓ محجوز</div>
         </div>
         <div class="hotel-info">
           <div class="hotel-eyebrow">الإقامة</div>
-          <h3 class="hotel-name">لي سيرينوزي</h3>
-          <div class="hotel-name-en">Le Sirenuse · 5★ · Positano</div>
+          <h3 class="hotel-name">أنتاليا بوتيك هوتيل</h3>
+          <div class="hotel-name-en">Antalia Boutique Hotel · 4★ · Montepertuso</div>
           <div class="hotel-price-row">
-            <span class="hotel-price">~9,000 ر/ليلة</span>
-            <span class="hotel-price-detail">· المجموع ~27,000 ر (3 ليالي) · تقدير ذروة أغسطس</span>
+            <span class="hotel-price">Aug 18 - 21</span>
+            <span class="hotel-price-detail">· 3 ليالي · فوق بوزيتانو</span>
           </div>
-          <p class="hotel-desc">فندق أسطوري بواجهة حمراء توتية يطل على القرية والبحر. مطعم La Sponda الحائز نجمة ميشلان (مضاء بـ400 شمعة!)، بار Franco's الشهير، مسبح بإطلالة، وسبا. تديره عائلة Sersale منذ 1951، دفء عائلي مع فخامة حقيقية.</p>
-          <div class="hotel-highlight">💡 اطلبوا غرفة بتراس خاص يطل على قبة كنيسة Santa Maria، إطلالة بوزيتانو الأيقونية من سريركم، وأجمل غروب على الساحل.</div>
+          <p class="hotel-desc">بوتيك حميمي (3 غرف بس) بقرية مونتيبيرتوسو المعلّقة فوق بوزيتانو. مسبح بإطلالة، شرفات على البحر تشوفون منها فاراليوني كابري بالبعيد، ومطعم متوسطي. هدوء تام بعيد عن زحمة القرية، وأنتوا أقرب لنوتشيلي ونهاية درب الآلهة.</p>
+          <div class="hotel-highlight">💡 الفندق فوق بالجبل: استخدموا شاتل الفندق المجاني للنزول والطلوع من بوزيتانو، الطريق ضيق خصوصاً بالليل.</div>
         </div>
       </div>
-    </div>
-
-    <div class="hotel-alt">
-      <div class="hotel-alt-head">
-        <span class="hotel-alt-badge">★ الترشيح الثاني</span>
-        <span class="hotel-alt-name">إيل سان بيترو دي بوزيتانو</span>
-      </div>
-      <div class="hotel-alt-name-en">Il San Pietro di Positano · 5★ · outside the village</div>
-      <div class="hotel-alt-price">~7,800 <b>ر/ليلة</b> · المجموع ~23,400 ر (3 ليالي) · تقدير أغسطس 2026</div>
-      <div class="hotel-alt-reason">لو تبون خصوصية تامة بدل حيوية القرية: إيل سان بيترو معلّق على الجرف خارج مركز بوزيتانو (~10 دقايق سيارة/تاكسي الفندق المجاني)، ومصعد خاص ينزلكم لبيتش كلوبه الخاص. أهدأ وأخصّ من لي سيرينوزي، بس بعيد عن درج القرية والمطاعم اللي تمشون لها مباشرة.</div>
     </div>
 
     <div class="days-header">
@@ -1478,31 +1452,21 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
         <div class="hotel-img-wrap">
           <img class="hotel-img" loading="lazy"
             src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Capri-marina_piccola.jpg"
-            alt="Capri Tiberio Palace" onerror="this.parentElement.classList.add('img-missing');this.remove()">
-          <div class="hotel-badge">★ الترشيح الأول</div>
+            alt="كابري قرب فندق لا ريزيدنسا" onerror="this.parentElement.classList.add('img-missing');this.remove()">
+          <div class="hotel-badge booked">✓ محجوز</div>
         </div>
         <div class="hotel-info">
           <div class="hotel-eyebrow">الإقامة</div>
-          <h3 class="hotel-name">كابري تيبيريو بالاس</h3>
-          <div class="hotel-name-en">Capri Tiberio Palace · 5★ · Capri town</div>
+          <h3 class="hotel-name">لا ريزيدنسا كابري</h3>
+          <div class="hotel-name-en">La Residenza Capri · 4★ · Capri town</div>
           <div class="hotel-price-row">
-            <span class="hotel-price">~4,500 ر/ليلة</span>
-            <span class="hotel-price-detail">· المجموع ~13,500 ر (3 ليالي) · تقدير أغسطس 2026</span>
+            <span class="hotel-price">Aug 21 - 24</span>
+            <span class="hotel-price-detail">· 3 ليالي · قرب البياتزيتا</span>
           </div>
-          <p class="hotel-desc">تصميم ريترو La Dolce Vita، بوب آرت وألوان جريئة. مسبح على السطح بإطلالة بحرية. ~6 دقايق مشي من البياتزيتا. كل غرفة تصميمها مختلف.</p>
-          <div class="hotel-highlight">💡 جناح Bellevue Suite فيه مسبح خاص بالسيراميك المايوليكا! ترقية ليلتين أو ثلاث (~6,600 ر إضافية) خيار حلو لو تبون سباحة بخصوصية تامة.</div>
+          <p class="hotel-desc">فندق أنيق على بعد ~200 متر من البياتزيتا وقريب من Via Camerelle. تراس شمسي كبير مع مسبح وإطلالة على فاراليوني ودير سان جاكومو، وفيه بيتزيريا Vico Pizza & Wine داخل الفندق نفسه.</p>
+          <div class="hotel-highlight">💡 الموقع بقلب كابري تاون: البياتزيتا والمطاعم كلها مشي، وما تحتاجون الباص إلا ليوم أناكابري وتلفريك مونتي سولارو.</div>
         </div>
       </div>
-    </div>
-
-    <div class="hotel-alt">
-      <div class="hotel-alt-head">
-        <span class="hotel-alt-badge">★ الترشيح الثاني</span>
-        <span class="hotel-alt-name">كابري بالاس جميرا</span>
-      </div>
-      <div class="hotel-alt-name-en">Capri Palace Jumeirah · 5★ · Anacapri</div>
-      <div class="hotel-alt-price">~5,800 <b>ر/ليلة</b> · المجموع ~17,400 ر (3 ليالي) · تقدير أغسطس 2026</div>
-      <div class="hotel-alt-reason">تنبيه مهم: هذا الفندق بأناكابري، بلدة ثانية على الجزيرة، مو بكابري تاون. أبعد عن البياتزيتا وتحتاجون باص/تاكسي (~20 دقيقة) لكل نشاطات الجدول أدناه. بالمقابل أهدأ وأخصّ بكثير، ومسبح رائع وسبا عالمي، خيار حلو لو الهدوء أهم من قرب المشي.</div>
     </div>
 
     <div class="days-header">
@@ -1654,7 +1618,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
           <div class="hotel-badge">★ الترشيح</div>
         </div>
         <div class="hotel-info">
-          <div class="hotel-eyebrow">الإقامة</div>
+          <div class="hotel-eyebrow">الإقامة · لم تُحجز بعد</div>
           <h3 class="hotel-name">هوتيل دي روسي</h3>
           <div class="hotel-name-en">Hotel de Russie (Rocco Forte) · 5★ · Piazza del Popolo</div>
           <div class="hotel-price-row">
@@ -1750,7 +1714,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
       </div>
       <ul class="bk-list" data-phase="الحين">
         <li>تذاكر طيران (الرياض ↔ إيطاليا)</li>
-        <li>الفنادق لكل المحطات</li>
+        <li>فندق روما <span class="bk-note">الباقي الوحيد</span></li>
         <li>تأشيرة شنغن <span class="bk-note">15-45 يوم</span></li>
         <li>تأمين سفر شنغن <span class="bk-note">≥ €30,000</span></li>
         <li>تذاكر "العشاء الأخير" (دافنشي) <span class="bk-note">ميلان</span></li>
@@ -1898,7 +1862,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
 
     card.innerHTML =
       '<div class="cc-section cc-meta">'+metaHTML+'</div>'+
-      '<div class="cc-section"><div class="cc-label">أبرز ما لازم تجربون</div><div class="cc-highlights">'+hlHTML+'</div></div>'+
+      '<div class="cc-section"><div class="cc-label">أبرز اللي لازم تجربونه</div><div class="cc-highlights">'+hlHTML+'</div></div>'+
       '<div class="cc-section"><div class="cc-label">أيام المحطة</div><div class="cc-days"></div></div>';
 
     var daysEl = $('.cc-days', card);
