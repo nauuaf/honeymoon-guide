@@ -317,7 +317,7 @@ button{-webkit-tap-highlight-color:transparent}
 .hotel-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hotel-img-wrap.img-missing{display:flex;align-items:center;justify-content:center;min-height:220px;
   background:radial-gradient(circle at 30% 30%,var(--accent-soft) 0%,transparent 55%),linear-gradient(140deg,var(--wash),var(--bg))}
-.hotel-img-wrap.img-missing::after{content:'🏨';font-size:44px;opacity:.3;filter:grayscale(.4)}
+.hotel-img-wrap.img-missing::after{content:'<svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg>';font-size:44px;opacity:.3;filter:grayscale(.4)}
 .hotel-badge{
   position:absolute;top:16px;inset-inline-end:16px;
   background:var(--accent);color:#fff;
@@ -368,7 +368,7 @@ html[data-theme="dark"] .hotel-badge.booked{background:#A5B478;color:#1E1A0C}
 .hotel-alt-price{font-size:12.5px;color:var(--ink-soft);margin-bottom:8px;font-feature-settings:"tnum" 1}
 .hotel-alt-price b{font-family:'IBM Plex Mono',monospace;color:var(--ink);font-weight:600}
 .hotel-alt-reason{font-size:13px;color:var(--ink-soft);line-height:1.8}
-.hotel-alt-reason::before{content:"↔ ";color:var(--accent);font-weight:600}
+.hotel-alt-reason::before{content:"";display:inline-block;width:13px;height:13px;margin-inline-end:6px;vertical-align:-2px;background:var(--accent);-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20stroke%3D%22none%22%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22/%3E%20%3Cpath%20d%3D%22M21%2017l-18%200%22%20/%3E%20%3Cpath%20d%3D%22M6%2010l-3%20-3l3%20-3%22%20/%3E%20%3Cpath%20d%3D%22M3%207l18%200%22%20/%3E%20%3Cpath%20d%3D%22M18%2020l3%20-3l-3%20-3%22%20/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20stroke%3D%22none%22%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22/%3E%20%3Cpath%20d%3D%22M21%2017l-18%200%22%20/%3E%20%3Cpath%20d%3D%22M6%2010l-3%20-3l3%20-3%22%20/%3E%20%3Cpath%20d%3D%22M3%207l18%200%22%20/%3E%20%3Cpath%20d%3D%22M18%2020l3%20-3l-3%20-3%22%20/%3E%3C/svg%3E") center/contain no-repeat}
 
 /* ============ DAYS ============ */
 .days-header{
@@ -449,7 +449,7 @@ html[data-theme="dark"] .day-book-flag{background:rgba(200,105,60,.22);color:#F3
   border-bottom:1px solid var(--line-soft);
   display:flex;gap:9px;align-items:center;background:var(--wash);
 }
-.day-note::before{content:'ℹ';color:var(--accent);font-size:14px;flex-shrink:0;font-weight:700}
+.day-note::before{content:'';width:15px;height:15px;flex-shrink:0;background:var(--accent);-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20stroke%3D%22none%22%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22/%3E%20%3Cpath%20d%3D%22M3%2012a9%209%200%201%200%2018%200a9%209%200%200%200%20-18%200%22%20/%3E%20%3Cpath%20d%3D%22M12%209h.01%22%20/%3E%20%3Cpath%20d%3D%22M11%2012h1v4h1%22%20/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20stroke%3D%22none%22%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22/%3E%20%3Cpath%20d%3D%22M3%2012a9%209%200%201%200%2018%200a9%209%200%200%200%20-18%200%22%20/%3E%20%3Cpath%20d%3D%22M12%209h.01%22%20/%3E%20%3Cpath%20d%3D%22M11%2012h1v4h1%22%20/%3E%3C/svg%3E") center/contain no-repeat}
 
 /* option tabs — segmented control */
 .day-tabs{
@@ -905,6 +905,21 @@ html[data-theme="dark"]{
   .map-route-progress{transition:none !important}
 }
 
+/* ============ ICON SYSTEM (Tabler outline, 2px stroke) ============ */
+.ic{
+  width:1.05em;height:1.05em;display:inline-block;vertical-align:-0.18em;
+  fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  flex-shrink:0;
+}
+.quick-jump-btn .ic{width:21px;height:21px;vertical-align:middle}
+.back-to-top .ic{width:17px;height:17px;vertical-align:middle}
+.theme-toggle .ic{width:15px;height:15px;vertical-align:middle}
+.day-chevron .ic{width:13px;height:13px;vertical-align:middle}
+.day-tab-star .ic,.opt-badge .ic{width:.95em;height:.95em}
+.hotel-badge .ic,.hotel-alt-badge .ic,.day-tag .ic{width:.95em;height:.95em;vertical-align:-0.12em}
+.map-leg{stroke:var(--ink-soft);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.transit-strip-icon .ic{width:16px;height:16px;vertical-align:middle}
+
 /* ============ PRINT ============ */
 @media print{
   .nav,.hero,.quick-jump-btn,.back-to-top,.theme-toggle,.progress{display:none}
@@ -914,6 +929,7 @@ html[data-theme="dark"]{
 </style>
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-dining" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12zm0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3" /></symbol><symbol id="i-star" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></symbol><symbol id="i-cal" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /> <path d="M16 3v4" /> <path d="M8 3v4" /> <path d="M4 11h16" /> <path d="M11 15h1" /> <path d="M12 15v3" /></symbol><symbol id="i-check" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M5 12l5 5l10 -10" /></symbol><symbol id="i-ship" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M2 20a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1" /> <path d="M4 18l-1 -5h18l-2 4" /> <path d="M5 13v-6h8l4 6" /> <path d="M7 7v-4h-1" /></symbol><symbol id="i-sail" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M2 20a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1" /> <path d="M4 18l-1 -3h18l-1 3" /> <path d="M11 12h7l-7 -9v9" /> <path d="M8 7l-2 5" /></symbol><symbol id="i-boat" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M2 17h14.4a3 3 0 0 0 2.5 -1.34l3.1 -4.66h-6.23a4 4 0 0 0 -1.49 .29l-3.56 1.42a4 4 0 0 1 -1.49 .29h-5.73z" /> <path d="M6 13l1.5 -5" /> <path d="M6 8h8l2 3" /></symbol><symbol id="i-bed" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M7 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M22 17v-3h-20" /> <path d="M2 8v9" /> <path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5z" /></symbol><symbol id="i-sun" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /> <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></symbol><symbol id="i-bank" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M3 21l18 0" /> <path d="M3 10l18 0" /> <path d="M5 6l7 -3l7 3" /> <path d="M4 10l0 11" /> <path d="M20 10l0 11" /> <path d="M8 14l0 3" /> <path d="M12 14l0 3" /> <path d="M16 14l0 3" /></symbol><symbol id="i-train" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M21 13c0 -3.87 -3.37 -7 -10 -7h-8" /> <path d="M3 15h16a2 2 0 0 0 2 -2" /> <path d="M3 6v5h17.5" /> <path d="M3 11v4" /> <path d="M8 11v-5" /> <path d="M13 11v-4.5" /> <path d="M3 19h18" /></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></symbol><symbol id="i-bulb" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" /> <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" /> <path d="M9.7 17l4.6 0" /></symbol><symbol id="i-palette" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" /> <path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></symbol><symbol id="i-plane" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z" /></symbol><symbol id="i-lemon" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M18 4a2 2 0 0 1 1.185 3.611c1.55 2.94 .873 6.917 -1.892 9.682c-2.765 2.765 -6.743 3.442 -9.682 1.892a2 2 0 1 1 -2.796 -2.796c-1.55 -2.94 -.873 -6.917 1.892 -9.682c2.765 -2.765 6.743 -3.442 9.682 -1.892a2 2 0 0 1 1.611 -.815z" /></symbol><symbol id="i-car" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" /></symbol><symbol id="i-confetti" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M4 5h2" /> <path d="M5 4v2" /> <path d="M11.5 4l-.5 2" /> <path d="M18 5h2" /> <path d="M19 4v2" /> <path d="M15 9l-1 1" /> <path d="M18 13l2 -.5" /> <path d="M18 19h2" /> <path d="M19 18v2" /> <path d="M14 16.518l-6.518 -6.518l-4.39 9.58a1 1 0 0 0 1.329 1.329l9.579 -4.39z" /></symbol><symbol id="i-swap" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M21 17l-18 0" /> <path d="M6 10l-3 -3l3 -3" /> <path d="M3 7l18 0" /> <path d="M18 20l3 -3l-3 -3" /></symbol><symbol id="i-cocktail" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M8 21h8" /> <path d="M12 15v6" /> <path d="M12 5m-7 0a7 2 0 1 0 14 0a7 2 0 1 0 -14 0" /> <path d="M5 5v.388c0 .432 .126 .853 .362 1.206l5 7.509c.633 .951 1.88 1.183 2.785 .517c.191 -.141 .358 -.316 .491 -.517l5 -7.509c.236 -.353 .362 -.774 .362 -1.206v-.388" /></symbol><symbol id="i-flag" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" /> <path d="M5 21v-7" /></symbol><symbol id="i-hike" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M12 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M7 21l2 -4" /> <path d="M13 21v-4l-3 -3l1 -6l3 4l3 2" /> <path d="M10 14l-1.827 -1.218a2 2 0 0 1 -.831 -2.15l.28 -1.117a2 2 0 0 1 1.939 -1.515h1.439l4 1l3 -2" /> <path d="M17 12v9" /> <path d="M16 20h2" /></symbol><symbol id="i-drop" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M7.502 19.423c2.602 2.105 6.395 2.105 8.996 0c2.602 -2.105 3.262 -5.708 1.566 -8.546l-4.89 -7.26c-.42 -.625 -1.287 -.803 -1.936 -.397a1.376 1.376 0 0 0 -.41 .397l-4.893 7.26c-1.695 2.838 -1.035 6.441 1.567 8.546z" /></symbol><symbol id="i-chef" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M12 3c1.918 0 3.52 1.35 3.91 3.151a4 4 0 0 1 2.09 7.723l0 7.126h-12v-7.126a4 4 0 1 1 2.092 -7.723a4 4 0 0 1 3.908 -3.151z" /> <path d="M6.161 17.009l11.839 -.009" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M18 6l-12 12" /> <path d="M6 6l12 12" /></symbol><symbol id="i-search" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /> <path d="M21 21l-6 -6" /></symbol><symbol id="i-hanger" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M14 6a2 2 0 1 0 -4 0c0 1.667 .67 3 2 4h-.008l7.971 4.428a2 2 0 0 1 1.029 1.749v.823a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-.823a2 2 0 0 1 1.029 -1.749l7.971 -4.428" /></symbol><symbol id="i-movie" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /> <path d="M8 4l0 16" /> <path d="M16 4l0 16" /> <path d="M4 8l4 0" /> <path d="M4 16l4 0" /> <path d="M4 12l16 0" /> <path d="M16 8l4 0" /> <path d="M16 16l4 0" /></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></symbol><symbol id="i-bridge" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M6 7h12a2 2 0 0 1 2 2v9a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-2a4 4 0 0 0 -8 0v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-9a2 2 0 0 1 2 -2" /></symbol><symbol id="i-sunset" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M3 13h1" /> <path d="M20 13h1" /> <path d="M5.6 6.6l.7 .7" /> <path d="M18.4 6.6l-.7 .7" /> <path d="M8 13a4 4 0 1 1 8 0" /> <path d="M3 17h18" /> <path d="M7 20h5" /> <path d="M16 20h1" /> <path d="M12 5v-1" /></symbol><symbol id="i-monument" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M8 18l2 -13l2 -2l2 2l2 13" /> <path d="M5 21v-3h14v3" /> <path d="M3 21l18 0" /></symbol><symbol id="i-diamond" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M6 5h12l3 5l-8.5 9.5a.7 .7 0 0 1 -1 0l-8.5 -9.5l3 -5" /> <path d="M10 12l-2 -2.2l.6 -1" /></symbol><symbol id="i-theater" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M13.192 9h6.616a2 2 0 0 1 1.992 2.183l-.567 6.182a4 4 0 0 1 -3.983 3.635h-1.5a4 4 0 0 1 -3.983 -3.635l-.567 -6.182a2 2 0 0 1 1.992 -2.183z" /> <path d="M15 13h.01" /> <path d="M18 13h.01" /> <path d="M15 16.5c1 .667 2 .667 3 0" /> <path d="M8.632 15.982a4.037 4.037 0 0 1 -.382 .018h-1.5a4 4 0 0 1 -3.983 -3.635l-.567 -6.182a2 2 0 0 1 1.992 -2.183h6.616a2 2 0 0 1 2 2" /> <path d="M6 8h.01" /> <path d="M9 8h.01" /> <path d="M6 12c.764 -.51 1.528 -.63 2.291 -.36" /></symbol><symbol id="i-flower" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /> <path d="M12 2a3 3 0 0 1 3 3c0 .562 -.259 1.442 -.776 2.64l-.724 1.36l1.76 -1.893c.499 -.6 .922 -1 1.27 -1.205a2.968 2.968 0 0 1 4.07 1.099a3.011 3.011 0 0 1 -1.09 4.098c-.374 .217 -.99 .396 -1.846 .535l-2.664 .366l2.4 .326c1 .145 1.698 .337 2.11 .576a3.011 3.011 0 0 1 1.09 4.098a2.968 2.968 0 0 1 -4.07 1.098c-.348 -.202 -.771 -.604 -1.27 -1.205l-1.76 -1.893l.724 1.36c.516 1.199 .776 2.079 .776 2.64a3 3 0 0 1 -6 0c0 -.562 .259 -1.442 .776 -2.64l.724 -1.36l-1.76 1.893c-.499 .601 -.922 1 -1.27 1.205a2.968 2.968 0 0 1 -4.07 -1.098a3.011 3.011 0 0 1 1.09 -4.098c.374 -.218 .99 -.396 1.846 -.536l2.664 -.366l-2.4 -.325c-1 -.145 -1.698 -.337 -2.11 -.576a3.011 3.011 0 0 1 -1.09 -4.099a2.968 2.968 0 0 1 4.07 -1.099c.348 .203 .771 .604 1.27 1.205l1.76 1.894c-1 -2.292 -1.5 -3.625 -1.5 -4a3 3 0 0 1 3 -3z" /></symbol><symbol id="i-church" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M3 21l18 0" /> <path d="M10 21v-4a2 2 0 0 1 4 0v4" /> <path d="M10 5l4 0" /> <path d="M12 3l0 5" /> <path d="M6 21v-7m-2 2l8 -8l8 8m-2 -2v7" /></symbol><symbol id="i-camera" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" /> <path d="M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></symbol><symbol id="i-wave" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M3 7c3 -2 6 -2 9 0s6 2 9 0" /> <path d="M3 17c3 -2 6 -2 9 0s6 2 9 0" /> <path d="M3 12c3 -2 6 -2 9 0s6 2 9 0" /></symbol><symbol id="i-mountain" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M3 20h18l-6.921 -14.612a2.3 2.3 0 0 0 -4.158 0l-6.921 14.612z" /> <path d="M7.5 11l2 2.5l2.5 -2.5l2 3l2.5 -2" /></symbol><symbol id="i-chev" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M6 9l6 6l6 -6" /></symbol><symbol id="i-bookmark" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M18 7v14l-6 -4l-6 4v-14a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4z" /></symbol><symbol id="i-up" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M12 5l0 14" /> <path d="M18 11l-6 -6" /> <path d="M6 11l6 -6" /></symbol><symbol id="i-hour" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M6.5 7h11" /> <path d="M6.5 17h11" /> <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z" /> <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z" /></symbol><symbol id="i-info" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M12 9h.01" /> <path d="M11 12h1v4h1" /></symbol></svg>
 <div class="progress" aria-hidden="true"><div class="progress-bar"></div></div>
 
 <!-- ==================== STICKY NAV ==================== -->
@@ -929,24 +945,24 @@ html[data-theme="dark"]{
       <a href="#rome" class="rome">روما</a>
       <a href="#booking">الحجوزات</a>
     </div>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الداكن" title="الوضع الداكن">🌙</button>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الداكن" title="الوضع الداكن"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></button>
   </div>
   <div class="nav-status" id="navStatus"></div>
 </nav>
 
 <!-- ==================== QUICK-JUMP DRAWER ==================== -->
-<button type="button" class="quick-jump-btn" id="quickJumpBtn" aria-label="قائمة كل الأيام" aria-haspopup="dialog" title="كل الأيام">🗓</button>
+<button type="button" class="quick-jump-btn" id="quickJumpBtn" aria-label="قائمة كل الأيام" aria-haspopup="dialog" title="كل الأيام"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg></button>
 <div class="qj-overlay" id="qjOverlay" role="dialog" aria-modal="true" aria-label="قائمة كل أيام الرحلة">
   <div class="qj-panel">
     <div class="qj-head">
       <div class="qj-title">كل أيام الرحلة</div>
-      <button type="button" class="qj-close" id="qjClose" aria-label="إغلاق">✕</button>
+      <button type="button" class="qj-close" id="qjClose" aria-label="إغلاق"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
     </div>
     <div class="qj-search-wrap">
       <input type="search" class="qj-search" id="qjSearch" placeholder="دوّروا على يوم، مطعم، أو نشاط…" aria-label="بحث في أيام الرحلة">
     </div>
     <div class="qj-body" id="qjBody"></div>
-    <div class="qj-empty" id="qjEmpty">ما فيه نتائج مطابقة 🔍</div>
+    <div class="qj-empty" id="qjEmpty">ما فيه نتائج مطابقة <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></div>
   </div>
 </div>
 
@@ -1021,9 +1037,9 @@ html[data-theme="dark"]{
       <h2 class="city-name-ar">ميلان</h2>
       <div class="city-name-en">Milano: style, art & the lake</div>
       <div class="city-meta">
-        <span class="city-meta-item">☀ 30°م</span>
-        <span class="city-meta-item">📅 11-15 أغسطس</span>
-        <span class="city-meta-item">🏨 4 ليالي</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 30°م</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg> 11-15 أغسطس</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg> 4 ليالي</span>
       </div>
     </div>
   </div>
@@ -1035,7 +1051,7 @@ html[data-theme="dark"]{
           <img class="hotel-img" loading="lazy"
             src="https://commons.wikimedia.org/wiki/Special:FilePath/Brera%20Botanical%20Garden%20-%204.jpg?width=1280"
             alt="حي بريرا قرب فندق دوميا مانزوني 25" onerror="this.parentElement.classList.add('img-missing');this.remove()">
-          <div class="hotel-badge booked">✓ محجوز</div>
+          <div class="hotel-badge booked"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> محجوز</div>
         </div>
         <div class="hotel-info">
           <div class="hotel-eyebrow">الإقامة</div>
@@ -1046,13 +1062,13 @@ html[data-theme="dark"]{
             <span class="hotel-price-detail">· 4 ليالي · Via Manzoni 25</span>
           </div>
           <p class="hotel-desc">أجنحة تصميمية بمبنى أنيق على شارع مانزوني، بقلب حي الموضة. 16 جناح بأثاث مختار بالتعاون مع المصمّمة روسانا أورلاندي، وكل جناح فيه مطبخ كامل وصالة. خطوات من مترو مونتينابوليوني، وقريب من لا سكالا وحي بريرا.</p>
-          <div class="hotel-highlight">💡 الموقع مثالي للمشي: الدومو والغاليريا ~10 دقايق، وبريرا أقرب. التشيك-إن خاص، فخبروهم بوقت وصولكم مسبقاً.</div>
+          <div class="hotel-highlight"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> الموقع مثالي للمشي: الدومو والغاليريا ~10 دقايق، وبريرا أقرب. التشيك-إن خاص، فخبروهم بوقت وصولكم مسبقاً.</div>
         </div>
       </div>
     </div>
 
     <div class="days-header">
-      <div class="days-header-icon">📅</div>
+      <div class="days-header-icon"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg></div>
       <div class="days-header-text">الجدول اليومي · 4 أيام</div>
     </div>
 
@@ -1074,9 +1090,9 @@ html[data-theme="dark"]{
           <p class="opt-desc">تصعدون سطح كاتدرائية الدومو، تمشون فعلياً بين الأبراج القوطية الرخامية! بعدها الغاليريا فيتوريو إيمانويلي، أقدم مركز تسوق مغطى بالعالم تحت قبة زجاجية. أبيريتيفو بالساحة.</p>
           <div class="schedule"><b>4pm:</b> Duomo rooftop · <b>5:30pm:</b> Galleria · <b>7pm:</b> aperitivo · <b>8:30pm:</b> dinner</div>
           <div class="tags"><span class="tag t-book">احجزوا تذكرة السطح</span><span class="tag t-cost">السطح ~90 ر</span></div>
-          <div class="fact"><b>🏛️ 600 سنة بناء</b> الدومو استغرق ~600 سنة حتى اكتمل! أكبر كنيسة قوطية بإيطاليا، 135 برجاً و3,400 تمثالاً. وأنتوا فوق تمشون بينها.</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-bank"/></svg> 600 سنة بناء</b> الدومو استغرق ~600 سنة حتى اكتمل! أكبر كنيسة قوطية بإيطاليا، 135 برجاً و3,400 تمثالاً. وأنتوا فوق تمشون بينها.</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء: أناقة كلاسيكية</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: أناقة كلاسيكية</div>
             <div class="match-name">Ristorante Da Giacomo · Milano</div>
             <div class="match-reason">أيقونة ميلانية أنيقة يحبها أهل المدينة. سمك وباستا ممتازة بأجواء راقية. بداية تليق بأول ليلة.</div>
           </div>
@@ -1088,9 +1104,9 @@ html[data-theme="dark"]{
           <p class="opt-desc">بريرا = حي الفنانين، أزقة حجرية وغاليريات ومحلات عتيقة، وكله يبعد دقائق عن الفندق. تمشون قبل الغروب، بعدها طقس الأبيريتيفو الميلاني الأصيل، مشروب مع مقبلات.</p>
           <div class="schedule"><b>5pm:</b> Brera walk · <b>6:30pm:</b> Pinacoteca courtyard · <b>7pm:</b> aperitivo · <b>8:30pm:</b> dinner</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span><span class="tag t-cost">أبيريتيفو ~60 ر/ثنين</span></div>
-          <div class="fact"><b>🍸 ميلان اخترعت الأبيريتيفو</b> تقليد المشروب-قبل-العشاء مع المقبلات المجانية بدأ هنا! في بعض أماكن نافيلي يعطونك بوفيه كامل مع مشروب واحد.</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-cocktail"/></svg> ميلان اخترعت الأبيريتيفو</b> تقليد المشروب-قبل-العشاء مع المقبلات المجانية بدأ هنا! في بعض أماكن نافيلي يعطونك بوفيه كامل مع مشروب واحد.</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء: في بريرا</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: في بريرا</div>
             <div class="match-name">Nabucco · Brera</div>
             <div class="match-reason">مطعم رومانسي كلاسيكي بقلب بريرا. أجواء دافية ومطبخ إيطالي أنيق، مثالي لأول أمسية.</div>
           </div>
@@ -1109,15 +1125,15 @@ html[data-theme="dark"]{
       </div>
       <div class="options">
         <div class="opt">
-          <span class="opt-badge ob-a">الخيار أ · دافنشي + نافيلي ⭐</span>
+          <span class="opt-badge ob-a">الخيار أ · دافنشي + نافيلي <svg class="ic i-starmark" aria-hidden="true"><use href="#i-star"/></svg></span>
           <p class="opt-title">العشاء الأخير + قلعة سفورزا + نافيلي</p>
           <p class="opt-title-en">The Last Supper + Sforza + Navigli</p>
           <p class="opt-desc">صبح مع جدارية "العشاء الأخير" لليوناردو دافنشي (احجزوا من شهور، التذاكر تنفد بسرعة!). بعدها قلعة سفورزا وحدائق سيمبيوني. المساء على قنوات نافيلي، عشاء على ضفة القناة وسط الأضواء.</p>
           <div class="schedule"><b>9:15am:</b> Last Supper · <b>10:30am:</b> Sforza Castle · <b>1pm:</b> lunch · <b>6pm:</b> Navigli</div>
           <div class="tags"><span class="tag t-book">احجزوا الحين!</span><span class="tag t-cost">تذاكر ~110 ر/شخص</span></div>
-          <div class="fact"><b>🎨 لوحة على وشك الاختفاء</b> "العشاء الأخير" رسمها دافنشي 1495-98 بتقنية تجريبية بدأت تتقشّر وهو حي! ونجت من قنبلة دمّرت الدير بالحرب. 15 دقيقة فقط مسموحة لكل مجموعة.</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-palette"/></svg> لوحة على وشك الاختفاء</b> "العشاء الأخير" رسمها دافنشي 1495-98 بتقنية تجريبية بدأت تتقشّر وهو حي! ونجت من قنبلة دمّرت الدير بالحرب. 15 دقيقة فقط مسموحة لكل مجموعة.</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء: على قناة نافيلي</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: على قناة نافيلي</div>
             <div class="match-name">Al Pont de Ferr · Navigli</div>
             <div class="match-reason">على ضفة القناة مباشرة تحت الفوانيس. مطبخ ميلاني معاصر. أجمل مكان لعشاء المساء في نافيلي.</div>
           </div>
@@ -1129,9 +1145,9 @@ html[data-theme="dark"]{
           <p class="opt-desc">حي الموضة (Via Montenapoleone و Via della Spiga)، من أرقى شوارع التسوق بالعالم. بعدها Museo del Novecento للفن الإيطالي الحديث، وإطلالة على الدومو من نوافذه.</p>
           <div class="schedule"><b>10am:</b> Montenapoleone · <b>1pm:</b> lunch · <b>3pm:</b> Museo del Novecento · <b>6pm:</b> Duomo view</div>
           <div class="tags"><span class="tag t-cost">المتحف ~40 ر</span><span class="tag t-tip">التسوق</span></div>
-          <div class="fact"><b>👗 عاصمة الموضة</b> أسبوع ميلان للموضة من أهم 4 أسابيع بالعالم. الكوادريلاتيرو ديلا مودا = مربّع تتجمّع فيه كل دور الأزياء الكبرى بشوارع قليلة.</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-hanger"/></svg> عاصمة الموضة</b> أسبوع ميلان للموضة من أهم 4 أسابيع بالعالم. الكوادريلاتيرو ديلا مودا = مربّع تتجمّع فيه كل دور الأزياء الكبرى بشوارع قليلة.</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء: فناء تاريخي</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: فناء تاريخي</div>
             <div class="match-name">Il Salumaio di Montenapoleone</div>
             <div class="match-reason">مطعم بفناء داخلي ساحر وسط حي الموضة. أكل إيطالي راقٍ وأجواء أنيقة، يكمّل يوم التسوق.</div>
           </div>
@@ -1147,20 +1163,20 @@ html[data-theme="dark"]{
           <div class="day-title">رحلة بحيرة كومو</div>
           <div class="day-date">Thu · 13 Aug</div>
         </div>
-        <span class="day-tag special">★ المفضل</span>
+        <span class="day-tag special"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> المفضل</span>
       </div>
-      <div class="day-note">🚆 رحلة يوم كامل ورجعة. قطار من ميلانو → كومو/فارينا (~1 ساعة). تطلعون بدري وترجعون ميلان بالليل.</div>
+      <div class="day-note"><svg class="ic" aria-hidden="true"><use href="#i-train"/></svg> رحلة يوم كامل ورجعة. قطار من ميلانو → كومو/فارينا (~1 ساعة). تطلعون بدري وترجعون ميلان بالليل.</div>
       <div class="options">
         <div class="opt">
-          <span class="opt-badge ob-a">الخيار أ · جولة بحرية خاصة ⭐</span>
+          <span class="opt-badge ob-a">الخيار أ · جولة بحرية خاصة <svg class="ic i-starmark" aria-hidden="true"><use href="#i-star"/></svg></span>
           <p class="opt-title">فيلا بالبيانيلو + بيلاجيو بالقارب</p>
           <p class="opt-title-en">Villa Balbianello + Bellagio boat tour</p>
           <p class="opt-desc">قطار لكومو، بعده قارب خاص على البحيرة. تزورون فيلا بالبيانيلو (مكان زواج Anakin & Padmé في Star Wars + مكان تعالُج Bond في Casino Royale)، ثم بيلاجيو للغداء.</p>
           <div class="schedule"><b>8:30am:</b> train to Como · <b>10:30am:</b> Villa Balbianello · <b>1pm:</b> lunch in Bellagio · <b>5pm:</b> return train</div>
           <div class="tags"><span class="tag t-book">احجزوا الحين!</span><span class="tag t-cost">~600 ر/ثنين + قطار</span></div>
-          <div class="fact"><b>🎬 ستار وورز هنا!</b> فيلا بالبيانيلو = نفس المكان اللي صوّروا فيه زواج Anakin و Padmé. George Lucas ما غيّر شي بالكمبيوتر، المكان خيالي كذا!</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-movie"/></svg> ستار وورز هنا!</b> فيلا بالبيانيلو = نفس المكان اللي صوّروا فيه زواج Anakin و Padmé. George Lucas ما غيّر شي بالكمبيوتر، المكان خيالي كذا!</div>
           <div class="match">
-            <div class="match-label">🍽 الغداء: في بيلاجيو</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> الغداء: في بيلاجيو</div>
             <div class="match-name">Ristorante Bilacus · Bellagio</div>
             <div class="match-reason">سطح تحت عريشة عنب. سمك البحيرة الطازج. كل التقييمات تقول "رجعنا المرة الثانية".</div>
           </div>
@@ -1172,15 +1188,15 @@ html[data-theme="dark"]{
           <p class="opt-desc">قطار لفارينا مباشرة، ممشى العشاق المنحوت بالصخر + حدائق Villa Monastero. بعدها فيري لبيلاجيو للغداء والتسوق. أرخص وأكثر حرية.</p>
           <div class="schedule"><b>8:20am:</b> train to Varenna · <b>10am:</b> Lovers' walk · <b>12:30pm:</b> ferry to Bellagio · <b>1pm:</b> lunch</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span><span class="tag t-cost">قطار + فيري ~120 ر</span></div>
-          <div class="fact"><b>💑 ممشى العشاق</b> (Passeggiata degli Innamorati)، ممر ضيق محفور بالصخر فوق الماء مباشرة. كثير ناس يتقدمون هناك!</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg> ممشى العشاق</b> (Passeggiata degli Innamorati)، ممر ضيق محفور بالصخر فوق الماء مباشرة. كثير ناس يتقدمون هناك!</div>
           <div class="match">
-            <div class="match-label">🍽 الغداء: في بيلاجيو</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> الغداء: في بيلاجيو</div>
             <div class="match-name">Ristorante Bilacus · Bellagio</div>
             <div class="match-reason">نفس المطعم، تمرون فيه بعد ما توصلون من فارينا. على سطح مع إطلالة.</div>
           </div>
         </div>
       </div>
-      <div class="evening">🌙 <b>عشاء الخيارين:</b> ارجعوا ميلان وتعشّوا قريب من الفندق في بريرا، ليلة هادية تختم يوم البحيرة.</div>
+      <div class="evening"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg> <b>عشاء الخيارين:</b> ارجعوا ميلان وتعشّوا قريب من الفندق في بريرا، ليلة هادية تختم يوم البحيرة.</div>
     </div>
 
     <!-- Day 4 -->
@@ -1201,26 +1217,26 @@ html[data-theme="dark"]{
           <div class="schedule"><b>morning:</b> pool + spa · <b>12pm:</b> lunch · <b>2pm:</b> Fondazione Prada · <b>5pm:</b> last stroll</div>
           <div class="tags"><span class="tag t-cost">المتحف ~60 ر</span></div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع من ميلان</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع من ميلان</div>
             <div class="match-name">Ratanà · Milano</div>
             <div class="match-reason">أشهر ريزوتو ميلاني بالزعفران وأوسّوبوكو أصيل. مطبخ لومباردي حقيقي بأجواء دافية، وداع يليق بالمدينة.</div>
           </div>
         </div>
         <div class="opt">
-          <span class="opt-badge ob-b">الخيار ب · يوم مريح ⭐</span>
+          <span class="opt-badge ob-b">الخيار ب · يوم مريح <svg class="ic i-starmark" aria-hidden="true"><use href="#i-star"/></svg></span>
           <p class="opt-title">سبا + تسوق أخير + أبيريتيفو سطح</p>
           <p class="opt-title-en">Spa + shopping + rooftop aperitivo</p>
           <p class="opt-desc">ناموا لين ما تطيبون، ثم سبا ومسبح الفندق. آخر تسوق بالكوادريلاتيرو أو الغاليريا. غروب أبيريتيفو على سطح Terrazza Aperol بإطلالة على الدومو.</p>
           <div class="schedule"><b>morning:</b> pool + spa · <b>3pm:</b> shopping · <b>6:30pm:</b> rooftop aperitivo · <b>8:30pm:</b> dinner</div>
           <div class="tags"><span class="tag t-book">رتّبوا السبا</span><span class="tag t-cost">أبيريتيفو ~70 ر</span><span class="tag t-tip">يوم يهدّي</span></div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع</div>
             <div class="match-name">Trattoria Milanese · centro</div>
             <div class="match-reason">تراتوريا تاريخية من 1933. كوتوليتا ميلانيزي وريزوتو كلاسيكي، أصالة ميلانية بلا تكلّف.</div>
           </div>
         </div>
       </div>
-      <div class="transit">🚄 <b>بكرة 15 أغسطس:</b> قطار سريع ميلانو → فلورنسا (~2 ساعة). توصلون فلورنسا الظهر. جهّزوا الشنط الليلة.</div>
+      <div class="transit"><svg class="ic" aria-hidden="true"><use href="#i-train"/></svg> <b>بكرة 15 أغسطس:</b> قطار سريع ميلانو → فلورنسا (~2 ساعة). توصلون فلورنسا الظهر. جهّزوا الشنط الليلة.</div>
     </div>
   </div>
 </section>
@@ -1237,9 +1253,9 @@ html[data-theme="dark"]{
       <h2 class="city-name-ar">فلورنسا</h2>
       <div class="city-name-en">Firenze: the Renaissance city</div>
       <div class="city-meta">
-        <span class="city-meta-item">☀ 35°م</span>
-        <span class="city-meta-item">📅 15-18 أغسطس</span>
-        <span class="city-meta-item">🏨 3 ليالي</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 35°م</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg> 15-18 أغسطس</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg> 3 ليالي</span>
       </div>
     </div>
   </div>
@@ -1251,7 +1267,7 @@ html[data-theme="dark"]{
           <img class="hotel-img" loading="lazy"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ponte_Vecchio_from_Ponte_alle_Grazie.jpg/1280px-Ponte_Vecchio_from_Ponte_alle_Grazie.jpg"
             alt="جسر بونتي فيكيو قرب بورتا نيرا" onerror="this.parentElement.classList.add('img-missing');this.remove()">
-          <div class="hotel-badge booked">✓ محجوز</div>
+          <div class="hotel-badge booked"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> محجوز</div>
         </div>
         <div class="hotel-info">
           <div class="hotel-eyebrow">الإقامة</div>
@@ -1262,13 +1278,13 @@ html[data-theme="dark"]{
             <span class="hotel-price-detail">· 3 ليالي · قلب فلورنسا التاريخي</span>
           </div>
           <p class="hotel-desc">بوتيك صغير للكبار فقط (6 غرف بس) بقلب فلورنسا التاريخي: دقيقتين مشي من قصر ستروتزي، وقريب من سانتا ماريا نوفيلا، و~10 دقايق مشي من محطة القطار الرئيسية. فيه تراس سطح مفتوح بجلسات مريحة وإطلالة على المدينة.</p>
-          <div class="hotel-highlight">💡 تراس السطح حلو لقهوة الصبح أو مشروب قبل العشاء. والوصول من محطة SMN مشي سهل حتى بالشنط.</div>
+          <div class="hotel-highlight"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> تراس السطح حلو لقهوة الصبح أو مشروب قبل العشاء. والوصول من محطة SMN مشي سهل حتى بالشنط.</div>
         </div>
       </div>
     </div>
 
     <div class="days-header">
-      <div class="days-header-icon">📅</div>
+      <div class="days-header-icon"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg></div>
       <div class="days-header-text">الجدول اليومي · 3 أيام</div>
     </div>
 
@@ -1278,10 +1294,10 @@ html[data-theme="dark"]{
         <div class="day-numeral">5</div>
         <div class="day-headline">
           <div class="day-title">يوم الوصول</div>
-          <div class="day-date">Sat · 15 Aug · Ferragosto 🇮🇹</div>
+          <div class="day-date">Sat · 15 Aug · Ferragosto <svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg></div>
         </div>
       </div>
-      <div class="day-note">🇮🇹 توصلون من ميلان الظهر. اليوم Ferragosto، أكبر عطلة صيفية: بعض المحلات مسكّرة بس المطاعم شغّالة والمدينة أهدأ. الجو حار 35°م، خلّوا المشي للمساء.</div>
+      <div class="day-note"><svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg> توصلون من ميلان الظهر. اليوم Ferragosto، أكبر عطلة صيفية: بعض المحلات مسكّرة بس المطاعم شغّالة والمدينة أهدأ. الجو حار 35°م، خلّوا المشي للمساء.</div>
       <div class="options">
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · مشي كلاسيكي</span>
@@ -1289,9 +1305,9 @@ html[data-theme="dark"]{
           <p class="opt-desc">تمشون على الجسر القديم (محلات ذهب ومجوهرات)، تعبرون لـOltrarno، ورش جلود يدوية ومطاعم أصلية. عشاء بالحي.</p>
           <div class="schedule"><b>4pm:</b> Ponte Vecchio · <b>5pm:</b> Oltrarno · <b>7pm:</b> aperitivo · <b>8:30pm:</b> dinner</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span></div>
-          <div class="fact"><b>🌉 الجسر الناجي</b> Ponte Vecchio = الجسر الوحيد بفلورنسا اللي ما انهدم بالحرب العالمية الثانية. يقولون هتلر نفسه أمر بحمايته. عمره 650+ سنة!</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-bridge"/></svg> الجسر الناجي</b> Ponte Vecchio = الجسر الوحيد بفلورنسا اللي ما انهدم بالحرب العالمية الثانية. يقولون هتلر نفسه أمر بحمايته. عمره 650+ سنة!</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء: 5 دقايق من الفندق</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: 5 دقايق من الفندق</div>
             <div class="match-name">C-ucina · Oltrarno</div>
             <div class="match-reason">Farm-to-table بالحي. أكل بسيط بس الطعم مذهل. المطعم اللي يروحونه أهل الحي. جربوا الـ panna cotta.</div>
           </div>
@@ -1304,7 +1320,7 @@ html[data-theme="dark"]{
           <div class="schedule"><b>5pm:</b> meet at Mercato Centrale · <b>5-8pm:</b> food tour (6 stops)</div>
           <div class="tags"><span class="tag t-book">احجزوا قبل أسبوعين</span><span class="tag t-cost">~250 ر/ثنين</span></div>
           <div class="match">
-            <div class="match-label">🍽 الجولة نفسها = العشاء</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> الجولة نفسها = العشاء</div>
             <div class="match-name">5-6 محطات أكل خلال الجولة</div>
             <div class="match-reason">تتذوقون أكل فلورنسا الأصلي مع شرح عن كل طبق وتاريخه.</div>
           </div>
@@ -1323,13 +1339,13 @@ html[data-theme="dark"]{
       </div>
       <div class="options">
         <div class="opt">
-          <span class="opt-badge ob-a">الخيار أ · فن + طبخ ⭐</span>
+          <span class="opt-badge ob-a">الخيار أ · فن + طبخ <svg class="ic i-starmark" aria-hidden="true"><use href="#i-star"/></svg></span>
           <p class="opt-title">متحف Uffizi + درس طبخ</p>
           <p class="opt-desc">صبح في Uffizi، Birth of Venus، دافنشي، كارافاجيو. مكيّف! بعد الظهر درس طبخ، تسوون باستا وتيراميسو وتاكلون اللي سويتوه.</p>
           <div class="schedule"><b>8:30am:</b> Uffizi · <b>12pm:</b> light lunch · <b>3pm:</b> cooking class (3 hrs) · <b>7pm:</b> Piazzale Michelangelo</div>
           <div class="tags"><span class="tag t-book">احجزوا الحين!</span><span class="tag t-cost">~450 ر إجمالي</span></div>
           <div class="match">
-            <div class="match-label">🍽 العشاء: بعد الغروب</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: بعد الغروب</div>
             <div class="match-name">La Leggenda dei Frati · Villa Bardini</div>
             <div class="match-reason">أرومانسية مطعم بفلورنسا. زوج وزوجة يديرونه. تراس بإطلالة على المدينة وقت الغروب. احجزوا طاولة تراس!</div>
           </div>
@@ -1340,15 +1356,15 @@ html[data-theme="dark"]{
           <p class="opt-desc">صعود القبة (463 درجة، المنظر يستاهل!). بعد الظهر ورشة جلود، تسوون قطعة جلدية فلورنسية ذكرى.</p>
           <div class="schedule"><b>8:30am:</b> Duomo dome · <b>11am:</b> Baptistery · <b>1pm:</b> lunch · <b>3pm:</b> leather workshop</div>
           <div class="tags"><span class="tag t-book">القبة قبل شهر</span><span class="tag t-cost">~400 ر</span></div>
-          <div class="fact"><b>🏛️ هندسة محيّرة</b> قبة الدومو = أكبر قبة طوب بالعالم! بناها Brunelleschi سنة 1436 بدون سقالات، لين الحين المهندسين ما يفهمون كيف!</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-bank"/></svg> هندسة محيّرة</b> قبة الدومو = أكبر قبة طوب بالعالم! بناها Brunelleschi سنة 1436 بدون سقالات، لين الحين المهندسين ما يفهمون كيف!</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء: قريب من الدومو</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: قريب من الدومو</div>
             <div class="match-name">Trattoria Za Za · بجانب Mercato Centrale</div>
             <div class="match-reason">لازم تجربون Bistecca alla Fiorentina مرة وحدة، ستيك T-bone ضخم على الفحم. أكلة فلورنسا #1!</div>
           </div>
         </div>
       </div>
-      <div class="evening">🌅 <b>الخيارين يختمون بـ Piazzale Michelangelo</b>، أشهر إطلالة بفلورنسا. مجانية. اشتروا مشروبات من دكان قريب واستمتعوا بالغروب.</div>
+      <div class="evening"><svg class="ic" aria-hidden="true"><use href="#i-sunset"/></svg> <b>الخيارين يختمون بـ Piazzale Michelangelo</b>، أشهر إطلالة بفلورنسا. مجانية. اشتروا مشروبات من دكان قريب واستمتعوا بالغروب.</div>
     </div>
 
     <!-- Day 7 -->
@@ -1369,7 +1385,7 @@ html[data-theme="dark"]{
           <div class="schedule"><b>9am:</b> bus to Fiesole · <b>10am:</b> amphitheater · <b>12:30pm:</b> lunch · <b>2:30pm:</b> return · <b>4pm:</b> gelato</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span><span class="tag t-tip">أبرد من المدينة</span></div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع</div>
             <div class="match-name">La Leggenda dei Frati · Villa Bardini</div>
             <div class="match-reason">لو ما رحتوا أمس، الليلة لازم. تراس + غروب + أكل راقي = الختام المثالي لفلورنسا.</div>
           </div>
@@ -1381,15 +1397,15 @@ html[data-theme="dark"]{
           <p class="opt-desc">سوق الجلود، شنط، أحزمة، جاكيتات (فاصلوا!). غداء فوق في Mercato Centrale (سوق أكل فاخر). بعدها Accademia Gallery، تمثال داوود لمايكل أنجلو.</p>
           <div class="schedule"><b>9am:</b> San Lorenzo · <b>11:30am:</b> Mercato Centrale · <b>2pm:</b> Accademia · <b>4pm:</b> rest</div>
           <div class="tags"><span class="tag t-book">Accademia: احجزوا</span><span class="tag t-cost">~70 ر/شخص</span></div>
-          <div class="fact"><b>🗿 6 طن من الرخام</b> تمثال داوود طوله 5 أمتار ووزنه 6 طن! نحته مايكل أنجلو وعمره 26 من قطعة رخام رماها نحّاتين ثانيين!</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-monument"/></svg> 6 طن من الرخام</b> تمثال داوود طوله 5 أمتار ووزنه 6 طن! نحته مايكل أنجلو وعمره 26 من قطعة رخام رماها نحّاتين ثانيين!</div>
           <div class="match">
-            <div class="match-label">🍽 الغداء: بنفس المكان</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> الغداء: بنفس المكان</div>
             <div class="match-name">Mercato Centrale · الدور الثاني</div>
             <div class="match-reason">سوق أكل فاخر، باستا طازة، كمأة، بيتزا، جيلاتو. كل شي تحت سقف واحد. 5 دقايق مشي من San Lorenzo.</div>
           </div>
         </div>
       </div>
-      <div class="transit">🚂 <b>بكرة 18 أغسطس:</b> قطار سريع فلورنسا → نابولي (~3 ساعات). سيارة خاصة نابولي → بوزيتانو (~1.5 ساعة). توصلون بعد الظهر.</div>
+      <div class="transit"><svg class="ic" aria-hidden="true"><use href="#i-train"/></svg> <b>بكرة 18 أغسطس:</b> قطار سريع فلورنسا → نابولي (~3 ساعات). سيارة خاصة نابولي → بوزيتانو (~1.5 ساعة). توصلون بعد الظهر.</div>
     </div>
   </div>
 </section>
@@ -1406,9 +1422,9 @@ html[data-theme="dark"]{
       <h2 class="city-name-ar">بوزيتانو</h2>
       <div class="city-name-en">Positano: the vertical village of the Amalfi Coast</div>
       <div class="city-meta">
-        <span class="city-meta-item">☀ 29°م</span>
-        <span class="city-meta-item">📅 18-21 أغسطس</span>
-        <span class="city-meta-item">🏨 3 ليالي</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 29°م</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg> 18-21 أغسطس</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg> 3 ليالي</span>
       </div>
     </div>
   </div>
@@ -1420,24 +1436,24 @@ html[data-theme="dark"]{
           <img class="hotel-img" loading="lazy"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Amalfi_Coast_%28Italy%2C_October_2020%29_-_75_%2850558355441%29.jpg/1280px-Amalfi_Coast_%28Italy%2C_October_2020%29_-_75_%2850558355441%29.jpg"
             alt="إطلالة بوزيتانو من جهة مونتيبيرتوسو" onerror="this.parentElement.classList.add('img-missing');this.remove()">
-          <div class="hotel-badge booked">✓ محجوز</div>
+          <div class="hotel-badge booked"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> محجوز</div>
         </div>
         <div class="hotel-info">
           <div class="hotel-eyebrow">الإقامة</div>
           <h3 class="hotel-name">أنتاليا بوتيك هوتيل</h3>
-          <div class="hotel-name-en">Antalia Boutique Hotel · 4★ · Montepertuso</div>
+          <div class="hotel-name-en">Antalia Boutique Hotel · 4<svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> · Montepertuso</div>
           <div class="hotel-price-row">
             <span class="hotel-price">Aug 18 - 21</span>
             <span class="hotel-price-detail">· 3 ليالي · فوق بوزيتانو</span>
           </div>
           <p class="hotel-desc">بوتيك حميمي (3 غرف بس) بقرية مونتيبيرتوسو المعلّقة فوق بوزيتانو. مسبح بإطلالة، شرفات على البحر تشوفون منها فاراليوني كابري بالبعيد، ومطعم متوسطي. هدوء تام بعيد عن زحمة القرية، وأنتوا أقرب لنوتشيلي ونهاية درب الآلهة.</p>
-          <div class="hotel-highlight">💡 الفندق فوق بالجبل: استخدموا شاتل الفندق المجاني للنزول والطلوع من بوزيتانو، الطريق ضيق خصوصاً بالليل.</div>
+          <div class="hotel-highlight"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> الفندق فوق بالجبل: استخدموا شاتل الفندق المجاني للنزول والطلوع من بوزيتانو، الطريق ضيق خصوصاً بالليل.</div>
         </div>
       </div>
     </div>
 
     <div class="days-header">
-      <div class="days-header-icon">📅</div>
+      <div class="days-header-icon"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg></div>
       <div class="days-header-text">الجدول اليومي · 3 أيام</div>
     </div>
 
@@ -1453,15 +1469,15 @@ html[data-theme="dark"]{
       <div class="day-note">توصلون بعد الظهر من النقل الخاص. بوزيتانو عمودية، كلها درج! تشيكون واسترخوا. عندكم نص يوم.</div>
       <div class="options">
         <div class="opt">
-          <span class="opt-badge ob-a">الخيار أ · قلب القرية ⭐</span>
+          <span class="opt-badge ob-a">الخيار أ · قلب القرية <svg class="ic i-starmark" aria-hidden="true"><use href="#i-star"/></svg></span>
           <p class="opt-title">الشاطئ الكبير + أبيريتيفو Franco's</p>
           <p class="opt-title-en">Spiaggia Grande + Franco's Bar</p>
           <p class="opt-desc">تنزلون الدرج للشاطئ الكبير وكنيسة Santa Maria Assunta بقبتها المايوليكا. صنادل جلد يدوية وبوتيكات "موضة بوزيتانو". تختمون بغروب أبيريتيفو ببار Franco's الشهير.</p>
           <div class="schedule"><b>4:30pm:</b> village & church · <b>6pm:</b> sandals & boutiques · <b>7pm:</b> Franco's Bar · <b>8:30pm:</b> dinner</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span><span class="tag t-cost">أبيريتيفو ~90 ر</span></div>
-          <div class="fact"><b>🎨 قبة المايوليكا</b> قبة كنيسة Santa Maria مكسوّة بآلاف بلاطات المايوليكا الخضراء والصفراء. جواها أيقونة بيزنطية للعذراء، الأسطورة تقول إنها "طلبت" البقاء ببوزيتانو فسُمّيت القرية على اسمها.</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-palette"/></svg> قبة المايوليكا</b> قبة كنيسة Santa Maria مكسوّة بآلاف بلاطات المايوليكا الخضراء والصفراء. جواها أيقونة بيزنطية للعذراء، الأسطورة تقول إنها "طلبت" البقاء ببوزيتانو فسُمّيت القرية على اسمها.</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء: أول ليلة</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: أول ليلة</div>
             <div class="match-name">La Sponda · Le Sirenuse</div>
             <div class="match-reason">أرومانسية عشاء على الساحل، مضاء بـ400 شمعة، نجمة ميشلان، وإطلالة على القرية. احجزوا مبكراً، ويفضّلون لبس أنيق.</div>
           </div>
@@ -1474,7 +1490,7 @@ html[data-theme="dark"]{
           <div class="schedule"><b>afternoon:</b> pool + rest · <b>6:30pm:</b> sunset from terrace · <b>8pm:</b> village dinner</div>
           <div class="tags"><span class="tag t-free">مجاني</span><span class="tag t-tip">يوم يهدّي</span></div>
           <div class="match">
-            <div class="match-label">🍽 العشاء: في القرية</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: في القرية</div>
             <div class="match-name">Next2 · Positano</div>
             <div class="match-reason">مطعم أنيق على الواجهة البحرية بأكل متوسطي معاصر. أجواء دافئة، بداية هادية للساحل.</div>
           </div>
@@ -1490,19 +1506,19 @@ html[data-theme="dark"]{
           <div class="day-title">اليوم الكبير</div>
           <div class="day-date">Wed · 19 Aug</div>
         </div>
-        <span class="day-tag special">★ المفضل</span>
+        <span class="day-tag special"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> المفضل</span>
       </div>
       <div class="options">
         <div class="opt">
-          <span class="opt-badge ob-a">الخيار أ · قارب خاص ⭐</span>
+          <span class="opt-badge ob-a">الخيار أ · قارب خاص <svg class="ic i-starmark" aria-hidden="true"><use href="#i-star"/></svg></span>
           <p class="opt-title">قارب خاص: أمالفي + مغارة الزمرد</p>
           <p class="opt-title-en">Private boat: Amalfi + Emerald Grotto</p>
           <p class="opt-desc">يوم على البحر بقارب خاص من بوزيتانو. تمرون على المدن المعلّقة ومغارة الزمرد (الجروتو الزمردي)، وتتوقفون بأمالفي للغداء. مناظر وتصوير، بدون محطات سباحة إجبارية.</p>
           <div class="schedule"><b>9:30am:</b> boat from Positano · <b>11am:</b> Emerald Grotto · <b>1pm:</b> lunch in Amalfi · <b>4:30pm:</b> return</div>
           <div class="tags"><span class="tag t-book">قبل أسبوعين</span><span class="tag t-cost">~900 ر/ثنين</span></div>
-          <div class="fact"><b>💎 مغارة الزمرد</b> الجروتو الزمردي يتوهّج أخضراً لأن ضوء الشمس يدخلها من فتحة تحت الماء. وفي قاعها مشهد ميلاد غارق (بريسيبي) يزورونه الغطاسون!</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-diamond"/></svg> مغارة الزمرد</b> الجروتو الزمردي يتوهّج أخضراً لأن ضوء الشمس يدخلها من فتحة تحت الماء. وفي قاعها مشهد ميلاد غارق (بريسيبي) يزورونه الغطاسون!</div>
           <div class="match">
-            <div class="match-label">🍽 الغداء: في أمالفي</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> الغداء: في أمالفي</div>
             <div class="match-name">Marina Grande · Amalfi</div>
             <div class="match-reason">مطعم على الميناء مباشرة. سمك ومأكولات بحرية طازة. جربوا الباستا بفواكه البحر.</div>
           </div>
@@ -1514,15 +1530,15 @@ html[data-theme="dark"]{
           <p class="opt-desc">أشهر ممشى جبلي بإيطاليا، يسير فوق الساحل بين السحاب والبحر. تبدون من Bomerano وتنزلون لنوتشيلي فوق بوزيتانو (~3 ساعات، سهل-متوسط). مناظر أسطورية.</p>
           <div class="schedule"><b>8am:</b> bus to Bomerano · <b>9am:</b> trailhead · <b>12pm:</b> Nocelle · <b>1pm:</b> lunch · <b>2:30pm:</b> steps down</div>
           <div class="tags"><span class="tag t-tip">ابدوا بدري + حذاء مريح</span><span class="tag t-free">أجمل ممشى</span></div>
-          <div class="fact"><b>🥾 "درب الآلهة"</b> الأسطورة تقول الآلهة اليونانية مشت هنا لإنقاذ يوليسيس من إغراء السيرين، نفس السيرين اللي سُمّي عليها فندق Le Sirenuse!</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-hike"/></svg> "درب الآلهة"</b> الأسطورة تقول الآلهة اليونانية مشت هنا لإنقاذ يوليسيس من إغراء السيرين، نفس السيرين اللي سُمّي عليها فندق Le Sirenuse!</div>
           <div class="match">
-            <div class="match-label">🍽 الغداء: في نوتشيلي</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> الغداء: في نوتشيلي</div>
             <div class="match-name">Trattoria Santa Croce · Nocelle</div>
             <div class="match-reason">تراس بانورامي في نهاية الممشى. أكل جبلي بسيط بعد المشي، مع إطلالة تستاهل كل درجة.</div>
           </div>
         </div>
       </div>
-      <div class="evening">🌙 <b>عشاء الخيارين:</b> أبيريتيفو في Franco's Bar، ثم عشاء في La Tagliata، مطعم عائلي بالجبل بقائمة ثابتة وإطلالة، ويوصّلونكم بسيارتهم مجاناً.</div>
+      <div class="evening"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg> <b>عشاء الخيارين:</b> أبيريتيفو في Franco's Bar، ثم عشاء في La Tagliata، مطعم عائلي بالجبل بقائمة ثابتة وإطلالة، ويوصّلونكم بسيارتهم مجاناً.</div>
     </div>
 
     <!-- Day 10 -->
@@ -1536,15 +1552,15 @@ html[data-theme="dark"]{
       </div>
       <div class="options">
         <div class="opt">
-          <span class="opt-badge ob-a">الخيار أ · رافيلو ⭐</span>
+          <span class="opt-badge ob-a">الخيار أ · رافيلو <svg class="ic i-starmark" aria-hidden="true"><use href="#i-star"/></svg></span>
           <p class="opt-title">فيلا تشيمبروني، شرفة اللانهاية</p>
           <p class="opt-title-en">Ravello: Villa Cimbrone</p>
           <p class="opt-desc">سيارة لرافيلو المعلّقة فوق الساحل (~40 دقيقة). حدائق Villa Cimbrone و"شرفة اللانهاية"، 180° على البحر المتوسط. بعدها Villa Rufolo بعمارتها العربية-القوطية. هدوء وأناقة بعيداً عن الزحمة.</p>
           <div class="schedule"><b>10am:</b> car to Ravello · <b>11am:</b> Villa Cimbrone · <b>1pm:</b> lunch · <b>3pm:</b> Villa Rufolo · <b>5pm:</b> return</div>
           <div class="tags"><span class="tag t-cost">دخول ~30 ر/شخص</span><span class="tag t-tip">تجنبوا 11ص-3م</span></div>
-          <div class="fact"><b>🎭 ملاذ Greta Garbo</b> Greta Garbo اختبت بفيلا تشيمبروني من المصورين! وWagner ألّف هنا وقال "اكتشفت حديقة Klingsor" (من أوبرا Parsifal).</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-theater"/></svg> ملاذ Greta Garbo</b> Greta Garbo اختبت بفيلا تشيمبروني من المصورين! وWagner ألّف هنا وقال "اكتشفت حديقة Klingsor" (من أوبرا Parsifal).</div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع: في رافيلو</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع: في رافيلو</div>
             <div class="match-name">Terrazza del Confalone · Ravello</div>
             <div class="match-reason">تقييم 9.8! تراس بإطلالة ساحرة وأكل متوسطي راقٍ. وداع يليق بالساحل.</div>
           </div>
@@ -1556,15 +1572,15 @@ html[data-theme="dark"]{
           <p class="opt-desc">يوم بحر أخير: شاطئ Fornillo الأهدأ (10 دقائق مشي)، أو بيتش كلوب Da Adolfo الأسطوري (يوصّلونكم بقارب من الشاطئ الكبير). آخر غطسة بمياه الساحل قبل الوداع.</p>
           <div class="schedule"><b>morning:</b> pool · <b>12pm:</b> boat to Da Adolfo · <b>1pm:</b> beach lunch · <b>4pm:</b> back · <b>6pm:</b> pack for Capri</div>
           <div class="tags"><span class="tag t-free">قارب Da Adolfo مجاني</span><span class="tag t-tip">بيتش كلوب</span></div>
-          <div class="fact"><b>🍋 حكاية الليمون</b> ليمون ساحل أمالفي (سفوسّاتو) ضخم وحلو ومحمي جغرافياً. منه الليمونتشيلو والجرانيتا اللي تلاقونها بكل ركن.</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-lemon"/></svg> حكاية الليمون</b> ليمون ساحل أمالفي (سفوسّاتو) ضخم وحلو ومحمي جغرافياً. منه الليمونتشيلو والجرانيتا اللي تلاقونها بكل ركن.</div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع: على الشاطئ</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع: على الشاطئ</div>
             <div class="match-name">Chez Black · Spiaggia Grande</div>
             <div class="match-reason">أيقونة بوزيتانو على الشاطئ من 1949. بيتزا وباستا بحرية وأجواء حيّة، وداع مرح للساحل.</div>
           </div>
         </div>
       </div>
-      <div class="transit">⛴ <b>بكرة 21 أغسطس:</b> سيارة لميناء بوزيتانو + فيري مباشر لكابري (~40 دقيقة). توصلون الضحى.</div>
+      <div class="transit"><svg class="ic" aria-hidden="true"><use href="#i-ship"/></svg> <b>بكرة 21 أغسطس:</b> سيارة لميناء بوزيتانو + فيري مباشر لكابري (~40 دقيقة). توصلون الضحى.</div>
     </div>
   </div>
 </section>
@@ -1581,9 +1597,9 @@ html[data-theme="dark"]{
       <h2 class="city-name-ar">كابري</h2>
       <div class="city-name-en">Capri: the jewel of the Bay of Naples</div>
       <div class="city-meta">
-        <span class="city-meta-item">☀ 28°م</span>
-        <span class="city-meta-item">📅 21-24 أغسطس</span>
-        <span class="city-meta-item">🏨 3 ليالي</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 28°م</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg> 21-24 أغسطس</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg> 3 ليالي</span>
       </div>
     </div>
   </div>
@@ -1595,24 +1611,24 @@ html[data-theme="dark"]{
           <img class="hotel-img" loading="lazy"
             src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Capri-marina_piccola.jpg"
             alt="كابري قرب فندق لا ريزيدنسا" onerror="this.parentElement.classList.add('img-missing');this.remove()">
-          <div class="hotel-badge booked">✓ محجوز</div>
+          <div class="hotel-badge booked"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> محجوز</div>
         </div>
         <div class="hotel-info">
           <div class="hotel-eyebrow">الإقامة</div>
           <h3 class="hotel-name">لا ريزيدنسا كابري</h3>
-          <div class="hotel-name-en">La Residenza Capri · 4★ · Capri town</div>
+          <div class="hotel-name-en">La Residenza Capri · 4<svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> · Capri town</div>
           <div class="hotel-price-row">
             <span class="hotel-price">Aug 21 - 24</span>
             <span class="hotel-price-detail">· 3 ليالي · قرب البياتزيتا</span>
           </div>
           <p class="hotel-desc">فندق أنيق على بعد ~200 متر من البياتزيتا وقريب من Via Camerelle. تراس شمسي كبير مع مسبح وإطلالة على فاراليوني ودير سان جاكومو، وفيه بيتزيريا Vico Pizza & Wine داخل الفندق نفسه.</p>
-          <div class="hotel-highlight">💡 الموقع بقلب كابري تاون: البياتزيتا والمطاعم كلها مشي، وما تحتاجون الباص إلا ليوم أناكابري وتلفريك مونتي سولارو.</div>
+          <div class="hotel-highlight"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> الموقع بقلب كابري تاون: البياتزيتا والمطاعم كلها مشي، وما تحتاجون الباص إلا ليوم أناكابري وتلفريك مونتي سولارو.</div>
         </div>
       </div>
     </div>
 
     <div class="days-header">
-      <div class="days-header-icon">📅</div>
+      <div class="days-header-icon"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg></div>
       <div class="days-header-text">الجدول اليومي · 3 أيام</div>
     </div>
 
@@ -1625,7 +1641,7 @@ html[data-theme="dark"]{
           <div class="day-date">Fri · 21 Aug</div>
         </div>
       </div>
-      <div class="day-note">⛴ توصلون من بوزيتانو ~الضحى. تلفريك (funicular) لكابري تاون. تشيكون بالفندق. نص يوم.</div>
+      <div class="day-note"><svg class="ic" aria-hidden="true"><use href="#i-ship"/></svg> توصلون من بوزيتانو ~الضحى. تلفريك (funicular) لكابري تاون. تشيكون بالفندق. نص يوم.</div>
       <div class="options">
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · كابري الكلاسيكية</span>
@@ -1634,7 +1650,7 @@ html[data-theme="dark"]{
           <div class="schedule"><b>12pm:</b> hotel + lunch · <b>2pm:</b> Gardens of Augustus · <b>3:30pm:</b> shopping · <b>6pm:</b> Piazzetta</div>
           <div class="tags"><span class="tag t-cost">حدائق ~5 ر</span></div>
           <div class="match">
-            <div class="match-label">🍽 العشاء: 5 دقايق مشي</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: 5 دقايق مشي</div>
             <div class="match-name">Da Giorgio · Capri town</div>
             <div class="match-reason">طاولات بإطلالة على خليج نابولي. "لو عندي وقت لمطعم واحد بكابري، أختار Da Giorgio." جربوا Pennette Aumm Aumm.</div>
           </div>
@@ -1645,7 +1661,7 @@ html[data-theme="dark"]{
           <p class="opt-desc">روحوا Marina Piccola، أحلى شاطئ بكابري. ماء فيروزي وإطلالة على Faraglioni. غداء بمطعم على البحر. ما فيه سباحة، بس المنظر والأكل. المساء بياتزيتا.</p>
           <div class="schedule"><b>1pm:</b> bus to Marina Piccola · <b>1:30pm:</b> seaside lunch · <b>3pm:</b> walk & photos · <b>5pm:</b> return</div>
           <div class="match">
-            <div class="match-label">🍽 العشاء</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء</div>
             <div class="match-name">Villa Verde · Capri town</div>
             <div class="match-reason">حديقة خضراء هادية. أحلى بيتزا بالجزيرة. ليلة بسيطة ومريحة بعد يوم سفر.</div>
           </div>
@@ -1661,18 +1677,18 @@ html[data-theme="dark"]{
           <div class="day-title">اليوم الكبير</div>
           <div class="day-date">Sat · 22 Aug</div>
         </div>
-        <span class="day-tag special">★ المفضل</span>
+        <span class="day-tag special"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> المفضل</span>
       </div>
       <div class="options">
         <div class="opt">
-          <span class="opt-badge ob-a">الخيار أ · المغارة + قارب ⭐</span>
+          <span class="opt-badge ob-a">الخيار أ · المغارة + قارب <svg class="ic i-starmark" aria-hidden="true"><use href="#i-star"/></svg></span>
           <p class="opt-title">المغارة الزرقاء + جولة حول الجزيرة</p>
           <p class="opt-title-en">Blue Grotto + island circumnavigation</p>
           <p class="opt-desc">8 الصبح المغارة الزرقاء، مغارة الماء فيها يتوهج أزرق كهربائي! تدخلون بقارب صغير مستلقين. بعدها قارب خاص حول الجزيرة: Faraglioni (تمرون تحت القوس)، المغارة البيضاء والخضراء. بدون سباحة، مناظر وتصوير.</p>
           <div class="schedule"><b>8am:</b> Blue Grotto · <b>10am:</b> private boat (3-4 hrs) · <b>2pm:</b> lunch · <b>4pm:</b> rest</div>
           <div class="tags"><span class="tag t-book">احجزوا الحين</span><span class="tag t-cost">~970 ر إجمالي</span></div>
-          <div class="fact"><b>🔵 مسبح الإمبراطور</b> المغارة الزرقاء كانت مسبح تيبيريوس الخاص قبل 2000 سنة! لقوا تماثيل نبتون بقاعها سنة 1964. اللون الأزرق = الماء يمتص الأشعة الحمراء ويخلي بس الزرقاء تمر من فتحة تحت الماء.</div>
-          <div class="fact"><b>💋 أسطورة كابري</b> اللي يتباوسون تحت قوس Faraglione di Mezzo يظلون مع بعض للأبد!</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-drop"/></svg> مسبح الإمبراطور</b> المغارة الزرقاء كانت مسبح تيبيريوس الخاص قبل 2000 سنة! لقوا تماثيل نبتون بقاعها سنة 1964. اللون الأزرق = الماء يمتص الأشعة الحمراء ويخلي بس الزرقاء تمر من فتحة تحت الماء.</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg> أسطورة كابري</b> اللي يتباوسون تحت قوس Faraglione di Mezzo يظلون مع بعض للأبد!</div>
         </div>
         <div class="opt">
           <span class="opt-badge ob-b">الخيار ب · جولة جماعية</span>
@@ -1683,7 +1699,7 @@ html[data-theme="dark"]{
         </div>
       </div>
       <div class="match match-full">
-        <div class="match-label">🍽 عشاء الخيارين: المطعم الأهم بكابري 🍋</div>
+        <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الخيارين: المطعم الأهم بكابري <svg class="ic" aria-hidden="true"><use href="#i-lemon"/></svg></div>
         <div class="match-name">Da Paolino · "مطعم شجر الليمون"</div>
         <div class="match-reason">عشاء تحت مئات أشجار الليمون الحقيقية المعلقة فوقكم! أرومانسية مطعم بكابري. جربوا جبنة الموزاريلا المشوية بورق الليمون. فيه غرفة حلويات! لازم تحجزون من بدري بأغسطس.</div>
       </div>
@@ -1707,7 +1723,7 @@ html[data-theme="dark"]{
           <div class="schedule"><b>9am:</b> bus · <b>9:30am:</b> chairlift · <b>10:30am:</b> summit · <b>12pm:</b> Villa San Michele · <b>1:30pm:</b> lunch</div>
           <div class="tags"><span class="tag t-free">ما يبيله حجز</span><span class="tag t-cost">تلفريك ~50 ر</span></div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع من كابري</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع من كابري</div>
             <div class="match-name">Da Giorgio · Capri town</div>
             <div class="match-reason">نختم كابري بإطلالة على خليج نابولي ليلاً. عشاء وداعي رومانسي.</div>
           </div>
@@ -1718,15 +1734,15 @@ html[data-theme="dark"]{
           <p class="opt-desc">ناموا، مسبح، قهوة. زوروا Carthusia (محل عطور كابري من 1380، اكتشفوا العطر بالصدفة لما نسى راهب ورود بالماء!). آخر مشي بالبياتزيتا.</p>
           <div class="schedule"><b>morning:</b> free · <b>2pm:</b> Carthusia · <b>3pm:</b> last walk · <b>6pm:</b> last sunset</div>
           <div class="tags"><span class="tag t-free">ما يبيله شي</span><span class="tag t-tip">أحلى يوم = بدون خطة</span></div>
-          <div class="fact"><b>🌺 عطور من 1380</b> عطور Carthusia من 1380! راهب نسى ماء حط فيها ورود فاكتشف إنها صارت عطر. الحين من أقدم دور العطور بالعالم!</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-flower"/></svg> عطور من 1380</b> عطور Carthusia من 1380! راهب نسى ماء حط فيها ورود فاكتشف إنها صارت عطر. الحين من أقدم دور العطور بالعالم!</div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع</div>
             <div class="match-name">Da Paolino (لو ما رحتوا أمس) أو Villa Verde</div>
             <div class="match-reason">لو رحتوا Da Paolino أمس، الليلة Villa Verde، بيتزا ممتازة بحديقة هادية.</div>
           </div>
         </div>
       </div>
-      <div class="transit">⛴ <b>بكرة 24 أغسطس:</b> فيري كابري → نابولي (50 دقيقة) + قطار سريع نابولي → روما (1 ساعة 10 دقايق). توصلون روما ~1م.</div>
+      <div class="transit"><svg class="ic" aria-hidden="true"><use href="#i-ship"/></svg> <b>بكرة 24 أغسطس:</b> فيري كابري → نابولي (50 دقيقة) + قطار سريع نابولي → روما (1 ساعة 10 دقايق). توصلون روما ~1م.</div>
     </div>
   </div>
 </section>
@@ -1743,9 +1759,9 @@ html[data-theme="dark"]{
       <h2 class="city-name-ar">روما</h2>
       <div class="city-name-en">Roma: the eternal farewell</div>
       <div class="city-meta">
-        <span class="city-meta-item">☀ 32°م</span>
-        <span class="city-meta-item">📅 24-25 أغسطس</span>
-        <span class="city-meta-item">🏨 1 ليلة</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 32°م</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg> 24-25 أغسطس</span>
+        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg> 1 ليلة</span>
       </div>
     </div>
   </div>
@@ -1757,12 +1773,12 @@ html[data-theme="dark"]{
           <img class="hotel-img" loading="lazy"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Trevi_Fountain_-_Roma.jpg/1280px-Trevi_Fountain_-_Roma.jpg"
             alt="Hotel de Russie" onerror="this.parentElement.classList.add('img-missing');this.remove()">
-          <div class="hotel-badge">★ الترشيح</div>
+          <div class="hotel-badge"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> الترشيح</div>
         </div>
         <div class="hotel-info">
           <div class="hotel-eyebrow">الإقامة · لم تُحجز بعد</div>
           <h3 class="hotel-name">هوتيل دي روسي</h3>
-          <div class="hotel-name-en">Hotel de Russie (Rocco Forte) · 5★ · Piazza del Popolo</div>
+          <div class="hotel-name-en">Hotel de Russie (Rocco Forte) · 5<svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> · Piazza del Popolo</div>
           <div class="hotel-price-row">
             <span class="hotel-price">~2,950 ر/ليلة</span>
             <span class="hotel-price-detail">· المجموع ~2,950 ر (1 ليلة) · تقدير أغسطس 2026</span>
@@ -1774,16 +1790,16 @@ html[data-theme="dark"]{
 
     <div class="hotel-alt">
       <div class="hotel-alt-head">
-        <span class="hotel-alt-badge">★ الترشيح الثاني</span>
+        <span class="hotel-alt-badge"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> الترشيح الثاني</span>
         <span class="hotel-alt-name">هوتيل إيدن</span>
       </div>
-      <div class="hotel-alt-name-en">Hotel Eden (Dorchester Collection) · 5★ · near Spanish Steps</div>
+      <div class="hotel-alt-name-en">Hotel Eden (Dorchester Collection) · 5<svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> · near Spanish Steps</div>
       <div class="hotel-alt-price">~2,700 <b>ر/ليلة</b> · المجموع ~2,700 ر (1 ليلة) · تقدير أغسطس 2026</div>
       <div class="hotel-alt-reason">لو تبون تكونوا أقرب لتريفي والبانثيون بدل بيازا ديل بوبولو: إيدن قريب من Spanish Steps وVia Veneto، وأقرب فعلياً لجدول اليوم الأخير (~12 دقيقة مشي لتريفي بدل 18-20). مطعمه على السطح (La Terrazza) من أجمل إطلالات روما، ميشلان نجمة.</div>
     </div>
 
     <div class="days-header">
-      <div class="days-header-icon">📅</div>
+      <div class="days-header-icon"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg></div>
       <div class="days-header-text">آخر ليلة + المغادرة</div>
     </div>
 
@@ -1796,7 +1812,7 @@ html[data-theme="dark"]{
           <div class="day-date">Mon · 24 Aug</div>
         </div>
       </div>
-      <div class="day-note">🚕 تريفي والبانثيون أبعد شوي من الفندق (~18-20 دقيقة مشي)، خذوا تاكسي قصير (~8 دقايق) للرايح، وارجعوا مشي عبر الأزقة لو حبيتوا.</div>
+      <div class="day-note"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg> تريفي والبانثيون أبعد شوي من الفندق (~18-20 دقيقة مشي)، خذوا تاكسي قصير (~8 دقايق) للرايح، وارجعوا مشي عبر الأزقة لو حبيتوا.</div>
       <div class="options">
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · أبرز المعالم</span>
@@ -1804,9 +1820,9 @@ html[data-theme="dark"]{
           <p class="opt-desc">نافورة تريفي (ارموا عملة = بترجعون روما). 5 دقايق للبانثيون (مجاني، قبة 1900 سنة!). اعبروا نهر التيبر لتراستيفيري، أزقة، فوانيس، عشاء وداعي.</p>
           <div class="schedule"><b>3pm:</b> Trevi · <b>3:30pm:</b> Pantheon · <b>4:30pm:</b> Piazza Navona · <b>6pm:</b> Trastevere · <b>8pm:</b> dinner</div>
           <div class="tags"><span class="tag t-free">كل شي مجاني</span></div>
-          <div class="fact"><b>🏛️ 1900 سنة من العبقرية</b> البانثيون عمره 1900+ سنة وقبته لا زالت أكبر قبة خرسانية غير مسلّحة بالعالم! الفتحة فوق (oculus) مفتوحة، المطر يدخل فعلياً بس الأرضية مصممة بميول تصرف الماء.</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-bank"/></svg> 1900 سنة من العبقرية</b> البانثيون عمره 1900+ سنة وقبته لا زالت أكبر قبة خرسانية غير مسلّحة بالعالم! الفتحة فوق (oculus) مفتوحة، المطر يدخل فعلياً بس الأرضية مصممة بميول تصرف الماء.</div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع: الأخير بإيطاليا</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع: الأخير بإيطاليا</div>
             <div class="match-name">Da Enzo al 29 · Trastevere</div>
             <div class="match-reason">يقولون أفضل Cacio e Pepe بروما كلها. تراتوريا رومانية أصلية. صغير وحميمي. الختام المثالي لشهر العسل. لازم تحجزون!</div>
           </div>
@@ -1818,13 +1834,13 @@ html[data-theme="dark"]{
           <div class="schedule"><b>3pm:</b> Villa Borghese · <b>5pm:</b> Pincio sunset · <b>6pm:</b> Piazza del Popolo · <b>8pm:</b> rooftop dinner</div>
           <div class="tags"><span class="tag t-free">الحدائق مجانية</span><span class="tag t-book">احجزوا السطح</span></div>
           <div class="match">
-            <div class="match-label">🍽 عشاء الوداع</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع</div>
             <div class="match-name">Grazia & Graziella · Piazza Santa Maria, Trastevere</div>
             <div class="match-reason">ساحة هادية، أشجار، فوانيس. باستا ممتازة. أجواء رومانية كلاسيكية، ختام سينمائي.</div>
           </div>
         </div>
       </div>
-      <div class="transit">✈ <b>اليوم 15 (25 أغسطس):</b> صباح مريح. قهوة إيطالية. تاكسي للمطار (~40 دقيقة، ~200 ر). طيران للرياض. الحمد لله على السلامة! 🇸🇦</div>
+      <div class="transit"><svg class="ic" aria-hidden="true"><use href="#i-plane"/></svg> <b>اليوم 15 (25 أغسطس):</b> صباح مريح. قهوة إيطالية. تاكسي للمطار (~40 دقيقة، ~200 ر). طيران للرياض. الحمد لله على السلامة! <svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg></div>
     </div>
   </div>
 </section>
@@ -1919,11 +1935,11 @@ html[data-theme="dark"]{
   var TRIP_END   = new Date('2026-08-25T00:00:00');
 
   var cityHighlights = {
-    milan:    ['⛪ سطح الدومو','🎨 العشاء الأخير لدافنشي','🚤 رحلة بحيرة كومو','🍸 أبيريتيفو نافيلي'],
-    florence: ['🎨 Uffizi Gallery','🏛 قبة الدومو','🍝 درس طبخ + Bistecca','📸 Piazzale Michelangelo'],
-    positano: ['🍽 عشاء لا سبوندا','⛵ قارب مغارة الزمرد','🥾 درب الآلهة','🌊 شرفة اللانهاية برافيلو'],
-    capri:    ['🔵 المغارة الزرقاء','⛵ قارب Faraglioni','🏔 قمة Monte Solaro','🍋 عشاء Da Paolino'],
-    rome:     ['💧 نافورة تريفي','🏛 البانثيون','🍝 عشاء Trastevere','✈ صباح المغادرة']
+    milan:    ['<svg class="ic" aria-hidden="true"><use href="#i-church"/></svg> سطح الدومو','<svg class="ic" aria-hidden="true"><use href="#i-palette"/></svg> العشاء الأخير لدافنشي','<svg class="ic" aria-hidden="true"><use href="#i-boat"/></svg> رحلة بحيرة كومو','<svg class="ic" aria-hidden="true"><use href="#i-cocktail"/></svg> أبيريتيفو نافيلي'],
+    florence: ['<svg class="ic" aria-hidden="true"><use href="#i-palette"/></svg> Uffizi Gallery','<svg class="ic" aria-hidden="true"><use href="#i-bank"/></svg> قبة الدومو','<svg class="ic" aria-hidden="true"><use href="#i-chef"/></svg> درس طبخ + Bistecca','<svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg> Piazzale Michelangelo'],
+    positano: ['<svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء لا سبوندا','<svg class="ic" aria-hidden="true"><use href="#i-sail"/></svg> قارب مغارة الزمرد','<svg class="ic" aria-hidden="true"><use href="#i-hike"/></svg> درب الآلهة','<svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg> شرفة اللانهاية برافيلو'],
+    capri:    ['<svg class="ic" aria-hidden="true"><use href="#i-drop"/></svg> المغارة الزرقاء','<svg class="ic" aria-hidden="true"><use href="#i-sail"/></svg> قارب Faraglioni','<svg class="ic" aria-hidden="true"><use href="#i-mountain"/></svg> قمة Monte Solaro','<svg class="ic" aria-hidden="true"><use href="#i-lemon"/></svg> عشاء Da Paolino'],
+    rome:     ['<svg class="ic" aria-hidden="true"><use href="#i-drop"/></svg> نافورة تريفي','<svg class="ic" aria-hidden="true"><use href="#i-bank"/></svg> البانثيون','<svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء Trastevere','<svg class="ic" aria-hidden="true"><use href="#i-plane"/></svg> صباح المغادرة']
   };
 
   var dayShort = {
@@ -1942,13 +1958,13 @@ html[data-theme="dark"]{
   var cd = document.getElementById('countdown');
   if(cd){
     if(daysUntil > 1)       cd.innerHTML = '<span class="countdown-num">'+daysUntil+'</span> يوم حتى الرحلة';
-    else if(daysUntil === 1) cd.innerHTML = '<span class="countdown-num">غدًا</span> تبدأ الرحلة 🎉';
-    else if(daysUntil === 0) cd.innerHTML = '<span class="countdown-num">اليوم!</span> بدأت الرحلة 🎉';
+    else if(daysUntil === 1) cd.innerHTML = '<span class="countdown-num">غدًا</span> تبدأ الرحلة <svg class="ic" aria-hidden="true"><use href="#i-confetti"/></svg>';
+    else if(daysUntil === 0) cd.innerHTML = '<span class="countdown-num">اليوم!</span> بدأت الرحلة <svg class="ic" aria-hidden="true"><use href="#i-confetti"/></svg>';
     else if(daysUntil >= -14){
       var dayN = -daysUntil + 1;
       cd.innerHTML = '<span class="countdown-num">اليوم '+dayN+'</span> من الرحلة';
     } else {
-      cd.innerHTML = '<span class="countdown-num">✓</span> الحمد لله على السلامة';
+      cd.innerHTML = '<span class="countdown-num"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span> الحمد لله على السلامة';
     }
     if(daysUntil <= 0 && daysUntil >= -14){
       cd.classList.add('clickable');
@@ -2048,7 +2064,7 @@ html[data-theme="dark"]{
       var chev = document.createElement('span');
       chev.className = 'day-chevron';
       chev.setAttribute('aria-hidden','true');
-      chev.textContent = '▾';
+      chev.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>';
       top.appendChild(chev);
     }
 
@@ -2061,11 +2077,11 @@ html[data-theme="dark"]{
         return t ? t.textContent.trim() : null;
       }).filter(Boolean);
       var firstMatch = $('.match-name', day);
-      if(firstMatch) titles.push('🍽 ' + firstMatch.textContent.trim());
+      if(firstMatch) titles.push('<svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> ' + firstMatch.textContent.trim());
       if(titles.length){
         var sub = document.createElement('div');
         sub.className = 'day-summary-extra';
-        sub.textContent = titles.join(' · ');
+        sub.innerHTML = titles.join(' · ');
         var date = $('.day-date', headline);
         if(date) headline.insertBefore(sub, date);
         else headline.appendChild(sub);
@@ -2076,7 +2092,7 @@ html[data-theme="dark"]{
     if($$('.tag.t-book', day).length){
       var bookFlag = document.createElement('span');
       bookFlag.className = 'day-book-flag';
-      bookFlag.textContent = '🔖 يحتاج حجز';
+      bookFlag.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-bookmark"/></svg> يحتاج حجز';
       var chevEl0 = $('.day-chevron', top);
       if(chevEl0) top.insertBefore(bookFlag, chevEl0); else top.appendChild(bookFlag);
     }
@@ -2113,7 +2129,7 @@ html[data-theme="dark"]{
         var recommendedIdx = 0;
         optEls.forEach(function(o,i){
           var b = $('.opt-badge', o);
-          if(b && b.textContent.indexOf('⭐') !== -1) recommendedIdx = i;
+          if(b && b.querySelector('.i-starmark')) recommendedIdx = i;
         });
 
         var tabs = document.createElement('div');
@@ -2124,8 +2140,8 @@ html[data-theme="dark"]{
         optEls.forEach(function(opt, idx){
           var badge = $('.opt-badge', opt);
           var bt = badge ? badge.textContent.trim() : '';
-          var isStar = bt.indexOf('⭐') !== -1;
-          var label = bt.split('·')[0].replace('⭐','').trim() || ('الخيار ' + (idx===0?'أ':'ب'));
+          var isStar = !!badge.querySelector('.i-starmark');
+          var label = bt.split('·')[0].replace('<svg class="ic i-starmark" aria-hidden="true"><use href="#i-star"/></svg>','').trim() || ('الخيار ' + (idx===0?'أ':'ب'));
 
           var btn = document.createElement('button');
           btn.type = 'button';
@@ -2133,7 +2149,7 @@ html[data-theme="dark"]{
           btn.dataset.tab = idx;
           btn.setAttribute('role','tab');
           btn.setAttribute('aria-selected', idx === recommendedIdx ? 'true' : 'false');
-          btn.innerHTML = label + (isStar ? ' <span class="day-tab-star">⭐</span>' : '');
+          btn.innerHTML = label + (isStar ? ' <span class="day-tab-star"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>' : '');
           btn.addEventListener('click', function(e){
             e.stopPropagation();
             $$('.day-tab', tabs).forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
@@ -2170,7 +2186,7 @@ html[data-theme="dark"]{
   if(navStatus){
     var todayDay = document.querySelector('.day.today');
     if(daysUntil > 0 && daysUntil <= 14){
-      navStatus.innerHTML = '⏳ <b>'+daysUntil+'</b> يوم حتى الرحلة';
+      navStatus.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-hour"/></svg> <b>'+daysUntil+'</b> يوم حتى الرحلة';
       navStatus.classList.add('show');
     } else if(todayDay){
       var numEl2 = $('.day-numeral', todayDay);
@@ -2185,7 +2201,7 @@ html[data-theme="dark"]{
       navStatus.addEventListener('click', goToToday);
       navStatus.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goToToday(); } });
     } else if(daysUntil < -14){
-      navStatus.innerHTML = '✓ الحمد لله على السلامة، نرجو أن الرحلة كانت لا تُنسى';
+      navStatus.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> الحمد لله على السلامة، نرجو أن الرحلة كانت لا تُنسى';
       navStatus.classList.add('show');
     }
   }
@@ -2234,9 +2250,11 @@ html[data-theme="dark"]{
 
     var strip = document.createElement('div');
     strip.className = 'transit-strip reveal';
-    var icon = (t.textContent.match(/[🚂🚄⛴✈🚗🚕]/u)||['→'])[0];
-    var inner = t.innerHTML.replace(/^\s*[🚂🚄⛴✈🚗🚕]\s*/u,'');
-    strip.innerHTML = '<div class="transit-strip-icon">'+icon+'</div><div class="transit-strip-text">'+inner+'</div>';
+    var tClone = t.cloneNode(true);
+    var firstIc = tClone.querySelector('svg.ic');
+    var iconHtml = firstIc ? firstIc.outerHTML : '→';
+    if(firstIc) firstIc.remove();
+    strip.innerHTML = '<div class="transit-strip-icon">'+iconHtml+'</div><div class="transit-strip-text">'+tClone.innerHTML+'</div>';
     city.parentNode.insertBefore(strip, city.nextSibling);
     t.style.display = 'none';
   });
@@ -2317,7 +2335,7 @@ html[data-theme="dark"]{
       if(fillBar) fillBar.style.width = (total ? (done/total*100) : 0) + '%';
       if(progressText){
         progressText.innerHTML = done === total && total > 0
-          ? '🎉 <b>كل المهام (' + total + ') تمت!</b> جاهزين للرحلة'
+          ? '<svg class="ic" aria-hidden="true"><use href="#i-confetti"/></svg> <b>كل المهام (' + total + ') تمت!</b> جاهزين للرحلة'
           : '<b>' + done + '</b> من ' + total + ' مهام تمت';
       }
     }
@@ -2355,7 +2373,7 @@ html[data-theme="dark"]{
     function applyTheme(dark){
       document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
       if(themeBtn){
-        themeBtn.textContent = dark ? '☀' : '🌙';
+        themeBtn.innerHTML = dark ? '<svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg>' : '<svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg>';
         themeBtn.title = dark ? 'الوضع الفاتح' : 'الوضع الداكن';
       }
     }
@@ -2383,8 +2401,8 @@ html[data-theme="dark"]{
       var altBtn = $('.hotel-alt-badge', alt);
       if(!primaryBtn || !altBtn) return;
 
-      var primaryBaseText = primaryBtn.textContent.trim().replace(/^★\s*/, '');
-      var altBaseText = altBtn.textContent.trim().replace(/^★\s*/, '');
+      var primaryBaseText = primaryBtn.textContent.trim();
+      var altBaseText = altBtn.textContent.trim();
 
       [primaryBtn, altBtn].forEach(function(b){
         b.setAttribute('role','button');
@@ -2397,8 +2415,8 @@ html[data-theme="dark"]{
         alt.classList.toggle('chosen', altChosen);
         primaryBtn.classList.toggle('unchosen', altChosen);
         altBtn.classList.toggle('unchosen', !altChosen);
-        primaryBtn.textContent = (altChosen ? '★ ' : '✓ ') + primaryBaseText;
-        altBtn.textContent = (altChosen ? '✓ ' : '★ ') + altBaseText;
+        primaryBtn.innerHTML = (altChosen ? '<svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> ' : '<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> ') + primaryBaseText;
+        altBtn.innerHTML = (altChosen ? '<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> ' : '<svg class="ic" aria-hidden="true"><use href="#i-star"/></svg> ') + altBaseText;
         primaryBtn.setAttribute('aria-pressed', String(!altChosen));
         altBtn.setAttribute('aria-pressed', String(altChosen));
       }
@@ -2537,7 +2555,7 @@ html[data-theme="dark"]{
     {id:'rome',pin:'roma',label:'روما',booked:false,days:[13,14]}
   ];
   var MAP_SECONDARY=[{pin:'como',label:'كومو'},{pin:'amalfi',label:'أمالفي'}];
-  var LEGS=[{icon:'🚄'},{icon:'🚄'},{icon:'⛴'},{icon:'⛴'}];
+  var LEGS=[{icon:'train'},{icon:'train'},{icon:'ship'},{icon:'ship'}];
   var FOCUS_ZOOM=2.7;
   var NS='http://www.w3.org/2000/svg';
   var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2572,9 +2590,13 @@ html[data-theme="dark"]{
   var routeLen=routeProg.getTotalLength?1:0; // set after mount
 
   // transit leg icons at segment midpoints
+  var legEls=[],legMids=[];
   LEGS.forEach(function(leg,i){
     var a=routePts[i],b=routePts[i+1];
-    svgEl('text',{x:(a.x+b.x)/2,y:(a.y+b.y)/2-5,'text-anchor':'middle','font-size':'11',class:'map-leg'},svg).textContent=leg.icon;
+    legMids.push({x:(a.x+b.x)/2,y:(a.y+b.y)/2});
+    var g=svgEl('g',{class:'map-leg'},svg);
+    svgEl('use',{href:'#i-'+leg.icon,x:'-5.5',y:'-5.5',width:'11',height:'11'},g);
+    legEls.push(g);
   });
 
   // secondary pins
@@ -2663,7 +2685,7 @@ html[data-theme="dark"]{
     routeBase.setAttribute('stroke-width',2.2*k);
     routeBase.setAttribute('stroke-dasharray',(5*k)+' '+(5*k));
     routeProg.setAttribute('stroke-width',3*k);
-    $$('.map-leg',svg).forEach(function(t){t.setAttribute('font-size',11*k);});
+    legEls.forEach(function(g,i){g.setAttribute('transform','translate('+legMids[i].x+' '+legMids[i].y+') scale('+k+')');});
   }
   function tick(){
     var f=0.09;
@@ -2725,11 +2747,10 @@ html[data-theme="dark"]{
           vertexLens.push(probe.getTotalLength());
         });
         svg.removeChild(probe);
-        // transit emoji onto the true curve midpoints
-        $$('.map-leg',svg).forEach(function(t,i){
+        // transit icons onto the true curve midpoints
+        legEls.forEach(function(g,i){
           var midPt=routeProg.getPointAtLength((vertexLens[i]+vertexLens[i+1])/2);
-          t.setAttribute('x',midPt.x);
-          t.setAttribute('y',midPt.y-5);
+          legMids[i]={x:midPt.x,y:midPt.y-8};
         });
       }catch(e){}
       applyVB(current);
@@ -2770,7 +2791,7 @@ html[data-theme="dark"]{
   btt.type = 'button';
   btt.className = 'back-to-top';
   btt.setAttribute('aria-label','العودة للأعلى');
-  btt.innerHTML = '↑';
+  btt.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-up"/></svg>';
   document.body.appendChild(btt);
   btt.addEventListener('click', function(){
     window.scrollTo({top:0, behavior:'smooth'});
