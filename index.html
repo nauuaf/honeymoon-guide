@@ -2553,9 +2553,12 @@ html[data-theme="dark"]{
   svgEl('rect',{x:-MAP_W,y:-MAP_H,width:MAP_W*3,height:MAP_H*3,fill:'url(#mapSea)'},svg);
   var land=svgEl('path',{d:ITALY_PATH,fill:'var(--map-land)',stroke:'var(--map-land-line)','stroke-width':'1.1','stroke-linejoin':'round'},svg);
 
-  // routes
+  // routes: gentle quadratic arcs (steer clear of Rome, separate the return corridor)
   var routePts=MAP_CITIES.map(function(c){return MAP_PTS[c.pin];});
-  var routeD=routePts.map(function(p,i){return (i===0?'M':'L')+p.x+','+p.y;}).join(' ');
+  var LEG_CTRL=[[210,198],[360,340],[393,481],[315,455]];
+  var routeD='M'+routePts[0].x+','+routePts[0].y+routePts.slice(1).map(function(p,i){
+    return ' Q'+LEG_CTRL[i][0]+','+LEG_CTRL[i][1]+' '+p.x+','+p.y;
+  }).join('');
   var routeBase=svgEl('path',{d:routeD,fill:'none',stroke:'var(--accent)','stroke-width':'2.2','stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'5 5',opacity:'0.4'},svg);
   var routeProg=svgEl('path',{d:routeD,fill:'none',stroke:'var(--accent)','stroke-width':'3','stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'0 99999','class':'map-route-progress'},svg);
   var routeLen=routeProg.getTotalLength?1:0; // set after mount
@@ -2673,15 +2676,16 @@ html[data-theme="dark"]{
   // ----- active city state -----
   var activeIdx=-1;
   var routeTotal=0;
+  var vertexLens=[];
   function setActive(idx){
     if(idx===activeIdx) return;
     activeIdx=idx;
     pinEls.forEach(function(g,i){g.classList.toggle('active',i===idx);});
     dotEls.forEach(function(d,i){d.classList.toggle('active',i===idx);});
     setTarget(idx>=0?focusBox(MAP_CITIES[idx].pin):OVERVIEW);
-    if(routeTotal){
-      var frac=idx<0?0:idx/(MAP_CITIES.length-1);
-      routeProg.style.strokeDashoffset=String(routeTotal*(1-frac));
+    if(routeTotal&&vertexLens.length){
+      var revealed=idx<0?0:vertexLens[idx];
+      routeProg.style.strokeDashoffset=String(routeTotal-revealed);
     }
   }
 
@@ -2698,12 +2702,27 @@ html[data-theme="dark"]{
     window.matchMedia('(min-width:1140px)').addEventListener?
       window.matchMedia('(min-width:1140px)').addEventListener('change',place):
       window.addEventListener('resize',place);
-    // route progress setup (needs layout)
+    // route progress setup (needs layout): measure exact length at every city vertex
     requestAnimationFrame(function(){
       try{
         routeTotal=routeProg.getTotalLength();
         routeProg.setAttribute('stroke-dasharray',String(routeTotal));
         routeProg.style.strokeDashoffset=String(routeTotal);
+        var probe=svgEl('path',{fill:'none',stroke:'none',visibility:'hidden'},svg);
+        var dSoFar='M'+routePts[0].x+','+routePts[0].y;
+        vertexLens=[0];
+        routePts.slice(1).forEach(function(pt,i){
+          dSoFar+=' Q'+LEG_CTRL[i][0]+','+LEG_CTRL[i][1]+' '+pt.x+','+pt.y;
+          probe.setAttribute('d',dSoFar);
+          vertexLens.push(probe.getTotalLength());
+        });
+        svg.removeChild(probe);
+        // transit emoji onto the true curve midpoints
+        $$('.map-leg',svg).forEach(function(t,i){
+          var midPt=routeProg.getPointAtLength((vertexLens[i]+vertexLens[i+1])/2);
+          t.setAttribute('x',midPt.x);
+          t.setAttribute('y',midPt.y-5);
+        });
       }catch(e){}
       applyVB(current);
     });
