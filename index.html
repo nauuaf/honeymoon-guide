@@ -825,6 +825,78 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
   .footer{padding:44px 16px 32px}
 }
 
+/* ============ INTERACTIVE ITALY MAP ============ */
+:root{
+  --map-sea:#CFE1EF;--map-sea-deep:#B4CDE3;
+  --map-land:#FCFBF8;--map-land-line:#B7C1CC;
+}
+html[data-theme="dark"]{
+  --map-sea:#131A24;--map-sea-deep:#0D1420;
+  --map-land:#222833;--map-land-line:#3A4250;
+}
+.map-stage{
+  position:relative;height:400px;margin:0 0 20px;
+  border-radius:var(--r-md);overflow:hidden;
+  border:1px solid var(--line-soft);background:var(--map-sea);
+}
+.map-box{position:absolute;inset:0}
+.map-box svg{width:100%;height:100%;display:block;direction:ltr}
+.map-rail{display:none}
+@media(min-width:1140px){
+  .trip-shell{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:26px;align-items:start}
+  .map-rail{
+    display:block;position:sticky;top:92px;
+    height:calc(100vh - 116px);min-height:480px;
+  }
+  .map-rail-inner{
+    position:relative;height:100%;
+    border-radius:var(--r-lg);overflow:hidden;
+    border:1px solid var(--line-soft);background:var(--map-sea);
+    box-shadow:var(--shadow-soft);
+  }
+  .map-stage{display:none}
+}
+.map-pin{cursor:pointer}
+.map-pin:focus{outline:none}
+.map-pin:focus-visible .pin-dot{stroke-width:3.2}
+.pin-pulse{opacity:0;transform-origin:center;transform-box:fill-box}
+.map-pin.active .pin-pulse,.map-pin.today .pin-pulse{opacity:1;animation:pinPulse 2.2s ease-in-out infinite}
+@keyframes pinPulse{
+  0%,100%{transform:scale(1);opacity:.3}
+  50%{transform:scale(1.7);opacity:.06}
+}
+.map-route-progress{transition:stroke-dashoffset .9s cubic-bezier(.4,.1,.2,1)}
+.map-dots{
+  position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:7px;direction:rtl;
+  padding:8px 14px;border-radius:999px;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  border:1px solid var(--line-soft);backdrop-filter:blur(8px);
+  box-shadow:var(--shadow-soft);z-index:3;
+}
+.map-dot{
+  width:9px;height:9px;border-radius:999px;border:none;padding:0;cursor:pointer;
+  background:color-mix(in srgb,var(--muted) 45%,transparent);
+  transition:width .25s,background .25s;
+}
+.map-dot:hover{background:var(--accent)}
+.map-dot.active{width:22px;background:var(--accent)}
+.map-dot:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.map-hint{
+  position:absolute;top:10px;inset-inline-start:10px;z-index:3;
+  font-size:10.5px;font-weight:600;color:var(--ink-soft);
+  padding:5px 11px;border-radius:999px;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  border:1px solid var(--line-soft);backdrop-filter:blur(8px);
+}
+@media(max-width:760px){
+  .map-stage{height:330px;margin-bottom:16px}
+}
+@media (prefers-reduced-motion: reduce){
+  .pin-pulse{animation:none !important;opacity:0 !important}
+  .map-route-progress{transition:none !important}
+}
+
 /* ============ PRINT ============ */
 @media print{
   .nav,.hero,.quick-jump-btn,.back-to-top,.theme-toggle,.progress{display:none}
@@ -890,6 +962,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
 <section id="overview" class="wrap">
   <div class="route-strip">
     <div class="route-strip-title">مسار الرحلة</div>
+    <div class="map-stage" id="mapSlot"></div>
     <div class="route-line">
       <a class="route-stop" href="#milan">
         <div class="route-stop-num">1</div>
@@ -926,6 +999,8 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
 
 <div class="wrap">
 
+<div class="trip-shell">
+<div class="trip-flow">
 <!-- ==================== MILAN ==================== -->
 <section id="milan" class="city">
   <div class="city-hero">
@@ -1746,6 +1821,10 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
   </div>
 </section>
 
+</div><!-- /trip-flow -->
+<aside class="map-rail" aria-label="خريطة الرحلة التفاعلية"><div class="map-rail-inner" id="mapRailSlot"></div></aside>
+</div><!-- /trip-shell -->
+
 <!-- ==================== BOOKING ==================== -->
 <section id="booking" class="booking">
   <div class="booking-head">
@@ -2435,6 +2514,229 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(200,155,45,.2);color:#E8C
       }
     }
   } catch(e){}
+
+
+  // ===== INTERACTIVE ITALY MAP =====
+  try{
+  var MAP_W=620, MAP_H=820;
+  var ITALY_PATH="M85.0,121.3L82.9,120.6L82.0,121.3L80.5,119.9L78.9,120.8L77.7,119.2L75.2,117.1L71.7,117.5L70.0,116.5L69.5,118.7L67.8,118.2L66.5,120.0L62.0,122.6L60.2,121.4L57.7,121.1L56.2,123.1L54.1,123.2L52.9,125.2L51.1,123.9L49.4,125.2L46.0,120.9L44.6,121.4L43.7,124.2L40.9,126.1L37.4,127.0L35.1,126.8L34.3,130.6L34.7,134.4L35.6,135.9L38.7,137.8L40.4,139.7L41.9,139.2L43.1,141.2L42.7,143.7L43.8,149.4L46.4,150.3L46.1,151.7L48.7,152.0L49.2,154.3L51.0,155.0L52.5,156.5L51.4,159.4L49.0,161.5L50.2,164.6L50.3,166.4L48.9,167.2L47.0,169.5L46.2,168.4L44.1,169.0L40.5,172.1L38.7,172.3L38.9,174.2L36.6,175.1L34.9,173.6L32.7,172.9L31.4,174.4L28.5,174.2L28.2,175.2L26.0,176.8L27.6,178.8L28.3,182.4L31.5,182.6L32.6,186.5L31.7,187.8L31.8,190.0L37.2,193.7L39.6,194.2L40.5,192.9L44.1,194.5L44.9,195.6L43.8,197.9L44.7,198.8L44.9,201.2L46.9,203.0L47.4,205.0L43.2,204.6L41.3,207.1L41.6,209.1L39.7,213.4L37.9,213.8L36.8,215.4L37.9,218.5L39.3,219.5L40.7,222.0L38.7,222.6L38.8,225.9L40.3,228.5L41.9,229.9L42.3,231.7L43.5,232.0L44.0,234.9L45.4,235.8L47.1,235.1L50.6,237.3L52.8,237.4L54.3,239.5L57.5,240.9L60.2,241.0L60.7,242.9L64.2,242.0L65.7,242.3L67.5,241.2L68.7,241.5L70.8,240.5L73.2,240.7L74.6,238.8L76.5,239.1L75.9,242.7L77.8,244.8L77.9,246.5L75.4,248.9L75.8,250.8L74.9,252.4L71.9,253.6L70.5,256.2L70.7,257.2L68.4,258.3L67.4,260.2L69.1,265.0L71.9,264.4L75.9,265.5L77.8,263.8L82.3,262.4L83.4,262.9L85.4,261.5L87.1,261.5L89.9,260.5L93.5,258.1L94.7,258.0L96.0,256.2L97.7,255.5L99.2,252.6L99.6,250.6L102.3,247.7L102.4,245.3L104.4,241.4L111.7,237.8L111.4,236.0L113.3,233.5L112.9,231.7L114.7,230.2L116.7,228.6L123.9,224.5L124.6,223.5L126.9,222.2L131.2,222.6L137.0,224.6L142.6,225.5L146.0,226.6L146.7,227.5L146.7,229.6L149.4,230.0L150.5,227.5L156.7,230.9L160.3,234.5L163.0,235.0L163.2,235.8L165.7,237.2L166.5,238.6L168.4,239.6L169.6,241.7L170.7,241.0L174.0,243.2L174.5,244.5L178.5,246.7L179.0,243.6L179.8,243.3L180.1,243.6L181.4,245.3L185.3,248.2L188.0,247.7L190.2,248.9L193.6,252.0L195.7,254.4L198.1,258.4L199.5,263.4L200.3,268.0L200.6,271.4L200.1,272.4L200.7,274.3L201.2,281.0L202.3,283.1L202.8,285.4L205.3,287.3L207.3,290.4L209.3,295.7L211.0,297.4L212.2,300.8L212.8,307.7L212.5,313.0L211.7,316.3L210.1,317.3L210.9,320.7L211.9,321.5L213.9,319.7L219.5,319.8L221.1,320.4L224.1,322.6L224.6,323.8L223.8,325.0L224.1,326.7L223.5,328.7L222.1,329.3L224.5,331.1L227.5,331.5L230.6,332.6L232.5,333.6L234.0,335.2L235.5,339.0L237.8,340.0L239.8,342.7L240.4,344.7L242.4,345.0L243.9,347.9L243.9,350.2L242.7,353.0L241.4,353.2L239.5,352.9L239.5,355.9L241.6,357.0L242.1,358.0L245.0,356.3L244.6,355.2L246.5,354.3L256.4,356.6L261.4,359.5L265.0,362.2L268.0,366.1L269.9,371.1L270.9,373.1L273.3,376.1L274.0,378.1L275.2,379.3L278.6,378.8L280.8,380.4L281.6,381.5L283.7,382.3L285,384.0L289.3,386.7L291.1,389.4L294.2,398.1L294.5,398.1L294.6,398.1L299.4,400.7L303.4,404.3L308.1,409.9L310.0,412.8L312.3,416.8L314.5,416.1L315.8,416.5L319.1,419.0L320.2,418.5L323.3,418.9L326.5,420.8L329.4,423.7L331.2,426.9L332.5,430.6L334.9,430.8L337.1,428.4L340.2,427.1L342.3,427.1L344.3,426.1L347.3,426.8L349.8,428.0L352.8,430.0L355.1,430.8L356.5,431.9L358.2,429.4L360.0,428.5L362.8,429.6L364.0,428.9L366.7,430.9L369.2,433.4L372.9,439.0L374.3,443.3L377.9,447.8L379.7,451.4L380.4,455.4L380.1,458.2L382.1,458.1L381.8,456.1L383.2,455.7L385.7,457.2L387.0,458.2L388.6,456.1L388.6,456.0L391.2,454.8L393.2,456.1L395.3,458.6L395.3,458.6L397.8,460.7L399.4,460.5L401.1,463.9L399.0,465.1L397.2,467.9L394.9,468.1L393.4,471.0L393.6,472.2L397.6,470.3L398.1,469.6L401.7,468.6L403.4,469.8L405.6,469.1L407.7,467.4L411.1,468.1L412.2,466.3L413.7,465.4L415.8,466.2L419.0,469.8L421.4,473.6L422.9,477.4L424.9,481.0L425.9,484.2L425.5,485.7L423.3,486.8L423.1,490.7L421.3,492.0L422.7,493.5L425.4,494.2L427.5,497.1L429.0,497.6L431.5,496.8L434.4,499.9L435.8,500.3L439.0,503.7L439.8,506.3L440.9,505.8L442.2,507.5L445.8,508.4L447.8,505.7L448.9,505.5L449.9,503.8L453.1,503.0L456.1,503.7L456.6,505.2L457.5,505.3L458.4,507.5L460.8,510.1L461.9,512.6L463.6,516.2L463.0,517.4L464.8,527.9L465.6,528.5L467.6,535.6L470.0,537.2L471.6,540.3L473.3,542.3L475.4,548.3L476.0,551.4L476.8,561.6L478.5,568.2L479.9,569.9L480.9,572.6L484.0,574.6L484.1,578.0L483.8,581.3L482.3,585.2L480.6,586.7L478.6,587.4L475.1,586.4L472.9,586.7L471.1,588.7L467.5,589.8L466.3,590.6L465.3,592.8L470.1,597.3L470.3,598.1L468.7,603.3L465.6,609.1L465.5,611.0L463.7,613.8L461.6,615.2L458.3,615.8L456.3,616.7L456.1,619.0L457.1,621.5L456.8,623.8L456.0,624.6L456.8,626.6L457.1,628.9L456.1,629.7L456.7,631.3L458.2,633.5L460.8,635.3L462.3,635.8L465.9,635.7L469.8,635.0L473.5,635.8L476.6,635.2L479.1,631.8L480.4,628.1L481.5,622.4L482.8,621.2L489.3,612.7L496.2,609.9L497.6,608.6L500.9,604.8L501.4,603.3L501.0,596.4L500.1,590.9L500.3,589.4L499.2,587.9L500.7,584.1L502.4,581.5L510.4,576.3L513.5,575.0L519.1,573.5L521.2,574.0L521.8,575.1L523.6,574.7L525.8,575.5L529.5,572.4L529.0,570.9L530.7,568.1L528.4,566.9L526.6,563.7L526.6,562.1L528.4,557.1L526.6,554.7L526.5,550.8L528.6,545.0L527.1,544.8L523.6,542.4L522.5,539.9L518.7,538.8L515.0,536.5L513.1,534.7L512.7,533.4L510.4,531.4L508.7,531.7L503.7,531.5L500.5,530.0L498.8,528.6L498.8,525.0L497.5,524.0L496.8,521.4L497.3,519.2L500.1,514.8L502.5,512.1L503.6,509.9L503.1,509.3L502.2,505.5L502.7,502.5L504.3,500.4L506.3,498.9L508.5,495.2L509.4,492.5L511.1,488.9L515.0,483.0L516.7,480.6L521.1,476.9L525.4,475.3L529.1,476.2L530.0,477.7L531.8,477.9L533.6,480.1L532.3,481.3L532.5,482.8L536.2,485.0L537.6,485.2L540.5,487.1L541.7,487.1L545.0,488.5L545.7,489.4L553.7,488.8L562.2,490.0L564.6,491.9L565.5,494.2L565.3,495.9L567.4,498.6L568.5,499.1L569.6,501.2L569.0,504.7L570.0,506.2L568.9,508.2L571.4,512.3L576.3,516.5L578.9,517.9L581.7,518.1L586.7,520.7L587.5,518.4L588.2,514.8L587.7,513.7L588.6,509.2L589.7,507.8L589.9,506.3L591.8,505.1L592.3,503.0L593.9,501.2L592.5,498.7L591.3,495.8L591.3,494.0L589.3,489.5L587.5,488.2L586.4,486.5L584.2,484.6L581.0,480.5L578.8,478.6L575.7,477.3L572.9,474.8L571.1,472.8L571.2,470.5L569.1,467.2L568.2,467.5L566.3,465.1L563.1,464.9L560.9,464.3L553.9,459.8L548.0,457.8L543.9,455.7L543.2,454.6L539.7,451.7L538.1,451.0L536.0,448.1L532.7,445.5L531.0,444.8L529.7,443.2L528.1,442.7L523.5,440.0L519.5,438.8L513.7,436.2L512.3,436.2L510.8,434.9L506.8,433.8L505.1,432.9L501.4,431.9L499.0,429.9L495.2,428.5L493.7,427.3L490.7,425.7L486.3,424.3L483.5,422.3L481.7,421.6L472.7,416.7L471.0,415.1L469.0,411.2L468.5,408.4L469.0,405.7L470.9,404.2L474.3,402.4L476.7,400.8L478.6,398.6L480.3,397.9L482.5,395.9L483.0,393.8L482.0,390.6L482.0,388.7L480.9,387.1L479.2,386.6L477.9,385.2L474.2,384.5L470.0,385.6L461.6,386.6L458.6,386.8L455.6,386.0L447.7,387.4L443.2,387.5L441.9,386.6L435.8,386.5L432.4,386.0L430.1,385.3L425.5,380.9L421.8,380.1L419.1,379.0L415.3,376.8L412.4,374.3L412.3,370.3L407.7,368.5L402.3,365.0L402.0,363.8L399.1,361.2L397.7,358.2L390.5,352.8L389.2,351.3L387.9,350.4L384.0,345.8L381.7,342.4L377.9,335.5L375.2,328.6L374.1,323.3L373.0,320.6L371.0,313.0L370.7,310.2L368.7,305.2L367.5,301.2L365.4,296.3L364.2,294.4L362.4,288.7L360.1,283.5L360.2,280.4L357.7,279.0L357.3,277.8L354.9,275.5L353.3,276.7L350.1,275.5L348.2,274.2L345.0,272.6L340.8,269.3L336.4,265.4L333.6,262.5L329.6,259.6L325.9,255.8L320.7,253.0L318.4,252.7L316.7,252.4L313.9,250.1L310.0,245.4L309.4,245.6L307.2,243.6L303.1,238.8L300.9,235.8L299.3,231.6L297.7,223.8L296.5,220.4L295.9,215.8L296.0,211.0L295.7,209.3L294.1,204.8L294.4,199.7L295.6,197.2L294.9,196.1L296.2,194.4L297.3,194.4L300.4,197.4L301.5,197.8L303.0,195.1L304.8,194.2L307.2,188.2L309.0,186.0L307.0,184.3L305.7,184.2L301.4,180.6L298.7,177.6L298.2,175.4L298.4,172.6L297.2,170.6L296.7,167.2L298.4,159.7L299.8,156.9L301.7,154.5L303.0,155.4L304.2,153.9L310.5,151.1L316.7,148.1L326.4,142.1L329.3,141.2L333.3,140.8L335.1,140.0L335.5,138.7L337.8,135.9L341.4,135.1L344.3,135.9L347.1,137.6L350.6,137.7L355.7,134.5L355.2,132.2L355.9,130.4L360.5,131.5L363.6,134.7L364.3,135.4L364.7,136.1L366.3,137.5L367.0,139.3L366.1,140.0L367.4,142.0L367.6,142.1L367.6,142.1L367.9,143.0L366.0,142.3L364.7,142.5L367.9,144.1L371.0,144.0L372.3,142.1L374.2,140.8L371.3,138.5L370.0,136.6L369.8,135.2L367.8,132.8L365.9,132.4L362.3,129.3L360.3,129.5L358.8,128.7L357.7,126.3L360.8,120.0L360.8,116.9L358.5,116.2L357.4,117.8L354.3,116.9L353.9,114.5L354.7,112.4L356.3,109.8L358.2,108.6L361.2,105.9L362.0,103.2L357.3,102.6L356.4,101.0L350.5,99.4L349.4,98.1L349.6,94.9L351.7,92.4L351.2,91.1L355.0,89.6L357.8,87.3L358.6,85.5L361.2,84.8L363.0,85.4L364.0,82.1L364.0,79.6L360.3,78.1L357.2,77.5L355.2,77.8L354.4,76.4L350.7,77.0L348.1,75.5L345.6,77.3L342.4,76.8L338.9,75.6L338.3,74.8L334.3,73.9L332.5,74.4L326.9,73.4L323.3,73.7L322.5,72.2L318.7,70.8L317.5,71.7L315.5,70.2L313.2,70.5L312.2,69.8L309.8,70.5L307.1,68.7L305.4,68.5L303.7,68.0L300.6,65.6L299.3,61.8L297.3,61.2L296.0,59.1L297.2,57.8L295.3,54.1L292.8,55.0L291.6,52.8L290.2,52.5L290.6,50.5L288.9,48.7L288.3,45.7L289.6,44.5L292.4,44.2L293.4,40.4L291.5,39.7L283.5,42.9L278.5,43.9L274.7,46.7L272.2,46.7L270.5,48.3L268.8,46.7L266.5,46.7L264.7,45.3L260.5,47.3L259.3,45.8L257.7,45.4L255.9,47.9L254.0,48.6L251.9,46.9L247.4,47.6L246.3,48.3L243.8,48.3L241.5,51.2L240.3,51.0L239.3,52.7L239.7,53.9L238.2,56.5L238.8,58.6L236.7,59.8L235.9,62.5L232.1,61.9L229.2,62.7L224.7,60.5L221.9,61.0L223.5,58.6L221.6,57.6L219.1,55.2L213.4,56.7L210.9,56.8L210.0,56.0L208.4,60.1L207.8,63.5L206.2,64.9L207.0,65.9L205.5,68.0L206.7,71.7L208.3,71.2L210.4,73.0L209.6,78.0L208.7,78.9L207.1,77.5L204.4,77.1L203.1,78.0L201.2,77.6L200.6,76.1L198.7,75.6L199.4,73.3L198.5,71.7L193.3,73.7L189.2,78.5L189.6,78.9L189.0,84.8L190.0,86.1L191.9,86.4L193.2,85.7L194.7,86.9L194.9,88.6L193.2,89.5L192.2,91.4L192.6,93.8L194.5,95.5L195.4,98.0L194.0,99.7L189.3,99.6L189.7,97.4L187.0,96.1L186.1,93.3L186.9,91.4L183.5,90.3L182.6,89.3L179.9,90.4L176.4,92.5L174.8,91.3L173.8,92.1L173.4,95.4L171.5,94.7L169.6,95.8L164.9,94.2L161.7,88.7L161.0,86.7L161.2,82.1L159.6,81.7L157.9,82.9L156.7,80.5L152.8,81.3L152.3,84.1L151.2,85.8L152.7,87.1L152.7,90.8L153.6,93.0L151.3,97.3L151.0,99.6L149.8,99.7L148.5,103.2L146.9,103.8L145.1,106.3L142.7,107.3L143.5,109.4L142.8,111.2L140.1,112.2L139.7,113.7L140.4,116.0L138.7,117.4L140.0,118.3L140.2,120.4L142.9,121.7L143.0,123.4L141.9,124.3L140.8,127.8L139.0,127.7L136.9,126.3L136.1,125.0L135.7,122.0L134.2,120.4L134.2,118.4L133.0,118.3L131.2,116.4L129.4,115.2L132.4,111.3L130.5,108.9L128.9,109.1L127.0,107.2L125.7,108.8L120.8,107.2L117.4,101.9L117.0,100.5L113.9,99.5L112.0,95.0L113.7,92.6L113.6,88.9L113.8,85.0L112.8,83.5L108.5,84.7L105.9,86.6L106.4,89.6L104.1,90.5L102.2,92.5L101.7,94.3L99.2,95.2L98.1,94.7L95.4,97.8L98.2,100.0L99.4,103.0L98.4,106.1L96.7,107.9L93.1,108.8L92.6,110.9L93.2,112.5L91.0,115.8L87.2,115.8L85.7,117.5L85.7,120.6ZM305.8,257.6L304.6,257.7L302.5,257.4L301.9,253.9L306.9,251.3L307.2,254.5ZM93.8,176.4L92.1,176.8L91.2,175.0L93.8,175.0ZM124.9,126.2L124.5,128.4L123.1,127.4ZM199.7,333.1L203.5,331.9L205.4,335.1L207.7,335.2L207.7,333.8L206.2,332.3L207.8,331.2L207.5,329.1L208.3,326.5L206.5,324.9L204.1,329.6L200.2,328.4L199.9,329.3L197.6,330.0L196.1,328.9L193.8,329.1L192.0,330.4L192.9,333.3L194.3,334.0L196.0,333.7L198.4,334.3ZM179.2,313.3L177.6,313.2L177.3,314.8L178.0,316.4L179.5,314.5ZM202.8,360.5L202.7,359.2L201.0,359.1L201.1,360.8ZM229.4,356.1L229.2,358.6L230.0,360.0L231.2,358.4ZM375.9,463.5L375.9,461.5L372.2,460.4L371.3,461.6L372.1,464.2L374.4,464.2ZM325.9,629.2L324.2,628.5L324.1,627.7L322.1,626.7L320.3,624.0L320.3,622.6L319.1,619.8L316.9,620.6L317.8,622.2L316.5,624.1L313.9,624.3L314.1,625.2L311.7,626.8L310.2,626.5L307.3,629.5L306.2,631.7L306.1,633.7L304.5,636.3L305.8,638.4L304.4,642.0L302.9,642.7L305.0,646.1L305.1,648.7L306.5,650.4L308.1,651.4L310.5,651.7L311.9,652.8L312.6,654.8L314.7,657.3L319.1,656.2L323.5,656.0L328.2,656.9L330.9,660.2L332.2,661.2L334.0,660.6L336.6,661.4L338.4,661.4L340.7,663.4L342.4,665.5L343.3,667.5L344.5,667.8L345.7,669.2L347.2,669.5L349.5,671.0L352.0,673.3L353.3,673.7L356.6,673.8L360.8,677.2L362.0,679.4L365.0,680.8L366.2,682.0L369.7,682.3L371.3,684.3L373.6,685.2L376.9,684.4L381.4,684.4L385.6,685.3L389.7,687.1L392.2,688.7L395.4,692.3L398.9,697.8L400.0,701.3L401.7,703.7L406.2,704.3L408.6,705.2L411.0,707.6L413.6,707.6L415.5,708.6L419.2,707.1L420.8,707.1L423.8,709.2L426.8,708.8L427.8,709.5L428.6,711.1L429.7,711.9L431.2,710.5L431.8,709.0L431.7,707.0L430.4,704.3L431.1,701.9L431.1,700.0L432.4,698.1L433.1,696.1L434.7,694.2L436.8,692.7L438.2,692.6L438.6,690.8L440.3,690.1L439.2,688.9L439.1,687.1L440.2,686.2L440.0,684.5L438.4,684.6L436.4,683.2L435.4,681.3L434.6,678.4L435.7,676.3L437.3,675.3L435.8,673.5L433.6,673.6L432.5,672.6L430.5,671.7L430.2,669.4L429.9,662.2L431.4,659.0L432.7,658.3L434.3,656.3L434.1,653.0L435.0,652.1L436.2,648.4L435.6,646.5L438.7,641.0L440.1,639.8L440.4,638.1L446.9,629.2L449.4,626.2L452.1,620.6L453.0,617.2L454.9,614.1L451.6,612.5L450.5,612.8L447.3,615.5L442.7,617.5L439.8,618.3L437.3,617.5L434.0,621.5L430.1,623.5L428.5,622.7L427.9,621.5L424.3,621.5L421.8,619.1L420.6,620.3L415.5,621.5L413.7,620.7L410.1,625.1L408.2,626.5L404.6,627.1L403.5,628.0L400.8,628.8L398.3,628.3L395.9,629.8L394.3,629.6L392.8,630.3L389.0,630.1L385.0,629.2L383.1,629.8L381.0,629.6L379.7,628.6L375.5,629.1L373.1,630.5L370.1,631.8L365.9,632.6L363.9,631.3L362.0,631.1L357.4,628.5L356.2,627.2L355.9,624.3L354.4,624.2L351.5,625.0L349.6,624.7L347.7,623.1L348.2,621.4L347.8,619.7L345.9,618.4L345.5,617.2L343.5,618.5L339.6,620.4L338.1,620.3L335.4,619.2L334.3,621.2L332.8,622.3L334.0,625.4L330.2,627.8ZM297.3,633.7L295.6,634.6L296.0,635.7L300.3,635.7ZM285.6,631.4L284.2,631.4L285.2,633.7L286.4,633.3ZM280.4,700.6L279.5,701.0L279.1,702.8L282.2,706.7L283.9,706.7L284.9,705.9L284.9,702.9ZM418.5,598.0L419.7,598.1L419.5,595.3L416.6,595.3L416.1,596.6ZM424.1,605.7L423.4,607.4L424.7,608.3L425.7,606.7ZM424.0,599.1L421.6,599.3L421.0,601.6L424.1,603.3ZM436.1,583.8L437.4,581.7L436.0,581.4L434.9,582.7ZM307.9,778.1L311.2,780.0L310.9,778.6ZM109.1,476.8L110.5,480.9L110.2,486.7L111.6,486.8L114.6,490.0L113.6,494.5L113.5,498.5L114.7,500.5L114.9,502.8L113.2,504.7L111.7,505.2L110.3,509.1L110.7,511.3L110.6,513.8L112.1,514.8L113.9,513.8L115.8,513.6L117.6,515.0L118.0,517.9L117.6,520.6L116.4,523.6L115.3,525.4L113.4,522.2L112.7,522.9L112.7,527.9L113.5,528.5L113.0,530.6L114.0,532.6L113.1,536.0L109.8,541.6L111.2,542.5L111.2,544.0L110.0,545.5L110.5,548.9L111.4,549.0L112.4,551.8L111.8,553.1L109.1,555.7L112.4,560.1L112.3,561.7L113.6,562.3L114.8,564.5L113.3,564.6L111.9,563.0L108.6,564.5L108.7,567.4L110.8,572.1L112.1,572.2L113.1,570.4L113.2,568.2L113.9,566.7L115.4,565.9L118.5,567.0L119.0,568.7L118.5,569.7L119.7,571.9L121.3,573.5L120.5,576.3L122.6,576.2L125.7,574.3L125.9,573.6L132.4,577.2L134.7,575.6L135.2,574.6L139.9,570.5L141.5,566.3L140.1,564.4L139.7,562.3L140.2,560.6L142.2,557.9L143.9,556.6L145.2,557.1L146.3,558.4L148.5,556.1L150.3,555.7L151.1,556.4L153.5,556.6L157.0,559.0L160.0,562.0L162.4,561.4L164.1,562.8L166.2,561.0L166.5,555.0L167.5,552.6L169.3,550.9L168.2,550.1L167.8,548.4L168.3,545.8L170.1,541.3L169.5,539.1L169.8,536.4L170.4,535.9L170.7,532.3L170.2,529.5L171.6,525.8L171.2,521.7L172.0,517.7L171.9,513.7L173.5,512.3L172.1,511.1L172.1,508.8L173.0,505.7L174.4,502.9L170.9,499.2L169.2,494.9L169.0,492.5L169.5,490.5L171.1,487.8L173.5,484.9L175.3,484.0L176.2,482.4L178.5,476.8L178.8,474.9L177.5,473.9L176.9,472.0L175.2,470.2L174.7,467.4L175.2,465.6L173.4,463.3L173.4,460.6L171.4,458.7L172.4,454.8L170.4,453.8L170.7,452.9L167.6,451.3L166.2,450.2L163.5,450.7L163.3,449.7L166.8,449.6L166.4,448.6L167.7,447.1L167.2,445.8L169,444.7L167.8,443.7L166.8,444.8L165.6,444.6L164.5,443.2L164.3,441.7L165.1,439.3L166.4,437.7L164.4,435.1L162.5,435.8L161.8,437.1L160.4,436.7L159.4,434.5L157.0,433.4L156.6,431.9L154.1,432.9L152.7,430.6L150.0,428.6L147.4,429.7L146.6,432.6L147.3,434.4L145.0,435.4L144.5,436.5L139.9,437.1L138.1,439.7L135.9,442.2L133.6,443.2L133.2,445.4L131.5,447.8L129.3,450.0L125.1,450.3L121.7,452.6L120.6,454.5L117.3,456.0L113.0,456.3L111.3,455.2L106.6,454.9L103.4,451.9L102.3,448.0L101.0,447.0L100.0,448.9L100.7,450.5L102.0,451.4L101.9,453.4L99.9,457.6L99.5,459.8L98.0,461.6L101.2,464.7L100.5,467.8L98.5,468.6L98.7,471.6L101.6,469.3L101.9,470.6L103.3,471.5L105.2,470.6L106.2,471.1L107.7,476.0ZM161.8,429.4L160.5,432.2L162.2,432.4ZM159.9,428.6L157.3,430.1L157.5,431.7L160.2,431.5ZM107.1,438.3L104.7,438.4L104.3,440.4L103.2,442.1L102.2,442.3L101.5,445.7L103.8,446.0L104.1,444.8L103.5,442.9L105.1,441.0L106.9,441.5L108.0,438.9ZM106.2,558.7L104.5,558.7L102.6,559.6L102.0,560.6L103.5,561.6L103.4,563.1L105.0,563.8L106.3,562.8Z";
+  var MAP_PTS={milano:{x:148.4,y:152.3},firenze:{x:247.1,y:266},positano:{x:401.3,y:468.6},capri:{x:388.7,y:473.3},roma:{x:306.3,y:387.6},como:{x:151.6,y:116.7},amalfi:{x:406.9,y:468.2}};
+  var MAP_CITIES=[
+    {id:'milan',pin:'milano',label:'ميلان',booked:true,days:[0,3]},
+    {id:'florence',pin:'firenze',label:'فلورنسا',booked:true,days:[4,6]},
+    {id:'positano',pin:'positano',label:'بوزيتانو',booked:true,days:[7,9]},
+    {id:'capri',pin:'capri',label:'كابري',booked:true,days:[10,12]},
+    {id:'rome',pin:'roma',label:'روما',booked:false,days:[13,14]}
+  ];
+  var MAP_SECONDARY=[{pin:'como',label:'كومو'},{pin:'amalfi',label:'أمالفي'}];
+  var LEGS=[{icon:'🚄'},{icon:'🚄'},{icon:'⛴'},{icon:'⛴'}];
+  var FOCUS_ZOOM=2.7;
+  var NS='http://www.w3.org/2000/svg';
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function svgEl(n,attrs,parent){
+    var e=document.createElementNS(NS,n);
+    if(attrs) for(var key in attrs) e.setAttribute(key,attrs[key]);
+    if(parent) parent.appendChild(e);
+    return e;
+  }
+
+  var box=document.createElement('div');
+  box.className='map-box';
+  var svg=svgEl('svg',{viewBox:'0 0 '+MAP_W+' '+MAP_H,role:'img','aria-label':'خريطة إيطاليا مع مدن الرحلة',preserveAspectRatio:'xMidYMid meet'},null);
+  box.appendChild(svg);
+
+  var defs=svgEl('defs',null,svg);
+  var grad=svgEl('radialGradient',{id:'mapSea',cx:'50%',cy:'35%',r:'80%'},defs);
+  svgEl('stop',{offset:'0%','stop-color':'var(--map-sea)'},grad);
+  svgEl('stop',{offset:'100%','stop-color':'var(--map-sea-deep)'},grad);
+  svgEl('rect',{x:-MAP_W,y:-MAP_H,width:MAP_W*3,height:MAP_H*3,fill:'url(#mapSea)'},svg);
+  var land=svgEl('path',{d:ITALY_PATH,fill:'var(--map-land)',stroke:'var(--map-land-line)','stroke-width':'1.1','stroke-linejoin':'round'},svg);
+
+  // routes
+  var routePts=MAP_CITIES.map(function(c){return MAP_PTS[c.pin];});
+  var routeD=routePts.map(function(p,i){return (i===0?'M':'L')+p.x+','+p.y;}).join(' ');
+  var routeBase=svgEl('path',{d:routeD,fill:'none',stroke:'var(--accent)','stroke-width':'2.2','stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'5 5',opacity:'0.4'},svg);
+  var routeProg=svgEl('path',{d:routeD,fill:'none',stroke:'var(--accent)','stroke-width':'3','stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'0 99999','class':'map-route-progress'},svg);
+  var routeLen=routeProg.getTotalLength?1:0; // set after mount
+
+  // transit leg icons at segment midpoints
+  LEGS.forEach(function(leg,i){
+    var a=routePts[i],b=routePts[i+1];
+    svgEl('text',{x:(a.x+b.x)/2,y:(a.y+b.y)/2-5,'text-anchor':'middle','font-size':'11',class:'map-leg'},svg).textContent=leg.icon;
+  });
+
+  // secondary pins
+  MAP_SECONDARY.forEach(function(sp){
+    var p=MAP_PTS[sp.pin];
+    var g=svgEl('g',{transform:'translate('+p.x+' '+p.y+')'},svg);
+    svgEl('circle',{r:'3.2',fill:'var(--paper)',stroke:'var(--accent)','stroke-width':'1.2',opacity:'.8'},g);
+    var t=svgEl('text',{y:(sp.pin==='amalfi'?'13':'-7'),'text-anchor':'middle','font-size':'8.5',fill:'var(--muted)'},g);
+    t.textContent=sp.label;
+  });
+
+  // primary pins with label chips
+  var pinEls=[];
+  MAP_CITIES.forEach(function(c,i){
+    var p=MAP_PTS[c.pin];
+    var g=svgEl('g',{class:'map-pin',transform:'translate('+p.x+' '+p.y+')',role:'button',tabindex:'0','aria-label':c.label},svg);
+    svgEl('circle',{r:'14',fill:'transparent'},g);
+    svgEl('circle',{class:'pin-pulse',r:'9',fill:'var(--accent)'},g);
+    svgEl('circle',{class:'pin-dot',r:'5',fill:'var(--paper)',stroke:'var(--accent)','stroke-width':'2'},g);
+    svgEl('circle',{class:'pin-core',r:'1.8',fill:'var(--accent)'},g);
+    if(c.booked){
+      var bg2=svgEl('g',{transform:'translate(4.6 -4.6)'},g);
+      svgEl('circle',{r:'3',fill:'#1F8A4C',stroke:'var(--paper)','stroke-width':'.9'},bg2);
+      svgEl('path',{d:'M-1.3,0L-0.3,1L1.4,-1',fill:'none',stroke:'#fff','stroke-width':'.9','stroke-linecap':'round','stroke-linejoin':'round'},bg2);
+    }
+    // chip
+    var fs=10,padX=5,numR=7,chipH=17;
+    var textW=c.label.length*fs*0.62;
+    var chipW=textW+padX*2+numR*2+3;
+    var chipY=(c.pin==='capri')?9:(-9-chipH);
+    var chip=svgEl('g',{transform:'translate('+(-chipW/2)+' '+chipY+')',class:'pin-chip'},g);
+    svgEl('rect',{width:chipW,height:chipH,rx:chipH/2,class:'chip-bg',fill:'var(--paper)',stroke:'var(--accent)','stroke-width':'1.1'},chip);
+    svgEl('circle',{cx:numR+2,cy:chipH/2,r:numR,class:'chip-num-bg',fill:'var(--accent)'},chip);
+    var num=svgEl('text',{x:numR+2,y:chipH/2+0.5,'text-anchor':'middle','dominant-baseline':'central','font-size':'9','font-weight':'700',class:'chip-num',fill:'var(--paper)'},chip);
+    num.textContent=String(i+1);
+    var lbl=svgEl('text',{x:numR*2+padX+2,y:chipH/2+0.5,'dominant-baseline':'central','font-size':fs,'font-weight':'600',class:'chip-label',fill:'var(--ink)'},chip);
+    lbl.textContent=c.label;
+
+    function go(){
+      var sec=document.getElementById(c.id);
+      if(sec){var y=sec.getBoundingClientRect().top+window.scrollY-84;window.scrollTo({top:y,behavior:reduceMotion?'auto':'smooth'});}
+    }
+    g.addEventListener('click',go);
+    g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+    pinEls.push(g);
+  });
+
+  // progress dots
+  var dots=document.createElement('div');
+  dots.className='map-dots';
+  var dotEls=MAP_CITIES.map(function(c){
+    var b=document.createElement('button');
+    b.type='button';b.className='map-dot';b.setAttribute('aria-label',c.label);b.title=c.label;
+    b.addEventListener('click',function(){
+      var sec=document.getElementById(c.id);
+      if(sec){var y=sec.getBoundingClientRect().top+window.scrollY-84;window.scrollTo({top:y,behavior:reduceMotion?'auto':'smooth'});}
+    });
+    dots.appendChild(b);
+    return b;
+  });
+  box.appendChild(dots);
+  var hint=document.createElement('div');
+  hint.className='map-hint';
+  hint.textContent='اضغطوا أي مدينة';
+  box.appendChild(hint);
+
+  // ----- viewBox zoom (lerped) -----
+  var OVERVIEW={x:0,y:0,w:MAP_W,h:MAP_H};
+  var current={x:0,y:0,w:MAP_W,h:MAP_H};
+  var target=OVERVIEW;
+  var animating=false;
+  function focusBox(pin){
+    var p=MAP_PTS[pin];
+    var w=MAP_W/FOCUS_ZOOM,h=w*(MAP_H/MAP_W);
+    return {x:p.x-w/2,y:p.y-h/2,w:w,h:h};
+  }
+  function applyVB(vb){
+    svg.setAttribute('viewBox',vb.x+' '+vb.y+' '+vb.w+' '+vb.h);
+    var k=vb.w/MAP_W;
+    // constant on-screen sizes at any zoom
+    pinEls.forEach(function(g,i){
+      var p=MAP_PTS[MAP_CITIES[i].pin];
+      g.setAttribute('transform','translate('+p.x+' '+p.y+') scale('+k+')');
+    });
+    land.setAttribute('stroke-width',1.1*k);
+    routeBase.setAttribute('stroke-width',2.2*k);
+    routeBase.setAttribute('stroke-dasharray',(5*k)+' '+(5*k));
+    routeProg.setAttribute('stroke-width',3*k);
+    $$('.map-leg',svg).forEach(function(t){t.setAttribute('font-size',11*k);});
+  }
+  function tick(){
+    var f=0.09;
+    current={x:current.x+(target.x-current.x)*f,y:current.y+(target.y-current.y)*f,
+             w:current.w+(target.w-current.w)*f,h:current.h+(target.h-current.h)*f};
+    var done=Math.abs(current.x-target.x)<0.05&&Math.abs(current.y-target.y)<0.05&&Math.abs(current.w-target.w)<0.05;
+    if(done){current={x:target.x,y:target.y,w:target.w,h:target.h};}
+    applyVB(current);
+    if(done){animating=false;return;}
+    requestAnimationFrame(tick);
+  }
+  function setTarget(vb){
+    target=vb;
+    if(reduceMotion){current={x:vb.x,y:vb.y,w:vb.w,h:vb.h};applyVB(current);return;}
+    if(!animating){animating=true;requestAnimationFrame(tick);}
+  }
+
+  // ----- active city state -----
+  var activeIdx=-1;
+  var routeTotal=0;
+  function setActive(idx){
+    if(idx===activeIdx) return;
+    activeIdx=idx;
+    pinEls.forEach(function(g,i){g.classList.toggle('active',i===idx);});
+    dotEls.forEach(function(d,i){d.classList.toggle('active',i===idx);});
+    setTarget(idx>=0?focusBox(MAP_CITIES[idx].pin):OVERVIEW);
+    if(routeTotal){
+      var frac=idx<0?0:idx/(MAP_CITIES.length-1);
+      routeProg.style.strokeDashoffset=String(routeTotal*(1-frac));
+    }
+  }
+
+  // ----- mount + relocation between top card and desktop rail -----
+  var slotTop=document.getElementById('mapSlot');
+  var slotRail=document.getElementById('mapRailSlot');
+  function place(){
+    var wantRail=window.matchMedia('(min-width:1140px)').matches;
+    var host=wantRail?slotRail:slotTop;
+    if(host&&box.parentNode!==host) host.appendChild(box);
+  }
+  if(slotTop||slotRail){
+    place();
+    window.matchMedia('(min-width:1140px)').addEventListener?
+      window.matchMedia('(min-width:1140px)').addEventListener('change',place):
+      window.addEventListener('resize',place);
+    // route progress setup (needs layout)
+    requestAnimationFrame(function(){
+      try{
+        routeTotal=routeProg.getTotalLength();
+        routeProg.setAttribute('stroke-dasharray',String(routeTotal));
+        routeProg.style.strokeDashoffset=String(routeTotal);
+      }catch(e){}
+      applyVB(current);
+    });
+
+    // scroll sync
+    if('IntersectionObserver' in window){
+      var vis={};
+      var mapObs=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          var id=en.target.id;
+          vis[id]=en.isIntersecting?en.intersectionRatio:0;
+        });
+        var best=-1,bestR=0;
+        MAP_CITIES.forEach(function(c,i){
+          if((vis[c.id]||0)>bestR){bestR=vis[c.id];best=i;}
+        });
+        if((vis['overview']||0)>0.4&&bestR<0.15) best=-1;
+        setActive(best);
+      },{threshold:[0.15,0.3,0.55,0.8],rootMargin:'-15% 0px -25% 0px'});
+      MAP_CITIES.forEach(function(c){var el2=document.getElementById(c.id);if(el2)mapObs.observe(el2);});
+      var ov=document.getElementById('overview');
+      if(ov)mapObs.observe(ov);
+    }
+
+    // during the trip: today's city pulses even in overview
+    if(daysUntil<=0&&daysUntil>=-14){
+      var dayN2=-daysUntil;
+      MAP_CITIES.forEach(function(c,i){
+        if(dayN2>=c.days[0]&&dayN2<=c.days[1]) pinEls[i].classList.add('today');
+      });
+    }
+  }
+  }catch(e){}
 
   // ===== BACK TO TOP =====
   var btt = document.createElement('button');
