@@ -154,7 +154,7 @@ button{-webkit-tap-highlight-color:transparent}
 
 /* ============ HERO ============ */
 .hero{
-  position:relative;height:min(78vh,820px);min-height:540px;
+  position:relative;height:min(78vh,820px);height:min(78dvh,820px);min-height:540px;
   overflow:hidden;display:flex;align-items:flex-end;
   background:linear-gradient(150deg,#7A2E55 0%,#45182F 55%,#26101C 100%);
 }
@@ -617,13 +617,19 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
 @media(min-width:761px){.qj-overlay{align-items:center}}
 .qj-panel{
   background:var(--paper);border:1px solid var(--line-soft);
-  border-radius:var(--r-lg);width:min(520px,94vw);max-height:82vh;
+  border-radius:var(--r-lg);width:min(520px,94vw);max-height:82vh;max-height:82dvh;
   display:flex;flex-direction:column;overflow:hidden;
   box-shadow:var(--shadow);
   transform:translateY(24px);transition:transform .28s cubic-bezier(.2,.8,.25,1);
 }
 .qj-overlay.open .qj-panel{transform:translateY(0)}
-@media(max-width:760px){.qj-panel{border-radius:var(--r-lg) var(--r-lg) 0 0;width:100%;max-height:86vh}}
+@media(max-width:760px){
+  .qj-panel{
+    border-radius:var(--r-lg) var(--r-lg) 0 0;width:100%;
+    max-height:86vh;max-height:86dvh;
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+}
 .qj-head{display:flex;align-items:center;gap:12px;padding:18px 20px 12px}
 .qj-title{font-family:'Alexandria',sans-serif;font-size:16px;font-weight:700;flex:1}
 .qj-close{
@@ -763,7 +769,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
   .nav-links a{white-space:nowrap;flex:0 0 auto;font-size:12.5px;padding:6px 11px}
   .nav-status{padding:7px 16px;font-size:12px}
   .wrap{padding:0 14px}
-  .hero{height:min(74vh,640px);min-height:480px}
+  .hero{height:min(74vh,640px);height:min(74dvh,640px);min-height:480px}
   .hero-content{padding:40px 20px 84px}
   .route-strip{padding:20px 14px 16px;margin:-56px 14px 56px}
   .route-line{flex-wrap:wrap;gap:14px 0}
@@ -833,7 +839,7 @@ html[data-theme="dark"]{
   .trip-shell{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:26px;align-items:start}
   .map-rail{
     display:block;position:sticky;top:92px;
-    height:calc(100vh - 116px);min-height:480px;
+    height:calc(100vh - 116px);height:calc(100dvh - 116px);min-height:480px;
   }
   .map-rail-inner{
     position:relative;height:100%;
@@ -958,6 +964,11 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
   direction:ltr;unicode-bidi:isolate;min-width:58px;text-align:center;
 }
 .sched-what{font-size:12.5px;color:var(--ink-soft);unicode-bidi:plaintext;min-width:0}
+
+/* modal scroll lock + contained panel scrolling */
+html.modal-open,html.modal-open body{overflow:hidden}
+.qj-body,.hm-body{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.qj-overlay{padding:max(10px,env(safe-area-inset-top,0px)) 0 0}
 
 /* ============ PRINT ============ */
 @media print{
@@ -2514,6 +2525,7 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
 
       function openDrawer(){
         qjOverlay.classList.add('open');
+        document.documentElement.classList.add('modal-open');
         document.body.style.overflow = 'hidden';
         qjBtn.setAttribute('aria-expanded','true');
         if(qjSearch){
@@ -2524,6 +2536,7 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
       }
       function closeDrawer(){
         qjOverlay.classList.remove('open');
+        document.documentElement.classList.remove('modal-open');
         document.body.style.overflow = '';
         qjBtn.setAttribute('aria-expanded','false');
       }
@@ -2791,6 +2804,7 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
     function closeHM(){
       if(!openHM) return;
       openHM.overlay.classList.remove('open');
+      document.documentElement.classList.remove('modal-open');
       if(openHM.trigger) openHM.trigger.focus();
       openHM=null;
     }
@@ -2861,6 +2875,7 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
       function openModal(){
         closeHM();
         overlay.classList.add('open');
+        document.documentElement.classList.add('modal-open');
         openHM={overlay:overlay,trigger:bar};
         closeBtn.focus();
       }
