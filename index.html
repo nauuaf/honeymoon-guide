@@ -274,7 +274,12 @@ button{-webkit-tap-highlight-color:transparent}
 }
 .city-name-ar{font-family:'Alexandria',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;line-height:1.05;margin-bottom:8px}
 .city-name-en{font-family:'Alexandria',sans-serif;font-weight:400;font-size:clamp(13px,1.6vw,16px);letter-spacing:.1em;opacity:.85;direction:ltr;text-align:right}
-.city-hero .city-meta{display:none}
+.city-hero .city-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.city-hero .city-meta-item{
+  padding:6px 13px;background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.28);border-radius:999px;
+  backdrop-filter:blur(8px);font-size:12px;font-weight:600;
+}
 .city-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;font-weight:500}
 .city-meta-item{display:inline-flex;align-items:center;gap:6px}
 .city-body{padding:0}
@@ -283,12 +288,6 @@ button{-webkit-tap-highlight-color:transparent}
 .city-card{padding:26px 32px 0}
 .cc-section{margin-bottom:20px}
 .cc-section:last-child{margin-bottom:0}
-.cc-meta{
-  display:flex;gap:8px 18px;flex-wrap:wrap;
-  padding-bottom:18px;border-bottom:1px solid var(--line-soft);
-  font-size:13px;color:var(--ink-soft);
-}
-.cc-meta-item{display:inline-flex;align-items:center;gap:6px;font-weight:500}
 .cc-label{font-size:11.5px;font-weight:700;color:var(--accent-deep);margin-bottom:10px}
 .cc-highlights{display:flex;gap:8px;flex-wrap:wrap}
 .cc-highlight{
@@ -297,24 +296,7 @@ button{-webkit-tap-highlight-color:transparent}
   font-size:13px;font-weight:500;color:var(--ink);
 }
 .cc-highlight:hover{background:var(--accent-soft);color:var(--accent-deep)}
-.cc-days{display:flex;gap:8px;flex-wrap:wrap}
-.cc-day-chip{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:7px 15px 7px 8px;background:var(--paper);
-  border:1px solid var(--line);border-radius:999px;
-  font-family:inherit;font-size:13px;font-weight:500;color:var(--ink);
-  text-decoration:none;cursor:pointer;transition:border-color .18s,background .18s,transform .15s;
-}
-.cc-day-chip:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-deep);transform:translateY(-1px)}
-.cc-day-chip:active{transform:scale(.96)}
-.cc-day-chip-num{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-width:23px;height:23px;border-radius:50%;padding:0 6px;
-  background:var(--ink);color:var(--paper);
-  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
-}
-.cc-day-chip.special .cc-day-chip-num{background:var(--accent);color:#fff}
-
+.cc-day-chip.special 
 /* ============ HOTEL ============ */
 .hotel{margin:26px 32px 0;border:1px solid var(--line-soft);border-radius:var(--r-md);overflow:hidden;position:relative;transition:border-color .2s}
 .hotel-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:0}
@@ -764,8 +746,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
   .day:hover{border-color:var(--line-soft)}
   .day:hover .day-top{background:transparent}
   .day-tab:hover{color:var(--muted)}
-  .cc-day-chip:hover{background:var(--paper);border-color:var(--line);color:var(--ink);transform:none}
-  .cc-highlight:hover{background:var(--wash);color:var(--ink)}
+    .cc-highlight:hover{background:var(--wash);color:var(--ink)}
   .days-toggle-all:hover{border-color:var(--line);color:var(--ink-soft);background:none}
   .route-stop:hover{transform:none}
 }
@@ -800,10 +781,8 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
   .city-hero{height:260px}
   .city-hero-content{padding:22px 20px}
   .city-card{padding:20px 16px 0}
-  .cc-meta{gap:6px 14px;font-size:12px;padding-bottom:14px}
-  .cc-highlight{font-size:12px;padding:7px 12px}
-  .cc-day-chip{font-size:12px}
-  .hotel{margin:20px 16px 0}
+    .cc-highlight{font-size:12px;padding:7px 12px}
+    .hotel{margin:20px 16px 0}
   .hotel-grid{grid-template-columns:1fr}
   .hotel-img-wrap{min-height:210px}
   .hotel-img-wrap.img-missing{min-height:140px}
@@ -1087,7 +1066,6 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
       <div class="city-name-en">Milano: style, art & the lake</div>
       <div class="city-meta">
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 30°م</span>
-        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg> 11-15 أغسطس</span>
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg> 4 ليالي</span>
       </div>
     </div>
@@ -1303,7 +1281,6 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
       <div class="city-name-en">Firenze: the Renaissance city</div>
       <div class="city-meta">
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 35°م</span>
-        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg> 15-18 أغسطس</span>
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg> 3 ليالي</span>
       </div>
     </div>
@@ -1472,7 +1449,6 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
       <div class="city-name-en">Positano: the vertical village of the Amalfi Coast</div>
       <div class="city-meta">
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 29°م</span>
-        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg> 18-21 أغسطس</span>
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg> 3 ليالي</span>
       </div>
     </div>
@@ -1647,7 +1623,6 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
       <div class="city-name-en">Capri: the jewel of the Bay of Naples</div>
       <div class="city-meta">
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 28°م</span>
-        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg> 21-24 أغسطس</span>
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg> 3 ليالي</span>
       </div>
     </div>
@@ -1809,7 +1784,6 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
       <div class="city-name-en">Roma: the eternal farewell</div>
       <div class="city-meta">
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 32°م</span>
-        <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg> 24-25 أغسطس</span>
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg> 1 ليلة</span>
       </div>
     </div>
@@ -1991,14 +1965,6 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
     rome:     ['<svg class="ic" aria-hidden="true"><use href="#i-drop"/></svg> نافورة تريفي','<svg class="ic" aria-hidden="true"><use href="#i-bank"/></svg> البانثيون','<svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء Trastevere','<svg class="ic" aria-hidden="true"><use href="#i-plane"/></svg> صباح المغادرة']
   };
 
-  var dayShort = {
-    1:'وصول', 2:'الفن', 3:'كومو', 4:'ميلان',
-    5:'وصول', 6:'ثقافة', 7:'وداع',
-    8:'وصول', 9:'اليوم الكبير', 10:'وداع',
-    11:'وصول', 12:'اليوم الكبير', 13:'يوم حر',
-    14:'الأخيرة'
-  };
-
   var today = new Date(); today.setHours(0,0,0,0);
   var msDay = 86400000;
   var daysUntil = Math.round((TRIP_START - today)/msDay);
@@ -2062,36 +2028,11 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
     var body = $('.city-body', city);
     if(!hl || !body) return;
 
-    var metaItems = $$('.city-meta-item', city).map(function(el){ return el.textContent.trim(); });
-    var dayEls = $$('.day', city);
-
     var card = document.createElement('aside');
     card.className = 'city-card reveal';
-
-    var metaHTML = metaItems.map(function(m){ return '<span class="cc-meta-item">'+m+'</span>'; }).join('');
-    var hlHTML   = hl.map(function(h){ return '<span class="cc-highlight">'+h+'</span>'; }).join('');
-
+    var hlHTML = hl.map(function(h){ return '<span class="cc-highlight">'+h+'</span>'; }).join('');
     card.innerHTML =
-      '<div class="cc-section cc-meta">'+metaHTML+'</div>'+
-      '<div class="cc-section"><div class="cc-label">أبرز اللي لازم تجربونه</div><div class="cc-highlights">'+hlHTML+'</div></div>'+
-      '<div class="cc-section"><div class="cc-label">أيام المحطة</div><div class="cc-days"></div></div>';
-
-    var daysEl = $('.cc-days', card);
-    dayEls.forEach(function(day){
-      var numEl = $('.day-numeral', day);
-      if(!numEl) return;
-      var num = numEl.textContent.trim();
-      var special = !!$('.day-tag.special', day);
-      var short = dayShort[parseInt(num,10)] || '';
-      var chip = document.createElement('button');
-      chip.type = 'button';
-      chip.className = 'cc-day-chip' + (special ? ' special' : '');
-      chip.setAttribute('aria-label', 'اليوم ' + num + ' — ' + short);
-      chip.innerHTML = '<span class="cc-day-chip-num">'+num+'</span> '+short;
-      chip.addEventListener('click', function(){ jumpToDay(day); });
-      daysEl.appendChild(chip);
-    });
-
+      '<div class="cc-section"><div class="cc-label">أبرز اللي لازم تجربونه</div><div class="cc-highlights">'+hlHTML+'</div></div>';
     body.insertBefore(card, body.firstChild);
   });
 
