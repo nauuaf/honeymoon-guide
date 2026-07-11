@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>دليل شهر العسل: إيطاليا أغسطس 2026</title>
+<meta name="description" content="دليل تفاعلي لشهر العسل في إيطاليا، أغسطس 2026: 14 ليلة من ميلان إلى روما عبر فلورنسا وبوزيتانو وكابري، مع خريطة تفاعلية وجداول يومية وقائمة حجوزات.">
 <meta property="og:title" content="دليل شهر العسل: إيطاليا أغسطس 2026">
 <meta property="og:description" content="14 ليلة من ميلان إلى روما، عبر فلورنسا وبوزيتانو وكابري — دليل تفاعلي مصمم بعناية لكل لحظة.">
 <meta property="og:image" content="https://nauuaf.github.io/honeymoon-guide/images/hero.jpg">
@@ -91,6 +92,10 @@ button{-webkit-tap-highlight-color:transparent}
 /* ============ READING PROGRESS ============ */
 .progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;pointer-events:none}
 .progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-deep));transition:width .1s linear}
+@supports (animation-timeline: scroll()){
+  .progress-bar{width:100%;transition:none;transform:scaleX(0);transform-origin:100% 50%;animation:pageProgress linear both;animation-timeline:scroll()}
+  @keyframes pageProgress{to{transform:scaleX(1)}}
+}
 
 /* ============ NAV ============ */
 .nav{
@@ -974,9 +979,28 @@ html.modal-open,html.modal-open body{overflow:hidden}
 
 /* ============ PRINT ============ */
 @media print{
-  .nav,.hero,.quick-jump-btn,.back-to-top,.theme-toggle,.progress{display:none}
-  body{font-size:11pt;background:#fff}
-  .city,.booking,.day{break-inside:avoid;page-break-inside:avoid}
+  .nav,.hero,.progress,.quick-jump-btn,.back-to-top,.theme-toggle,
+  .days-toggle-all,.day-tabs,.day-chevron,.map-stage,.map-rail,.map-hint,.map-dots,
+  .transit-strip::before,.transit-strip::after{display:none !important}
+  body{font-size:10.5pt;background:#fff;color:#000}
+  .trip-shell{display:block;margin:0}
+  .city,.booking,.hotel,.hotel-bar{break-inside:avoid}
+  .day{break-inside:auto}
+  .day-top,.opt,.match,.fact,.schedule{break-inside:avoid}
+  .day-body-wrap{display:block !important;animation:none !important}
+  .day.collapsible .opt[data-pane]{display:block !important;animation:none !important;border-top:1px solid #ddd}
+  .day-summary-extra{display:none !important}
+  .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+  .city-hero{height:auto;min-height:0}
+  .city-hero-img,.city-hero-overlay{display:none}
+  .city-hero-content{color:#000;padding:12pt 0 6pt}
+  .city-num,.city-meta-item{background:none;border:1px solid #ccc;color:#000;backdrop-filter:none}
+  /* hotel details print as an appendix (they live in modals) */
+  .hm-overlay{position:static !important;opacity:1 !important;pointer-events:auto;background:none;display:block;padding:0}
+  .hm-overlay .qj-panel{width:100%;max-height:none;transform:none;box-shadow:none;border:1px solid #ddd;margin:10pt 0}
+  .hm-overlay .qj-close{display:none}
+  .qj-overlay:not(.hm-overlay){display:none !important}
+  a{color:inherit;text-decoration:none}
 }
 </style>
 </head>
@@ -1033,9 +1057,10 @@ html.modal-open,html.modal-open body{overflow:hidden}
     <div id="countdown" class="countdown" aria-live="polite"></div>
   </div>
 </header>
+<main id="content">
 
 <!-- ==================== ROUTE STRIP ==================== -->
-<section id="overview" class="wrap">
+<section id="overview" class="wrap" aria-label="مسار الرحلة">
   <div class="route-strip">
     <div class="route-strip-title">مسار الرحلة</div>
     <div class="map-stage" id="mapSlot"></div>
@@ -1078,7 +1103,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
 <div class="trip-shell">
 <div class="trip-flow">
 <!-- ==================== MILAN ==================== -->
-<section id="milan" class="city">
+<section id="milan" class="city" aria-labelledby="milan-title">
   <div class="city-hero">
     <img class="city-hero-img" loading="lazy"
       src="images/city-milan.jpg"
@@ -1086,7 +1111,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
     <div class="city-hero-overlay"></div>
     <div class="city-hero-content">
       <div class="city-num">المحطة الأولى · STOP I</div>
-      <h2 class="city-name-ar">ميلان</h2>
+      <h2 class="city-name-ar" id="milan-title">ميلان</h2>
       <div class="city-name-en">Milano: style, art & the lake</div>
       <div class="city-meta">
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 30°م</span>
@@ -1293,7 +1318,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
 </section>
 
 <!-- ==================== FLORENCE ==================== -->
-<section id="florence" class="city">
+<section id="florence" class="city" aria-labelledby="florence-title">
   <div class="city-hero">
     <img class="city-hero-img" loading="lazy"
       src="images/city-florence.jpg"
@@ -1301,7 +1326,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
     <div class="city-hero-overlay"></div>
     <div class="city-hero-content">
       <div class="city-num">المحطة الثانية · STOP II</div>
-      <h2 class="city-name-ar">فلورنسا</h2>
+      <h2 class="city-name-ar" id="florence-title">فلورنسا</h2>
       <div class="city-name-en">Firenze: the Renaissance city</div>
       <div class="city-meta">
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 35°م</span>
@@ -1461,7 +1486,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
 </section>
 
 <!-- ==================== POSITANO ==================== -->
-<section id="positano" class="city">
+<section id="positano" class="city" aria-labelledby="positano-title">
   <div class="city-hero">
     <img class="city-hero-img" loading="lazy"
       src="images/city-positano.jpg"
@@ -1469,7 +1494,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
     <div class="city-hero-overlay"></div>
     <div class="city-hero-content">
       <div class="city-num">المحطة الثالثة · STOP III</div>
-      <h2 class="city-name-ar">بوزيتانو</h2>
+      <h2 class="city-name-ar" id="positano-title">بوزيتانو</h2>
       <div class="city-name-en">Positano: the vertical village of the Amalfi Coast</div>
       <div class="city-meta">
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 29°م</span>
@@ -1635,7 +1660,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
 </section>
 
 <!-- ==================== CAPRI ==================== -->
-<section id="capri" class="city">
+<section id="capri" class="city" aria-labelledby="capri-title">
   <div class="city-hero">
     <img class="city-hero-img" loading="lazy"
       src="images/city-capri.jpg"
@@ -1643,7 +1668,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
     <div class="city-hero-overlay"></div>
     <div class="city-hero-content">
       <div class="city-num">المحطة الرابعة · STOP IV</div>
-      <h2 class="city-name-ar">كابري</h2>
+      <h2 class="city-name-ar" id="capri-title">كابري</h2>
       <div class="city-name-en">Capri: the jewel of the Bay of Naples</div>
       <div class="city-meta">
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 28°م</span>
@@ -1796,7 +1821,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
 </section>
 
 <!-- ==================== ROME ==================== -->
-<section id="rome" class="city">
+<section id="rome" class="city" aria-labelledby="rome-title">
   <div class="city-hero">
     <img class="city-hero-img" loading="lazy"
       src="images/city-rome.jpg"
@@ -1804,7 +1829,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
     <div class="city-hero-overlay"></div>
     <div class="city-hero-content">
       <div class="city-num">المحطة الخامسة · STOP V</div>
-      <h2 class="city-name-ar">روما</h2>
+      <h2 class="city-name-ar" id="rome-title">روما</h2>
       <div class="city-name-en">Roma: the eternal farewell</div>
       <div class="city-meta">
         <span class="city-meta-item"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg> 32°م</span>
@@ -1897,10 +1922,10 @@ html.modal-open,html.modal-open body{overflow:hidden}
 </div><!-- /trip-shell -->
 
 <!-- ==================== BOOKING ==================== -->
-<section id="booking" class="booking">
+<section id="booking" class="booking" aria-labelledby="booking-title">
   <div class="booking-head">
     <div class="booking-head-text">
-      <h2 class="booking-title">جدول الحجوزات</h2>
+      <h2 class="booking-title" id="booking-title">جدول الحجوزات</h2>
       <p class="booking-sub">18 مهمة على 3 مراحل، رتّبوا حسب الأولوية</p>
     </div>
   </div>
@@ -1960,6 +1985,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
 
 </div><!-- /wrap -->
 
+</main>
 <!-- ==================== FOOTER ==================== -->
 <footer class="footer">
   <div class="footer-brand">Buon viaggio · رحلة سعيدة</div>
@@ -2014,15 +2040,15 @@ html.modal-open,html.modal-open body{overflow:hidden}
     }
   }
 
-  // ===== PROGRESS BAR =====
+  // ===== PROGRESS BAR (JS fallback; CSS scroll-timeline handles it natively) =====
   var bar = document.querySelector('.progress-bar');
-  if(bar){
+  if(bar && !(window.CSS && CSS.supports('animation-timeline: scroll()'))){
     var ticking = false;
-    function update(){
+    var update = function(){
       var h = document.documentElement.scrollHeight - window.innerHeight;
       bar.style.width = (h>0 ? Math.min(100, (window.scrollY/h)*100) : 0) + '%';
       ticking = false;
-    }
+    };
     window.addEventListener('scroll', function(){
       if(!ticking){ requestAnimationFrame(update); ticking=true; }
     }, {passive:true});
@@ -2032,6 +2058,15 @@ html.modal-open,html.modal-open body{overflow:hidden}
   // ===== HELPERS =====
   function $(sel, root){ return (root||document).querySelector(sel); }
   function $$(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
+  function trapFocus(panel, e){
+    if(!panel) return;
+    var f = $$('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])', panel)
+      .filter(function(el){ return el.offsetParent !== null; });
+    if(!f.length) return;
+    var first = f[0], last = f[f.length-1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  }
 
   function jumpToDay(day){
     day.classList.add('expanded');
@@ -2334,8 +2369,11 @@ html.modal-open,html.modal-open body{overflow:hidden}
 
   // ===== BOOKING PERSISTENCE (localStorage) + LIVE PROGRESS =====
   try {
-    var BK_KEY = 'honeymoon-bookings-v1';
-    var saved = JSON.parse(localStorage.getItem(BK_KEY) || '{}');
+    var BK_KEY = 'honeymoon-bookings-v2';
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(BK_KEY) || '{}'); } catch(e){}
+    var bkLegacy = {};
+    try { bkLegacy = JSON.parse(localStorage.getItem('honeymoon-bookings-v1') || '{}'); } catch(e){}
     var allLis = $$('.bk-list li');
     var fillBar = document.getElementById('bookingFillBar');
     var progressText = document.getElementById('bookingProgressText');
@@ -2352,7 +2390,8 @@ html.modal-open,html.modal-open body{overflow:hidden}
     }
 
     allLis.forEach(function(li, idx){
-      var id = 'bk-' + idx;
+      var id = li.textContent.trim().replace(/\s+/g,' ');
+      if(!(id in saved) && bkLegacy['bk-'+idx]) saved[id] = true;
       if(saved[id]) li.classList.add('checked');
       li.setAttribute('role','checkbox');
       li.setAttribute('aria-checked', li.classList.contains('checked') ? 'true' : 'false');
@@ -2546,7 +2585,9 @@ html.modal-open,html.modal-open body{overflow:hidden}
       qjClose.addEventListener('click', closeDrawer);
       qjOverlay.addEventListener('click', function(e){ if(e.target === qjOverlay) closeDrawer(); });
       document.addEventListener('keydown', function(e){
-        if(e.key === 'Escape' && qjOverlay.classList.contains('open')) closeDrawer();
+        if(!qjOverlay.classList.contains('open')) return;
+        if(e.key === 'Escape') closeDrawer();
+        else if(e.key === 'Tab') trapFocus(qjOverlay.querySelector('.qj-panel'), e);
       });
       if(qjSearch){
         qjSearch.addEventListener('input', function(){ filterDrawer(qjSearch.value); });
@@ -2811,7 +2852,9 @@ html.modal-open,html.modal-open body{overflow:hidden}
       openHM=null;
     }
     document.addEventListener('keydown',function(e){
-      if(e.key==='Escape'&&openHM) closeHM();
+      if(!openHM) return;
+      if(e.key==='Escape') closeHM();
+      else if(e.key==='Tab') trapFocus(openHM.panel, e);
     });
 
     $$('.city').forEach(function(city){
@@ -2878,7 +2921,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
         closeHM();
         overlay.classList.add('open');
         document.documentElement.classList.add('modal-open');
-        openHM={overlay:overlay,trigger:bar};
+        openHM={overlay:overlay,panel:panel,trigger:bar};
         closeBtn.focus();
       }
       bar.addEventListener('click',openModal);
@@ -2915,16 +2958,23 @@ html.modal-open,html.modal-open body{overflow:hidden}
   btt.addEventListener('click', function(){
     window.scrollTo({top:0, behavior:'smooth'});
   });
-  var bttTicking = false;
-  window.addEventListener('scroll', function(){
-    if(!bttTicking){
-      requestAnimationFrame(function(){
-        btt.classList.toggle('visible', window.scrollY > 600);
-        bttTicking = false;
-      });
-      bttTicking = true;
-    }
-  }, {passive:true});
+  var heroSentinel = document.querySelector('.hero');
+  if('IntersectionObserver' in window && heroSentinel){
+    new IntersectionObserver(function(entries){
+      btt.classList.toggle('visible', !entries[0].isIntersecting);
+    },{threshold:0}).observe(heroSentinel);
+  } else {
+    var bttTicking = false;
+    window.addEventListener('scroll', function(){
+      if(!bttTicking){
+        requestAnimationFrame(function(){
+          btt.classList.toggle('visible', window.scrollY > 600);
+          bttTicking = false;
+        });
+        bttTicking = true;
+      }
+    }, {passive:true});
+  }
 
 })();
 </script>
