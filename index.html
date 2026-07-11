@@ -221,7 +221,7 @@ button{-webkit-tap-highlight-color:transparent}
 }
 .route-line{display:flex;align-items:flex-start;justify-content:space-between;position:relative}
 .route-line::before{
-  content:'';position:absolute;top:17px;inset-inline:60px;height:2px;
+  content:'';position:absolute;top:17px;inset-inline:10%;height:2px;
   background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 15px);
 }
 .route-arrow{display:none}
@@ -236,8 +236,8 @@ button{-webkit-tap-highlight-color:transparent}
   display:inline-flex;align-items:center;justify-content:center;
   width:34px;height:34px;border-radius:50%;
   font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;
-  margin-bottom:10px;position:relative;z-index:1;
-  box-shadow:0 0 0 5px var(--paper);
+  margin-bottom:8px;position:relative;z-index:1;
+  box-shadow:0 0 0 6px var(--paper);
 }
 .route-stop:nth-child(1) .route-stop-num{background:var(--milan)}
 .route-stop:nth-child(3) .route-stop-num{background:var(--flor)}
@@ -540,15 +540,10 @@ html[data-theme="dark"] .t-tip{background:rgba(120,195,180,.2);color:#AEDFD5}
 .booking-head-text{flex:1;min-width:220px}
 .booking-title{font-family:'Alexandria',sans-serif;font-size:24px;font-weight:800;margin-bottom:4px;line-height:1.25}
 .booking-sub{font-size:12.5px;color:var(--muted);line-height:1.7}
-.booking-progress{display:flex;align-items:center;gap:6px;flex-shrink:0;padding-top:10px}
-.bp-dot{width:10px;height:10px;border-radius:50%}
-.bp-line{width:24px;height:2px;background:var(--line)}
-.bp-dot-now{background:#BC5533}
-.bp-dot-month{background:var(--gold2)}
-.bp-dot-week{background:var(--accent)}
-.booking-fill-track{height:5px;border-radius:999px;background:var(--wash);overflow:hidden;margin:14px 0 4px}
+.booking-fill-row{display:flex;align-items:center;gap:14px;margin-top:14px}
+.booking-fill-track{flex:1;height:6px;border-radius:999px;background:var(--wash);overflow:hidden}
 .booking-fill-bar{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-deep));transition:width .35s ease}
-.booking-progress-text{font-size:11.5px;color:var(--muted);font-weight:600;font-feature-settings:"tnum" 1}
+.booking-progress-text{font-size:11.5px;color:var(--muted);font-weight:600;font-feature-settings:"tnum" 1;white-space:nowrap;flex-shrink:0}
 .bk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:18px}
 .bk-col{display:flex;flex-direction:column;min-width:0;background:var(--bg);border-radius:var(--r-md);padding:16px 18px}
 .bk-col-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line-soft)}
@@ -926,7 +921,7 @@ html[data-theme="dark"]{
 .hb-status{font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;background:#6E7F3F;color:#fff;flex-shrink:0}
 html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
 .hb-status.hb-open{background:var(--wash);color:var(--ink-soft)}
-.hb-dates{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;unicode-bidi:isolate;direction:ltr;text-align:start}
+.hb-dates{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;unicode-bidi:isolate;direction:ltr;text-align:right}
 .hb-btn{
   flex-shrink:0;border:none;border-radius:999px;padding:9px 18px;
   background:var(--accent-soft);color:var(--accent-deep);
@@ -947,6 +942,22 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
   .hb-btn{padding:8px 14px;font-size:11.5px}
   .hm-body .hotel-img-wrap{min-height:170px}
 }
+
+/* schedule as timeline rows */
+.schedule.sched{
+  background:transparent;padding:2px 0;direction:rtl;text-align:start;
+  border-inline-start:2px solid color-mix(in srgb,var(--accent) 22%,transparent);
+  padding-inline-start:14px;margin-inline-start:5px;border-radius:0;
+  font-family:inherit;line-height:1.6;
+}
+.sched-row{display:flex;align-items:baseline;gap:10px;padding:3px 0}
+.sched-time{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;
+  color:var(--accent-deep);background:var(--accent-soft);
+  padding:2px 9px;border-radius:6px;white-space:nowrap;
+  direction:ltr;unicode-bidi:isolate;min-width:58px;text-align:center;
+}
+.sched-what{font-size:12.5px;color:var(--ink-soft);unicode-bidi:plaintext;min-width:0}
 
 /* ============ PRINT ============ */
 @media print{
@@ -1879,17 +1890,12 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
       <h2 class="booking-title">جدول الحجوزات</h2>
       <p class="booking-sub">18 مهمة على 3 مراحل، رتّبوا حسب الأولوية</p>
     </div>
-    <div class="booking-progress" aria-hidden="true">
-      <span class="bp-dot bp-dot-now"></span>
-      <span class="bp-line"></span>
-      <span class="bp-dot bp-dot-month"></span>
-      <span class="bp-line"></span>
-      <span class="bp-dot bp-dot-week"></span>
-    </div>
   </div>
 
-  <div class="booking-fill-track" aria-hidden="true"><div class="booking-fill-bar" id="bookingFillBar"></div></div>
+  <div class="booking-fill-row">
+    <div class="booking-fill-track" aria-hidden="true"><div class="booking-fill-bar" id="bookingFillBar"></div></div>
   <div class="booking-progress-text" id="bookingProgressText"></div>
+  </div>
 
   <div class="bk-grid">
     <div class="bk-col">
@@ -2130,8 +2136,10 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
         optEls.forEach(function(opt, idx){
           var badge = $('.opt-badge', opt);
           var bt = badge ? badge.textContent.trim() : '';
-          var isStar = !!badge.querySelector('.i-starmark');
-          var label = bt.split('·')[0].replace('<svg class="ic i-starmark" aria-hidden="true"><use href="#i-star"/></svg>','').trim() || ('الخيار ' + (idx===0?'أ':'ب'));
+          var isStar = badge ? !!badge.querySelector('.i-starmark') : false;
+          var parts = bt.split('·');
+          var label = (parts[1] || parts[0] || '').trim() || ('الخيار ' + (idx===0?'أ':'ب'));
+          if(badge && parts.length > 1) badge.style.display = 'none';
 
           var btn = document.createElement('button');
           btn.type = 'button';
@@ -2862,6 +2870,21 @@ html[data-theme="dark"] .hb-status{background:#A5B478;color:#1E1A0C}
       });
       closeBtn.addEventListener('click',closeHM);
       overlay.addEventListener('click',function(e){if(e.target===overlay)closeHM();});
+    });
+  }catch(e){}
+
+
+  // ===== SCHEDULES AS TIMELINE ROWS =====
+  try{
+    $$('.schedule').forEach(function(sc){
+      var parts=sc.innerHTML.split('\u00b7');
+      var rows=[],ok=parts.length>1;
+      parts.forEach(function(pt){
+        var m=pt.match(/<b>\s*([^<]+?):?\s*<\/b>\s*(.*)/);
+        if(!m){ok=false;return;}
+        rows.push('<div class="sched-row"><span class="sched-time">'+m[1].trim()+'</span><span class="sched-what">'+m[2].trim()+'</span></div>');
+      });
+      if(ok&&rows.length>1){sc.classList.add('sched');sc.innerHTML=rows.join('');}
     });
   }catch(e){}
 
