@@ -83,7 +83,6 @@ body{
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
   transition:background .3s,color .3s;
 }
-.en{font-family:'Alexandria','Readex Pro',sans-serif;direction:ltr;display:inline-block;letter-spacing:.03em}
 /* legacy .serif class = Latin display accent (no serif in the new system) */
 .serif{font-family:'Alexandria',sans-serif;font-weight:400;letter-spacing:.05em}
 section[id]{scroll-margin-top:96px}
@@ -170,10 +169,6 @@ button{-webkit-tap-highlight-color:transparent}
     linear-gradient(180deg,rgba(38,16,28,.18) 0%,rgba(38,16,28,0) 30%,rgba(38,16,28,.86) 100%),
     radial-gradient(ellipse at 85% 95%,rgba(38,16,28,.55) 0%,transparent 62%);
 }
-.hero::after{
-  content:'';position:absolute;left:0;right:0;bottom:0;height:110px;z-index:1;
-  background:linear-gradient(180deg,transparent,var(--bg));opacity:.0;
-}
 .hero-content{
   position:relative;z-index:2;max-width:1160px;margin:0 auto;width:100%;
   padding:64px 32px 96px;color:#fff;
@@ -229,7 +224,6 @@ button{-webkit-tap-highlight-color:transparent}
   content:'';position:absolute;top:17px;inset-inline:10%;height:2px;
   background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 15px);
 }
-.route-arrow{display:none}
 .route-stop{
   flex:1;min-width:0;text-align:center;padding:0 6px 8px;position:relative;
   display:block;text-decoration:none;color:inherit;cursor:pointer;
@@ -301,7 +295,6 @@ button{-webkit-tap-highlight-color:transparent}
   font-size:13px;font-weight:500;color:var(--ink);
 }
 .cc-highlight:hover{background:var(--accent-soft);color:var(--accent-deep)}
-.cc-day-chip.special 
 /* ============ HOTEL ============ */
 .hotel{margin:26px 32px 0;border:1px solid var(--line-soft);border-radius:var(--r-md);overflow:hidden;position:relative;transition:border-color .2s}
 .hotel-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:0}
@@ -365,8 +358,7 @@ html[data-theme="dark"] .hotel-badge.booked{background:#A5B478;color:#1E1A0C}
 /* ============ DAYS ============ */
 .days-header{
   display:flex;align-items:center;gap:10px;
-  margin:10px 32px 14px;padding:26px 0 0;
-  border-top:1px solid var(--line-soft);
+  margin:22px 32px 14px;padding:0;
 }
 .days-header-icon{font-size:13px;line-height:1}
 .days-header-text{font-size:11.5px;font-weight:700;color:var(--muted)}
@@ -478,7 +470,7 @@ html[data-theme="dark"] .day-book-flag{background:rgba(200,105,60,.22);color:#F3
 .schedule{
   font-family:'IBM Plex Mono',monospace;
   font-size:11.5px;color:var(--ink-soft);line-height:2;margin-bottom:14px;
-  direction:ltr;text-align:left;
+  text-align:right;unicode-bidi:plaintext;
   background:var(--wash);border-radius:var(--r-md);padding:10px 14px;
   font-feature-settings:"tnum" 1;
 }
@@ -579,7 +571,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
   border-color:var(--accent);
 }
 .bk-list li.checked .bk-note{color:var(--line)}
-.bk-note{font-size:11px;color:var(--muted);font-weight:500;margin-inline-start:auto;flex-shrink:0;padding-inline-start:8px;direction:ltr;font-feature-settings:"tnum" 1}
+.bk-note{font-size:11px;color:var(--muted);font-weight:500;margin-inline-start:auto;flex-shrink:0;padding-inline-start:8px;direction:ltr;unicode-bidi:isolate;font-feature-settings:"tnum" 1}
 
 /* ============ FOOTER ============ */
 .footer{text-align:center;padding:56px 24px 40px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line-soft);margin-top:48px}
@@ -631,7 +623,8 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
 @media(max-width:760px){
   .qj-panel{
     border-radius:var(--r-lg) var(--r-lg) 0 0;width:100%;
-    max-height:86vh;max-height:86dvh;
+    max-height:90vh;
+    max-height:calc(100dvh - max(12px,env(safe-area-inset-top,0px)));
     padding-bottom:env(safe-area-inset-bottom,0px);
   }
 }
@@ -744,7 +737,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
 /* ============ A11Y ============ */
 .day-top:focus-visible{outline:2px solid var(--accent);outline-offset:-3px;border-radius:14px}
 .day-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.cc-day-chip:focus-visible,.cc-highlight:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cc-highlight:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .nav-links a:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .days-toggle-all:focus-visible,.bk-list li:focus-visible,.qj-day:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media (hover:none){
@@ -795,7 +788,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
   .hotel-img-wrap.img-missing::after{font-size:32px}
   .hotel-info{padding:22px 18px}
   .hotel-alt{margin:14px 16px 6px;padding:15px 16px}
-  .days-header{margin:6px 16px 12px;padding-top:20px}
+  .days-header{margin:16px 16px 12px}
   .day{margin:0 16px 7px;border-radius:12px}
   .day:last-child{margin-bottom:22px}
   .day-top{padding:13px 15px;gap:8px 12px;flex-wrap:wrap}
@@ -1104,25 +1097,21 @@ html.modal-open,html.modal-open body{overflow:hidden}
         <div class="route-stop-name">ميلان</div>
         <div class="route-stop-meta">4 ليالي · 11-15 أغسطس</div>
       </a>
-      <div class="route-arrow">←</div>
       <a class="route-stop" href="#florence">
         <div class="route-stop-num">2</div>
         <div class="route-stop-name">فلورنسا</div>
         <div class="route-stop-meta">3 ليالي · 15-18 أغسطس</div>
       </a>
-      <div class="route-arrow">←</div>
       <a class="route-stop" href="#positano">
         <div class="route-stop-num">3</div>
         <div class="route-stop-name">بوزيتانو</div>
         <div class="route-stop-meta">3 ليالي · 18-21 أغسطس</div>
       </a>
-      <div class="route-arrow">←</div>
       <a class="route-stop" href="#capri">
         <div class="route-stop-num">4</div>
         <div class="route-stop-name">كابري</div>
         <div class="route-stop-meta">3 ليالي · 21-24 أغسطس</div>
       </a>
-      <div class="route-arrow">←</div>
       <a class="route-stop" href="#rome">
         <div class="route-stop-num">5</div>
         <div class="route-stop-name">روما</div>
