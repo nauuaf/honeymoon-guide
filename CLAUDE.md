@@ -24,6 +24,16 @@ Arabic-first, `dir="rtl"` — test every layout change for RTL and BiDi
 - **Copy voice:** Saudi-dialect Arabic, warm and personal.
 - **Viewport units:** use `dvh` with a `vh` fallback line. Modals must lock
   page scroll (`html.modal-open`) and trap focus.
+- **Flex-scroll modal bodies** (`.hm-body`, `.qj-body`, drawer content) need
+  `flex:1 1 auto;min-height:0` — without `min-height:0` the body can't shrink
+  and long content clips off-screen instead of scrolling internally.
+- **External links open as native webview modals**, never new tabs. The place
+  modal (`.pm-overlay`, z-340, reuses `qj-*` chrome) embeds Google Maps via
+  `https://www.google.com/maps?q=…&output=embed&hl=ar` with a "فتح في خرائط
+  جوجل" fallback link (`.pm-ext`). `openPlace(query,title,trigger)` drives it;
+  `pmOpen` guards ESC/scroll-lock when it stacks over a hotel modal. Dining
+  picks with ≥3 Latin chars auto-wire a pin affordance; hotel modals get a
+  location button from the `HOTEL_Q` address map.
 
 ## Verifying changes
 
