@@ -484,6 +484,9 @@ html[data-theme="dark"] .day-book-flag{background:rgba(200,105,60,.22);color:#F3
 html[data-theme="dark"] .t-book{background:rgba(200,105,60,.22);color:#F3BC9C}
 html[data-theme="dark"] .t-free{background:rgba(150,170,90,.22);color:#CCD9A0}
 html[data-theme="dark"] .t-tip{background:rgba(120,195,180,.2);color:#AEDFD5}
+.up-chip{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:2.5px 9px;border-radius:999px;background:#F4E3C0;color:#7A5A18;vertical-align:2px;white-space:nowrap}
+.up-chip .ic{width:11px;height:11px}
+html[data-theme="dark"] .up-chip{background:rgba(231,168,78,.2);color:#EFC98F}
 
 .match{
   background:var(--wash);border-radius:var(--r-md);
@@ -1286,11 +1289,11 @@ html.modal-open,html.modal-open body{overflow:hidden}
           <p class="opt-title-en">Varenna + Bellagio + Riva sunset</p>
           <p class="opt-desc">قطار لفارينا مباشرة: حدائق Villa Monastero على ضفة البحيرة (تفتح 9:30) وممشى العشاق المنحوت بالصخر. فيري لبيلاجيو للغداء والتسوق، وبعدها الهيدروفويل السريع لمدينة كومو (45 دقيقة، انتبهوا: الفيري العادي ياخذ ساعتين). الختام: جولة غروب خاصة على قارب ريفا خشبي كلاسيكي، ومعها مويه ومشروبات باردة على متن القارب.</p>
           <div class="schedule"><b>7:20am:</b> train to Varenna · <b>9:30am:</b> Villa Monastero · <b>12:30pm:</b> ferry to Bellagio · <b>1pm:</b> lunch · <b>4:30pm:</b> hydrofoil to Como · <b>7:30pm:</b> Riva sunset</div>
-          <div class="tags"><span class="tag t-book">احجزوا الريفا من Como Classic Boats</span><span class="tag t-cost">الريفا من ~1,400 ر/ساعة</span><span class="tag t-cost">قطار + فيري ~150 ر</span></div>
+          <div class="tags"><span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span><span class="tag t-book">احجزوا الريفا من Como Classic Boats</span><span class="tag t-cost">الريفا من ~1,400 ر/ساعة</span><span class="tag t-cost">قطار + فيري ~150 ر</span></div>
           <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-sunset"/></svg> الغروب الحقيقي 8:25 مساءً</b> عشان كذا الجولة الساعة 7:30، تلحقون الغروب الفعلي وأنتم فوق الماء. قوارب الريفا الخشبية أيقونة الدولتشي فيتا من الخمسينات، والإلغاء مجاني قبل الموعد بأسبوع.</div>
           <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-boat"/></svg> نصيحة الرجعة</b> أول ما توصلون بيلاجيو، اشتروا تذاكر الهيدروفويل (servizio rapido) للرجعة، أغسطس زحمة والمقاعد تخلص. وممشى العشاق في فارينا؟ كثير ناس يتقدمون هناك!</div>
           <div class="match">
-            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> الغداء: على واجهة بيلاجيو</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> الغداء: على واجهة بيلاجيو <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span></div>
             <div class="match-name">Hotel Ristorante Suisse · Bellagio</div>
             <div class="match-reason">تراس على الكورنيش مباشرة قدام مرسى الفيري، مطبخ إيطالي كلاسيكي بإطلالة على البحيرة. وإذا لقيتوه زحمة، Ristorante Bilacus فوقه بشارع واحد وسطحه تحت عريشة عنب.</div>
           </div>
@@ -1743,9 +1746,9 @@ html.modal-open,html.modal-open body{overflow:hidden}
         <div class="opt">
           <span class="opt-badge ob-a">الخيار أ · كابري الكلاسيكية</span>
           <p class="opt-title">حدائق Augustus + تسوق + بياتزيتا</p>
-          <p class="opt-desc">حدائق Augustus، إطلالة على Faraglioni وطريق Via Krupp المتعرج تحتكم. بعدها Via Camerelle للتسوق. المساء بعد 6 (السياح يطلعون)، بياتزيتا هادية وساحرة.</p>
-          <div class="schedule"><b>12pm:</b> hotel + lunch · <b>2pm:</b> Gardens of Augustus · <b>3:30pm:</b> shopping · <b>6pm:</b> Piazzetta</div>
-          <div class="tags"><span class="tag t-cost">حدائق ~5 ر</span></div>
+          <p class="opt-desc">غداء في Le Camerelle على أشهر شارع بالجزيرة (غالبًا ما يحتاج حجز). بعدها حدائق Augustus، إطلالة على Faraglioni وطريق Via Krupp المتعرج تحتكم (رجعوا فتحوه للمشي، تأكدوا هناك). Via Camerelle للتسوق، وجيلاتو Buonocore بالطريق (يسوون البسكوت قدامكم). المساء بعد 6 (السياح يطلعون)، بياتزيتا هادية وساحرة.</p>
+          <div class="schedule"><b>12pm:</b> lunch Le Camerelle · <b>2pm:</b> Gardens of Augustus · <b>3:30pm:</b> shopping + gelato · <b>6pm:</b> Piazzetta</div>
+          <div class="tags"><span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم: Le Camerelle + Buonocore</span><span class="tag t-cost">حدائق ~5 ر</span></div>
           <div class="match">
             <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: 5 دقايق مشي</div>
             <div class="match-name">Da Giorgio · Capri town</div>
@@ -1760,7 +1763,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
           <div class="match">
             <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء</div>
             <div class="match-name">Villa Verde · Capri town</div>
-            <div class="match-reason">حديقة خضراء هادية. أحلى بيتزا بالجزيرة. ليلة بسيطة ومريحة بعد يوم سفر.</div>
+            <div class="match-reason">حديقة خضراء هادية وأكل لذيذ. ليلة بسيطة ومريحة بعد يوم سفر. احجزوا من موقعهم villaverdecapri.com من بدري، أغسطس زحمة.</div>
           </div>
         </div>
       </div>
@@ -1782,10 +1785,15 @@ html.modal-open,html.modal-open body{overflow:hidden}
           <p class="opt-title">المغارة الزرقاء + جولة حول الجزيرة</p>
           <p class="opt-title-en">Blue Grotto + island circumnavigation</p>
           <p class="opt-desc">8 الصبح المغارة الزرقاء، مغارة الماء فيها يتوهج أزرق كهربائي! تدخلون بقارب صغير مستلقين. بعدها قارب خاص حول الجزيرة: Faraglioni (تمرون تحت القوس)، المغارة البيضاء والخضراء. بدون سباحة، مناظر وتصوير.</p>
-          <div class="schedule"><b>8am:</b> Blue Grotto · <b>10am:</b> private boat (3-4 hrs) · <b>2pm:</b> lunch · <b>4pm:</b> rest</div>
+          <div class="schedule"><b>8am:</b> Blue Grotto · <b>10am:</b> private boat (3-4 hrs) · <b>1:30pm:</b> lunch in Nerano · <b>4pm:</b> rest</div>
           <div class="tags"><span class="tag t-book">احجزوا الحين</span><span class="tag t-cost">~970 ر إجمالي</span></div>
           <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-drop"/></svg> مسبح الإمبراطور</b> المغارة الزرقاء كانت مسبح تيبيريوس الخاص قبل 2000 سنة! لقوا تماثيل نبتون بقاعها سنة 1964. اللون الأزرق = الماء يمتص الأشعة الحمراء ويخلي بس الزرقاء تمر من فتحة تحت الماء.</div>
           <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg> أسطورة كابري</b> اللي يتباوسون تحت قوس Faraglione di Mezzo يظلون مع بعض للأبد!</div>
+          <div class="match">
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-boat"/></svg> غداء اليوم البحري: ترسون عليه بالقارب <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span></div>
+            <div class="match-name">La Conca del Sogno · Nerano</div>
+            <div class="match-reason">مطعم على خليج ريكومّوني بالبر المقابل، جلسة على الماء مباشرة وسمك طازج، محطة الغداء المفضلة لقوارب كابري. قولوا للقبطان من بدري عشان يحجز لكم الطاولة والرسو.</div>
+          </div>
         </div>
         <div class="opt">
           <span class="opt-badge ob-b">الخيار ب · جولة جماعية</span>
@@ -1793,12 +1801,13 @@ html.modal-open,html.modal-open body{overflow:hidden}
           <p class="opt-desc">جولة مع 8-12 شخص حول الجزيرة، Faraglioni، مغارات. أرخص بكثير وممتعة. تقدرون تتخطون المغارة الزرقاء لو الطابور طويل.</p>
           <div class="schedule"><b>9am:</b> group tour (3 hrs) · <b>12pm:</b> lunch · <b>2pm:</b> walk Capri town</div>
           <div class="tags"><span class="tag t-book">قبل أسبوع</span><span class="tag t-cost">~250 ر/شخص</span></div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg> ودكم سباحة؟</b> <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> Fontelina أشهر بيتش كلوب بالجزيرة، عند سيقان الفاراليوني نفسها. الحجز فقط من موقعهم fontelina-capri.com، وأغسطس عنده حد أدنى ~€200 للشخص ويمتلئ من بدري. قارب مجاني يرجعكم لمارينا بيكولا بعد العصر.</div>
         </div>
       </div>
       <div class="match match-full">
         <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الخيارين: المطعم الأهم بكابري <svg class="ic" aria-hidden="true"><use href="#i-lemon"/></svg></div>
         <div class="match-name">Da Paolino · "مطعم شجر الليمون"</div>
-        <div class="match-reason">عشاء تحت مئات أشجار الليمون الحقيقية المعلقة فوقكم! أرومانسية مطعم بكابري. جربوا جبنة الموزاريلا المشوية بورق الليمون. فيه غرفة حلويات! لازم تحجزون من بدري بأغسطس.</div>
+        <div class="match-reason">عشاء تحت مئات أشجار الليمون الحقيقية المعلقة فوقكم! أرومانسية مطعم بكابري. جربوا جبنة الموزاريلا المشوية بورق الليمون. فيه غرفة حلويات! لازم تحجزون من بدري بأغسطس، من موقعهم paolinocapri.com أو بالإيميل.</div>
       </div>
     </div>
 
@@ -1816,9 +1825,9 @@ html.modal-open,html.modal-open body{overflow:hidden}
           <span class="opt-badge ob-a">الخيار أ · القمة</span>
           <p class="opt-title">تلفريك Monte Solaro + أناكابري</p>
           <p class="opt-title-en">Monte Solaro chairlift + Anacapri</p>
-          <p class="opt-desc">تلفريك مفتوح 12 دقيقة لأعلى نقطة بكابري (589م). فوق 360°، خليج نابولي، فيزوف، سورنتو. كافيه فوق. تنزلون وتستكشفون أناكابري، أهدأ من كابري تاون.</p>
-          <div class="schedule"><b>9am:</b> bus · <b>9:30am:</b> chairlift · <b>10:30am:</b> summit · <b>12pm:</b> Villa San Michele · <b>1:30pm:</b> lunch</div>
-          <div class="tags"><span class="tag t-free">ما يبيله حجز</span><span class="tag t-cost">تلفريك ~50 ر</span></div>
+          <p class="opt-desc">تلفريك مفتوح 12 دقيقة لأعلى نقطة بكابري (589م). فوق 360°، خليج نابولي، فيزوف، سورنتو. كافيه فوق. تنزلون وتمشون Via Axel Munthe، أجمل شارع بأناكابري، لين Villa San Michele. الغداء في a-Ma-Re داخل Capri Palace: بيتزا نابولية فاخرة، أو قهوة على مهلكم.</p>
+          <div class="schedule"><b>9am:</b> bus · <b>9:30am:</b> chairlift · <b>10:30am:</b> summit · <b>12pm:</b> Villa San Michele · <b>1:30pm:</b> lunch a-Ma-Re</div>
+          <div class="tags"><span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم: a-Ma-Re + Via Axel Munthe</span><span class="tag t-free">ما يبيله حجز</span><span class="tag t-cost">تلفريك ~50 ر</span></div>
           <div class="match">
             <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع من كابري</div>
             <div class="match-name">Da Giorgio · Capri town</div>
@@ -1833,9 +1842,9 @@ html.modal-open,html.modal-open body{overflow:hidden}
           <div class="tags"><span class="tag t-free">ما يبيله شي</span><span class="tag t-tip">أحلى يوم = بدون خطة</span></div>
           <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-flower"/></svg> عطور من 1380</b> عطور Carthusia من 1380! راهب نسى ماء حط فيها ورود فاكتشف إنها صارت عطر. الحين من أقدم دور العطور بالعالم!</div>
           <div class="match">
-            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع</div>
-            <div class="match-name">Da Paolino (لو ما رحتوا أمس) أو Villa Verde</div>
-            <div class="match-reason">لو رحتوا Da Paolino أمس، الليلة Villa Verde، بيتزا ممتازة بحديقة هادية.</div>
+            <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> عشاء الوداع <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم: Aurora</span></div>
+            <div class="match-name">Da Paolino (لو ما رحتوا أمس) أو Aurora</div>
+            <div class="match-reason">لو رحتوا Da Paolino أمس، الليلة Aurora: أشهر بيتزيريا بالجزيرة من 1949، بيتزا All'Acqua حقتهم أسطورية. أو Villa Verde لو تبون جلسة الحديقة.</div>
           </div>
         </div>
       </div>
@@ -1950,7 +1959,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
   <div class="booking-head">
     <div class="booking-head-text">
       <h2 class="booking-title" id="booking-title">جدول الحجوزات</h2>
-      <p class="booking-sub">18 مهمة على 3 مراحل، رتّبوا حسب الأولوية</p>
+      <p class="booking-sub">21 مهمة على 3 مراحل، رتّبوا حسب الأولوية</p>
     </div>
   </div>
 
@@ -1963,7 +1972,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
     <div class="bk-col">
       <div class="bk-col-head">
         <span class="bk-pill bk-pill-now">الحين</span>
-        <span class="bk-count">6 مهام</span>
+        <span class="bk-count">8 مهام</span>
       </div>
       <ul class="bk-list" data-phase="الحين">
         <li>تذاكر طيران (الرياض ↔ إيطاليا)</li>
@@ -1972,6 +1981,8 @@ html.modal-open,html.modal-open body{overflow:hidden}
         <li>تأمين سفر شنغن <span class="bk-note">≥ €30,000</span></li>
         <li>تذاكر "العشاء الأخير" (دافنشي) <span class="bk-note">ميلان</span></li>
         <li>تذاكر Uffizi Gallery <span class="bk-note">فلورنسا</span></li>
+        <li>قارب ريفا للغروب <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">كومو</span></li>
+        <li>Fontelina شاطئ + غداء <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">كابري</span></li>
       </ul>
     </div>
 
@@ -1993,7 +2004,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
     <div class="bk-col">
       <div class="bk-col-head">
         <span class="bk-pill bk-pill-week">2-4 أسابيع</span>
-        <span class="bk-count">6 مهام</span>
+        <span class="bk-count">7 مهام</span>
       </div>
       <ul class="bk-list" data-phase="قبل 2-4 أسابيع">
         <li>قارب مغارة الزمرد الخاص <span class="bk-note">بوزيتانو</span></li>
@@ -2002,6 +2013,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
         <li>مطعم La Leggenda dei Frati <span class="bk-note">فلورنسا</span></li>
         <li>مطعم Da Enzo al 29 <span class="bk-note">روما</span></li>
         <li>سطح الدومو + أبيريتيفو <span class="bk-note">ميلان</span></li>
+        <li>مطعم Villa Verde <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">كابري</span></li>
       </ul>
     </div>
   </div>
