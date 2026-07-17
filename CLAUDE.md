@@ -14,7 +14,9 @@ Arabic-first, `dir="rtl"` — test every layout change for RTL and BiDi
 - **Design tokens only.** All colors are CSS variables in `:root` +
   `html[data-theme="dark"]`. Never hardcode a color; every visual must work in
   both themes. One accent (bougainvillea pink); sage = booked/free,
-  gold = favorite, aqua = sea/map, champagne = luxury details.
+  gold = favorite, aqua = sea/map, champagne = luxury details. The gold
+  `.up-chip` pill ("اقتراحكم" + bulb icon) marks items the user personally
+  proposed; apply it to any future user-sourced additions.
 - **Icons:** Tabler outline only, inlined in the `<svg>` sprite after `<body>`.
   Add new symbols to the sprite; never emoji, never a second icon style.
   Careful: icon `<svg>` in strings must go through `innerHTML`, not
