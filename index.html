@@ -987,6 +987,18 @@ html.modal-open,html.modal-open body{overflow:hidden}
 }
 .pm-ext:active{transform:scale(.96)}
 .pm-ext:focus-visible{outline:2px solid var(--accent-deep);outline-offset:2px}
+
+/* ============ SECRET LIST (triple-tap footer brand) ============ */
+.sl-overlay{z-index:350}
+.sl-panel{width:min(560px,94vw)}
+.sl-title-mark{color:var(--gold2)}
+.sl-intro{padding:0 20px 12px;font-size:12.5px;color:var(--ink-soft);line-height:1.9}
+.sl-item{background:var(--wash);border-radius:var(--r-md);padding:13px 16px;margin:0 8px 10px}
+.sl-city{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:var(--gold2);margin-bottom:4px}
+.sl-city .ic{width:13px;height:13px}
+.sl-name{font-family:'Alexandria',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px}
+.sl-why{font-size:12.5px;color:var(--ink-soft);line-height:1.9}
+.sl-foot{padding:4px 20px 14px;font-size:11.5px;color:var(--muted);line-height:1.8}
 .match-name.has-map{
   cursor:pointer;display:inline-flex;align-items:center;gap:6px;
   border-radius:8px;transition:color .15s;
@@ -1801,7 +1813,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
           <p class="opt-desc">جولة مع 8-12 شخص حول الجزيرة، Faraglioni، مغارات. أرخص بكثير وممتعة. تقدرون تتخطون المغارة الزرقاء لو الطابور طويل.</p>
           <div class="schedule"><b>9am:</b> group tour (3 hrs) · <b>12pm:</b> lunch · <b>2pm:</b> walk Capri town</div>
           <div class="tags"><span class="tag t-book">قبل أسبوع</span><span class="tag t-cost">~250 ر/شخص</span></div>
-          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg> ودكم سباحة؟</b> <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> Fontelina أشهر بيتش كلوب بالجزيرة، عند سيقان الفاراليوني نفسها. الحجز فقط من موقعهم fontelina-capri.com، وأغسطس عنده حد أدنى ~€200 للشخص ويمتلئ من بدري. قارب مجاني يرجعكم لمارينا بيكولا بعد العصر.</div>
+          <div class="fact"><b><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> غداء Fontelina</b> <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> مطعم على الصخور عند سيقان الفاراليوني نفسها، من أشهر جلسات الغداء بالجزيرة. الحجز فقط من موقعهم fontelina-capri.com ويمتلئ من بدري بأغسطس. تمشون له من Punta Tragara أو قارب يوصلكم، وقاربهم المجاني يرجعكم لمارينا بيكولا بعد العصر.</div>
         </div>
       </div>
       <div class="match match-full">
@@ -1982,7 +1994,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
         <li>تذاكر "العشاء الأخير" (دافنشي) <span class="bk-note">ميلان</span></li>
         <li>تذاكر Uffizi Gallery <span class="bk-note">فلورنسا</span></li>
         <li>قارب ريفا للغروب <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">كومو</span></li>
-        <li>Fontelina شاطئ + غداء <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">كابري</span></li>
+        <li>غداء Fontelina <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">كابري</span></li>
       </ul>
     </div>
 
@@ -3078,6 +3090,74 @@ html.modal-open,html.modal-open body{overflow:hidden}
       b.addEventListener('click',function(){openPlace(HOTEL_Q[cid],hName,b);});
       hmBody.appendChild(b);
     });
+  }catch(e){}
+
+  // ===== SECRET LIST (triple-tap footer brand, or #segreto) =====
+  var slOpen=false;
+  try{
+    var SL_ITEMS=[
+      {city:'ميلان',ic:'i-drop',name:'جناح سبا مغلق لكم بس',why:'أغلب السبا الفخمة بميلان عندها private spa suite: حمّام وجاكوزي وجلسة لثنين بغرفة مغلقة بالكامل، لا مسبح عام ولا أحد حولكم. اطلبوا "private spa suite for two" وحددوا إنكم تبون الخصوصية الكاملة.'},
+      {city:'كومو',ic:'i-sail',name:'سباحة البحيرة من القارب',why:'مدّدوا جولة الريفا لساعتين واطلبوا وقفة سباحة في جون هادي بعيد عن المراسي. الماء منعش والقارب هو ساتركم الوحيد. اطلبوها بالإيميل وقت الحجز عشان يختارون لكم أهدأ زاوية بالبحيرة.'},
+      {city:'فلورنسا',ic:'i-camera',name:'المدينة لكم قبل ما تصحى',why:'5:30 الفجر: بونتي فيكيو وساحة ميكيلانجيلو بدون ولا سائح. احجزوا مصوّر خاص ساعة وحدة، وارجعوا للفندق قبل ما يبدأ الزحام. صور شهر عسل مستحيلة بعد 8 الصبح.'},
+      {city:'بوزيتانو',ic:'i-boat',name:'جون ما يوصله إلا البحر',why:'قارب خاص ينطلق قبل 8 الصبح جهة جزر Li Galli أو الأجوان اللي بين بوزيتانو ونيرانو. قبل 9 البحر كله لكم، والقبطان يرسي بعيد ويعطيكم مساحتكم كاملة. قولوا له من البداية: نبي مكان ما فيه قوارب ثانية.'},
+      {city:'كابري',ic:'i-wave',name:'سباحة الفجر تحت الفاراليوني',why:'اطلبوا من قبطان يومكم الخاص ينطلق 7 الصبح: Cala Ventroso والمغارة الخضراء قبل وصول أي قارب سياحي. أول ساعة من الصباح البحر خالي تمامًا، وبعدها تكملون جولتكم العادية كأن شي ما صار.'},
+      {city:'كابري',ic:'i-sunset',name:'عشاء الغروب على سطح القارب',why:'بدل ليلة عادية، جولة غروب خاصة مع عشاء خفيف يجهزه القارب. تشوفون أضواء الجزيرة تشتغل من البحر وما حولكم إلا الموج. تنرتب مع نفس مكتب القارب الخاص بيوم واحد مقدم.'},
+      {city:'روما',ic:'i-moon',name:'تريفي الساعة 5 الفجر',why:'امشوا لها من الفندق بالفجر: النافورة مضيئة، صوت الماء بس، ولا نفر واحد. ارموا العملة وتباوسوا على راحتكم. أجمل عشر دقايق برومة كلها، وما تكلف ولا ريال.'}
+    ];
+    var slOverlay=document.createElement('div');
+    slOverlay.className='qj-overlay sl-overlay';
+    slOverlay.setAttribute('role','dialog');
+    slOverlay.setAttribute('aria-modal','true');
+    slOverlay.setAttribute('aria-label','القائمة السرية');
+    slOverlay.innerHTML=
+      '<div class="qj-panel sl-panel">'+
+        '<div class="qj-head"><div class="qj-title"><svg class="ic sl-title-mark" aria-hidden="true"><use href="#i-diamond"/></svg> القائمة السرية</div>'+
+        '<button type="button" class="qj-close" id="slClose" aria-label="إغلاق"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>'+
+        '<div class="sl-intro">بينكم وبين البحر. أفكار جريئة شوي بس بخصوصية تامة، كلها تنرتب بكلمة هادية للقبطان أو الفندق قبلها بيوم.</div>'+
+        '<div class="qj-body">'+SL_ITEMS.map(function(it){
+          return '<div class="sl-item"><div class="sl-city"><svg class="ic" aria-hidden="true"><use href="#'+it.ic+'"/></svg> '+it.city+'</div>'+
+                 '<div class="sl-name">'+it.name+'</div><div class="sl-why">'+it.why+'</div></div>';
+        }).join('')+'</div>'+
+        '<div class="sl-foot">كلمة السر دايم وحدة: riservato e privato. رسالة قبلها بيوم تكفي، وكل اللي هنا يظل بينكم.</div>'+
+      '</div>';
+    document.body.appendChild(slOverlay);
+    var slPanel=slOverlay.querySelector('.sl-panel');
+    var slCloseBtn=document.getElementById('slClose');
+    function openSL(){
+      slOverlay.classList.add('open');
+      document.documentElement.classList.add('modal-open');
+      slOpen=true;
+      slCloseBtn.focus();
+    }
+    function closeSL(){
+      if(!slOpen) return;
+      slOverlay.classList.remove('open');
+      slOpen=false;
+      if(!pmOpen && !openHM) document.documentElement.classList.remove('modal-open');
+      if(location.hash==='#segreto'){
+        try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
+      }
+    }
+    slCloseBtn.addEventListener('click',closeSL);
+    slOverlay.addEventListener('click',function(e){if(e.target===slOverlay)closeSL();});
+    document.addEventListener('keydown',function(e){
+      if(!slOpen) return;
+      if(e.key==='Escape'){e.stopPropagation();closeSL();}
+      else if(e.key==='Tab') trapFocus(slPanel,e);
+    });
+    var slBrand=document.querySelector('.footer-brand');
+    if(slBrand){
+      var slTaps=0,slTimer=null;
+      slBrand.addEventListener('click',function(){
+        slTaps++;
+        clearTimeout(slTimer);
+        slTimer=setTimeout(function(){slTaps=0;},1200);
+        if(slTaps>=3){slTaps=0;clearTimeout(slTimer);openSL();}
+      });
+    }
+    function slHash(){if(location.hash==='#segreto') openSL();}
+    window.addEventListener('hashchange',slHash);
+    slHash();
   }catch(e){}
 
   // ===== BACK TO TOP =====

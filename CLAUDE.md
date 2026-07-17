@@ -37,6 +37,11 @@ Arabic-first, `dir="rtl"` — test every layout change for RTL and BiDi
   picks with ≥3 Latin chars auto-wire a pin affordance; hotel modals get a
   location button from the `HOTEL_Q` address map.
 
+- **Secret list** (`.sl-overlay`, z-350, reuses `qj-*` chrome): hidden
+  romantic/privacy ideas modal. Opens by triple-tapping `.footer-brand` or
+  via the `#segreto` hash; no visible affordance anywhere else. Keep it out
+  of nav, overview, and search. Content lives in the `SL_ITEMS` array in JS.
+
 ## Verifying changes
 
 No test suite — verify visually with the Playwright-cached headless Chromium:
