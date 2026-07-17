@@ -69,5 +69,9 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
 
 - Rome hotel unbooked: its card keeps the picker + "لم تُحجز بعد"; flip to a
   booked bar (green ✓, real dates, painted room) once the user books.
+- Como day: option B (user's plan, starred) ends with a Riva Tritone sunset
+  tour from Como Classic Boats at 7:30pm, not yet booked. Their old Super
+  Florida page is 404; confirm boat + price (Tritone is the premium hull) at
+  comoclassicboats.com before locking the ~1,400 ر/hr estimate in the guide.
 - Car rental decision pending (recommended: rent Aug 18 Florence→Salerno,
   drop before the coast; no rental drop-off exists in Positano).
