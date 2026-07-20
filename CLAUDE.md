@@ -82,3 +82,10 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   is the 17:05 departure, tickets must be prebought.
 - Car rental decision pending (recommended: rent Aug 18 Florence→Salerno,
   drop before the coast; no rental drop-off exists in Positano).
+- Positano self-drive boat (day 10, Thu 20 Aug 9am-2pm): user chose
+  Chic & Fabulous (amalficoastrentalcf.com, CF Hope/Grace, Positano
+  departure) over Lucibello and has emailed them; awaiting confirmation.
+  When confirmed: flip the day-10 t-book tag + booking-board item to
+  booked. Da Adolfo lunch that day is booked 2:30pm; Da Paolino (Capri)
+  booked Sun 23 Aug 6:30pm. La Sponda sold out online; user is on the
+  phone/email cancellation hunt.
