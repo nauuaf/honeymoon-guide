@@ -89,6 +89,11 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   the pier the day before. Da Adolfo lunch that day is booked 2:30pm;
   Da Paolino (Capri) booked Sun 23 Aug 6:30pm. La Sponda sold out
   online; user is on the phone/email cancellation hunt.
+- Da Paolino name trap: "Da Paolino – Ristorante allegro" (dapaolino.it)
+  is an unrelated restaurant in Soverato, Calabria. The booked Capri one
+  is Paolino Lemon Trees, Via Palazzo a Mare 11 (paolinocapri.com).
+  User was asked 2026-07-24 to verify their confirmation points to the
+  Capri one; not yet re-confirmed.
 - Fontelina lunch (Capri): request SUBMITTED 2026-07-24 for Fri 21 Aug
   3:00pm, table only (no sunbeds: the couple won't swim in public
   spots), awaiting confirmation, nothing paid. When confirmed: check
