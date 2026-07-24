@@ -89,3 +89,10 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   the pier the day before. Da Adolfo lunch that day is booked 2:30pm;
   Da Paolino (Capri) booked Sun 23 Aug 6:30pm. La Sponda sold out
   online; user is on the phone/email cancellation hunt.
+- Fontelina lunch (Capri): request SUBMITTED 2026-07-24 for Fri 21 Aug
+  3:00pm, table only (no sunbeds: the couple won't swim in public
+  spots), awaiting confirmation, nothing paid. When confirmed: check
+  the booking-board item, move the Fontelina fact from day-12 option B
+  into day 11 as the arrival-day centerpiece (3pm late lunch), lighten
+  that evening to a Piazzetta stroll, and slide Villa Verde dinner from
+  day 11 to day 12 in place of Aurora (neither booked).
