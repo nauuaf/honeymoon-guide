@@ -80,17 +80,20 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   tour from Como Classic Boats at 7:30pm, not yet booked. Verified pricing
   ~€800/hr skippered (guide shows ~3,300 ر/ساعة); rapido back from Bellagio
   is the 17:05 departure, tickets must be prebought.
-- Car plan DECIDED 2026-07-24 (user's, wired into the guide): pick up
-  Milan Fri 14 Aug morning, Serravalle outlet that day (day-4 option B,
-  starred), Ferragosto drive Milan→Florence 15 Aug (ZTL garage, hotel
-  registers plate), Tuscany route Florence→Val d'Orcia→Positano 18 Aug,
-  keep car at Antalia (parking availability asked by email, pending),
-  drop at Sorrento rental office Sat 21 Aug morning, ferry Sorrento→
-  Capri ~25min (replaces Positano→Capri ferry). Rome leg stays by
-  train. Car + IDP added to booking board; flip when booked. SS163
+- Car plan DECIDED, revised 2026-07-24 to a Rome drop (rental company
+  offers no Sorrento drop): pick up Milan Fri 14 Aug morning (ASK FOR A
+  PLATE ENDING IN AN ODD DIGIT, see below), Serravalle outlet that day
+  (day-4 option B, starred), Ferragosto drive Milan→Florence 15 Aug
+  (ZTL garage, hotel registers plate), Tuscany route Florence→Val
+  d'Orcia→Positano 18 Aug, car PARKED at/near Antalia Aug 18-24 incl.
+  the Capri days (parking email to hotel pending, now 6 nights), ferry
+  Positano↔Capri (out 21, back 24), Mon 24 Aug: first ferry back,
+  drive Positano→Rome ~4h, drop at Rome office same day, taxi to FCO
+  on the 25th. Car + IDP on booking board; flip when booked. SS163
   targhe alterne 2026: daily in Aug 10:00-18:00 Vietri↔Positano, even
-  dates ban even-ending plates; hotel guests exempt on check-in and
-  check-out days (both their coast drives are covered).
+  dates ban even-ending plates; hotel-guest exemption covers check-in
+  (18th) only, NOT the 24th (checkout was the 21st), hence the odd
+  plate: 24 Aug is even, odd plate legal all day.
 - Positano self-drive boat (day 10, Thu 20 Aug 9am-2pm): BOOKED with
   Chic & Fabulous (amalficoastrentalcf.com, CF Hope/Grace, Positano
   departure) as of 2026-07-24; day-10 tag + booking-board item flipped
