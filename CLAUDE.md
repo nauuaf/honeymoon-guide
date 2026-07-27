@@ -103,6 +103,13 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   the pier the day before. Da Adolfo lunch that day is booked 2:30pm;
   Da Paolino (Capri) booked Sun 23 Aug 6:30pm. La Sponda sold out
   online; user is on the phone/email cancellation hunt.
+- Honeymoon notes sent 2026-07-27 via Booking to all four booked hotels
+  (announcement + "happily in your hands", no specific asks). The La
+  Residenza one also gave the user's WhatsApp and asked for private
+  boat options for Sat 22 Aug morning (Blue Grotto + island tour) via
+  their concierge; awaiting replies. When that boat is confirmed, flip
+  the "قارب كابري الخاص" booking-board item. If hotels offer "romantic
+  touches", steer to alcohol-free (flowers/Caprese cake/fruit).
 - Da Paolino name trap: "Da Paolino – Ristorante allegro" (dapaolino.it)
   is an unrelated restaurant in Soverato, Calabria. The booked Capri one
   is Paolino Lemon Trees, Via Palazzo a Mare 11 (paolinocapri.com).
