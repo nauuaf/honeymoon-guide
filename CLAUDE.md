@@ -86,7 +86,9 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   (day-4 option B, starred), Ferragosto drive Milan→Florence 15 Aug
   (ZTL garage, hotel registers plate), Tuscany route Florence→Val
   d'Orcia→Positano 18 Aug, car PARKED at/near Antalia Aug 18-24 incl.
-  the Capri days (parking email to hotel pending, now 6 nights), ferry
+  the Capri days (CONFIRMED by hotel 2026-07-27, free, driver assists
+  on arrival, hotel shuttle to port on the 21st timed to the ferry;
+  user should tell hotel the ferry time once booked), ferry
   Positano↔Capri (out 21, back 24), Mon 24 Aug: first ferry back,
   drive Positano→Rome ~4h, drop at Rome office same day, taxi to FCO
   on the 25th. Car + IDP on booking board; flip when booked. SS163
