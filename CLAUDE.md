@@ -80,9 +80,10 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   tour from Como Classic Boats at 7:30pm, not yet booked. Verified pricing
   ~€800/hr skippered (guide shows ~3,300 ر/ساعة); rapido back from Bellagio
   is the 17:05 departure, tickets must be prebought.
-- Car plan DECIDED, revised 2026-07-24 to a Rome drop (rental company
-  offers no Sorrento drop): pick up Milan Fri 14 Aug morning (ASK FOR A
-  PLATE ENDING IN AN ODD DIGIT, see below), Serravalle outlet that day
+- Car BOOKED 2026-07-27 (board item + day-4 tag flipped to booked):
+  pick up Milan Via Baracchini Fri 14 Aug morning, drop Roma Vaticano
+  Mon 24 Aug (AT THE DESK: ask for a plate ending in an odd digit, see
+  below). IDP from Riyadh still needed. Serravalle outlet pickup day
   (day-4 option B, starred), Ferragosto drive Milan→Florence 15 Aug
   (ZTL garage, hotel registers plate), Tuscany route Florence→Val
   d'Orcia→Positano 18 Aug, car PARKED at/near Antalia Aug 18-24 incl.
@@ -91,7 +92,7 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   user should tell hotel the ferry time once booked), ferry
   Positano↔Capri (out 21, back 24), Mon 24 Aug: first ferry back,
   drive Positano→Rome ~4h, drop at Rome office same day, taxi to FCO
-  on the 25th. Car + IDP on booking board; flip when booked. SS163
+  on the 25th. IDP still on booking board; flip when obtained. SS163
   targhe alterne 2026: daily in Aug 10:00-18:00 Vietri↔Positano, even
   dates ban even-ending plates; hotel-guest exemption covers check-in
   (18th) only, NOT the 24th (checkout was the 21st), hence the odd
