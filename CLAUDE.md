@@ -14,7 +14,10 @@ Arabic-first, `dir="rtl"` — test every layout change for RTL and BiDi
 - **Sticky city bars** (`.city-bar`, JS-injected after each `.city-hero`):
   city-tinted context bar that pins below the nav (`top:var(--nav-h)`,
   set by a ResizeObserver on `.nav`) with a live "يوم N · title" day
-  indicator; tap scrolls to the city top. Requires `.city{overflow:clip}`,
+  indicator; tap scrolls to the city top. Hidden until its city hero
+  scrolls out above (IO adds `.stuck`); it occupies zero flow height
+  (JS sets `margin-top:-height`), so no gap and no duplication with
+  the hero's own city name. Requires `.city{overflow:clip}`,
   NOT `hidden` (hidden kills position:sticky). On ≤760px the `.nav-links`
   row is hidden: city bars + the quick-jump fab are mobile navigation.
 - **Booking-board items carry stable `data-bk` ids** — localStorage check
