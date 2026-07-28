@@ -11,6 +11,10 @@ Arabic-first, `dir="rtl"` — test every layout change for RTL and BiDi
   toggles ~160 classes; the CSS was rebuilt around them. Rename nothing
   without grepping both HTML and JS. Section anchors (`#milan`, `#booking`, …)
   must never change.
+- **Booking-board items carry stable `data-bk` ids** — localStorage check
+  state is keyed on them, so keep the id when rewording an item and give
+  any new item a fresh slug. The nav status strip shows unchecked-count
+  pre-trip (hero owns the countdown) and the today-shortcut in-trip.
 - **Design tokens only.** All colors are CSS variables in `:root` +
   `html[data-theme="dark"]`. Never hardcode a color; every visual must work in
   both themes. One accent (bougainvillea pink); sage = booked/free,

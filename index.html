@@ -582,7 +582,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
   border-color:var(--accent);
 }
 .bk-list li.checked .bk-note{color:var(--line)}
-.bk-note{font-size:11px;color:var(--muted);font-weight:500;margin-inline-start:auto;flex-shrink:0;padding-inline-start:8px;direction:ltr;unicode-bidi:isolate;font-feature-settings:"tnum" 1}
+.bk-note{font-size:11px;color:var(--muted);font-weight:500;margin-inline-start:auto;flex-shrink:1;min-width:0;text-align:left;padding-inline-start:8px;direction:ltr;unicode-bidi:isolate;font-feature-settings:"tnum" 1}
 
 /* ============ FOOTER ============ */
 .footer{text-align:center;padding:56px 24px 40px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line-soft);margin-top:48px}
@@ -768,6 +768,10 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
 }
 
 /* ============ MOBILE ============ */
+@media(max-width:480px){
+  /* keep all city links + الحجوزات visible without scrolling: the hero is the overview */
+  .nav-links a[href="#overview"]{display:none}
+}
 @media(max-width:760px){
   body{font-size:15px}
   .nav-inner{padding:10px 16px;gap:8px}
@@ -775,7 +779,7 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
   .theme-toggle{order:1;width:32px;height:32px}
   .nav-links{order:2;flex:1 0 100%;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
   .nav-links::-webkit-scrollbar{display:none}
-  .nav-links a{white-space:nowrap;flex:0 0 auto;font-size:12.5px;padding:6px 11px}
+  .nav-links a{white-space:nowrap;flex:0 0 auto;font-size:12px;padding:6px 9px}
   .nav-status{padding:7px 16px;font-size:12px}
   .wrap{padding:0 14px}
   .hero{height:min(74vh,640px);height:min(74dvh,640px);min-height:480px}
@@ -1600,7 +1604,7 @@ html.modal-open,html.modal-open body{overflow:hidden}
           <div class="match">
             <div class="match-label"><svg class="ic" aria-hidden="true"><use href="#i-dining"/></svg> العشاء: أول ليلة</div>
             <div class="match-name">La Sponda · Le Sirenuse</div>
-            <div class="match-reason">عشاء رومانسي على الساحل، مضاء بـ400 شمعة، نجمة ميشلان، وإطلالة على القرية. حجزهم الأونلاين مقفل لتواريخكم: الموقع ما يعرض إلا بار Don't Worry (سبيكيزي الفندق، مو المطعم). اتصلوا على <span style="direction:ltr;unicode-bidi:isolate;white-space:nowrap">+39 089 875066</span> أو راسلوا info@sirenuse.it واطلبوا قائمة الانتظار، وتابعوا الموقع يومياً: الإلغاءات تفتح فجأة (حد أدنى ~€160 للشخص، ولبس أنيق). وإذا ما فتح شي، عشاء Next2 من الخيار ب حجزه سهل.</div>
+            <div class="match-reason">عشاء رومانسي على الساحل، مضاء بـ400 شمعة، نجمة ميشلان، وإطلالة على القرية. حجزهم الأونلاين مقفل لتواريخكم: الموقع ما يعرض إلا بار Don't Worry (سبيكيزي الفندق، مو المطعم). اتصلوا على <a href="tel:+39089875066" style="direction:ltr;unicode-bidi:isolate;white-space:nowrap;color:var(--accent-deep)">+39 089 875066</a> أو راسلوا <a href="mailto:info@sirenuse.it" style="color:var(--accent-deep)">info@sirenuse.it</a> واطلبوا قائمة الانتظار، وتابعوا الموقع يومياً: الإلغاءات تفتح فجأة (حد أدنى ~€160 للشخص، ولبس أنيق). وإذا ما فتح شي، عشاء Next2 من الخيار ب حجزه سهل.</div>
           </div>
         </div>
         <div class="opt">
@@ -1990,17 +1994,17 @@ html.modal-open,html.modal-open body{overflow:hidden}
         <span class="bk-count">11 مهمة</span>
       </div>
       <ul class="bk-list" data-phase="قبل 1 أغسطس">
-        <li>تذاكر طيران (الرياض ↔ إيطاليا)</li>
-        <li>فندق روما <span class="bk-note">الباقي الوحيد</span></li>
-        <li>تأشيرة شنغن <span class="bk-note">15-45 يوم</span></li>
-        <li>تأمين سفر شنغن <span class="bk-note">≥ €30,000</span></li>
-        <li class="checked">حجز السيارة <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">محجوز · Aug 14-24 · ميلان → روما</span></li>
-        <li>رخصة قيادة دولية <span class="bk-note">تطلع من الرياض قبل السفر</span></li>
-        <li>تذاكر "العشاء الأخير" (دافنشي) <span class="bk-note">ميلان</span></li>
-        <li>تذاكر Uffizi Gallery <span class="bk-note">فلورنسا</span></li>
-        <li>قارب ريفا للغروب <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">كومو</span></li>
-        <li>غداء Fontelina <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">طلبتوا الحجز · Aug 21 · 3pm</span></li>
-        <li>مطعم La Sponda <span class="bk-note">مقفل أونلاين: اتصلوا</span></li>
+        <li data-bk="flights">تذاكر طيران (الرياض ↔ إيطاليا)</li>
+        <li data-bk="rome-hotel">فندق روما <span class="bk-note">الباقي الوحيد</span></li>
+        <li data-bk="visa">تأشيرة شنغن <span class="bk-note">15-45 يوم</span></li>
+        <li data-bk="insurance">تأمين سفر شنغن <span class="bk-note">≥ €30,000</span></li>
+        <li class="checked" data-bk="car">حجز السيارة <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">محجوز · Aug 14-24 · ميلان → روما</span></li>
+        <li data-bk="idp">رخصة قيادة دولية <span class="bk-note">تطلع من الرياض قبل السفر</span></li>
+        <li data-bk="last-supper">تذاكر "العشاء الأخير" (دافنشي) <span class="bk-note">ميلان</span></li>
+        <li data-bk="uffizi">تذاكر Uffizi Gallery <span class="bk-note">فلورنسا</span></li>
+        <li data-bk="riva">قارب ريفا للغروب <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">كومو</span></li>
+        <li data-bk="fontelina">غداء Fontelina <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">طلبتوا الحجز · Aug 21 · 3pm</span></li>
+        <li data-bk="la-sponda">مطعم La Sponda <span class="bk-note">مقفل أونلاين: اتصلوا</span></li>
       </ul>
     </div>
 
@@ -2010,15 +2014,15 @@ html.modal-open,html.modal-open body{overflow:hidden}
         <span class="bk-count">9 مهام</span>
       </div>
       <ul class="bk-list" data-phase="قبل 7 أغسطس">
-        <li>تذاكر قبة الدومو <span class="bk-note">فلورنسا</span></li>
-        <li class="checked">مطعم Da Paolino <span class="bk-note">محجوز · Aug 23 · 6:30pm</span></li>
-        <li>فيري بوزيتانو ↔ كابري <span class="bk-note">رايح 21 · رجعة 24</span></li>
-        <li>قارب كابري الخاص</li>
-        <li>جولة كومو (Villa Balbianello) <span class="bk-note">ميلان</span></li>
-        <li>درس الطبخ <span class="bk-note">فلورنسا</span></li>
-        <li class="checked">طاولة Da Adolfo <span class="bk-note">محجوز · Aug 20 · 2:30pm</span></li>
-        <li>مطعم Villa Verde <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">كابري</span></li>
-        <li class="checked">قارب Chic & Fabulous بدون رخصة <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">محجوز · Aug 20 · 9am-2pm</span></li>
+        <li data-bk="florence-dome">تذاكر قبة الدومو <span class="bk-note">فلورنسا</span></li>
+        <li class="checked" data-bk="da-paolino">مطعم Da Paolino <span class="bk-note">محجوز · Aug 23 · 6:30pm</span></li>
+        <li data-bk="ferry-capri">فيري بوزيتانو ↔ كابري <span class="bk-note">رايح 21 · رجعة 24</span></li>
+        <li data-bk="capri-boat">قارب كابري الخاص</li>
+        <li data-bk="balbianello">جولة كومو (Villa Balbianello) <span class="bk-note">ميلان</span></li>
+        <li data-bk="cooking-class">درس الطبخ <span class="bk-note">فلورنسا</span></li>
+        <li class="checked" data-bk="da-adolfo">طاولة Da Adolfo <span class="bk-note">محجوز · Aug 20 · 2:30pm</span></li>
+        <li data-bk="villa-verde">مطعم Villa Verde <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">كابري</span></li>
+        <li class="checked" data-bk="cf-boat">قارب Chic & Fabulous بدون رخصة <span class="up-chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg> اقتراحكم</span> <span class="bk-note">محجوز · Aug 20 · 9am-2pm</span></li>
       </ul>
     </div>
 
@@ -2028,12 +2032,12 @@ html.modal-open,html.modal-open body{overflow:hidden}
         <span class="bk-count">6 مهام</span>
       </div>
       <ul class="bk-list" data-phase="من 8 أغسطس · حتى بالرحلة">
-        <li>قارب مغارة الزمرد الخاص <span class="bk-note">بوزيتانو</span></li>
-        <li>Terrazza del Confalone <span class="bk-note">رافيلو</span></li>
-        <li>سطح الدومو + أبيريتيفو <span class="bk-note">ميلان</span></li>
-        <li>Se-Sto on Arno <span class="bk-note">فلورنسا</span></li>
-        <li>Checco er Carettiere <span class="bk-note">روما</span></li>
-        <li>La Terrazza (Hotel Eden) <span class="bk-note">روما · الخيار ب</span></li>
+        <li data-bk="emerald-boat">قارب مغارة الزمرد الخاص <span class="bk-note">بوزيتانو</span></li>
+        <li data-bk="confalone">Terrazza del Confalone <span class="bk-note">رافيلو</span></li>
+        <li data-bk="milan-rooftop">سطح الدومو + أبيريتيفو <span class="bk-note">ميلان</span></li>
+        <li data-bk="se-sto">Se-Sto on Arno <span class="bk-note">فلورنسا</span></li>
+        <li data-bk="checco">Checco er Carettiere <span class="bk-note">روما</span></li>
+        <li data-bk="la-terrazza">La Terrazza (Hotel Eden) <span class="bk-note">روما · الخيار ب</span></li>
       </ul>
     </div>
   </div>
@@ -2284,12 +2288,25 @@ html.modal-open,html.modal-open body{overflow:hidden}
   });
 
   // ===== NAV STATUS STRIP (persistent "where are we now") =====
+  var navBkRefresh = null;
   var navStatus = document.getElementById('navStatus');
   if(navStatus){
     var todayDay = document.querySelector('.day.today');
-    if(daysUntil > 0 && daysUntil <= 14){
-      navStatus.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-hour"/></svg> <b>'+daysUntil+'</b> يوم حتى الرحلة';
-      navStatus.classList.add('show');
+    if(daysUntil > 0){
+      // pre-trip: the hero owns the countdown; this strip tracks bookings
+      navStatus.classList.add('show','clickable');
+      navStatus.setAttribute('role','button');
+      navStatus.setAttribute('tabindex','0');
+      var goToBooking = function(){ var b = document.getElementById('booking'); if(b) b.scrollIntoView({behavior:'smooth', block:'start'}); };
+      navStatus.addEventListener('click', goToBooking);
+      navStatus.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goToBooking(); } });
+      navBkRefresh = function(){
+        var left = $$('.bk-list li').filter(function(li){ return !li.classList.contains('checked'); }).length;
+        navStatus.innerHTML = left
+          ? '<svg class="ic" aria-hidden="true"><use href="#i-bookmark"/></svg> باقي <b>'+left+'</b> من مهام الحجز <span class="nav-status-arrow">‹ الحجوزات</span>'
+          : '<svg class="ic" aria-hidden="true"><use href="#i-confetti"/></svg> <b>كل الحجوزات تمت</b> جاهزين للرحلة <span class="nav-status-arrow">‹ الحجوزات</span>';
+      };
+      navBkRefresh();
     } else if(todayDay){
       var numEl2 = $('.day-numeral', todayDay);
       var titleEl2 = $('.day-title', todayDay);
@@ -2443,12 +2460,15 @@ html.modal-open,html.modal-open body{overflow:hidden}
           ? '<svg class="ic" aria-hidden="true"><use href="#i-confetti"/></svg> <b>كل المهام (' + total + ') تمت!</b> جاهزين للرحلة'
           : '<b>' + done + '</b> من ' + total + ' مهام تمت';
       }
+      if(navBkRefresh) navBkRefresh();
     }
 
     allLis.forEach(function(li, idx){
-      var id = li.textContent.trim().replace(/\s+/g,' ');
+      var tkey = li.textContent.trim().replace(/\s+/g,' ');
+      var id = li.getAttribute('data-bk') || tkey;
+      if(!(id in saved) && (tkey in saved)) saved[id] = saved[tkey];
       if(!(id in saved) && bkLegacy['bk-'+idx]) saved[id] = true;
-      if(saved[id]) li.classList.add('checked');
+      if(id in saved) li.classList.toggle('checked', !!saved[id]);
       li.setAttribute('role','checkbox');
       li.setAttribute('aria-checked', li.classList.contains('checked') ? 'true' : 'false');
       li.setAttribute('tabindex','0');
