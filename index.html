@@ -93,7 +93,7 @@ body{
 }
 /* legacy .serif class = Latin display accent (no serif in the new system) */
 .serif{font-family:'Alexandria',sans-serif;font-weight:400;letter-spacing:.05em}
-section[id]{scroll-margin-top:96px}
+section[id]{scroll-margin-top:calc(var(--nav-h,64px) + 12px)}
 button{-webkit-tap-highlight-color:transparent}
 
 /* ============ READING PROGRESS ============ */
@@ -247,10 +247,10 @@ button{-webkit-tap-highlight-color:transparent}
   box-shadow:0 0 0 6px var(--paper);
 }
 .route-stop:nth-child(1) .route-stop-num{background:var(--milan)}
-.route-stop:nth-child(3) .route-stop-num{background:var(--flor)}
-.route-stop:nth-child(5) .route-stop-num{background:var(--positano)}
-.route-stop:nth-child(7) .route-stop-num{background:var(--capri)}
-.route-stop:nth-child(9) .route-stop-num{background:var(--rome)}
+.route-stop:nth-child(2) .route-stop-num{background:var(--flor)}
+.route-stop:nth-child(3) .route-stop-num{background:var(--positano)}
+.route-stop:nth-child(4) .route-stop-num{background:var(--capri)}
+.route-stop:nth-child(5) .route-stop-num{background:var(--rome)}
 .route-stop-name{font-family:'Alexandria',sans-serif;font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
 .route-stop-meta{font-size:11.5px;color:var(--muted);font-feature-settings:"tnum" 1}
 
@@ -800,6 +800,9 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
   .nav-links{display:none}
   .city-bar{padding:8px 15px}
   .cb-stop{display:none}
+  /* the interactive map earns no space on phones: the route stops carry the overview */
+  .map-stage,.map-hint,.map-dots{display:none}
+  .route-strip{padding-top:16px}
   .nav-status{padding:7px 16px;font-size:12px}
   .wrap{padding:0 14px}
   .hero{height:min(74vh,640px);height:min(74dvh,640px);min-height:480px}
@@ -2307,27 +2310,11 @@ html.modal-open,html.modal-open body{overflow:hidden}
     }
   });
 
-  // ===== NAV STATUS STRIP (persistent "where are we now") =====
-  var navBkRefresh = null;
+  // ===== NAV STATUS STRIP (in-trip only: today shortcut) =====
   var navStatus = document.getElementById('navStatus');
   if(navStatus){
     var todayDay = document.querySelector('.day.today');
-    if(daysUntil > 0){
-      // pre-trip: the hero owns the countdown; this strip tracks bookings
-      navStatus.classList.add('show','clickable');
-      navStatus.setAttribute('role','button');
-      navStatus.setAttribute('tabindex','0');
-      var goToBooking = function(){ var b = document.getElementById('booking'); if(b) b.scrollIntoView({behavior:'smooth', block:'start'}); };
-      navStatus.addEventListener('click', goToBooking);
-      navStatus.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goToBooking(); } });
-      navBkRefresh = function(){
-        var left = $$('.bk-list li').filter(function(li){ return !li.classList.contains('checked'); }).length;
-        navStatus.innerHTML = left
-          ? '<svg class="ic" aria-hidden="true"><use href="#i-bookmark"/></svg> باقي <b>'+left+'</b> من مهام الحجز <span class="nav-status-arrow">‹ الحجوزات</span>'
-          : '<svg class="ic" aria-hidden="true"><use href="#i-confetti"/></svg> <b>كل الحجوزات تمت</b> جاهزين للرحلة <span class="nav-status-arrow">‹ الحجوزات</span>';
-      };
-      navBkRefresh();
-    } else if(todayDay){
+    if(todayDay){
       var numEl2 = $('.day-numeral', todayDay);
       var titleEl2 = $('.day-title', todayDay);
       var dayNum2 = numEl2 ? numEl2.textContent.trim() : '';
@@ -2532,7 +2519,6 @@ html.modal-open,html.modal-open body{overflow:hidden}
           ? '<svg class="ic" aria-hidden="true"><use href="#i-confetti"/></svg> <b>كل المهام (' + total + ') تمت!</b> جاهزين للرحلة'
           : '<b>' + done + '</b> من ' + total + ' مهام تمت';
       }
-      if(navBkRefresh) navBkRefresh();
     }
 
     allLis.forEach(function(li, idx){

@@ -19,8 +19,10 @@ Arabic-first, `dir="rtl"` — test every layout change for RTL and BiDi
   row is hidden: city bars + the quick-jump fab are mobile navigation.
 - **Booking-board items carry stable `data-bk` ids** — localStorage check
   state is keyed on them, so keep the id when rewording an item and give
-  any new item a fresh slug. The nav status strip shows unchecked-count
-  pre-trip (hero owns the countdown) and the today-shortcut in-trip.
+  any new item a fresh slug. The nav status strip is in-trip only (today
+  shortcut + post-trip farewell); pre-trip it stays hidden, the hero
+  owns the countdown. Phones (≤760px) hide the interactive map: the
+  route-stop grid is the mobile overview.
 - **Design tokens only.** All colors are CSS variables in `:root` +
   `html[data-theme="dark"]`. Never hardcode a color; every visual must work in
   both themes. One accent (bougainvillea pink); sage = booked/free,
