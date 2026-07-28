@@ -258,8 +258,31 @@ button{-webkit-tap-highlight-color:transparent}
 .city{
   margin:56px 0;background:var(--paper);
   border:1px solid var(--line-soft);border-radius:var(--r-lg);
-  overflow:hidden;
+  overflow:clip; /* clip (not hidden) so the sticky .city-bar can pin */
 }
+.city-bar{
+  position:sticky;top:var(--nav-h,52px);z-index:80;
+  display:flex;align-items:center;gap:10px;
+  padding:9px 18px;background-color:var(--paper);
+  border-bottom:1px solid var(--line-soft);
+  cursor:pointer;user-select:none;
+}
+.city-bar:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.cb-name{font-family:'Alexandria',sans-serif;font-weight:700;font-size:14px;color:var(--ink)}
+.cb-stop{font-size:11px;font-weight:600;color:var(--muted)}
+.cb-day{margin-inline-start:auto;display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-soft);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cb-day b{font-weight:700}
+.cb-day .ic{width:13px;height:13px;color:var(--muted);flex-shrink:0}
+.city-bar.milan{background-image:linear-gradient(var(--milan-bg),var(--milan-bg))}
+.city-bar.milan .cb-name{color:var(--milan)}
+.city-bar.flor{background-image:linear-gradient(var(--flor-bg),var(--flor-bg))}
+.city-bar.flor .cb-name{color:var(--flor)}
+.city-bar.positano{background-image:linear-gradient(var(--positano-bg),var(--positano-bg))}
+.city-bar.positano .cb-name{color:var(--positano)}
+.city-bar.capri{background-image:linear-gradient(var(--capri-bg),var(--capri-bg))}
+.city-bar.capri .cb-name{color:var(--capri)}
+.city-bar.rome{background-image:linear-gradient(var(--rome-bg),var(--rome-bg))}
+.city-bar.rome .cb-name{color:var(--rome)}
 .city-hero{
   position:relative;height:340px;overflow:hidden;
   display:flex;align-items:flex-end;
@@ -768,18 +791,15 @@ html[data-theme="dark"] .bk-pill-month{background:rgba(231,168,78,.2);color:#F0D
 }
 
 /* ============ MOBILE ============ */
-@media(max-width:480px){
-  /* keep all city links + الحجوزات visible without scrolling: the hero is the overview */
-  .nav-links a[href="#overview"]{display:none}
-}
 @media(max-width:760px){
   body{font-size:15px}
   .nav-inner{padding:10px 16px;gap:8px}
   .nav-brand{flex:1;order:0}
   .theme-toggle{order:1;width:32px;height:32px}
-  .nav-links{order:2;flex:1 0 100%;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
-  .nav-links::-webkit-scrollbar{display:none}
-  .nav-links a{white-space:nowrap;flex:0 0 auto;font-size:12px;padding:6px 9px}
+  /* on phones the sticky city bars + quick-jump replace the link row */
+  .nav-links{display:none}
+  .city-bar{padding:8px 15px}
+  .cb-stop{display:none}
   .nav-status{padding:7px 16px;font-size:12px}
   .wrap{padding:0 14px}
   .hero{height:min(74vh,640px);height:min(74dvh,640px);min-height:480px}
@@ -2377,6 +2397,58 @@ html.modal-open,html.modal-open body{overflow:hidden}
     city.parentNode.insertBefore(strip, city.nextSibling);
     t.style.display = 'none';
   });
+
+  // ===== STICKY CITY BARS (always know which city you're in) =====
+  (function(){
+    var navEl = document.querySelector('.nav');
+    if(!navEl) return;
+    var setNavH = function(){ document.documentElement.style.setProperty('--nav-h', (navEl.offsetHeight - 1) + 'px'); };
+    setNavH();
+    if('ResizeObserver' in window){ new ResizeObserver(setNavH).observe(navEl); }
+    window.addEventListener('resize', setNavH);
+
+    var upIc = ' <svg class="ic" aria-hidden="true"><use href="#i-up"/></svg>';
+    $$('.city').forEach(function(city){
+      var hero = $('.city-hero', city);
+      var nameEl = $('.city-name-ar', city);
+      if(!hero || !nameEl) return;
+      var cityName = nameEl.textContent.trim();
+      var numEl = $('.city-num', city);
+      var stopAr = numEl ? numEl.textContent.split('·')[0].trim() : '';
+      var nights = '';
+      $$('.city-meta-item', city).forEach(function(m){ if(m.textContent.indexOf('ليال') !== -1) nights = m.textContent.trim(); });
+
+      var bar = document.createElement('div');
+      bar.className = 'city-bar ' + (city.id === 'florence' ? 'flor' : city.id);
+      bar.setAttribute('role','button');
+      bar.setAttribute('tabindex','0');
+      bar.setAttribute('aria-label','الرجوع لأعلى قسم ' + cityName);
+      bar.innerHTML = '<span class="cb-name">' + cityName + '</span>'
+        + (stopAr ? '<span class="cb-stop">' + stopAr + '</span>' : '')
+        + '<span class="cb-day">' + (nights || stopAr) + upIc + '</span>';
+      hero.parentNode.insertBefore(bar, hero.nextSibling);
+
+      var goTop = function(){ city.scrollIntoView({behavior:'smooth', block:'start'}); };
+      bar.addEventListener('click', goTop);
+      bar.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); goTop(); } });
+
+      var cbDay = $('.cb-day', bar);
+      if(cbDay && 'IntersectionObserver' in window){
+        var cityDays = $$('.day', city);
+        if(cityDays.length){
+          var dayObs = new IntersectionObserver(function(entries){
+            entries.forEach(function(en){
+              if(!en.isIntersecting) return;
+              var n = $('.day-numeral', en.target);
+              var t = $('.day-title', en.target);
+              if(n && t) cbDay.innerHTML = '<b>يوم ' + n.textContent.trim() + '</b> · ' + t.textContent.trim() + upIc;
+            });
+          }, {threshold:0, rootMargin:'-30% 0px -55% 0px'});
+          cityDays.forEach(function(d){ dayObs.observe(d); });
+        }
+      }
+    });
+  })();
 
   // ===== ACTIVE NAV via IntersectionObserver =====
   if('IntersectionObserver' in window){

@@ -11,6 +11,12 @@ Arabic-first, `dir="rtl"` — test every layout change for RTL and BiDi
   toggles ~160 classes; the CSS was rebuilt around them. Rename nothing
   without grepping both HTML and JS. Section anchors (`#milan`, `#booking`, …)
   must never change.
+- **Sticky city bars** (`.city-bar`, JS-injected after each `.city-hero`):
+  city-tinted context bar that pins below the nav (`top:var(--nav-h)`,
+  set by a ResizeObserver on `.nav`) with a live "يوم N · title" day
+  indicator; tap scrolls to the city top. Requires `.city{overflow:clip}`,
+  NOT `hidden` (hidden kills position:sticky). On ≤760px the `.nav-links`
+  row is hidden: city bars + the quick-jump fab are mobile navigation.
 - **Booking-board items carry stable `data-bk` ids** — localStorage check
   state is keyed on them, so keep the id when rewording an item and give
   any new item a fresh slug. The nav status strip shows unchecked-count
