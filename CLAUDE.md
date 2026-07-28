@@ -60,6 +60,17 @@ No test suite — verify visually with the Playwright-cached headless Chromium:
 - Hash-anchored screenshots render blank in this shell; hide preceding
   sections in a temp copy instead.
 
+## PWA layer
+
+`manifest.webmanifest` + `sw.js` + `images/icon-*.png` /
+`apple-touch-icon.png` (square center-crops of hero.jpg). Navigations
+are network-first, so ordinary `index.html` edits reach installed
+phones with no extra step. Bump `CACHE` in `sw.js` ONLY when the
+precache list changes (new/renamed images, new core file). The SW
+never intercepts the Google Maps embed. Registration is guarded, so
+file:// headless previews are unaffected. Theme toggle also updates
+`meta[name=theme-color]` (light `#FFF4E6` / dark `#1B130E`).
+
 ## Publishing
 
 `git push origin main` (user says "publish"). Verify deploy:
