@@ -2101,12 +2101,18 @@ html.modal-open,html.modal-open body{overflow:hidden}
   var today = new Date(); today.setHours(0,0,0,0);
   var msDay = 86400000;
   var daysUntil = Math.round((TRIP_START - today)/msDay);
+  // Flight leaves Riyadh after midnight on the night of Aug 10 → the last day
+  // at home (and the day you head to the airport) is Aug 10, one day before
+  // day 1. The countdown targets that departure night; day numbering stays
+  // anchored to TRIP_START.
+  var daysToDepart = daysUntil - 1;
 
   // ===== COUNTDOWN (generative — recalculates daily) =====
   var cd = document.getElementById('countdown');
   if(cd){
-    if(daysUntil > 1)       cd.innerHTML = '<span class="countdown-num">'+daysUntil+'</span> يوم حتى الرحلة';
-    else if(daysUntil === 1) cd.innerHTML = '<span class="countdown-num">غدًا</span> تبدأ الرحلة <svg class="ic" aria-hidden="true"><use href="#i-confetti"/></svg>';
+    if(daysToDepart > 1)      cd.innerHTML = '<span class="countdown-num">'+daysToDepart+'</span> يوم حتى السفر';
+    else if(daysToDepart === 1) cd.innerHTML = '<span class="countdown-num">غدًا</span> ليلة السفر <svg class="ic" aria-hidden="true"><use href="#i-plane"/></svg>';
+    else if(daysToDepart === 0) cd.innerHTML = '<span class="countdown-num">الليلة!</span> نطير بعد منتصف الليل <svg class="ic" aria-hidden="true"><use href="#i-plane"/></svg>';
     else if(daysUntil === 0) cd.innerHTML = '<span class="countdown-num">اليوم!</span> بدأت الرحلة <svg class="ic" aria-hidden="true"><use href="#i-confetti"/></svg>';
     else if(daysUntil >= -14){
       var dayN = -daysUntil + 1;
