@@ -100,8 +100,18 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
 
 ## Open items
 
-- Rome hotel unbooked: its card keeps the picker + "لم تُحجز بعد"; flip to a
-  booked bar (green ✓, real dates, painted room) once the user books.
+- Rome hotel BOOKED 2026-08-09: Umiltà 36 (Preferred Hotels, 5★),
+  Via dell'Umiltà 36, Trevi rione, Mon 24 - Tue 25 Aug, check-in 3pm /
+  out 12pm. Card flipped to a booked bar, second pick (Hotel Eden)
+  removed, `HOTEL_Q.rome` repointed, day-14 note rewritten (the old
+  "taxi to Trevi, 18-20 min walk" is obsolete: Trevi is ~2 min on foot,
+  Pantheon ~7, Piazza Venezia ~4). Still missing a painted
+  `images/hotel-rome.jpg` to match the other four cities; the card
+  falls back to a Wikimedia Trevi photo, the only non-painted hotel
+  image in the set.
+- Day-14 schedules (both options) still start at 3pm, which is tight
+  against a ~9am first ferry from Capri + 4h drive + car drop. Left as
+  indicative; shift ~1h later if the user wants realism.
 - Como day: option B (user's plan, starred) ends with a Riva Tritone sunset
   tour from Como Classic Boats at 7:30pm, not yet booked. Verified pricing
   ~€800/hr skippered (guide shows ~3,300 ر/ساعة); rapido back from Bellagio
@@ -109,7 +119,7 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
 - Car BOOKED 2026-07-27 (board item + day-4 tag flipped to booked):
   pick up Milan Via Baracchini Fri 14 Aug morning, drop Roma Vaticano
   Mon 24 Aug (AT THE DESK: ask for a plate ending in an odd digit, see
-  below). IDP from Riyadh still needed. Serravalle outlet pickup day
+  below). IDP obtained 2026-08-09 (board item checked). Serravalle outlet pickup day
   (day-4 option B, starred), Ferragosto drive Milan→Florence 15 Aug
   (ZTL garage, hotel registers plate), Tuscany route Florence→Val
   d'Orcia→Positano 18 Aug, car PARKED at/near Antalia Aug 18-24 incl.
@@ -118,7 +128,7 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   user should tell hotel the ferry time once booked), ferry
   Positano↔Capri (out 21, back 24), Mon 24 Aug: first ferry back,
   drive Positano→Rome ~4h, drop at Rome office same day, taxi to FCO
-  on the 25th. IDP still on booking board; flip when obtained. SS163
+  on the 25th. SS163
   targhe alterne 2026: daily in Aug 10:00-18:00 Vietri↔Positano, even
   dates ban even-ending plates; hotel-guest exemption covers check-in
   (18th) only, NOT the 24th (checkout was the 21st), hence the odd
