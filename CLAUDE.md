@@ -119,7 +119,10 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
 - Car BOOKED 2026-07-27 (board item + day-4 tag flipped to booked):
   pick up Milan Via Baracchini Fri 14 Aug morning, drop Roma Vaticano
   Mon 24 Aug (AT THE DESK: ask for a plate ending in an odd digit, see
-  below). IDP obtained 2026-08-09 (board item checked). Serravalle outlet pickup day
+  below). PICKED UP 2026-08-14 with an EVEN-ending plate: the odd-plate
+  ask at the desk did not happen, so the day-4 and day-14 copy was
+  rewritten (day 14 previously claimed "your odd plate keeps you legal",
+  which was false). IDP obtained (board item checked). Serravalle outlet pickup day
   (day-4 option B, starred), Ferragosto drive Milan→Florence 15 Aug
   (ZTL garage, hotel registers plate), Tuscany route Florence→Val
   d'Orcia→Positano 18 Aug, car PARKED at/near Antalia Aug 18-24 incl.
