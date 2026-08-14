@@ -118,11 +118,12 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   is the 17:05 departure, tickets must be prebought.
 - Car BOOKED 2026-07-27 (board item + day-4 tag flipped to booked):
   pick up Milan Via Baracchini Fri 14 Aug morning, drop Roma Vaticano
-  Mon 24 Aug (AT THE DESK: ask for a plate ending in an odd digit, see
-  below). PICKED UP 2026-08-14 with an EVEN-ending plate: the odd-plate
-  ask at the desk did not happen, so the day-4 and day-14 copy was
-  rewritten (day 14 previously claimed "your odd plate keeps you legal",
-  which was false). IDP obtained (board item checked). Serravalle outlet pickup day
+  Mon 24 Aug. PICKED UP 2026-08-14 with an EVEN-ending plate: the
+  odd-plate ask at the desk did not happen, so the day-4 and day-14 copy
+  was rewritten (day 14 previously claimed "your odd plate keeps you
+  legal", which was false). Plate number deliberately NOT in the
+  published HTML, the site is public. IDP obtained (board item
+  checked). Serravalle outlet pickup day
   (day-4 option B, starred), Ferragosto drive Milan→Florence 15 Aug
   (ZTL garage, hotel registers plate), Tuscany route Florence→Val
   d'Orcia→Positano 18 Aug, car PARKED at/near Antalia Aug 18-24 incl.
@@ -132,10 +133,19 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   Positano↔Capri (out 21, back 24), Mon 24 Aug: first ferry back,
   drive Positano→Rome ~4h, drop at Rome office same day, taxi to FCO
   on the 25th. SS163
-  targhe alterne 2026: daily in Aug 10:00-18:00 Vietri↔Positano, even
-  dates ban even-ending plates; hotel-guest exemption covers check-in
-  (18th) only, NOT the 24th (checkout was the 21st), hence the odd
-  plate: 24 Aug is even, odd plate legal all day.
+  targhe alterne 2026 (ANAS ord. 340/2019, verified 2026-08-14): daily
+  in Aug 10:00-18:00 Vietri↔Positano (~40km), odd dates ban odd-ending
+  plates, even dates ban even-ending ones. Exemptions: two-wheelers,
+  residents of the 13 comuni + Agerola, taxi/NCC, emergency, and hotel
+  guests with a reservation but ONLY for arrival/departure movements.
+  With the even plate this bites twice: 18 Aug (arrival, covered by the
+  guest exemption, so the Antalia confirmation must be to hand) and
+  24 Aug (checkout was the 21st, so the exemption is a stretch).
+  19/21 Aug are odd dates so the even plate is fine, and 20 Aug is the
+  boat day. Mitigations offered for the 24th: swap the car at the desk
+  (best, only while near an office), leave Positano before 10:00
+  (clean and legal), or get a written note from Antalia about the
+  stored car + departure.
 - Positano self-drive boat (day 10, Thu 20 Aug 9am-2pm): BOOKED with
   Chic & Fabulous (amalficoastrentalcf.com, CF Hope/Grace, Positano
   departure) as of 2026-07-24; day-10 tag + booking-board item flipped
