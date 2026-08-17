@@ -126,13 +126,21 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   checked). Serravalle outlet pickup day
   (day-4 option B, starred), Ferragosto drive Milan→Florence 15 Aug
   (ZTL garage, hotel registers plate), Tuscany route Florence→Val
-  d'Orcia→Positano 18 Aug, car PARKED at/near Antalia Aug 18-24 incl.
-  the Capri days (CONFIRMED by hotel 2026-07-27, free, driver assists
-  on arrival, hotel shuttle to port on the 21st timed to the ferry;
-  user should tell hotel the ferry time once booked), ferry
-  Positano↔Capri (out 21, back 24), Mon 24 Aug: first ferry back,
-  drive Positano→Rome ~4h, drop at Rome office same day, taxi to FCO
-  on the 25th. SS163
+  d'Orcia→Positano 18 Aug (route in via the Castellammare exit and the
+  Sorrento road, NOT via Salerno/Vietri: that keeps the car off ~40km of
+  regulated SS163 on an even date). Car parked at Antalia 18-21 only
+  (free, driver assists on arrival). SORRENTO REPOSITION agreed
+  2026-08-17, replacing the old plan of leaving the car at Antalia
+  through the 24th: on 21 Aug (odd date, even plate legal) drive
+  Positano→Sorrento ~1h, garage the car there 21-24, and take the ferry
+  Sorrento↔Capri instead of Positano↔Capri. Suggested garages: Marina
+  Piccola (in front of the port, easiest with luggage) or Achille Lauro
+  (~€24/day, Via Correale, cheaper but further); prebook by phone.
+  This kills the 24 Aug problem outright: Capri→Sorrento is ~20-25 min
+  on frequent, more swell-tolerant boats, and Sorrento→Rome ~3.5h never
+  touches the SS163. Antalia should be told the parking is no longer
+  needed. Mon 24 Aug: first ferry back, drop at Rome office same day,
+  taxi to FCO on the 25th. SS163
   targhe alterne 2026 (ANAS ord. 340/2019, verified 2026-08-14): daily
   in Aug 10:00-18:00 Vietri↔Positano (~40km), odd dates ban odd-ending
   plates, even dates ban even-ending ones. Exemptions: two-wheelers,
@@ -142,10 +150,9 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   guest exemption, so the Antalia confirmation must be to hand) and
   24 Aug (checkout was the 21st, so the exemption is a stretch).
   19/21 Aug are odd dates so the even plate is fine, and 20 Aug is the
-  boat day. Mitigations offered for the 24th: swap the car at the desk
-  (best, only while near an office), leave Positano before 10:00
-  (clean and legal), or get a written note from Antalia about the
-  stored car + departure.
+  boat day. The 24th is now solved by the Sorrento reposition above;
+  the swap-the-car option died when the Milan desk had nothing to
+  swap (user tried 2026-08-14).
 - Positano self-drive boat (day 10, Thu 20 Aug 9am-2pm): BOOKED with
   Chic & Fabulous (amalficoastrentalcf.com, CF Hope/Grace, Positano
   departure) as of 2026-07-24; day-10 tag + booking-board item flipped
