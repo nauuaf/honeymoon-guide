@@ -172,10 +172,10 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   is Paolino Lemon Trees, Via Palazzo a Mare 11 (paolinocapri.com).
   User was asked 2026-07-24 to verify their confirmation points to the
   Capri one; not yet re-confirmed.
-- Fontelina lunch (Capri): request SUBMITTED 2026-07-24 for Fri 21 Aug
-  3:00pm, table only (no sunbeds: the couple won't swim in public
-  spots), awaiting confirmation, nothing paid. When confirmed: check
-  the booking-board item, move the Fontelina fact from day-12 option B
-  into day 11 as the arrival-day centerpiece (3pm late lunch), lighten
-  that evening to a Piazzetta stroll, and slide Villa Verde dinner from
-  day 11 to day 12 in place of Aurora (neither booked).
+- Fontelina lunch (Capri): DROPPED 2026-08-17. Requested 2026-07-24 for
+  Fri 21 Aug 3:00pm (table only, no sunbeds: the couple won't swim in
+  public spots); never answered and the phone is permanently engaged.
+  Board item removed, day-12 fact rewritten as a walk-up suggestion.
+  The Sorrento reposition also pushed the 21st arrival to ~midday,
+  so day 11 stays the relaxed arrival rather than being rebuilt around
+  a 3pm lunch. Nothing was paid.
