@@ -160,6 +160,22 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   the pier the day before. Da Adolfo lunch that day is booked 2:30pm;
   Da Paolino (Capri) booked Sun 23 Aug 6:30pm. La Sponda sold out
   online; user is on the phone/email cancellation hunt.
+- Capri private boat BOOKED 2026-08-18: Michela De Martino / Tonyno
+  Capri (same family as Paolino Lemon Trees), 3h at 9:00am SUN 23 AUG,
+  €450 for two, departs the private harbour in Capri, includes towels,
+  shower, fruit and juices (alcohol declined). Blue Grotto is a stop
+  OUTSIDE the cave: the boat waits and you transfer to a rowboat,
+  entry paid separately in cash. Deposit link sent by WhatsApp
+  (+39 340 400 0304), still to be paid at time of writing.
+  She could not do the 22nd, so days 12 and 13 SWAPPED: Sat 22 is now
+  Monte Solaro/Anacapri (or the free day, which absorbed the Carthusia
+  and Via Tragara content plus the Fontelina walk-up note), Sun 23 is
+  the boat day and carries the starred "المفضل" tag. The old Nerano
+  lunch (La Conca del Sogno) is gone, since the tour is Capri-only and
+  returns at noon; lunch is now the hotel's own Vico Pizza & Wine with
+  Le Grottelle as the scenic alternative. Day-13 option B is a
+  rough-sea fallback (Villa Jovis + Arco Naturale). The ferry-ticket
+  errand moved to the day-13 note, after the boat returns.
 - Honeymoon notes sent 2026-07-27 via Booking to all four booked hotels
   (announcement + "happily in your hands", no specific asks). The La
   Residenza one also gave the user's WhatsApp and asked for private
