@@ -158,8 +158,10 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   departure) as of 2026-07-24; day-10 tag + booking-board item flipped
   to booked. Remaining: user should confirm the exact meeting point at
   the pier the day before. Da Adolfo lunch that day is booked 2:30pm;
-  Da Paolino (Capri) booked Sun 23 Aug 6:30pm. La Sponda sold out
-  online; user is on the phone/email cancellation hunt.
+  Da Paolino (Capri) booked Sun 23 Aug 6:30pm. La Sponda BOOKED
+  2026-08-18 9:45pm off a late cancellation (board item checked, day-8
+  schedule and copy updated, Next2 demoted to a spare). Aurora (Capri,
+  Sat 22) confirmed by phone as walk-in, no reservation needed.
 - Capri private boat BOOKED 2026-08-18: Michela De Martino / Tonyno
   Capri (same family as Paolino Lemon Trees), 3h at 9:00am SUN 23 AUG,
   €450 for two, departs the private harbour in Capri, includes towels,
