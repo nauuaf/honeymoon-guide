@@ -167,8 +167,8 @@ Painted golden-hour style with bougainvillea pink; keep the set matched.
   €450 for two, departs the private harbour in Capri, includes towels,
   shower, fruit and juices (alcohol declined). Blue Grotto is a stop
   OUTSIDE the cave: the boat waits and you transfer to a rowboat,
-  entry paid separately in cash. Deposit link sent by WhatsApp
-  (+39 340 400 0304), still to be paid at time of writing.
+  entry paid separately in cash. Deposit PAID 2026-08-20 via the WhatsApp
+  link (+39 340 400 0304); nothing outstanding with her before the day.
   She could not do the 22nd, so days 12 and 13 SWAPPED: Sat 22 is now
   Monte Solaro/Anacapri (or the free day, which absorbed the Carthusia
   and Via Tragara content plus the Fontelina walk-up note), Sun 23 is
